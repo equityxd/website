@@ -1,0 +1,14 @@
+---
+enable: true
+title: >
+  ## References
+
+testimonial:
+  - name: Gilles Cardoen
+    comment: Takimata sanctus est lorem ipsum dolor sit amet lorem ipsum dolor sit amet consetur sad ipscing elitr sed diam nonumy eirmod tempor invidunt labore dolore magna.
+    time: 2021
+    star: 5
+  - name: Quentin Mayot
+    comment: I met Ernest Song while working at Morgan Philips. He is an intelligent and direct person, with an excellent vision of the business. He doesn't hesitate to show ingenuity and tenacity, while bringing structure and attention to detail. Finally, he is proactive and "result-oriented". It was a great pleasure to work with him and I wish him a road full of success.
+    time: 2020
+    star: 5

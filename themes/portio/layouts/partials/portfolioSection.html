@@ -1,0 +1,34 @@
+{{ with .Site.Data.portfolioSection }}
+{{ if .enable }}
+<section class="section portfolio" id="portfolio">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-lg-12">
+        <div class="portfolio__header mb-5">
+          <span class="top-title">{{ .topTitle }}</span>
+          {{ .title | markdownify }}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="portfolio-item-grid">
+          {{ range (where $.Site.RegularPages "Type" "portfolio").Reverse }}
+          <div class="portfolio-item">
+            <img src="{{ .Params.thumbnail }}" class="portfolio-item-thumb" alt="portfolio-thumb" />
+            <div class="portfolio-item-content">
+              <span>{{ .Params.service }}</span>
+              <h3 class="mb-3">
+                <a class="text-dark">{{ .Title }}</a>
+              </h3>
+              <p style="font-size: 0.9rem;">{{ .Params.solution }}</p>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
