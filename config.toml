@@ -1,4 +1,4 @@
-baseURL = "https://equityxd.github.io/website/"
+baseURL = ""
 languageCode = "en-us"
 paginate = 6
 theme = "portio"
