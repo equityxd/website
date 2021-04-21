@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
     # checkout to the commit that has been pushed
     - uses: actions/checkout@v2
@@ -25,7 +25,7 @@ jobs:
 
     # build website
     - name: Build
-      run: hugo
+      run: hugo --minify
 
     # push the generated content into the `main` (former `master`) branch.
     - name: Deploy
