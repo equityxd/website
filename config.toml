@@ -1,4 +1,5 @@
 baseURL = ""
+relativeURLs = "True"
 languageCode = "en-us"
 paginate = 6
 theme = "portio"
