@@ -1,0 +1,12 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Typst build artifacts (if you ever compile in-place)
+*.typ.out
+*~
+
+# Keep the empty "0 Old" folder out of git for now (git ignores empty dirs)
+# Re-enable if you start putting files back in it:
+# 0 Old/
