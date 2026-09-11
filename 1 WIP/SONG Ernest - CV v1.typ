@@ -224,17 +224,13 @@
     ""
   }
 
-  block(breakable: false)[
+  stack(spacing: 0pt)[
     #text(s, weight: "bold", style: "normal")[#name]
-
     #if rank != none {
       text(s-small, style: "normal")[#rank]
     }
-
     #text(s-small, style: "italic")[#date_str  |  #location]
-
     #text(s, weight: "semibold", style: "normal")[#degree]
-
     #text(s-small, style: "italic")[#field]
   ]
 }
