@@ -212,7 +212,7 @@
 }
 
 // Education uses a dedicated 5-line layout:
-//   Org name — (#rank) — date | location — degree — field
+//   Org name — rank (#rank) — date | location — degree — field
 #let edu(name, rank, date_start, date_end, location, degree, field) = {
   let date_str = if date_start == none and date_end != none {
     str(date_end)
@@ -225,14 +225,20 @@
   }
 
   block(breakable: false)[
-    #text(s, weight: "bold", style: "normal")[#name] #h(1fr) #text(s-small, style: "italic")[#date_str  |  #location]
+    #text(s, weight: "bold", style: "normal")[#name]
 
     #if rank != none {
+      v(2pt)
       text(s-small, style: "normal")[#rank]
     }
 
+    #v(3pt)
+    #text(s-small, style: "italic")[#date_str  |  #location]
+
+    #v(3pt)
     #text(s, weight: "semibold", style: "normal")[#degree]
 
+    #v(3pt)
     #text(s-small, style: "italic")[#field]
   ]
 }
