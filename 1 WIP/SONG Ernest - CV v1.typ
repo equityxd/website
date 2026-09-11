@@ -506,6 +506,7 @@
   [
     - Implemented the budget system and prepared business plans for the scientific teams.
     - Established the internal control system for purchasing and donation processes and managed bank reconciliation.
-    - Prepared the institutional audit necessary for the certification by the "Comité de la Charte".
+    - #set smartquote(enabled: false)
+      Prepared the institutional audit necessary for the certification by the "Comité de la Charte".
   ]
 )
