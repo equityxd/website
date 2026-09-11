@@ -229,9 +229,7 @@
     #if rank != none {
       text(s-small, style: "normal")[#rank]
     }
-    #text(s-small, style: "italic")[#date_str]
-    #linebreak()
-    #text(s-small, style: "italic")[#location]
+    #text(s-small, style: "italic")[#date_str  |  #location]
     #text(s, weight: "semibold", style: "normal")[#degree]
     #text(s-small, style: "italic")[#field]
   ]
