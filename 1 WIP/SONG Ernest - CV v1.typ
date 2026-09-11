@@ -228,17 +228,13 @@
     #text(s, weight: "bold", style: "normal")[#name]
 
     #if rank != none {
-      v(2pt)
       text(s-small, style: "normal")[#rank]
     }
 
-    #v(3pt)
     #text(s-small, style: "italic")[#date_str  |  #location]
 
-    #v(3pt)
     #text(s, weight: "semibold", style: "normal")[#degree]
 
-    #v(3pt)
     #text(s-small, style: "italic")[#field]
   ]
 }
