@@ -3,11 +3,11 @@
 
 #import "@preview/octique:0.1.1": *;
 
-// ── Type scale (homogenized to a single font size) ──
-#let s        = 10pt   // body base: company names, job titles, column headings, name, positions, headings
-#let s-name   = 10pt   // name only
-#let s-head   = 10pt   // position + main section headings (h1)
-#let s-small  = 10pt   // secondary: dates, subheadings, contact lines, bullets, footer
+// ── Type scale (4 steps) ──
+#let s        = 10pt   // body base: company names, job titles, column headings, bullets, contact, footer
+#let s-name   = 18pt   // name (title, largest)
+#let s-head   = 12pt   // position/subtitle + main section headings (h1)
+#let s-small  = 9pt    // secondary: dates, subheadings, inline contact lines
 
 // ── Rhythm ──
 #let leading     = s * 1.2
