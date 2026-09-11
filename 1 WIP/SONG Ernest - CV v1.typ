@@ -3,11 +3,11 @@
 
 #import "@preview/octique:0.1.1": *;
 
-// ── Type scale (4 steps, no half-points) ──
-#let s        = 10pt   // body base: company names, job titles, column headings
-#let s-name   = 20pt   // name only
-#let s-head   = 12pt   // position + main section headings (h1)
-#let s-small  = 9pt    // secondary: dates, subheadings, contact lines, bullets, footer
+// ── Type scale (homogenized to a single font size) ──
+#let s        = 10pt   // body base: company names, job titles, column headings, name, positions, headings
+#let s-name   = 10pt   // name only
+#let s-head   = 10pt   // position + main section headings (h1)
+#let s-small  = 10pt   // secondary: dates, subheadings, contact lines, bullets, footer
 
 // ── Rhythm ──
 #let leading     = s * 1.2
@@ -79,10 +79,7 @@
 
     // ─── BLOCK 1 : Title (centered) ───
     #align(center)[
-      #text(s-name, weight: "bold")[#profile.name]
-    ]
-    #align(center)[
-      #text(s-head, weight: "semibold", style: "normal")[#position]
+      #text(s-name, weight: "bold")[#profile.name | "  -  " | #text(s-head, style: "normal")[#position]]
     ]
     #v(gap-m)
     #line(length: 100%, stroke: (thickness: 0.75pt))
@@ -95,8 +92,8 @@
       [
         #octique-inline("location", width: 0.6em) #h(4pt)
         #text(s-small)[Rue Montagne de l'Oratoire 28/76]
-        #octique-inline("mail", width: 0.48em) #text(s-small)[B-1000 Brussels]
-        #v(-9pt)
+        #text(s-small)[B-1000 Brussels]
+        #v(-2pt)
         #octique-inline("mail", width: 0.6em) #text(s-small)[#profile.mailto]
         #v(-9pt)
         #octique-inline("globe", width: 0.6em) #text(s-small)[#profile.website]
@@ -215,7 +212,7 @@
 
 #show: body => resume(
   profile: (
-    name: "Ernest Song",
+    name: "Ernest SONG",
     address: "Rue Montagne de l'Oratoire 28/76, B-1000 Brussels",
     mailto: "contact@ernestsong.com",
     website: "ernestsong.com",
