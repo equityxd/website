@@ -227,10 +227,14 @@
   stack(spacing: 0pt)[
     #text(s, weight: "bold", style: "normal")[#name]
     #if rank != none {
+      linebreak()
       text(s-small, style: "normal")[#rank]
     }
+    #linebreak()
     #text(s-small, style: "italic")[#date_str  |  #location]
+    #linebreak()
     #text(s, weight: "semibold", style: "normal")[#degree]
+    #linebreak()
     #text(s-small, style: "italic")[#field]
   ]
 }
