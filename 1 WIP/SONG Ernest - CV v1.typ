@@ -1,4 +1,7 @@
-#import "@preview/octique:0.1.1": *
+// Icon-based CV using octique contact icons. Layout: standard fonts, section headings,
+// standard bullets. Contact uses octique icons (not ATS-label-friendly by design).
+
+#import "@preview/octique:0.1.1": *;
 
 // ── Type scale (4 steps, no half-points) ──
 #let s        = 10pt   // body base: company names, job titles, column headings
@@ -34,10 +37,11 @@
 ) = {
   set document(author: profile.name, keywords: profile.keywords, date: auto)
 
+  // Font is embedded in the PDF, so ATS parsers read the text correctly.
   set text(s, font: "Source Sans 3", lang: "en")
   set par(leading: s * 0.7)
   set align(left)
-  set list(body-indent: indent)
+  set list(body-indent: indent, tight: true)
 
   // ── Show rules ──
   // Level 1 (=) : Main section headings
@@ -59,9 +63,9 @@
   // Level 4 (====) : Sub-category headers
   show heading.where(level: 4): body => [
     #text(s-small, weight: "semibold", style: "italic")[#body]
-    #v(gap-m)
+    #v(1pt)
     #line(length: 100%, stroke: (thickness: 0.2pt))
-    #v(gap-m)
+    #v(1pt)
   ]
 
   set page(
@@ -76,27 +80,28 @@
 
   [
 
-    // ─── BLOCK 1 : Centered Title ───
+    // ─── BLOCK 1 : Title (centered) ───
     #align(center)[
-      #text(s-name, weight: "bold")[#profile.name • ]
-      #text(s-head, weight: "semibold", style: "normal")[#position]
-      #v(gap-m)
-      #line(length: 3.5cm, stroke: (thickness: 1pt))
+      #text(s-name, weight: "bold")[#profile.name]
     ]
+    #align(center)[
+      #text(s-head, weight: "semibold", style: "normal")[#position]
+    ]
+    #v(gap-m)
+    #line(length: 100%, stroke: (thickness: 0.75pt))
     #v(gap)
 
     // ─── BLOCK 2 : Contact (left) + Quote (right) ───
     #grid(
-      columns: (1.8fr, 2.2fr),
+      columns: (1.2fr, 2.8fr),
       gutter: gutter,
       [
-        #set par(leading: 12pt)
         #octique-inline("location", width: 0.6em) #text(s-small)[#profile.address]
-
+        #v(-9pt)
         #octique-inline("mail", width: 0.6em) #text(s-small)[#profile.mailto]
-
+        #v(-9pt)
         #octique-inline("globe", width: 0.6em) #text(s-small)[#profile.website]
-
+        #v(-9pt)
         #octique-inline("device-mobile", width: 0.6em) #text(s-small)[#profile.tel]
       ],
       block(
@@ -127,11 +132,11 @@
         === Languages
         #languages
 
-        #v(gap)
+        #v(gap-m)
         === Interests
         #interests
 
-        #v(gap)
+        #v(gap-m)
         === Interpersonal
         #interpersonal
       ]
@@ -158,11 +163,11 @@
   [
     #text(s, weight: "bold")[#name]
     #h(1fr)
-    #text(s-small, style: "italic")[#date_str  •  #location]
+    #text(s-small, style: "italic")[#date_str  |  #location]
 
     #text(s, weight: "semibold", style: "normal")[#title]
 
-    [#set par(leading: 10pt)
+    [#set par(leading: 9pt)
       #text(s-small)[#details]
     ]
   ]
@@ -184,7 +189,7 @@
   education: [
     #entry(
       "Specialized Master, Auditing and Consulting",
-      "ESCP Business School (Top #1 in Europe @ FT 2026)",
+      "ESCP Business School (#1 in Europe — Financial Times 2026)",
       2010, 2011,
       "Paris, FR",
       none
@@ -378,7 +383,7 @@
 )
 
 #entry(
-  "Managing Director & Head of Project Financial Modeling • Cursus Grand Talent",
+  "Managing Director & Head of Project Financial Modeling / Cursus Grand Talent",
   "Vinci Airports",
   "February 2016", "December 2017",
   "Brussels, BE & Lisbon, PT",
