@@ -63,9 +63,6 @@
   // Level 4 (====) : Sub-category headers
   show heading.where(level: 4): body => [
     #text(s-small, weight: "semibold", style: "italic")[#body]
-    #v(1pt)
-    #line(length: 100%, stroke: (thickness: 0.2pt))
-    #v(1pt)
   ]
 
   set page(
@@ -96,7 +93,9 @@
       columns: (1.2fr, 2.8fr),
       gutter: gutter,
       [
-        #octique-inline("location", width: 0.6em) #text(s-small)[#profile.address]
+        #octique-inline("location", width: 0.6em) #h(4pt)
+        #text(s-small)[Rue Montagne de l'Oratoire 28/76]
+        #octique-inline("mail", width: 0.48em) #text(s-small)[B-1000 Brussels]
         #v(-9pt)
         #octique-inline("mail", width: 0.6em) #text(s-small)[#profile.mailto]
         #v(-9pt)
@@ -111,33 +110,76 @@
         #text(s-small, style: "italic")[#profile.quote]
       ]
     )
+    #line(length: 100%, stroke: (thickness: 0.75pt))
     #v(gap)
 
     // ─── BLOCK 3 : Three columns ───
     #grid(
-      columns: (2fr, 2.3fr, 2.7fr),
+      columns: (2fr, 3fr, 2.7fr),
       gutter: gutter,
       [
         // ── Column 1 : Education ──
-        === Education
+        #text(s, weight: "semibold", style: "normal")[Education]
+        #v(gap-m)
         #education
       ],
       [
         // ── Column 2 : Competencies ──
-        === Competencies
-        #competencies
+        #text(s, weight: "semibold", style: "normal")[Competencies]
+        #v(gap-m)
+        #grid(
+          columns: (1fr, 1fr),
+          gutter: 8pt,
+          [
+            ==== Business
+            - MS Office (advanced Excel)
+
+            ==== ERP
+            - SAP HANA
+
+            ==== Business Intelligence
+            - MS Power BI
+            - QlikSense
+            - Business Object
+            - Cognos
+            - Hyperion
+
+            ==== RPA
+            - UIpath
+            - MS PowerAutomate
+          ],
+          [
+            ==== Agile
+            - Jira
+            - Confluence
+
+            ==== Audit
+            - IDEA CAATs
+
+            ==== Planning
+            - Visual Planning
+
+            ==== Data & Analytics
+            - VBA
+            - SQL
+            - R
+          ]
+        )
       ],
       [
         // ── Column 3 : Languages, Interests, Interpersonal ──
-        === Languages
+        #text(s, weight: "semibold", style: "normal")[Languages]
+        #v(gap-m)
         #languages
 
         #v(gap-m)
-        === Interests
+        #text(s, weight: "semibold", style: "normal")[Interests]
+        #v(gap-m)
         #interests
 
         #v(gap-m)
-        === Interpersonal
+        #text(s, weight: "semibold", style: "normal")[Interpersonal]
+        #v(gap-m)
         #interpersonal
       ]
     )
@@ -161,21 +203,19 @@
   }
 
   [
-    #text(s, weight: "bold")[#name]
-    #h(1fr)
-    #text(s-small, style: "italic")[#date_str  |  #location]
+    #text(s, weight: "bold")[#name] #h(1fr) #text(s-small, style: "italic")[#date_str  |  #location]
 
     #text(s, weight: "semibold", style: "normal")[#title]
-
-    [#set par(leading: 9pt)
-      #text(s-small)[#details]
-    ]
   ]
+
+  if details != none {
+    text(s-small, style: "italic")[#details]
+  }
 }
 
 #show: body => resume(
   profile: (
-    name: "Ernest SONG",
+    name: "Ernest Song",
     address: "Rue Montagne de l'Oratoire 28/76, B-1000 Brussels",
     mailto: "contact@ernestsong.com",
     website: "ernestsong.com",
@@ -189,11 +229,14 @@
   education: [
     #entry(
       "Specialized Master, Auditing and Consulting",
-      "ESCP Business School (#1 in Europe — Financial Times 2026)",
+      "ESCP Business School (#1 in
+Europe — Financial Times 2026)",
       2010, 2011,
       "Paris, FR",
       none
     )
+
+#v(gap)
 
     #entry(
       "Master's degree, Management Science and Financial Control",
@@ -241,36 +284,19 @@
 
   // ── Languages ──
   languages: [
-    ==== Native
-    - French
-    - Khmer
-    - Teochew
-
-    ==== Proficient
-    - English
-
-    ==== Basics
-    - Dutch (A2)
-    - Spanish
-    - Mandarin
+    #text(s, weight: "semibold", style: "normal")[Native:] French, Khmer, Teochew
+    #text(s, weight: "semibold", style: "normal")[Proficient:] English \
+    #text(s, weight: "semibold", style: "normal")[Basics:] Dutch (A2), Spanish, Mandarin
   ],
 
   // ── Interests ──
   interests: [
-    - Sustainable development
-    - Powerlifting
-    - Mountain biking
-    - Tennis
+    Sustainable development, Powerlifting, Mountain biking, Tennis
   ],
 
   // ── Interpersonal ──
   interpersonal: [
-    - Fast-learner
-    - Problem solver
-    - Diplomacy
-    - Driven
-    - Autonomous
-    - Teamplayer
+    Fast-learner, Problem solver, Diplomacy, Driven, Autonomous, Teamplayer
   ],
 
   body
@@ -278,6 +304,8 @@
 
 // ── Professional Experience ──
 = Professional Experience
+
+#v(gap)
 
 #entry(
   "Strategic Business Analyst & Finance Automation Lead (Freelancer)",
@@ -291,6 +319,8 @@
     - Reconciled complex financial data structures between middle-office databases (IVDB) and SAP S/4HANA while restructuring and simplifying the Work Breakdown Structure (WBS) project codes to optimize portfolio monitoring.
   ]
 )
+
+#v(gap)
 
 #entry(
   "Senior Operational Excellence & Data Lead (Freelancer)",
@@ -306,6 +336,8 @@
   ]
 )
 
+#v(gap)
+
 #entry(
   "Cash Flow & Financial Modeling Specialist (Freelancer)",
   "Engie Tractebel",
@@ -317,6 +349,8 @@
     - Develop Finance data modelling from SAP for HANA and design Power BI reporting.
   ]
 )
+
+#v(gap)
 
 #entry(
   "Investment & Corporate Development Analyst (Freelancer)",
@@ -331,6 +365,8 @@
   ]
 )
 
+#v(gap)
+
 #entry(
   "Head of Controlling",
   "Magnetrap",
@@ -343,6 +379,8 @@
     - Prepared operating results reports and managed financial models for long-term use.
   ]
 )
+
+#v(gap)
 
 #entry(
   "Director Business Process Automation",
@@ -357,6 +395,8 @@
   ]
 )
 
+#v(gap)
+
 #entry(
   "Founder",
   "Soap collect",
@@ -367,6 +407,8 @@
     - Formed partnerships with luxury hotel chains to source used soap for reconditioning.
   ]
 )
+
+#v(gap)
 
 #entry(
   "Performance Management Project Leader",
@@ -382,6 +424,8 @@
   ]
 )
 
+#v(gap)
+
 #entry(
   "Managing Director & Head of Project Financial Modeling / Cursus Grand Talent",
   "Vinci Airports",
@@ -396,6 +440,8 @@
   ]
 )
 
+#v(gap)
+
 #entry(
   "Reporting Consolidation Manager",
   "Rexel",
@@ -408,6 +454,8 @@
     - Led the strategic planning process for the organization.
   ]
 )
+
+#v(gap)
 
 #entry(
   "Financial Auditor Supervisor",
@@ -422,6 +470,8 @@
     Main sector: Construction (Vinci, Eiffage, Colas), Real estate (Nexity), Water distribution (Veolia), International parcels distribution (Geopost from La Poste group), Security (Brink's), Healthcare (DomusVie).
   ]
 )
+
+#v(gap)
 
 #entry(
   "Deputy CFO Trainee",
