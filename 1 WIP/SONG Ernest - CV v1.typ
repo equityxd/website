@@ -79,7 +79,7 @@
 
     // ─── BLOCK 1 : Title (centered) ───
     #align(center)[
-      #text(s-name, weight: "bold")[#profile.name | "  -  " | #text(s-head, style: "normal")[#position]]
+      #text(s-name, weight: "bold")[#profile.name] #text(s-small, style: "normal", "-") #text(s-head, style: "normal")[#position]
     ]
     #v(gap-m)
     #line(length: 100%, stroke: (thickness: 0.75pt))
@@ -211,6 +211,32 @@
   ]
 }
 
+// Education uses a dedicated 5-line layout:
+//   Org name — (#rank) — date | location — degree — field
+#let edu(name, rank, date_start, date_end, location, degree, field) = {
+  let date_str = if date_start == none and date_end != none {
+    str(date_end)
+  } else if date_start != none and date_end == none {
+    str(date_start) + " – Present"
+  } else if date_start != none and date_end != none {
+    str(date_start) + " – " + str(date_end)
+  } else {
+    ""
+  }
+
+  block(breakable: false)[
+    #text(s, weight: "bold", style: "normal")[#name] #h(1fr) #text(s-small, style: "italic")[#date_str  |  #location]
+
+    #if rank != none {
+      text(s-small, style: "normal")[#rank]
+    }
+
+    #text(s, weight: "semibold", style: "normal")[#degree]
+
+    #text(s-small, style: "italic")[#field]
+  ]
+}
+
 #show: body => resume(
   profile: (
     name: "Ernest SONG",
@@ -225,23 +251,24 @@
 
   // ── Education ──
   education: [
-    #entry(
-      "Specialized Master, Auditing and Consulting",
-      "ESCP Business School (#1 in
-Europe — Financial Times 2026)",
+    #edu(
+      "ESCP Business School",
+      "(#1 FT 2026)",
       2010, 2011,
       "Paris, FR",
-      none
+      "Specialized Master's degree",
+      "Auditing and Consulting"
     )
 
 #v(gap)
 
-    #entry(
-      "Master's degree, Management Science and Financial Control",
+    #edu(
       "Université Paris Nanterre",
+      none,
       2005, 2010,
       "Paris, FR",
-      none
+      "Master's degree",
+      "Management Science and Financial Control"
     )
   ],
 
