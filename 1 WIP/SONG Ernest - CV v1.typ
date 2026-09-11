@@ -199,15 +199,16 @@
     ""
   }
 
-  [
+  // Each professional experience is kept as one indivisible block (cannot split across pages)
+  block(breakable: false)[
     #text(s, weight: "bold")[#name] #h(1fr) #text(s-small, style: "italic")[#date_str  |  #location]
 
     #text(s, weight: "semibold", style: "normal")[#title]
-  ]
 
-  if details != none {
-    text(s-small, style: "italic")[#details]
-  }
+    #if details != none {
+      text(s-small, style: "italic")[#details]
+    }
+  ]
 }
 
 #show: body => resume(
