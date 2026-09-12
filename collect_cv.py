@@ -5,11 +5,12 @@ CV Builder — Data Collection Engine
 ===================================
 Beginner-friendly tool that turns a Job Description into a structured session.
 
-  Step 1. Collects the JD (pasted text OR a URL) via a small GUI window.
+  Step 1. Collects the JD via a single GUI window — just one box to
+          paste the full JD text (no extra fields required).
   Step 2. Saves the JD to "2 Job description/<serial>.txt".
   Step 3. Appends a new per-session row to the Excel monitoring workbook
           with a unique serial number and structured metadata
-          (recruiter, company, date, source, status).
+          (date, source, status).
   Step 4. Writes an LLM prompt manifest so the running model knows exactly
           what to generate.
 
@@ -180,37 +181,60 @@ class SessionWindow:
     def __init__(self, root):
         self.root = root
         self.root.title("CV Builder — Session")
-        self.root.geometry("640x560")
+        self.root.geometry("960x680")
         self.root.configure(bg="#f4f4f4")
         self.meta = {"Company": "", "Position": "", "Recruiter Name": ""}
         self.source_type = "Job Description (text)"
         self.source_value = ""
-        self._build_page1()
+        self._build_page()
 
-    def _build_page1(self):
+    def _build_page(self):
+        # Single clean page: just one box to paste (or load) the Job Description.
         p = tk.Frame(self.root, bg="#f4f4f4", padx=20, pady=16)
-        tk.Label(p, text="Company:", bg="#f4f4f4", anchor="e", width=16,
-                 font=("Segoe UI", 9)).grid(row=0, column=0, pady=5, sticky="ew")
-        e1 = tk.Entry(p, width=45, bd=1)
-        e1.grid(row=0, column=1, padx=8, sticky="ew")
-        tk.Label(p, text="Position / Role:", bg="#f4f4f4", anchor="e", width=16,
-                 font=("Segoe UI", 9)).grid(row=1, column=0, pady=5, sticky="ew")
-        e2 = tk.Entry(p, width=45, bd=1)
-        e2.grid(row=1, column=1, padx=8, sticky="ew")
-        tk.Label(p, text="Recruiter Name:", bg="#f4f4f4", anchor="e", width=16,
-                 font=("Segoe UI", 9)).grid(row=2, column=0, pady=5, sticky="ew")
-        e3 = tk.Entry(p, width=45, bd=1)
-        e3.grid(row=2, column=1, padx=8, sticky="ew")
+        p.pack(fill="both", expand=True)
+        tk.Label(p, text="Paste the Job Description below:", bg="#f4f4f4",
+                 font=("Segoe UI", 10, "bold")).grid(row=0, column=0, sticky="w")
+        tk.Label(p, text="No other fields needed — just paste the full JD text, or load a .txt file.",
+                 bg="#f4f4f4", font=("Segoe UI", 8), fg="#555").grid(row=1, column=0, sticky="w", pady=(4, 10))
+        self.status_label = tk.Label(p, bg="#f4f4f4", fg="#c0392b",
+                                     font=("Segoe UI", 8), anchor="w")
+        self.status_label.grid(row=6, column=0, sticky="w")
 
-        def go():
-            self.meta["Company"] = e1.get().strip()
-            self.meta["Position"] = e2.get().strip()
-            self.meta["Recruiter Name"] = e3.get().strip()
-            p.pack(forget=True)
-            self._build_page2()
+        # Tall, scrollable text box — no practical paste limit
+        txt_frame = tk.Frame(p, bg="#f4f4f4")
+        txt_frame.grid(row=2, column=0, pady=4, sticky="ew")
+        self._text = tk.Text(txt_frame, height=24, width=90, bg="#fff", fg="#111",
+                             wrap="word")
+        sb = tk.Scrollbar(txt_frame, command=self._text.yview)
+        sb.pack(side="right", fill="y")
+        self._text.pack(side="left", fill="both", expand=True)
+        # Bind paste so Ctrl+C/V + middle-click always land in the box
+        for binding in ("<Control-v>", "<Control-V>", "<Alt-v>", "<Alt-V>"):
+            self._text.bind(binding, self._on_paste)
+        tk.Button(p, text="Choose file…", command=self._load_file, width=14,
+                  font=("Segoe UI", 9)).grid(row=3, column=0, sticky="w")
 
-        tk.Button(p, text="Next →", command=go, width=12,
-                  font=("Segoe UI", 9)).grid(row=3, column=1, pady=16)
+        def done():
+            try:
+                self.source_type = "Job Description (text)"
+                self.source_value = self._text.get("1.0", "end").strip()
+                if not self.source_value:
+                    messagebox.showinfo("CV Builder", "No input received — please paste the Job Description.")
+                    return
+                self.root.destroy()
+            except Exception as e:
+                messagebox.showerror("CV Builder", f"Something went wrong:\n{e}")
+
+        tk.Button(p, text="OK — Run process", command=done, width=16,
+                  font=("Segoe UI", 9)).grid(row=5, column=0, sticky="w")
+        tk.Button(p, text="Cancel", command=self.root.destroy, width=10,
+                  font=("Segoe UI", 9)).grid(row=5, column=1, sticky="e", padx=20)
+
+        # Make sure the window + text box are active so paste lands here
+        self.root.deiconify()
+        self.root.focus_force()
+        self._text.focus_set()
+        self.root.after(50, lambda: self.root.focus_force())
 
     def _on_paste(self, event=None):
         """Read the Windows clipboard directly and insert it. Works even when
@@ -236,66 +260,12 @@ class SessionWindow:
             return
         try:
             with open(path, "r", encoding="utf-8", errors="ignore") as f:
-                self.content.set(f.read())
+                content = f.read()
+            self._text.delete("1.0", "end")
+            self._text.insert("end", content)
             self.status_label.configure(text=f"Loaded: {os.path.basename(path)}")
         except Exception as e:
             messagebox.showerror("CV Builder", f"Could not read file:\n{e}")
-
-    def _build_page2(self):
-        p = tk.Frame(self.root, bg="#f4f4f4", padx=20, pady=16)
-        p.pack(fill="both", expand=True)
-        tk.Label(p, text="Choose input type:", bg="#f4f4f4",
-                 font=("Segoe UI", 9)).grid(row=0, column=0, sticky="w")
-        var = tk.StringVar(value="File")
-        self.content = tk.StringVar()
-        self.status_label = tk.Label(p, bg="#f4f4f4", fg="#c0392b",
-                                     font=("Segoe UI", 8), anchor="w")
-        self.status_label.grid(row=5, column=0, sticky="w")
-        tk.Radiobutton(p, text="Load .txt file (recommended)", value="File",
-                       bg="#f4f4f4", fg="#111", selectcolor="#dfeaff", var=var).grid(row=1, column=0, sticky="w")
-        tk.Radiobutton(p, text="Job Description (paste text)", value="Job Description (text)",
-                       bg="#f4f4f4", fg="#111", selectcolor="#dfeaff", var=var).grid(row=2, column=0, sticky="w")
-        tk.Radiobutton(p, text="Job URL", value="URL",
-                       bg="#f4f4f4", fg="#111", selectcolor="#dfeaff", var=var).grid(row=3, column=0, sticky="w")
-        tk.Label(p, text="Recommended: click 'Choose file…' below and pick your JD text file:",
-                 bg="#f4f4f4", font=("Segoe UI", 8)).grid(row=4, column=0, sticky="w", pady=(8, 2))
-        tk.Button(p, text="Choose file…", command=self._load_file, width=14,
-                  font=("Segoe UI", 9)).grid(row=6, column=0, sticky="w")
-        # Tall, scrollable text box — no practical paste limit
-        txt_frame = tk.Frame(p, bg="#f4f4f4")
-        txt_frame.grid(row=7, column=0, pady=8, sticky="ew")
-        self._text = tk.Text(txt_frame, height=22, width=84, bg="#fff", fg="#111",
-                             wrap="word")
-        sb = tk.Scrollbar(txt_frame, command=self._text.yscrollcommand)
-        sb.pack(side="right", fill="y")
-        self._text.pack(side="left", fill="both", expand=True)
-        # Bind paste so Ctrl+C/V + middle-click always land in the box
-        for binding in ("<Control-v>", "<Control-V>", "<Alt-v>", "<Alt-V>", "<Paste>"):
-            self._text.bind(binding, self._on_paste)
-
-        def done():
-            try:
-                self.source_type = var.get()
-                if var.get() == "File":
-                    self.source_value = self.content.get()
-                else:
-                    self.source_value = self._text.get("1.0", "end").strip()
-                if not self.source_value:
-                    messagebox.showinfo("CV Builder", "No input received — please load a file or paste content first.")
-                    return
-                self.root.destroy()
-            except Exception as e:
-                messagebox.showerror("CV Builder", f"Something went wrong:\n{e}")
-
-        tk.Button(p, text="OK — Run process", command=done, width=16,
-                  font=("Segoe UI", 9)).grid(row=8, column=0, pady=10, sticky="w")
-        tk.Button(p, text="Cancel", command=self.root.destroy, width=10,
-                  font=("Segoe UI", 9)).grid(row=8, column=1, pady=10, sticky="w")
-        # Make sure the window + text box are active so paste lands here
-        self.root.deiconify()
-        self.root.focus_force()
-        self._text.focus_set()
-        self.root.after(50, lambda: self.root.focus_force())
 
     def run(self):
         self.root.mainloop()
