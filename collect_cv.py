@@ -212,6 +212,20 @@ class SessionWindow:
         tk.Button(p, text="Next →", command=go, width=12,
                   font=("Segoe UI", 9)).grid(row=3, column=1, pady=16)
 
+    def _on_paste(self, event=None):
+        """Read the Windows clipboard directly and insert it. Works even when
+        the default Paste binding misbehaves."""
+        try:
+            data = self.root.clipboard_get()
+            if data and data.strip():
+                self._text.insert("end", data)
+                self.status_label.configure(text="Pasted from clipboard ✓")
+            else:
+                self.status_label.configure(text="Clipboard is empty.")
+        except tk.TclError:
+            self.status_label.configure(text="Could not read clipboard — use 'Choose file…'.")
+        return "break"  # stop the default (broken) paste handling
+
     def _load_file(self):
         """Open a file dialog and load the chosen .txt into the text box."""
         path = filedialog.askopenfilename(
@@ -250,11 +264,14 @@ class SessionWindow:
         # Tall, scrollable text box — no practical paste limit
         txt_frame = tk.Frame(p, bg="#f4f4f4")
         txt_frame.grid(row=7, column=0, pady=8, sticky="ew")
-        txt = tk.Text(txt_frame, height=22, width=84, bg="#fff", fg="#111",
-                      wrap="word")
-        sb = tk.Scrollbar(txt_frame, command=txt.yscrollcommand)
+        self._text = tk.Text(txt_frame, height=22, width=84, bg="#fff", fg="#111",
+                             wrap="word")
+        sb = tk.Scrollbar(txt_frame, command=self._text.yscrollcommand)
         sb.pack(side="right", fill="y")
-        txt.pack(side="left", fill="both", expand=True)
+        self._text.pack(side="left", fill="both", expand=True)
+        # Bind paste so Ctrl+C/V + middle-click always land in the box
+        for binding in ("<Control-v>", "<Control-V>", "<Alt-v>", "<Alt-V>", "<Paste>"):
+            self._text.bind(binding, self._on_paste)
 
         def done():
             try:
@@ -262,7 +279,7 @@ class SessionWindow:
                 if var.get() == "File":
                     self.source_value = self.content.get()
                 else:
-                    self.source_value = txt.get("1.0", "end").strip()
+                    self.source_value = self._text.get("1.0", "end").strip()
                 if not self.source_value:
                     messagebox.showinfo("CV Builder", "No input received — please load a file or paste content first.")
                     return
@@ -274,6 +291,11 @@ class SessionWindow:
                   font=("Segoe UI", 9)).grid(row=8, column=0, pady=10, sticky="w")
         tk.Button(p, text="Cancel", command=self.root.destroy, width=10,
                   font=("Segoe UI", 9)).grid(row=8, column=1, pady=10, sticky="w")
+        # Make sure the window + text box are active so paste lands here
+        self.root.deiconify()
+        self.root.focus_force()
+        self._text.focus_set()
+        self.root.after(50, lambda: self.root.focus_force())
 
     def run(self):
         self.root.mainloop()
