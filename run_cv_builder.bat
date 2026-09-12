@@ -4,8 +4,8 @@ setlocal
 REM ============================================
 REM   CV Builder — Launcher
 REM   Double-click this file to run the whole process:
-REM     1. Collect the Job Description (GUI) and set up files
-REM     2. Launch pi (the LLM) so documents can be generated
+REM     1. Collect the Job Description (GUI) and save it
+REM     2. Auto-generate the tailored documents from that JD
 REM ============================================
 
 cd /d C:\MyDev\MyCV
@@ -28,10 +28,51 @@ if errorlevel 1 (
     exit /b 1
 )
 
-REM ---- Step 2: Launch pi (LLM) ----
+REM ---- Step 2: Auto-generate documents from the collected JD ----
 echo.
-echo [2/2] Launching pi (LLM terminal)...
+echo [2/2] Generating tailored documents from the collected JD...
 echo.
-start "" cmd /c "pi"
+
+REM Locate the most recently created JD file in "2 Job description".
+REM `/od` sorts oldest-first, so keeping the last entry yields the newest.
+set JD_FILE=
+for /f "delims=" %%a in ('dir /b /od "2 Job description\*.txt" 2>nul') do (
+    set JD_FILE=2 Job description\%%a
+)
+
+if not defined JD_FILE (
+    echo.
+    echo [!] No JD .txt file found in "2 Job description".
+    echo     Run the collector first (paste the JD and press 'Run process').
+    pause
+    exit /b 1
+)
+
+echo        Using JD: 2 Job description\%JD_FILE%
+echo.
+
+REM Generate the tailored CV (PDF) directly — no interactive pi needed.
+python gen_cv_typ.py "2 Job description\%JD_FILE%"
+
+if errorlevel 1 (
+    echo.
+    echo [!] Document generation failed.
+    pause
+    exit /b 1
+)
+
+REM Generate 1 cover letter + 1 interview-prep (Word) and update the monitoring tracker.
+python generate_documents.py "2 Job description\%JD_FILE%"
+
+if errorlevel 1 (
+    echo.
+    echo [!] Cover letter / interview-prep / tracker generation failed.
+    pause
+    exit /b 1
+)
+
+echo.
+echo Done — your tailored document(s) are generated.
+pause
 
 endlocal

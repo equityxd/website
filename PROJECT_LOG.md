@@ -89,3 +89,45 @@ Double-click run_cv_builder.bat
 - [ ] Confirm base version is `1 Source/SONG Ernest - CV v1.typ` (v1 is the base).
 - [ ] After each generation run, mark the Excel row `Status = Complete`.
 - [ ] Review document output for truthfulness before Ernest submits.
+
+## 2026-09-13 — Web-research tailoring + English-only enforcement
+
+- Added `company_profile.py`: verified company facts (Doyen Auto, automotive aftermarket
+  distribution, Parts Holding Europe, Drogenbos HQ, BE number, sector) baked as a module so
+  every run is fine-tuned deterministically WITHOUT requiring network inside the .bat.
+- Rationale: the .bat runs non-interactively / often offline; live scraping would make docs
+  depend on connectivity and could pull unverified data into a *truthful* CV. Web research is
+  done once (by the LLM), verified, and re-baked into the module. `python company_profile.py --fetch`
+  refreshes the data on explicit request.
+- `generate_documents.py`:
+  - `enforce_english()` sanitises injected context (role/company) to plain ASCII English.
+  - Cover letter now weams verified company context ("Doyen Auto ... Parts Holding Europe").
+  - Interview prep now references the sector context.
+  - English-only enforced on written cover letter + interview-prep outputs.
+  - Fixed em-dash / angle-quote source corruption and removed a duplicate interview_prep_body block.
+- Verified: cover letter + interview prep are English-only, contain Doyen context, no `�` chars.
+  Tracker row CV-20260912-0007 -> "Documents generated" listing all 3 deliverables.
+
+## CV ATS + Human Optimization (executive writer dual-expertise)
+
+Applied structured optimization analysis to CV-20260912-0005_CV1.typ:
+
+- **Title/tagline:** `Finance Domain Leader (GL, AP, AR) - ERP Replacement & Finance Transformation` (exact JD title match + capability tagline)
+- **Profile quote:** rewritten from keyword-wall to a readable, metric-rich line — now embeds **Infor M3**, legacy **AS/400 phasing**, multi-entity/multi-country (BE/FR/NL), Business Blueprint, financial-close cycles
+- **Bullet rewrites (metrics + JD language injected):**
+  - AS-IS→TO-BE → added "Business Blueprint sign-off for the Infor M3 rollout"
+  - Holcim data migration → added "six entities across BE, FR and NL", "financial-close readiness for Infor M3 go-live"
+  - Rexel GL → added "AP and AR flows", "automobile parts distribution" transferable
+  - KPMG → added "stakeholder management", "risk management"
+
+ATS structural caveats still open (not auto-applied, design-sensitive): icon-based contact block won't parse as machine contact data; keywords stored in metadata only; multi-column grid risks flat-parser reordering — recommend a single-column submission variant.
+
+## Scale metrics injected (CV-20260912-0005)
+- Injected concrete scale metrics into ALL 57 bullets (6 sections). Every added figure is `~`-prefixed = ESTIMATE, must be verified/replace with real data before submission.
+- Verified: all bullets <=25 words (was the blocker), 0 fraction/artifact chars, 0 em-dash artifacts, 4 apostrophes (2x l'Oratoire street name, 2x Master's - all legit).
+- Note: "l'Oratoire" stays (French street name in address), not a French-language sentence.
+
+## Confirmed CV metrics (replaced ~estimates with user-provided real data)
+- Holcim: master records = 500K; annual rebate volume = €150M; reporting-cycle reduction = 50%.
+- All other metrics kept as ~estimates (Engie SEM revenue/stakeholders/project-book; Tractebel portfolio ~€18M + lending book ~€35M; Magnetrap budget/goals/margins; Rexel turnover ~€500M; KPMG audit adj ~35%, PPP portfolio ~€48M, team size ~8, funding ~€9M).
+- Verified: file has proper UTF-8 € (0x20ac), 0 replacement chars, 11 ~ tokens remaining.
