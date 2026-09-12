@@ -8,6 +8,7 @@
 #let s-name   = 18pt   // name (title, largest)
 #let s-head   = 12pt   // position/subtitle + main section headings (h1)
 #let s-small  = 9pt    // secondary: dates, subheadings, inline contact lines
+#let s-xsmall = 6.5pt    // tighter: date headers
 
 // ── Rhythm ──
 #let leading     = s * 1.2
@@ -79,7 +80,7 @@
 
     // ─── BLOCK 1 : Title (centered) ───
     #align(center)[
-      #text(s-name, weight: "bold")[#profile.name] #text(s-small, style: "normal", "-") #text(s-head, style: "normal")[#position]
+      #text(s-name, weight: "bold")[#profile.name] #h(10pt) #text(s-name, style: "normal", "◆") #h(10pt) #text(s-name, style: "normal")[#position]
     ]
     #v(gap-m)
     #line(length: 100%, stroke: (thickness: 0.75pt))
@@ -87,49 +88,52 @@
 
     // ─── BLOCK 2 : Contact (left) + Quote (right) ───
     #grid(
-      columns: (1.2fr, 2.8fr),
+      columns: (1.1fr, 2.9fr),
       gutter: gutter,
       [
-        #octique-inline("location", width: 0.6em) #h(4pt)
-        #text(s-small)[Rue Montagne de l'Oratoire 28/76]
-        #text(s-small)[B-1000 Brussels]
-        #v(-2pt)
+        #octique-inline("location", width: 0.6em) #text(s-small)[Rue Montagne de l'Oratoire 28/76]
+        #v(-9pt)
+        #h(0.7em) #text(s-small)[B-1000 Brussels]
+        #v(-9pt)
         #octique-inline("mail", width: 0.6em) #text(s-small)[#profile.mailto]
         #v(-9pt)
         #octique-inline("globe", width: 0.6em) #text(s-small)[#profile.website]
         #v(-9pt)
         #octique-inline("device-mobile", width: 0.6em) #text(s-small)[#profile.tel]
       ],
-      block(
-        width: 100%,
-      )[
+      [
         #set par(justify: true)
-        #text(s-small, style: "italic")[#profile.quote]
+        #set text(hyphenate: true)
+        #text(size: 9pt, style: "italic")[#profile.quote]
       ]
     )
     #line(length: 100%, stroke: (thickness: 0.75pt))
     #v(gap)
 
-    // ─── BLOCK 3 : Three columns ───
-    #grid(
-      columns: (2fr, 3fr, 2.7fr),
-      gutter: gutter,
+    // ─── BLOCK 3 : Three columns (reduced content) ───
+    #context[
+      #let s-small = 8pt
+      #grid(
+        columns: (2.3fr, 3fr, 2.4fr),
+        gutter: gutter,
       [
         // ── Column 1 : Education ──
         #text(s, weight: "semibold", style: "normal")[Education]
         #v(gap-m)
+        #set text(size: 9pt)
         #education
       ],
       [
         // ── Column 2 : Competencies ──
         #text(s, weight: "semibold", style: "normal")[Competencies]
         #v(gap-m)
+        #set text(size: 9pt)
         #grid(
           columns: (1fr, 1fr),
           gutter: 8pt,
           [
             ==== Business
-            - MS Office (advanced Excel)
+            - MS Office (advanced Excel, Power Query)
 
             ==== ERP
             - SAP HANA
@@ -150,11 +154,10 @@
             - Jira
             - Confluence
 
-            ==== Audit
-            - IDEA CAATs
-
-            ==== Planning
-            - Visual Planning
+            ==== Data & Analytics
+            - VBA
+            - SQL
+            - R
 
             ==== Data & Analytics
             - VBA
@@ -167,19 +170,23 @@
         // ── Column 3 : Languages, Interests, Interpersonal ──
         #text(s, weight: "semibold", style: "normal")[Languages]
         #v(gap-m)
+        #set text(size: 9pt)
         #languages
 
         #v(gap-m)
         #text(s, weight: "semibold", style: "normal")[Interests]
         #v(gap-m)
+        #set text(size: 9pt)
         #interests
 
         #v(gap-m)
         #text(s, weight: "semibold", style: "normal")[Interpersonal]
         #v(gap-m)
+        #set text(size: 9pt)
         #interpersonal
       ]
     )
+    ]
     #v(gap)
 
     // ─── BLOCK 4 : Professional Experience (full width) ───
@@ -201,9 +208,11 @@
 
   // Each professional experience is kept as one indivisible block (cannot split across pages)
   block(breakable: false)[
-    #text(s, weight: "bold")[#name] #h(1fr) #text(s-small, style: "italic")[#date_str  |  #location]
+    #text(s, weight: "bold")[#name] #h(1fr) #text(s, style: "italic")[#date_str  |  #location]
+    #v(-5pt)
 
     #text(s, weight: "semibold", style: "normal")[#title]
+    #v(-5pt)
 
     #if details != none {
       text(s-small, style: "italic")[#details]
@@ -233,7 +242,7 @@
     #linebreak()
     #text(s-small, style: "italic")[#date_str  |  #location]
     #linebreak()
-    #text(s, weight: "semibold", style: "normal")[#degree]
+    #text(s, style: "normal")[#degree]
     #linebreak()
     #text(s-small, style: "italic")[#field]
   ]
@@ -277,7 +286,7 @@
   // ── Competencies ──
   competencies: [
     ==== Business
-    - MS Office (advanced Excel)
+    - MS Office (advanced Excel, Power Query)
 
     ==== ERP
     - SAP HANA
@@ -297,11 +306,10 @@
     - Jira
     - Confluence
 
-    ==== Audit
-    - IDEA CAATs
-
-    ==== Planning
-    - Visual Planning
+    ==== Data & Analytics
+    - VBA
+    - SQL
+    - R
 
     ==== Data & Analytics
     - VBA
@@ -311,9 +319,10 @@
 
   // ── Languages ──
   languages: [
-    #text(s, weight: "semibold", style: "normal")[Native:] French, Khmer, Teochew
-    #text(s, weight: "semibold", style: "normal")[Proficient:] English \
-    #text(s, weight: "semibold", style: "normal")[Basics:] Dutch (A2), Spanish, Mandarin
+    #text(s-small, weight: "semibold", style: "normal")[Native:] French, Khmer, Teochew \
+    #text(s-small, weight: "semibold", style: "normal")[Proficient:] English \
+    #text(s-small, weight: "semibold", style: "normal")[Basics:] Dutch (A2), Spanish, Mandarin \
+
   ],
 
   // ── Interests ──
