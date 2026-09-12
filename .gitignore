@@ -7,6 +7,10 @@ desktop.ini
 *.typ.out
 *~
 
+# Python cache
+__pycache__/
+*.pyc
+
 # Keep the empty "0 Old" folder out of git for now (git ignores empty dirs)
 # Re-enable if you start putting files back in it:
 # 0 Old/
