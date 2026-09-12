@@ -78,7 +78,8 @@ Double-click run_cv_builder.bat
 | 2025-09-12 | Project kickoff. Reorganized `MyCV` into numbered tracking folders. |
 | 2025-09-12 | Added `collect_cv.py` — data collection engine (GUI, URL fetch, Excel, manifest). |
 | 2025-09-12 | Added `run_cv_builder.bat` launcher. |
-| 2025-09-12 | Added `Application_Tracker.xlsx` per-session log. |
+| 2025-09-12 | Added `Application_Tracker.xlsx` per-session log.
+| 2025-09-12 | Overlined the JD paste limit: added "Load .txt file" option (bypasses clipboard), tall scrollable text box. |
 
 ---
 

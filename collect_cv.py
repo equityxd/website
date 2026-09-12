@@ -27,7 +27,7 @@ import datetime
 import openpyxl
 from openpyxl.styles import Font
 import tkinter as tk
-from tkinter import ttk, messagebox, simpledialog
+from tkinter import ttk, messagebox, simpledialog, filedialog
 
 # ── Paths ──────────────────────────────────────────────────────────────
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))          # .../MyCV
@@ -212,30 +212,60 @@ class SessionWindow:
         tk.Button(p, text="Next →", command=go, width=12,
                   font=("Segoe UI", 9)).grid(row=3, column=1, pady=16)
 
+    def _load_file(self):
+        """Open a file dialog and load the chosen .txt into the text box."""
+        path = filedialog.askopenfilename(
+            title="Choose a file containing the Job Description",
+            filetypes=[("Text files", "*.txt"), ("All files", "*.*")]
+        )
+        if not path:
+            return
+        try:
+            with open(path, "r", encoding="utf-8", errors="ignore") as f:
+                self.content.set(f.read())
+            self.status_label.configure(text=f"Loaded: {os.path.basename(path)}")
+        except Exception as e:
+            messagebox.showerror("CV Builder", f"Could not read file:\n{e}")
+
     def _build_page2(self):
         p = tk.Frame(self.root, bg="#f4f4f4", padx=20, pady=16)
         p.pack(fill="both", expand=True)
         tk.Label(p, text="Choose input type:", bg="#f4f4f4",
                  font=("Segoe UI", 9)).grid(row=0, column=0, sticky="w")
         var = tk.StringVar(value="Job Description (text)")
+        self.content = tk.StringVar()
+        self.status_label = tk.Label(p, bg="#f4f4f4", fg="#c0392b",
+                                     font=("Segoe UI", 8), anchor="w")
         tk.Radiobutton(p, text="Job Description (paste text)", value="Job Description (text)",
                        bg="#f4f4f4", fg="#111", selectcolor="#dfeaff", var=var).grid(row=1, column=0, sticky="w")
         tk.Radiobutton(p, text="Job URL", value="URL",
                        bg="#f4f4f4", fg="#111", selectcolor="#dfeaff", var=var).grid(row=2, column=0, sticky="w")
-        tk.Label(p, text="Paste content or URL:", bg="#f4f4f4",
-                 font=("Segoe UI", 9)).grid(row=3, column=0, sticky="w", pady=(8, 2))
-        txt = tk.Text(p, height=14, width=80, bg="#fff", fg="#111", wrap="word")
-        txt.grid(row=4, column=0, pady=8, sticky="ew")
+        tk.Radiobutton(p, text="Load .txt file", value="File",
+                       bg="#f4f4f4", fg="#111", selectcolor="#dfeaff", var=var).grid(row=3, column=0, sticky="w")
+        tk.Label(p, text="Paste content, URL or load a file:", bg="#f4f4f4",
+                 font=("Segoe UI", 9)).grid(row=4, column=0, sticky="w", pady=(8, 2))
+        self.status_label.grid(row=5, column=0, sticky="w")
+        # Tall, scrollable text box — no practical paste limit
+        txt_frame = tk.Frame(p, bg="#f4f4f4")
+        txt_frame.grid(row=6, column=0, pady=8, sticky="ew")
+        txt = tk.Text(txt_frame, height=22, width=84, bg="#fff", fg="#111",
+                      wrap="word")
+        sb = tk.Scrollbar(txt_frame, command=txt.yscrollcommand)
+        sb.pack(side="right", fill="y")
+        txt.pack(side="left", fill="both", expand=True)
 
         def done():
             self.source_type = var.get()
-            self.source_value = txt.get("1.0", "end").strip()
+            if var.get() == "File":
+                self.source_value = self.content.get()
+            else:
+                self.source_value = txt.get("1.0", "end").strip()
             self.root.destroy()
 
         tk.Button(p, text="OK — Run process", command=done, width=16,
-                  font=("Segoe UI", 9)).grid(row=5, column=0, pady=10, sticky="w")
+                  font=("Segoe UI", 9)).grid(row=7, column=0, pady=10, sticky="w")
         tk.Button(p, text="Cancel", command=self.root.destroy, width=10,
-                  font=("Segoe UI", 9)).grid(row=5, column=1, pady=10, sticky="w")
+                  font=("Segoe UI", 9)).grid(row=7, column=1, pady=10, sticky="w")
 
     def run(self):
         self.root.mainloop()
