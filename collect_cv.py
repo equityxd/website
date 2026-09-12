@@ -221,13 +221,13 @@ class SessionWindow:
                 if not self.source_value:
                     messagebox.showinfo("CV Builder", "No input received — please paste the Job Description.")
                     return
-                self.root.destroy()
+                _safe_destroy(self.root)
             except Exception as e:
                 messagebox.showerror("CV Builder", f"Something went wrong:\n{e}")
 
         tk.Button(p, text="OK — Run process", command=done, width=16,
                   font=("Segoe UI", 9)).grid(row=5, column=0, sticky="w")
-        tk.Button(p, text="Cancel", command=self.root.destroy, width=10,
+        tk.Button(p, text="Cancel", command=lambda: _safe_destroy(self.root), width=10,
                   font=("Segoe UI", 9)).grid(row=5, column=1, sticky="e", padx=20)
 
         # Make sure the window + text box are active so paste lands here
@@ -271,35 +271,30 @@ class SessionWindow:
         self.root.mainloop()
 
 
+def _safe_destroy(root):
+    """Destroy the window only if it still exists (avoids double-destroy errors).
+
+    The Cancel / OK buttons already call root.destroy() themselves; if we then
+    call root.destroy() again here we get
+    "can't invoke 'destroy' command: application has been destroyed".
+    We also guard winfo_exists() itself, since it raises on an already-destroyed app.
+    """
+    try:
+        if root.winfo_exists():
+            root.destroy()
+    except tk.TclError:
+        pass
+
+
 # ── Main ───────────────────────────────────────────────────────────────
-def main():
+def _run_pipeline(jtext, source_type, source_value):
+    """Shared processing pipeline used by both GUI and CLI entry points."""
     print("CV Builder — Data Collection Engine")
     print("=" * 44)
 
-    # 1. Collect metadata + JD source via GUI
-    root = tk.Tk()
-    win = SessionWindow(root)
-    win.run()
-
-    if not win.source_value:
-        messagebox.showinfo("CV Builder", "No input received — cancelled.")
-        root.destroy()
-        return
-
-    # 2. Fetch URL content if needed
-    if win.source_type == "URL":
-        try:
-            jtext = fetch_url_text(win.source_value)
-        except Exception as e:
-            messagebox.showerror("CV Builder", f"Could not fetch URL: {e}")
-            root.destroy()
-            return
-    else:
-        jtext = win.source_value
-
+    # 2. Validate
     if len(jtext) < 20:
         messagebox.showinfo("CV Builder", "Job description too short — please paste the full text.")
-        root.destroy()
         return
 
     # 3. Serial + workbook + save JD + manifest
@@ -316,31 +311,29 @@ def main():
 
     manifest = write_manifest(
         serial=serial,
-        company=win.meta.get("Company", ""),
-        position=win.meta.get("Position", ""),
-        recruiter=win.meta.get("Recruiter Name", ""),
-        source_type=win.source_type,
-        source=win.source_value if win.source_type == "URL" else "(pasted text)",
+        company="",
+        position="",
+        recruiter="",
+        source_type=source_type,
+        source=(source_value if source_type == "URL" else "(pasted text)"),
         jtext=jtext,
     )
 
     # 4. Update Excel row
     data = {
         "Serial Number": serial,
-        "Company": win.meta.get("Company", ""),
-        "Position": win.meta.get("Position", ""),
-        "Recruiter Name": win.meta.get("Recruiter Name", ""),
+        "Company": "",
+        "Position": "",
+        "Recruiter Name": "",
         "Date": today,
-        "Source Type": win.source_type,
-        "Source": win.source_value if win.source_type == "URL" else "(pasted text)",
+        "Source Type": source_type,
+        "Source": (source_value if source_type == "URL" else "(pasted text)"),
         "JD File": os.path.relpath(jd_path, BASE_DIR),
         "Status": "JD collected — awaiting document generation",
-        "Documents Generated": "",
         "Notes": f"Manifest: {os.path.relpath(manifest, BASE_DIR)}",
     }
     row = add_session_row(ws, data)
     wb.save(WORKBOOK)
-    root.destroy()
 
     print(f"[serial]     {serial}")
     print(f"[jd_file]    2 Job description/{safe}.txt")
@@ -353,4 +346,44 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    # Non-interactive mode: pass --file "path/to/jd.txt" to skip the GUI and
+    # feed the file content directly into the pipeline (handy for tests).
+    argv = sys.argv[1:]
+    file_arg = None
+    for i, a in enumerate(argv):
+        if a.startswith("--file"):
+            # Support both '--file value' and '--file=value'
+            if "=" in a:
+                file_arg = a.split("=", 1)[1]
+            elif i + 1 < len(argv):
+                file_arg = argv[i + 1]
+            break
+    if file_arg:
+        path = file_arg.strip().strip('"')
+        if os.path.isfile(path):
+            with open(path, "r", encoding="utf-8", errors="ignore") as f:
+                jtext = f.read()
+            source_type = "Job Description (file)"
+            source_value = jtext
+        else:
+            print(f"[error] file not found: {path}")
+            sys.exit(1)
+    else:
+        # Interactive GUI mode (existing behaviour)
+        root = tk.Tk()
+        win = SessionWindow(root)
+        win.run()
+
+        if not win.source_value:
+            messagebox.showinfo("CV Builder", "No input received — cancelled.")
+            _safe_destroy(root)
+            sys.exit(0)
+        jtext = win.source_value if win.source_type != "URL" else fetch_url_text(win.source_value)
+        source_type = win.source_type
+        source_value = jtext
+
+    _run_pipeline(jtext=jtext, source_type=source_type, source_value=source_value)
+
+
+
