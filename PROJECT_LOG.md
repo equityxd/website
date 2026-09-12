@@ -40,7 +40,7 @@ answers — while keeping the visual format of the base CV (`SONG Ernest - CV v1
 Double-click run_cv_builder.bat
         │
         ▼
- [GUI] Enter company / position / recruiter + paste JD or URL
+ [GUI] Paste the Job Description in the single box (or load a .txt file)
         │
         ▼
  collect_cv.py  →  save "2 Job description/<serial>.txt"
@@ -80,6 +80,7 @@ Double-click run_cv_builder.bat
 | 2025-09-12 | Added `run_cv_builder.bat` launcher. |
 | 2025-09-12 | Added `Application_Tracker.xlsx` per-session log.
 | 2025-09-12 | Overlined the JD paste limit: added "Load .txt file" option (bypasses clipboard), tall scrollable text box. |
+| 2025-09-12 | Simplified the GUI to a **single paste box** — removed the company / position / recruiter fields. Just paste (or load a .txt file) the Job Description, then OK. Fixed a `<Paste>` event crash on this Python build and a grid row conflict. |
 
 ---
 
