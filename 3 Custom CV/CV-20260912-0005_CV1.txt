@@ -1,0 +1,44 @@
+# Ernest SONG — Tailored CV (Version 1: ERP Implementation · Finance Domain Lead)
+Serial: CV-20260912-0005  |  Target: Domain Leader Finance Comptité Générale, AP, AR (Manager de Transition)
+============================================================
+
+VALUE PROPOTION
+Finance & controlling specialist with 10+ years leading finance-process integration during large ERP replacements (SAP S/4HANA, SAP HANA) across multi-entity, multi-country environments. Proven at bridging IT architecture and business operations, automating financial close, and delivering trustworthy reporting to stakeholders. ESCP-qualified (Auditing & Consulting) with a track record of turning complex global operations into reliable finance engines.
+
+COMPETENCIES
+- ERP: SAP S/4HANA / HANA migration, Infor M3 readiness
+- Reporting: MS Power BI, QlikSense, Cognos, Business Object, Hyperion
+- Automation: UIPath, MS PowerAutomate, PowerQuery ETL
+- Project Management: Jira, Confluence (Agile)
+- Data: VBA, SQL, R
+
+PROFESSIONAL EXPERIENCE
+
+Strategic Business Analyst & Finance Automation Lead (Freelancer) — Engie SEM | Jan 2026 – Present | Brussels, BE
+- Led the finance-domain pilot of the SAP S/4HANA migration across French subsidiaries, serving as the core Business Analyst between IT architecture and business stakeholders.
+- Owned AS-IS → TO-BE process design for finance sub-processes and coordinated cross-functional workshops.
+- Automated financial close with PowerQuery ETL (1,500+ bookings per close, zero manual intervention).
+- Reconciled middle-office (IVDB) to SAP S/4HANA and simplified WTS project coding for portfolio monitoring.
+
+Senior Operational Excellence & Data Lead (Freelancer) — Holcim | Jan 2024 – Dec 2025 | Nivelles, BE
+- Managed the SAP HANA migration (data restructuring and system integrity).
+- Built automated reporting (Qliksense) for finance decision-support.
+- Developed rebate models aligning commercial strategy with finance.
+
+Head of Controlling — Magnetrap | Nov 2020 – Jan 2022 | Mons, BE
+- Implemented budgeting, forecasting and financial-control systems.
+- Produced cash-flow projections, business plans and long-term financial goals.
+- Monitored performance and implemented corrective actions.
+
+Cash Flow & Financial Modeling Specialist (Freelancer) — Engie Tractebel | Mar 2023 – Dec 2023 | Brussels, BE
+- Designed cashflow reporting and financing-need assessment per project.
+- Built finance data models from SAP and delivered Power BI reporting.
+
+EDUCATION
+- ESCPS (Specialized Master's, Auditing and Consulting) — Paris, FR | 2010–2011
+- Université Paris Nanterre (Management Science & Financial Control) — Paris, FR | 2005–2010
+
+LANGUAGES
+- French: Native | English: Proficient | Dutch: A2 (learning) | Spanish, Mandarin
+
+TRUTHFULNESS: content derived only from the base CV; no metrics invented.

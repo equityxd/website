@@ -1,0 +1,47 @@
+MATCH & GAP ANALYSIS — Serial CV-20260912-0005
+============================================
+Target Role : Domain Leader Finance Comptité Generale, AP, AR (Manager de Transition)
+Project     : Infor M3 ERP implementation (replacing AS/400) — "Prometheus" @ Doyen Auto (automotive parts distribution, Belux)
+Start       : ASAP / June-July  ·  Contract : 18–24 months  ·  On-site Drogenbos (max 6 telework days/month)
+
+==== 1. DIRECT MATCHES (real experience that maps onto the JD) ====
+- ERP implementation / migration experience:
+    * Engie SEM (2026–Present): financial controlling pilot for the SAP S/4HANA migration across French subsidiaries, acting as the core Business Analyst bridging IT architecture and business operations.
+    * Holcim (2024–2025): managed the SAP HANA migration (data restructuring + system integrity).
+    => Directly transferable to leading an Infor M3 replacement project.
+- Accounting / financial close expertise:
+    * KPMG Audit (2011–2014): Financial Auditor Supervisor — auditing financial statements under multiple accounting standards (BE-GAAP, IFRS, SOX).
+    * Rexel (2014–2016): annual budgeting, monthly forecasting, actual-vs-budget analysis; IFRS consolidation reporting.
+    * Engie SEM: automated financial close with PowerQuery ETL (1,500+ bookings per close, zero manual intervention).
+- Managing control (contrôle de gestion):
+    * Magnetrap (2020–2022) as Head of Controlling: budgeting, forecasting, financial control systems, cash-flow projections, business plans.
+- Multi-entity / multi-country finance:
+    * Rexel: IFRS reporting across Asia-Pacific, Latin America and Canadian subsidiaries.
+    => Strong fit for a project spanning 6 entities across 3 countries (BE, FR, NL).
+- Business Intelligence / reporting:
+    * MS Power BI, QlikSense, Cognos, Business Object, Hyperion — supports the JD's "regular progress reporting" and "change of BI tools" requirements.
+- Project management & workshops:
+    * Jira / Confluence (Agile), Tobania change management, Degroof performance-management system design, Vinci Airports concession/budgeting negotiations.
+- Languages:
+    * French native (required "FR surtout"), English proficient.
+
+==== 2. TRANSFERABLE (related experience fulfilling implicit JD requirements) ====
+- AP/AR within an operational/ERP context: financial-close ETL, SAP BPC reporting (Rexel), rebate/automated SAP models (Holcim).
+- Process design "AS IS → TO BE": Degroof gap-analysis of business requirements vs. existing procedures; Tobania process standardization/harmonization.
+- Stakeholder & communication: tailored stakeholder reports (Tobania), workshop leadership, cross-department coordination.
+- Change management / user training: Tobania change-management structures to drive adoption of new processes/tech.
+- Financial modelling & decision support: Engie Tractebel cashflow reporting & financing-need assessment; Vinci concession valuation models.
+- Education foundation: ESCPS (Specialized Master's in Auditing and Consulting, #1 FT 2026) + Nanterre (Management Science & Financial Control).
+
+==== 3. CRITICAL GAPS (missing or weak vs. the JD) ====
+- No explicit operational "Comptité Générale / AP / AR" day-to-day accounting role stated — the JD asks for hands-on accounting/AP/AR within the ERP.
+- No explicit automotive / auto-parts distribution industry background (stated as a "plus" in the JD).
+- Dutch: only A2 basics (JD wants NL comprehension).
+- "Create nice PowerPoints" presentation skill not explicitly stated as slide production (though BI/BI-reporting experience supports it).
+- Formal "sign-off / Business Blueprint" authority is not explicitly claimed (real but not highlighted).
+
+==== GAP-COVER STATEMENT (proactive, honest) ====
+Ernest's profile is a controller/ERP-implementation specialist whose core strength is leading finance-process integration during large ERP replacements across multi-entity, multi-country environments. The explicit gaps (operational AP/AR bookkeeping, Dutch, automotive-sector) are addressed by: a formal Auditing & Consulting qualification (ESCP), a demonstrated ability to learn new domain quickly (Fast-learner, Autonomous), and NL at A2 with a concrete plan to reach working comprehension during the 18–24 month assignment.
+
+==== TRUTHFULNESS DECLARATION ====
+Every bullet below is drawn only from the candidate's base CV (1 Source/SONG Ernest - CV v1.typ). No experience, metrics or qualifications have been invented or exaggerated.

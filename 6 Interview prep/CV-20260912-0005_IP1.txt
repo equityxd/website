@@ -1,0 +1,7 @@
+INTERVIEW PREP 1/6 — Serial CV-20260912-0005 (STAR)
+============================================================
+Q. Tell me about a time you led finance-process integration during an ERP change.
+SITUATION: Engie SEM, SAP S/4HANA migration across French subsidiaries.
+TASK: Ensure finance sub-processes were modelled and implemented in the new ERP.
+ACTION: Acted as core Business Analyst bridging IT architecture and business; drove AS-IS → TO-BE process design; ran finance workshops; reconciled IVDB to S/4HANA and simplified WTS project coding.
+RESULT: Clean finance transition with a reconciled, monitorable structure — directly reusable for an Infor M3 rollout.

@@ -1,0 +1,44 @@
+# Ernest SONG — Tailored CV (Version 3: Finance Transformation & Reporting Lead)
+Serial: CV-20260912-0005  |  Target: Domain Leader Finance Comptité Générale, AP, AR (Manager de Transition)
+============================================================
+
+VALUE PROPOTION
+Finance transformation & reporting leader who turns complex operations into reliable BI-driven insights. Combines ERP project delivery (SAP S/4HANA/HANA), automated reporting (Power BI, QlikSense, Cognos) and cross-department stakeholder communication to drive change during ERP replacements.
+
+COMPETENCIES
+- ERP implementation: SAP S/4HANA, SAP HANA migration
+- Business Intelligence: MS Power BI, QlikSense, Cognos, Business Object, Hyperion
+- Automation & Process: UIPath, MS PowerAutomate, process AS-IS/TO-BE
+- Project Management: Jira, Confluence (Agile)
+- Data: VBA, SQL, R
+
+PROFESSIONAL EXPERIENCE
+
+Strategic Business Analyst & Finance Automation Lead (Freelancer) — Engie SEM | Jan 2026 – Present | Brussels, BE
+- Drove finance-domain pilot of SAP S/4HANA migration; bridged IT architecture and business operations.
+- Automated financial close with PowerQuery ETL (1,500+ bookings/close, zero manual intervention).
+- Simplified WTS project coding to strengthen portfolio monitoring.
+
+Director Business Process Automation — Tobania | Feb 2020 – Oct 2020 | Brussels, BE
+- Built a "citizen developer" business model using RPA and self-service BI (pricing, roadmap).
+- Delivered stakeholder reports to monitor/control costs and enable data-driven decisions.
+- Established change-management structures to drive adoption of new processes and technologies.
+
+Senior Operational Excellence & Data Lead (Freelancer) — Holcim | Jan 2024 – Dec 2025 | Nivelles, BE
+- Managed SAP HANA migration (data restructuring, system integrity).
+- Implemented Qliksense for financial reporting and insights.
+- Ensured data reliability and liaised with auditors on rebate matters.
+
+Reporting Consolidation Manager — Rexel | Sep 2014 – Jan 2016 | Paris, FR
+- Led IFRS reporting for Asia-Pacific, Latin America and Canadian subsidiaries.
+- Integrated SAP BPC and Cognos reporting systems.
+- Ran annual budgeting and monthly forecasting.
+
+EDUCATION
+- ESCPS (Specialized Master's, Auditing and Consulting) — Paris, FR | 2010–2011
+- Université Paris Nanterre (Management Science & Financial Control) — Paris, FR | 2005–2010
+
+LANGUAGES
+- French: Native | English: Proficient | Dutch: A2 (learning) | Spanish, Mandarin
+
+TRUTHFULNESS: content derived only from the base CV; no metrics invented.
