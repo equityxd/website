@@ -224,12 +224,17 @@
   // JD-relevance highlight: JD-fit entries render inside a shaded bordered box so the
   // recruiter's eye lands immediately on the experience that matters for THIS application.
   if highlight {
-    // Monochrome shaded box with dark border so JD-fit entries stand out from the rest.
+    // JD-fit entries are flagged with a visible ★ so a human recruiter can instantly
+    // identify the experience that matters for THIS application.
     box(
       fill: rgb(245, 245, 245),
       stroke: (thickness: 3pt, paint: rgb(90, 90, 90)),
       radius: 4pt,
-    )[content]
+    )[
+      #text(fill: rgb(170, 0, 0), weight: "bold")[★]
+      #v(-4pt)
+      #content
+    ]
   } else {
     content
   }

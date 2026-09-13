@@ -296,6 +296,20 @@ def main():
         ")\n\n"
         "#v(gap)\n\n"
         "#entry(\n"
+        '  "Investment & Corporate Development Analyst (Freelancer)",\n'
+        '  "Shurgard",\n'
+        '  "February 2022", "February 2023",\n'
+        '  "Brussels, BE",\n'
+        "  [\n"
+        "    - Analyzed and managed real estate projects, including construction, redevelopment, and acquisition of self-storage businesses.\n"
+        "    - Maintained project dashboard and initiated corporate development projects to improve department policies and procedures.\n"
+        "    - Designed the data model and visualization for the Investment department's Business Intelligence efforts.\n"
+        "    - Collaborated in the development of a new pricing model using Artificial Intelligence.\n"
+        "  ],\n"
+        "  highlight: false\n"
+        ")\n\n"
+        "#v(gap)\n\n"
+        "#entry(\n"
         '  "Head of Controlling",\n'
         '  "Magnetrap",\n'
         '  "November 2020", "January 2022",\n'
@@ -305,6 +319,62 @@ def main():
         "    - Produced cash-flow projections, business plans, and long-term financial goals.\n"
         "    - Monitored company performance and drove corrective actions.\n"
         "    - Prepared operating results reports and maintained financial models for long-term use.\n"
+        "  ],\n"
+        "  highlight: false\n"
+        ")\n\n"
+        "#v(gap)\n\n"
+        "#entry(\n"
+        '  "Director Business Process Automation",\n'
+        '  "Tobania",\n'
+        '  "February 2020", "October 2020",\n'
+        '  "Brussels, BE",\n'
+        "  [\n"
+        "    - Led development and implementation of citizen developer business model using RPA and self-service BI, including pricing strategy and roadmap.\n"
+        "    - Managed business development, including marketing strategy, pre-sales, and sales, and identified new business opportunities.\n"
+        "    - Implemented process optimization, standardization, and harmonization to improve efficiency and profitability for customers.\n"
+        "    - Provided regular, tailored reports to help customers monitor and control costs and make data-driven business decisions, and established change management structures and strategies to facilitate successful adoption of new processes and technologies.\n"
+        "  ],\n"
+        "  highlight: false\n"
+        ")\n\n"
+        "#v(gap)\n\n"
+        "#entry(\n"
+        '  "Founder",\n'
+        '  "Soap collect",\n'
+        '  "January 2019", "Present",\n'
+        '  "Phnom Penh, KH",\n'
+        "  [\n"
+        "    - Established a non-profit organization focused on providing hygiene products to disadvantaged communities.\n"
+        "    - Formed partnerships with luxury hotel chains to source used soap for reconditioning.\n"
+        "  ],\n"
+        "  highlight: false\n"
+        ")\n\n"
+        "#v(gap)\n\n"
+        "#entry(\n"
+        '  "Performance Management Project Leader",\n'
+        '  "Degroof Petercam",\n'
+        '  "January 2018", "December 2018",\n'
+        '  "Brussels, BE",\n'
+        "  [\n"
+        "    - Finance Transformation Operating Model (FTOM)\n"
+        "    - Designed and implemented a client-centric performance management system.\n"
+        "    - Optimized finance close process for improved governance, internal control, and data quality.\n"
+        "    - Led projects related to regulatory reporting sourcing and followed BPM standards.\n"
+        "    - Conducted gap analysis of business requirements and existing procedures to identify areas for improvement.\n"
+        "  ],\n"
+        "  highlight: false\n"
+        ")\n\n"
+        "#v(gap)\n\n"
+        "#entry(\n"
+        '  "Managing Director & Head of Project Financial Modeling / Cursus Grand Talent",\n'
+        '  "Vinci Airports",\n'
+        '  "February 2016", "December 2017",\n'
+        '  "Brussels, BE & Lisbon, PT",\n'
+        "  [\n"
+        "    - Value creation: valuation at 4 times of acquisition cost.\n"
+        "    - Led deployment of airport operations at 50+ locations in various countries.\n"
+        "    - Developed long-term financial business model including analysis of macroeconomic impact, capital expenditures, and concession valuation.\n"
+        "    - Negotiated extension of concession contract with Portuguese authorities and implemented new financial business model to improve budgeting and forecasting processes.\n"
+        "    - Managed accounting and financial reporting in accordance with BE-GAAP standards.\n"
         "  ],\n"
         "  highlight: false\n"
         ")\n\n"
@@ -334,6 +404,20 @@ def main():
         "    - Certified FP7 grant agreements; led audit teams and supervised auditors.\n"
         "  ],\n"
         "  highlight: true\n"
+        ")\n\n"
+        "#v(gap)\n\n"
+        "#entry(\n"
+        '  "Deputy CFO Trainee",\n'
+        '  "ICM - Brain & Spine Institute", \n'
+        '  "November 2009", "August 2010",\n'
+        '  "Paris, FR",\n'
+        "  [\n"
+        "    - Implemented the budget system and prepared business plans for the scientific teams.\n"
+        "    - Established the internal control system for purchasing and donation processes and managed bank reconciliation.\n"
+        "    - #set smartquote(enabled: false)\n"
+        "      Prepared the institutional audit necessary for the certification by the \"Comité de la Charte\".\n"
+        "  ],\n"
+        "  highlight: false\n"
         ")\n"
     )
 
