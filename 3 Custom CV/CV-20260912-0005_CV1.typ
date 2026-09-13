@@ -194,7 +194,7 @@
 }
 
 // ── Entry content producer (no styling — styling applied at call site) ──
-#let entry(title, name, date_start, date_end, location, details, highlight: false) = {
+#let entry(title, name, date_start, date_end, location, details, important: false) = {
   let date_str = if date_start == none and date_end != none {
     str(date_end)
   } else if date_start != none and date_end == none {
@@ -211,8 +211,8 @@
     #text(s, weight: "bold")[#name] #h(1fr) #text(s, style: "italic")[#date_str  |  #location]
     #v(-5pt)
 
-    #if highlight {
-      text(s, weight: "semibold", style: "normal", fill: rgb(120, 120, 120))[#title]
+    #if important {
+      highlight(text(s, weight: "semibold", style: "normal")[#title])
     } else {
       text(s, weight: "semibold", style: "normal")[#title]
     }
@@ -364,7 +364,7 @@
     - Automated the financial close with PowerQuery ETL, ingesting 1,500+ bookings per close with zero manual intervention.
     - Trained end-users on Infor M3 and validated UAT for finance sub-processes before go-live, documenting steering-committee sign-off.
   ],
-  highlight: true
+  important: true
 )
 
 #v(gap)
@@ -380,7 +380,7 @@
     - Built rebate models (matrix & automated SAP) aligned to commercial strategy, driving €150M annual rebate volume with 99.8% accuracy and resolving commercial disputes ~30% faster.
     - Guaranteed data reliability and partnered with auditors on rebate matters.
   ],
-  highlight: true
+  important: true
 )
 
 #v(gap)
@@ -395,7 +395,7 @@
     - Assessed local financing needs, performed countercredit analysis, and conducted impairment testing.
     - Engineered finance data models from SAP HANA, delivering 8 Power BI executive dashboards that turned raw transactions into decision-ready insights for finance leadership.
   ],
-  highlight: false
+  important: false
 )
 
 #v(gap)
@@ -411,7 +411,7 @@
     - Designed the data model and visualization for the Investment department's Business Intelligence efforts.
     - Collaborated in the development of a new pricing model using Artificial Intelligence.
   ],
-  highlight: false
+  important: false
 )
 
 #v(gap)
@@ -427,7 +427,7 @@
     - Monitored company performance and drove corrective actions.
     - Prepared operating results reports and maintained financial models for long-term use.
   ],
-  highlight: false
+  important: false
 )
 
 #v(gap)
@@ -443,7 +443,7 @@
     - Implemented process optimization, standardization, and harmonization to improve efficiency and profitability for customers.
     - Provided regular, tailored reports to help customers monitor and control costs and make data-driven business decisions, and established change management structures and strategies to facilitate successful adoption of new processes and technologies.
   ],
-  highlight: false
+  important: false
 )
 
 #v(gap)
@@ -457,7 +457,7 @@
     - Established a non-profit organization focused on providing hygiene products to disadvantaged communities.
     - Formed partnerships with luxury hotel chains to source used soap for reconditioning.
   ],
-  highlight: false
+  important: false
 )
 
 #v(gap)
@@ -474,7 +474,7 @@
     - Led projects related to regulatory reporting sourcing and followed BPM standards.
     - Conducted gap analysis of business requirements and existing procedures to identify areas for improvement.
   ],
-  highlight: false
+  important: false
 )
 
 #v(gap)
@@ -491,7 +491,7 @@
     - Negotiated extension of concession contract with Portuguese authorities and implemented new financial business model to improve budgeting and forecasting processes.
     - Managed accounting and financial reporting in accordance with BE-GAAP standards.
   ],
-  highlight: false
+  important: false
 )
 
 #v(gap)
@@ -506,7 +506,7 @@
     - Integrated SAP BPC and Cognos reporting, strengthening GL/AP consolidated reporting.
     - Ran annual budgeting and monthly forecasting (actual vs. budget).
   ],
-  highlight: true
+  important: true
 )
 
 #v(gap)
@@ -521,7 +521,7 @@
     - Audited financial modelling for long-term PPP contracts.
     - Certified FP7 grant agreements; led audit teams and supervised auditors.
   ],
-  highlight: true
+  important: true
 )
 
 #v(gap)
@@ -537,5 +537,5 @@
     - #set smartquote(enabled: false)
       Prepared the institutional audit necessary for the certification by the "Comité de la Charte".
   ],
-  highlight: false
+  important: false
 )

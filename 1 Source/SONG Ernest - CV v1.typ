@@ -195,7 +195,7 @@
 }
 
 // ── Entry content producer (no styling — styling applied at call site) ──
-#let entry(title, name, date_start, date_end, location, details, highlight: false) = {
+#let entry(title, name, date_start, date_end, location, details, important: false) = {
   let date_str = if date_start == none and date_end != none {
     str(date_end)
   } else if date_start != none and date_end == none {
@@ -212,8 +212,8 @@
     #text(s, weight: "bold")[#name] #h(1fr) #text(s, style: "italic")[#date_str  |  #location]
     #v(-5pt)
 
-    #if highlight {
-      text(s, weight: "semibold", style: "normal", fill: rgb(120, 120, 120))[#title]
+    #if important {
+      highlight(text(s, weight: "semibold", style: "normal")[#title])
     } else {
       text(s, weight: "semibold", style: "normal")[#title]
     }
