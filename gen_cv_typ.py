@@ -120,26 +120,32 @@ def transform(label, quote, position, keywords, left_col, right_col, body):
 
     # 5b) Rec 7 - ATS: octique contact icons -> plain text-labelled lines (machine-readable)
     old_contact = '''        #octique-inline("location", width: 0.6em) #text(s-small)[Rue Montagne de l\'Oratoire 28/76]
-        #v(-9pt)
+        #align[left]
+        #v(gap)
         #h(0.7em) #text(s-small)[B-1000 Brussels]
-        #v(-9pt)
+        #align[left]
+        #v(gap)
         #octique-inline("mail", width: 0.6em) #text(s-small)[#profile.mailto]
-        #v(-9pt)
+        #align[left]
+        #v(gap)
         #octique-inline("globe", width: 0.6em) #text(s-small)[#profile.website]
-        #v(-9pt)
+        #align[left]
+        #v(gap)
         #octique-inline("device-mobile", width: 0.6em) #text(s-small)[#profile.tel]
 '''
 
-    new_contact = '''        #text(s-small)[Rue Montagne de l\'Oratoire 28/76
-B-1000 Brussels
-Email: #profile.mailto
-Web: #profile.website
-Tel: #profile.tel]
+    new_contact = '''        #align[left]#text(s-small)[Rue Montagne de l\'Oratoire 28/76, B-1000 Brussels]
+        #align[left]#text(s-small)[Email: #profile.mailto]
+        #align[left]#text(s-small)[Web: #profile.website]
+        #align[left]#text(s-small)[Tel: #profile.tel]
 '''
 
     assert old_contact in t, "old_contact not found in base"
     assert new_contact not in t, "new_contact already present"
     t = t.replace(old_contact, new_contact, 1)
+
+
+    # 5) Body: replace everything from the Professional Experience header to EOF
 
 
     # 5) Body: replace everything from the Professional Experience header to EOF

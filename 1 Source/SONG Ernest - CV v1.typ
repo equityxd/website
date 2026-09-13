@@ -92,13 +92,17 @@
       gutter: gutter,
       [
         #octique-inline("location", width: 0.6em) #text(s-small)[Rue Montagne de l'Oratoire 28/76]
-        #v(-9pt)
+        #align[left]
+        #v(gap)
         #h(0.7em) #text(s-small)[B-1000 Brussels]
-        #v(-9pt)
+        #align[left]
+        #v(gap)
         #octique-inline("mail", width: 0.6em) #text(s-small)[#profile.mailto]
-        #v(-9pt)
+        #align[left]
+        #v(gap)
         #octique-inline("globe", width: 0.6em) #text(s-small)[#profile.website]
-        #v(-9pt)
+        #align[left]
+        #v(gap)
         #octique-inline("device-mobile", width: 0.6em) #text(s-small)[#profile.tel]
       ],
       [
