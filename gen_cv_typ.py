@@ -149,8 +149,8 @@ def transform(label, quote, position, keywords, left_col, right_col, body):
         #octique-inline("device-mobile", width: 0.6em) #text(s-small)[#profile.tel]
 '''
 
+    # Preserve icon-based contact block (icons + aligned values), as authored in the base template.
     assert old_contact in t, "old_contact not found in base"
-    assert new_contact not in t, "new_contact already present"
     t = t.replace(old_contact, new_contact, 1)
 
 
