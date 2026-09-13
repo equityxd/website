@@ -120,31 +120,23 @@ def transform(label, quote, position, keywords, left_col, right_col, body):
 
     # 5b) Rec 7 - ATS: octique contact icons -> plain text-labelled lines (machine-readable)
     old_contact = '''        #octique-inline("location", width: 0.6em) #text(s-small)[Rue Montagne de l\'Oratoire 28/76]
-        #align[left]
         #v(gap)
         #h(0.7em) #text(s-small)[B-1000 Brussels]
-        #align[left]
         #v(gap)
         #octique-inline("mail", width: 0.6em) #text(s-small)[#profile.mailto]
-        #align[left]
         #v(gap)
         #octique-inline("globe", width: 0.6em) #text(s-small)[#profile.website]
-        #align[left]
         #v(gap)
         #octique-inline("device-mobile", width: 0.6em) #text(s-small)[#profile.tel]
 '''
 
     new_contact = '''        #octique-inline("location", width: 0.6em) #text(s-small)[Rue Montagne de l\'Oratoire 28/76]
-        #align[left]
         #v(gap)
         #h(0.7em) #text(s-small)[B-1000 Brussels]
-        #align[left]
         #v(gap)
         #octique-inline("mail", width: 0.6em) #text(s-small)[#profile.mailto]
-        #align[left]
         #v(gap)
         #octique-inline("globe", width: 0.6em) #text(s-small)[#profile.website]
-        #align[left]
         #v(gap)
         #octique-inline("device-mobile", width: 0.6em) #text(s-small)[#profile.tel]
 '''
