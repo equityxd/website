@@ -207,31 +207,26 @@
 
   // Each professional experience is kept as one indivisible block (cannot split across pages)
   let content = block(breakable: false)[
-    v(6pt)
+    #v(6pt)
     #text(s, weight: "bold")[#name] #h(1fr) #text(s, style: "italic")[#date_str  |  #location]
     #v(-5pt)
 
-    #text(s, weight: "semibold", style: "normal")[#title]
+    #if highlight {
+      text(s, weight: "semibold", style: "normal", fill: rgb(120, 120, 120))[#title]
+    } else {
+      text(s, weight: "semibold", style: "normal")[#title]
+    }
     #v(-5pt)
 
     #if details != none {
       text(s-small, style: "italic")[#details]
     }
-    v(6pt)
+    #v(6pt)
   ]
 
-  // JD-relevance highlight: JD-fit entries render inside a shaded bordered box so the
-  // recruiter's eye lands immediately on the experience that matters for THIS application.
-  if highlight {
-    // JD-fit entries get a subtle light grey background highlight to stand out.
-    box(
-      fill: rgb(238, 238, 238),
-      stroke: none,
-      radius: 4pt,
-    )[#content]
-  } else {
-    content
-  }
+  // JD-fit entries get a light grey highlight on the position name so a recruiter's eye
+  // lands immediately on the experience that matters for THIS application.
+  content
 }
 
 
