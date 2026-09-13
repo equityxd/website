@@ -130,15 +130,6 @@
           columns: (1fr, 1fr),
           gutter: 8pt,
           [
-    // PROFILE HIGHLIGHT (JD-relevance callout) -- inserted above competencies
-    #text(s-head, weight: "bold")[
-      ERP Replacement (Infor M3, phasing out legacy AS/400) ·
-      Business Blueprint (BBP) sign-off authority ·
-      GL, AP, AR across multi-entity / multi-country (BE, FR, NL)
-    ]
-    #v(gap-m)
-
-
             ==== Accounting – Finance
             - General Accounting (GL, AP, AR)
             - Financial Close
@@ -232,17 +223,12 @@
   // JD-relevance highlight: JD-fit entries render inside a shaded bordered box so the
   // recruiter's eye lands immediately on the experience that matters for THIS application.
   if highlight {
-    // JD-fit entries are flagged with a visible ★ so a human recruiter can instantly
-    // identify the experience that matters for THIS application.
+    // JD-fit entries get a subtle light grey background highlight to stand out.
     box(
-      fill: rgb(245, 245, 245),
-      stroke: (thickness: 3pt, paint: rgb(90, 90, 90)),
+      fill: rgb(238, 238, 238),
+      stroke: none,
       radius: 4pt,
-    )[
-      #text(fill: rgb(170, 0, 0), weight: "bold")[★]
-      #v(-4pt)
-      #content
-    ]
+    )[#content]
   } else {
     content
   }
@@ -287,7 +273,7 @@
     keywords: "Finance Domain Leader, ERP Implementation, ERP Replacement, General Accounting (GL, AP, AR), Financial Close, IFRS, BE-GAAP, Business Blueprint, AS-IS TO-BE Process Design, Workshops, Financial Reporting, Power BI, Cognos, Business Object, Multi-entity, Multi-country, Project Management, Change Management, Stakeholder Management, User Training, French, Dutch",
     quote: "Accounting-focused Finance Domain Leader for General Accounting (GL, AP, AR) and financial-close leadership (interim / transformation mandates). Skilled at ERP implementation and ERP replacement (SAP S/4HANA, new-ERP platforms), delivering AS-IS to TO-BE process design, Business Blueprint sign-off, and cross-functional workshops across multi-entity, multi-country (BE, FR, NL) environments. A dependable interim leader who aligns finance sub-processes with business goals and delivers trustworthy Power BI / Cognos reporting."
   ),
-  position: "Finance Domain Leader (GL, AP, AR)",
+  position: "Finance Domain Leader",
 
   // ── Education ──
   education: [

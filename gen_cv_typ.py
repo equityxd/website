@@ -108,33 +108,14 @@ def transform(label, quote, position, keywords, left_col, right_col, body):
     )
     assert old_grid in t, "competencies grid anchor not found"
 
-    # 5a) Rec 8 - PROFILE HIGHLIGHT (JD-relevance callout) above competencies
-    highlight = '''    // PROFILE HIGHLIGHT (JD-relevance callout) -- inserted above competencies
-    #text(s-head, weight: "bold")[
-      ERP Replacement (Infor M3, phasing out legacy AS/400) ·
-      Business Blueprint (BBP) sign-off authority ·
-      GL, AP, AR across multi-entity / multi-country (BE, FR, NL)
-    ]
-    #v(gap-m)
-
-'''
+    # 5a) Rec 8 - Competencies grid (two balanced columns, no callout)
     new_grid = ("          [\n"
-                + highlight + "\n"
                 + left_col
                 + "          ],\n"
                 + "          [\n"
                 + right_col
                 + "          ]\n")
     t = t.replace(old_grid, new_grid, 1)
-    highlight = '''    // PROFILE HIGHLIGHT (JD-relevance callout) -- inserted above competencies
-    #text(s-head, weight: "bold")[
-      ERP Replacement (Infor M3, phasing out legacy AS/400) ·
-      Business Blueprint (BBP) sign-off authority ·
-      GL, AP, AR across multi-entity / multi-country (BE, FR, NL)
-    ]
-    #v(gap-m)
-
-'''
 
     # 5b) Rec 7 - ATS: octique contact icons -> plain text-labelled lines (machine-readable)
     old_contact = '''        #octique-inline("location", width: 0.6em) #text(s-small)[Rue Montagne de l\'Oratoire 28/76]
@@ -211,7 +192,7 @@ def main():
         "A dependable interim leader who aligns finance sub-processes with business goals and "
         "delivers trustworthy Power BI / Cognos reporting."
     )
-    cv1_position = "Finance Domain Leader (GL, AP, AR)"
+    cv1_position = "Finance Domain Leader"
     cv1_keywords = (
         "Finance Domain Leader, ERP Implementation, ERP Replacement, General Accounting (GL, AP, AR), "
         "Financial Close, IFRS, BE-GAAP, Business Blueprint, AS-IS TO-BE Process Design, Workshops, "
