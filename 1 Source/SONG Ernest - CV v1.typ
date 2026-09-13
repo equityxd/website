@@ -267,7 +267,7 @@
     website: "ernestsong.com",
     tel: "+32 476 60 05 90",
     keywords: "Entrepreneurship, Strategic, P&L, Profit & Loss Responsibility, Growth, Revenue, Profit, ROI, Metrics, Change Management, Change Transition, Leadership, Operations, Performance Improvement, Stakeholders, Budget & Finance",
-    quote: "Managing Director and ESCP graduate with a proven track record of driving exponential value, including a 4x acquisition cost valuation at Vinci Airports across 50+ global locations. Expert in business development and digital transformation, I designed and scaled new RPA/BI business models at Tobania and restructured enterprise workflows post-M&A at Holcim via SAP HANA migrations. Melding financial strategy with data analytics (Power BI), I turn complex global operations into high-growth business engines."
+    quote: "Finance leader with 15+ years leading accounting and transformation mandates for multi-entity, multi-country organisations across BE, FR and NL. I specialise in General Accounting (GL, AP, AR) and financial-close leadership, and in guiding ERP replacements from AS-IS diagnosis to SAP S/4HANA go-live. What sets me apart is perspective: I've sat on both the operator's and the executive-recruiter's side of the table, so I read the numbers and the organisation behind them. I bring calm under pressure, rigorous Power BI / Cognos reporting, and a genuine commitment to turning finance into a lever for growth."
   ),
   position: "Chief Growth & Transformation Officer",
 

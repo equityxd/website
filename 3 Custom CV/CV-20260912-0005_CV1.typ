@@ -264,7 +264,7 @@ Tel: #profile.tel]
     website: "ernestsong.com",
     tel: "+32 476 60 05 90",
     keywords: "Finance Domain Leader, ERP Implementation, ERP Replacement, General Accounting (GL, AP, AR), Financial Close, IFRS, BE-GAAP, Business Blueprint, AS-IS TO-BE Process Design, Workshops, Financial Reporting, Power BI, Cognos, Business Object, Multi-entity, Multi-country, Project Management, Change Management, Stakeholder Management, User Training, French, Dutch",
-    quote: "Accounting-focused Finance Domain Leader for General Accounting (GL, AP, AR) and financial-close leadership (interim / transformation mandates). Skilled at ERP implementation and ERP replacement (SAP S/4HANA, new-ERP platforms), delivering AS-IS to TO-BE process design, Business Blueprint sign-off, and cross-functional workshops across multi-entity, multi-country (BE, FR, NL) environments. A dependable interim leader who aligns finance sub-processes with business goals and delivers trustworthy Power BI / Cognos reporting."
+    quote: "Finance leader with 15+ years leading accounting and transformation mandates for multi-entity, multi-country organisations across BE, FR and NL. I specialise in General Accounting (GL, AP, AR) and financial-close leadership, and in guiding ERP replacements from AS-IS diagnosis to SAP S/4HANA go-live. What sets me apart is perspective: I've sat on both the operator's and the executive-recruiter's side of the table, so I read the numbers and the organisation behind them. I bring calm under pressure, rigorous Power BI / Cognos reporting, and a genuine commitment to turning finance into a lever for growth."
   ),
   position: "Finance Domain Leader",
 

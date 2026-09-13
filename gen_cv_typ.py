@@ -48,13 +48,14 @@ def transform(label, quote, position, keywords, left_col, right_col, body):
         t = f.read()
 
     # 1) Quote field (anchor on the exact base quote)
-    old_quote = ('    quote: "Managing Director and ESCP graduate with a proven track record'
-                 ' of driving exponential value, including a 4x acquisition cost valuation at '
-                 'Vinci Airports across 50+ global locations. Expert in business development and '
-                 'digital transformation, I designed and scaled new RPA/BI business models at '
-                 'Tobania and restructured enterprise workflows post-M&A at Holcim via SAP HANA '
-                 'migrations. Melding financial strategy with data analytics (Power BI), I turn '
-                 'complex global operations into high-growth business engines."')
+    old_quote = ('    quote: "Finance leader with 15+ years leading accounting and transformation mandates'
+                 ' for multi-entity, multi-country organisations across BE, FR and NL. '
+                 'I specialise in General Accounting (GL, AP, AR) and financial-close leadership, '
+                 'and in guiding ERP replacements from AS-IS diagnosis to SAP S/4HANA go-live. '
+                 'What sets me apart is perspective: I\'ve sat on both the operator\'s and the '
+                 'executive-recruiter\'s side of the table, so I read the numbers and the organisation '
+                 'behind them. I bring calm under pressure, rigorous Power BI / Cognos reporting, '
+                 'and a genuine commitment to turning finance into a lever for growth."')
     assert old_quote in t, "quote anchor not found"
     t = t.replace(old_quote, '    quote: "%s"' % quote, 1)
 
@@ -182,13 +183,15 @@ def main():
     # Professional Summary (3-4 sentences) — positions directly for the target title and
     # folds in the JD's core keywords (GL, AP, AR, financial close, ERP implementation).
     cv1_quote = (
-        "Accounting-focused Finance Domain Leader for General Accounting (GL, AP, AR) and "
-        "financial-close leadership (interim / transformation mandates). "
-        "Skilled at ERP implementation and ERP replacement (SAP S/4HANA, new-ERP platforms), "
-        "delivering AS-IS to TO-BE process design, Business Blueprint sign-off, and cross-functional "
-        "workshops across multi-entity, multi-country (BE, FR, NL) environments. "
-        "A dependable interim leader who aligns finance sub-processes with business goals and "
-        "delivers trustworthy Power BI / Cognos reporting."
+        "Finance leader with 15+ years leading accounting and transformation mandates for "
+        "multi-entity, multi-country organisations across BE, FR and NL. "
+        "I specialise in General Accounting (GL, AP, AR) and financial-close leadership, and in "
+        "guiding ERP replacements from AS-IS diagnosis to SAP S/4HANA go-live. "
+        "What sets me apart is perspective: I've sat on both the operator's and the "
+        "executive-recruiter's side of the table, so I read the numbers and the organisation "
+        "behind them. "
+        "I bring calm under pressure, rigorous Power BI / Cognos reporting, and a genuine "
+        "commitment to turning finance into a lever for growth."
     )
     cv1_position = "Finance Domain Leader"
     cv1_keywords = (
