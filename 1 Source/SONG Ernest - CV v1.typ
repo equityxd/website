@@ -195,7 +195,7 @@
 }
 
 // ── Entry content producer (no styling — styling applied at call site) ──
-#let entry(title, name, date_start, date_end, location, details) = {
+#let entry(title, name, date_start, date_end, location, details, highlight: false) = {
   let date_str = if date_start == none and date_end != none {
     str(date_end)
   } else if date_start != none and date_end == none {
@@ -207,7 +207,8 @@
   }
 
   // Each professional experience is kept as one indivisible block (cannot split across pages)
-  block(breakable: false)[
+  let content = block(breakable: false)[
+    v(6pt)
     #text(s, weight: "bold")[#name] #h(1fr) #text(s, style: "italic")[#date_str  |  #location]
     #v(-5pt)
 
@@ -217,8 +218,23 @@
     #if details != none {
       text(s-small, style: "italic")[#details]
     }
+    v(6pt)
   ]
+
+  // JD-relevance highlight: JD-fit entries render inside a shaded bordered box so the
+  // recruiter's eye lands immediately on the experience that matters for THIS application.
+  if highlight {
+    // Monochrome shaded box with dark border so JD-fit entries stand out from the rest.
+    box(
+      fill: rgb(245, 245, 245),
+      stroke: (thickness: 3pt, paint: rgb(90, 90, 90)),
+      radius: 4pt,
+    )[content]
+  } else {
+    content
+  }
 }
+
 
 // Education uses a dedicated 5-line layout:
 //   Org name — rank (#rank) — date | location — degree — field

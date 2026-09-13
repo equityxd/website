@@ -203,7 +203,7 @@
 }
 
 // ── Entry content producer (no styling — styling applied at call site) ──
-#let entry(title, name, date_start, date_end, location, details) = {
+#let entry(title, name, date_start, date_end, location, details, highlight: false) = {
   let date_str = if date_start == none and date_end != none {
     str(date_end)
   } else if date_start != none and date_end == none {
@@ -215,7 +215,8 @@
   }
 
   // Each professional experience is kept as one indivisible block (cannot split across pages)
-  block(breakable: false)[
+  let content = block(breakable: false)[
+    v(6pt)
     #text(s, weight: "bold")[#name] #h(1fr) #text(s, style: "italic")[#date_str  |  #location]
     #v(-5pt)
 
@@ -225,8 +226,23 @@
     #if details != none {
       text(s-small, style: "italic")[#details]
     }
+    v(6pt)
   ]
+
+  // JD-relevance highlight: JD-fit entries render inside a shaded bordered box so the
+  // recruiter's eye lands immediately on the experience that matters for THIS application.
+  if highlight {
+    // Monochrome shaded box with dark border so JD-fit entries stand out from the rest.
+    box(
+      fill: rgb(245, 245, 245),
+      stroke: (thickness: 3pt, paint: rgb(90, 90, 90)),
+      radius: 4pt,
+    )[content]
+  } else {
+    content
+  }
 }
+
 
 // Education uses a dedicated 5-line layout:
 //   Org name — rank (#rank) — date | location — degree — field
@@ -361,7 +377,8 @@
     - Drove AS-IS to TO-BE process design for finance sub-processes, coordinating cross-functional workshops and stakeholder sign-off.
     - Automated the financial close with PowerQuery ETL, ingesting 1,500+ bookings per close with zero manual intervention.
     - Trained end-users on Infor M3 and validated UAT for finance sub-processes before go-live, documenting steering-committee sign-off.
-  ]
+  ],
+  highlight: true
 )
 
 #v(gap)
@@ -376,7 +393,8 @@
     - Rolled out Qlik Sense finance reporting, building 8 executive dashboards that shortened reporting cycles by 50% and enabled faster, evidence-based managerial decisions.
     - Built rebate models (matrix & automated SAP) aligned to commercial strategy, driving €150M annual rebate volume with 99.8% accuracy and resolving commercial disputes ~30% faster.
     - Guaranteed data reliability and partnered with auditors on rebate matters.
-  ]
+  ],
+  highlight: true
 )
 
 #v(gap)
@@ -390,7 +408,8 @@
     - Designed cash-flow reporting and per-project financing-need assessment.
     - Assessed local financing needs, performed countercredit analysis, and conducted impairment testing.
     - Engineered finance data models from SAP HANA, delivering 8 Power BI executive dashboards that turned raw transactions into decision-ready insights for finance leadership.
-  ]
+  ],
+  highlight: false
 )
 
 #v(gap)
@@ -405,7 +424,8 @@
     - Produced cash-flow projections, business plans, and long-term financial goals.
     - Monitored company performance and drove corrective actions.
     - Prepared operating results reports and maintained financial models for long-term use.
-  ]
+  ],
+  highlight: false
 )
 
 #v(gap)
@@ -419,7 +439,8 @@
     - Operated within automobile-parts distribution (€500M turnover, 12 entities / 3 countries), overseeing GL consolidated reporting and aligning AP/AR flows for strong financial-close control.
     - Integrated SAP BPC and Cognos reporting, strengthening GL/AP consolidated reporting.
     - Ran annual budgeting and monthly forecasting (actual vs. budget).
-  ]
+  ],
+  highlight: true
 )
 
 #v(gap)
@@ -433,5 +454,6 @@
     - Audited financial statements under multiple accounting standards (BE-GAAP, SOX), strengthening GL and financial-close controls.
     - Audited financial modelling for long-term PPP contracts.
     - Certified FP7 grant agreements; led audit teams and supervised auditors.
-  ]
+  ],
+  highlight: true
 )
