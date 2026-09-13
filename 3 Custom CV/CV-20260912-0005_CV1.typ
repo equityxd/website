@@ -212,7 +212,7 @@
     #v(-5pt)
 
     #if important {
-      highlight(fill: rgb(224, 224, 224))[text(s, weight: "semibold", style: "normal")[#title]]
+      highlight(fill: rgb(224, 224, 224))[#text(s, weight: "semibold", style: "normal")[#title]]
     } else {
       text(s, weight: "semibold", style: "normal")[#title]
     }

@@ -1,0 +1,166 @@
+total pages: 3
+== page 1 ==
+Ernest SONG ◆ Finance Domain Leader
+Rue Montagne de l’Oratoire 28/76
+Email: contact@ernestsong.com
+Web: ernestsong.com
+Tel: +32 476 60 05 90
+Accounting-focused Finance Domain Leader for General Accounting (GL, AP, AR) and financial-close lead­
+ership (interim / transformation mandates). Skilled at ERP implementation and ERP replacement (SAP 
+S/4HANA, new-ERP platforms), delivering AS-IS to TO-BE process design, Business Blueprint sign-off, and 
+cross-functional workshops across multi-entity, multi-country (BE, FR, NL) environments. A dependable 
+interim leader who aligns finance sub-processes with business goals and delivers trustworthy Power BI / 
+Cognos reporting.
+Education
+ESCP Business School
+(#1 FT 2026)
+2010 – 2011 | Paris, FR
+Specialized Master's degree
+Auditing and Consulting
+Université Paris Nanterre
+2005 – 2010 | Paris, FR
+Master's degree
+Management Science and Financial 
+Control
+Competencies
+Accounting – Finance
+• General Accounting (GL, 
+AP, AR)
+• Financial Close
+• Consolidated GL 
+Reporting
+ERP Implementation – 
+Replacement
+• ERP replacement (new-
+ERP platform readiness)
+• SAP S/4HANA
+• AS-IS → TO-BE process 
+design
+• Business Blueprint 
+(BBP) sign-off
+Financial Reporting → BI
+• MS Power BI
+• Cognos
+• Business Object
+RPA / Automation
+• UIPath
+• MS PowerAutomate
+• PowerQuery ETL
+Workshops → 
+Stakeholders
+• Cross-functional 
+workshops
+• MS PowerPoint 
+(workshop 
+presentations)
+• Change – 
+communication
+• User training
+Agile → Tools
+• Jira
+• Confluence
+• MS Office (advanced 
+Excel / Power Query)
+Languages
+Native: French, Khmer, Teochew
+Proficient: English
+Basics: Dutch (A2), Spanish, Mandarin
+Interests
+Sustainable development, Powerlifting, 
+Mountain biking, Tennis
+Interpersonal
+Fast-learner, Problem solver, Diplomacy, 
+Driven, Autonomous, Teamplayer
+Professional Experience
+Engie SEM
+January 2026 – Present | Brussels, BE
+text(s, weight: “semibold”, style: “normal”)[Strategic Business Analyst & Finance Automation Lead (Freelancer)]
+• Led month-end/year-end GL close for up to 6 BE/FR/NL entities (ERP replacing legacy AS/400), strengthening financial-close control across the multi-
+entity group.
+• Drove AS-IS to TO-BE process design for finance sub-processes, coordinating cross-functional workshops and stakeholder sign-off.
+• Automated the financial close with PowerQuery ETL, ingesting 1,500+ bookings per close with zero manual intervention.
+• Trained end-users on Infor M3 and validated UAT for finance sub-processes before go-live, documenting steering-committee sign-off.
+Holcim
+January 2024 – December 2025 | Nivelles, BE
+text(s, weight: “semibold”, style: “normal”)[Senior Operational Excellence & Data Lead (Freelancer)]
+• Managed the SAP HANA ERP data migration, restructuring data and preserving system integrity.
+• Rolled out Qlik Sense finance reporting, building 8 executive dashboards that shortened reporting cycles by 50% and enabled faster, evidence-based 
+managerial decisions.
+• Built rebate models (matrix & automated SAP) aligned to commercial strategy, driving €150M annual rebate volume with 99.8% accuracy and 
+resolving commercial disputes  30% faster.
+• Guaranteed data reliability and partnered with auditors on rebate matters.
+1 of 3
+== page 2 ==
+Engie Tractebel
+March 2023 – December 2023 | Brussels, BE
+Cash Flow & Financial Modeling Specialist (Freelancer)
+• Designed cash-flow reporting and per-project financing-need assessment.
+• Assessed local financing needs, performed countercredit analysis, and conducted impairment testing.
+• Engineered finance data models from SAP HANA, delivering 8 Power BI executive dashboards that turned raw transactions into decision-ready 
+insights for finance leadership.
+Shurgard
+February 2022 – February 2023 | Brussels, BE
+Investment & Corporate Development Analyst (Freelancer)
+• Analyzed and managed real estate projects, including construction, redevelopment, and acquisition of self-storage businesses.
+• Maintained project dashboard and initiated corporate development projects to improve department policies and procedures.
+• Designed the data model and visualization for the Investment department’s Business Intelligence efforts.
+• Collaborated in the development of a new pricing model using Artificial Intelligence.
+Magnetrap
+November 2020 – January 2022 | Mons, BE
+Head of Controlling
+• Implemented budgeting, forecasting, and financial-control (controlling) systems.
+• Produced cash-flow projections, business plans, and long-term financial goals.
+• Monitored company performance and drove corrective actions.
+• Prepared operating results reports and maintained financial models for long-term use.
+Tobania
+February 2020 – October 2020 | Brussels, BE
+Director Business Process Automation
+• Led development and implementation of citizen developer business model using RPA and self-service BI, including pricing strategy and roadmap.
+• Managed business development, including marketing strategy, pre-sales, and sales, and identified new business opportunities.
+• Implemented process optimization, standardization, and harmonization to improve efficiency and profitability for customers.
+• Provided regular, tailored reports to help customers monitor and control costs and make data-driven business decisions, and established change 
+management structures and strategies to facilitate successful adoption of new processes and technologies.
+Soap collect
+January 2019 – Present | Phnom Penh, KH
+Founder
+• Established a non-profit organization focused on providing hygiene products to disadvantaged communities.
+• Formed partnerships with luxury hotel chains to source used soap for reconditioning.
+Degroof Petercam
+January 2018 – December 2018 | Brussels, BE
+Performance Management Project Leader
+• Finance Transformation Operating Model (FTOM)
+• Designed and implemented a client-centric performance management system.
+• Optimized finance close process for improved governance, internal control, and data quality.
+• Led projects related to regulatory reporting sourcing and followed BPM standards.
+• Conducted gap analysis of business requirements and existing procedures to identify areas for improvement.
+Vinci Airports
+February 2016 – December 2017 | Brussels, BE & Lisbon, PT
+Managing Director & Head of Project Financial Modeling / Cursus Grand Talent
+• Value creation: valuation at 4 times of acquisition cost.
+• Led deployment of airport operations at 50+ locations in various countries.
+• Developed long-term financial business model including analysis of macroeconomic impact, capital expenditures, and concession valuation.
+• Negotiated extension of concession contract with Portuguese authorities and implemented new financial business model to improve budgeting and 
+forecasting processes.
+• Managed accounting and financial reporting in accordance with BE-GAAP standards.
+2 of 3
+== page 3 ==
+Rexel
+September 2014 – January 2016 | Paris, FR
+text(s, weight: “semibold”, style: “normal”)[Reporting Consolidation Manager]
+• Operated within automobile-parts distribution (€500M turnover, 12 entities / 3 countries), overseeing GL consolidated reporting and aligning AP/AR 
+flows for strong financial-close control.
+• Integrated SAP BPC and Cognos reporting, strengthening GL/AP consolidated reporting.
+• Ran annual budgeting and monthly forecasting (actual vs. budget).
+KPMG Audit
+January 2011 – August 2014 | Paris, FR
+text(s, weight: “semibold”, style: “normal”)[Financial Auditor Supervisor]
+• Audited financial statements under multiple accounting standards (BE-GAAP, SOX), strengthening GL and financial-close controls.
+• Audited financial modelling for long-term PPP contracts.
+• Certified FP7 grant agreements; led audit teams and supervised auditors.
+ICM - Brain & Spine Institute
+November 2009 – August 2010 | Paris, FR
+Deputy CFO Trainee
+• Implemented the budget system and prepared business plans for the scientific teams.
+• Established the internal control system for purchasing and donation processes and managed bank reconciliation.
+• Prepared the institutional audit necessary for the certification by the "Comité de la Charte".
+3 of 3
