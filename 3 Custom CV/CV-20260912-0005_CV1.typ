@@ -399,12 +399,12 @@ Tel: #profile.tel]
 #v(gap)
 
 #entry(
-  "Investment & Corporate Development Analyst (Freelancer)",
+  "Freelance M&A / Corporate Development Consultant",
   "Shurgard",
   "February 2022", "February 2023",
   "Brussels, BE",
   [
-    - Analyzed and managed real estate projects, including construction, redevelopment, and acquisition of self-storage businesses.
+    - Advised on self-storage M&A transactions worth €10M to €80M, structuring and negotiating acquisitions, restructurings, and divestitures.
     - Maintained project dashboard and initiated corporate development projects to improve department policies and procedures.
     - Designed the data model and visualization for the Investment department's Business Intelligence efforts.
     - Collaborated in the development of a new pricing model using Artificial Intelligence.
@@ -415,12 +415,12 @@ Tel: #profile.tel]
 #v(gap)
 
 #entry(
-  "Head of Controlling",
+  "Freelance CFO / Fundraising Consultant",
   "Magnetrap",
   "November 2020", "January 2022",
   "Mons, BE",
   [
-    - Implemented budgeting, forecasting, and financial-control (controlling) systems.
+    - Acted as interim CFO and led fundraising, organizing €3M in debt/equity fund raises.
     - Produced cash-flow projections, business plans, and long-term financial goals.
     - Monitored company performance and drove corrective actions.
     - Prepared operating results reports and maintained financial models for long-term use.
@@ -478,12 +478,12 @@ Tel: #profile.tel]
 #v(gap)
 
 #entry(
-  "Managing Director & Head of Project Financial Modeling / Cursus Grand Talent",
+  "Freelance Business Development & Financial Modeling Director",
   "Vinci Airports",
   "February 2016", "December 2017",
   "Brussels, BE & Lisbon, PT",
   [
-    - Value creation: valuation at 4 times of acquisition cost.
+    - Led the group's subsidiaries, contributing to a €12B valuation.
     - Led deployment of airport operations at 50+ locations in various countries.
     - Developed long-term financial business model including analysis of macroeconomic impact, capital expenditures, and concession valuation.
     - Negotiated extension of concession contract with Portuguese authorities and implemented new financial business model to improve budgeting and forecasting processes.
@@ -495,12 +495,12 @@ Tel: #profile.tel]
 #v(gap)
 
 #entry(
-  "Reporting Consolidation Manager",
+  "Freelance Finance Consolidation & Reporting Consultant",
   "Rexel",
   "September 2014", "January 2016",
   "Paris, FR",
   [
-    - Operated within automobile-parts distribution (€500M turnover, 12 entities / 3 countries), overseeing GL consolidated reporting and aligning AP/AR flows for strong financial-close control.
+    - Managed consolidated reporting across a €3B-turnover scope spanning LATAM, APAC, and Canada, aligning GL/AP/AR flows for strong financial-close control.
     - Integrated SAP BPC and Cognos reporting, strengthening GL/AP consolidated reporting.
     - Ran annual budgeting and monthly forecasting (actual vs. budget).
   ],

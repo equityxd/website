@@ -415,12 +415,12 @@
 #v(gap)
 
 #entry(
-  "Head of Controlling",
+  "Freelance CFO / Fundraising Consultant",
   "Magnetrap",
   "November 2020", "January 2022",
   "Mons, BE",
   [
-    - Implemented budgeting, forecasting, and financial control systems.
+    - Acted as interim CFO and led fundraising, organizing €3M in debt/equity fund raises.
     - Created cash flow projections, business plans, and long-term financial goals.
     - Monitored company performance and implemented corrective actions as needed.
     - Prepared operating results reports and managed financial models for long-term use.
@@ -490,7 +490,7 @@
 #v(gap)
 
 #entry(
-  "Reporting Consolidation Manager",
+  "Freelance Finance Consolidation & Reporting Consultant",
   "Rexel",
   "September 2014", "January 2016",
   "Paris, FR",

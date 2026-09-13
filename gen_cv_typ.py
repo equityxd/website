@@ -275,12 +275,12 @@ def main():
         ")\n\n"
         "#v(gap)\n\n"
         "#entry(\n"
-        '  "Investment & Corporate Development Analyst (Freelancer)",\n'
+        '  "Freelance M&A / Corporate Development Consultant",\n'
         '  "Shurgard",\n'
         '  "February 2022", "February 2023",\n'
         '  "Brussels, BE",\n'
         "  [\n"
-        "    - Analyzed and managed real estate projects, including construction, redevelopment, and acquisition of self-storage businesses.\n"
+        "    - Advised on self-storage M&A transactions worth €10M to €80M, structuring and negotiating acquisitions, restructurings, and divestitures.\n"
         "    - Maintained project dashboard and initiated corporate development projects to improve department policies and procedures.\n"
         "    - Designed the data model and visualization for the Investment department's Business Intelligence efforts.\n"
         "    - Collaborated in the development of a new pricing model using Artificial Intelligence.\n"
@@ -289,12 +289,12 @@ def main():
         ")\n\n"
         "#v(gap)\n\n"
         "#entry(\n"
-        '  "Head of Controlling",\n'
+        '  "Freelance CFO / Fundraising Consultant",\n'
         '  "Magnetrap",\n'
         '  "November 2020", "January 2022",\n'
         '  "Mons, BE",\n'
         "  [\n"
-        "    - Implemented budgeting, forecasting, and financial-control (controlling) systems.\n"
+        "    - Acted as interim CFO and led fundraising, organizing €3M in debt/equity fund raises.\n"
         "    - Produced cash-flow projections, business plans, and long-term financial goals.\n"
         "    - Monitored company performance and drove corrective actions.\n"
         "    - Prepared operating results reports and maintained financial models for long-term use.\n"
@@ -344,12 +344,12 @@ def main():
         ")\n\n"
         "#v(gap)\n\n"
         "#entry(\n"
-        '  "Managing Director & Head of Project Financial Modeling / Cursus Grand Talent",\n'
+        '  "Freelance Business Development & Financial Modeling Director",\n'
         '  "Vinci Airports",\n'
         '  "February 2016", "December 2017",\n'
         '  "Brussels, BE & Lisbon, PT",\n'
         "  [\n"
-        "    - Value creation: valuation at 4 times of acquisition cost.\n"
+        "    - Led the group's subsidiaries, contributing to a €12B valuation.\n"
         "    - Led deployment of airport operations at 50+ locations in various countries.\n"
         "    - Developed long-term financial business model including analysis of macroeconomic impact, capital expenditures, and concession valuation.\n"
         "    - Negotiated extension of concession contract with Portuguese authorities and implemented new financial business model to improve budgeting and forecasting processes.\n"
@@ -359,12 +359,12 @@ def main():
         ")\n\n"
         "#v(gap)\n\n"
         "#entry(\n"
-        '  "Reporting Consolidation Manager",\n'
+        '  "Freelance Finance Consolidation & Reporting Consultant",\n'
         '  "Rexel",\n'
         '  "September 2014", "January 2016",\n'
         '  "Paris, FR",\n'
         "  [\n"
-        "    - Operated within automobile-parts distribution (€500M turnover, 12 entities / 3 countries), overseeing GL consolidated reporting and aligning AP/AR flows for strong financial-close control.\n"
+        "    - Managed consolidated reporting across a €3B-turnover scope spanning LATAM, APAC, and Canada, aligning GL/AP/AR flows for strong financial-close control.\n"
         "    - Integrated SAP BPC and Cognos reporting, strengthening GL/AP consolidated reporting.\n"
         "    - Ran annual budgeting and monthly forecasting (actual vs. budget).\n"
         "  ],\n"
