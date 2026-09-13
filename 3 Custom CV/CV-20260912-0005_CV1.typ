@@ -91,15 +91,11 @@
       columns: (1.1fr, 2.9fr),
       gutter: gutter,
       [
-        #text(s-small)[Rue Montagne de l'Oratoire 28/76]
-        #v(-9pt)
-        #text(s-small)[B-1000 Brussels]
-        #v(-9pt)
-        #text(s-small)[Email: #profile.mailto]
-        #v(-9pt)
-        #text(s-small)[Web: #profile.website]
-        #v(-9pt)
-        #text(s-small)[Tel: #profile.tel]
+        #text(s-small)[Rue Montagne de l'Oratoire 28/76
+B-1000 Brussels
+Email: #profile.mailto
+Web: #profile.website
+Tel: #profile.tel]
       ],
       [
         #set par(justify: true)
