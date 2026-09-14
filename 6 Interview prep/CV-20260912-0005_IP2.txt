@@ -1,0 +1,7 @@
+INTERVIEW PREP 2/6 — Serial CV-20260912-0005 (STAR)
+============================================================
+Q. Describe how you handled an unusual or complex accounting challenge.
+SITUATION: KPMG Audit — long-term Public-Private Partnership contracts.
+TASK: Audit financial modelling embedded in long-term PPP contracts.
+ACTION: Applied multiple accounting standards (BE-GAAP, SOX); structured the audit around contract cash-flows; validated modelling assumptions; led audit teams.
+RESULT: Reliable audit opinions on complex, long-duration revenue recognition.
