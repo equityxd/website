@@ -22,10 +22,16 @@ The output follows an ATS-optimised structure:
 
 All claims are truthful; metrics are only used where the base CV supports them.
 """
+import io
 import re
 import sys
 import subprocess
 from pathlib import Path
+
+# The JD content fetched from a URL may contain emoji / unicode (e.g. LinkedIn
+# pulse listings: 📍 🏓 etc.). Reconfigure stdout to utf-8 so printing it
+# never raises UnicodeEncodeError on a Windows cp1252 console.
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
 # Accounting-scope signals: an #entry mentioning any of these is highlighted (important: true).
 ACCOUNTING_KEYWORDS = (
