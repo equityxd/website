@@ -315,7 +315,7 @@ def main():
         ")\n\n"
         "#v(gap)\n\n"
         "#entry(\n"
-        '  "M&A / Corporate Development Consultant (Freelancer)",\n'
+        '  "Investment & Corporate Development Analyst (Freelancer)",\n'
 
         '  "Shurgard",\n'
         '  "February 2022", "February 2023",\n'
@@ -330,7 +330,7 @@ def main():
         ")\n\n"
         "#v(gap)\n\n"
         "#entry(\n"
-        '  "Head of Controlling",\n'
+        '  "Freelane CFO / Fundraising Consultant",\n'
         '  "Magnetrap",\n'
         '  "November 2020", "January 2022",\n'
         '  "Mons, BE",\n'
@@ -385,7 +385,7 @@ def main():
         ")\n\n"
         "#v(gap)\n\n"
         "#entry(\n"
-        '  "Head of Controlling",\n'
+        '  "Managing Director & Head of Project Financial Modeling / Cursus Grand Talent",\n'
 
         '  "Vinci Airports",\n'
         '  "February 2016", "December 2017",\n'
@@ -401,7 +401,7 @@ def main():
         ")\n\n"
         "#v(gap)\n\n"
         "#entry(\n"
-        '  "Head of Controlling",\n'
+        '  "Freelance Finance Consolidation & Reporting Consultant",\n'
 
         '  "Rexel",\n'
         '  "September 2014", "January 2016",\n'

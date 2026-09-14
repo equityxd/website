@@ -400,7 +400,7 @@
 #v(gap)
 
 #entry(
-  "M&A / Corporate Development Consultant (Freelancer)",
+  "Investment & Corporate Development Analyst (Freelancer)",
   "Shurgard",
   "February 2022", "February 2023",
   "Brussels, BE",
@@ -416,7 +416,7 @@
 #v(gap)
 
 #entry(
-  "Head of Controlling",
+  "Freelane CFO / Fundraising Consultant",
   "Magnetrap",
   "November 2020", "January 2022",
   "Mons, BE",
@@ -479,7 +479,7 @@
 #v(gap)
 
 #entry(
-  "Head of Controlling",
+  "Managing Director & Head of Project Financial Modeling / Cursus Grand Talent",
   "Vinci Airports",
   "February 2016", "December 2017",
   "Brussels, BE & Lisbon, PT",
@@ -496,7 +496,7 @@
 #v(gap)
 
 #entry(
-  "Head of Controlling",
+  "Freelance Finance Consolidation & Reporting Consultant",
   "Rexel",
   "September 2014", "January 2016",
   "Paris, FR",
