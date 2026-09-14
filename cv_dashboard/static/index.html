@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Builder Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen">
+
+  <div class="max-w-4xl mx-auto py-8">
+    <header class="mb-6 flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">CV Builder Dashboard</h1>
+        <p class="text-sm text-slate-500">Turn a Job Description into a full application package</p>
+      </div>
+      <span id="health" class="text-xs px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">checking…</span>
+    </header>
+
+    <!-- Input card -->
+    <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+      <label class="block text-sm font-medium mb-2">Job Description <span class="text-slate-400">(paste text or a URL)</span></label>
+      <textarea id="input" placeholder="Paste the full Job Description text here…"
+        class="w-full h-40 p-3 border border-slate-300 rounded-lg text-sm font-mono focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y"></textarea>
+
+      <div class="mt-3 flex items-center gap-3">
+        <label class="flex items-center gap-2 text-sm text-slate-600">
+          <input type="checkbox" id="urlToggle" class="accent-blue-600" />
+          Input is a URL
+        </label>
+        <input type="url" id="urlField" placeholder="https://example.com/jobs/123"
+          class="hidden flex-1 p-2 border border-slate-300 rounded-lg text-sm" />
+      </div>
+
+      <button id="generateBtn"
+        class="mt-4 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white font-medium rounded-lg text-sm transition-colors">
+        Generate Documents
+      </button>
+    </section>
+
+    <!-- Progress card -->
+    <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-lg font-semibold">Progress Log</h2>
+        <button id="clearLog" class="text-xs text-slate-400 hover:text-slate-700">Clear</button>
+      </div>
+      <pre id="log" class="bg-slate-900 text-emerald-300 text-sm p-4 rounded-lg h-80 overflow-auto font-mono whitespace-pre"></pre>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

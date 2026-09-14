@@ -1,0 +1,20 @@
+/* CV Builder Dashboard — styles */
+body {
+  font-feature-setting: "ss01";
+}
+
+#log .line-info { color: #d1fae5; }
+#log .line-warn { color: #fde68a; }
+#log .line-error { color: #fca5a5; }
+#log .line-done { color: #86efac; font-weight: 600; }
+
+#generateBtn:active {
+  transform: translateY(1px);
+}
+
+/* subtle scrollbar for the log */
+#log::-webkit-scrollbar { width: 8px; }
+#log::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
