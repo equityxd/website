@@ -25,4 +25,4 @@ echo -----------------------------------------------------------
 cd /d "%~dp0"
 start http://%HOST%:%PORT%/
 
-python -m uvicorn app:app --host %HOST% --port %PORT% --reload
+python -m uvicorn app:app --host %HOST% --port %PORT% --reload >server.log 2>&1
