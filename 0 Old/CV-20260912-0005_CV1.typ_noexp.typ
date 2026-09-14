@@ -91,15 +91,13 @@
       columns: (1.1fr, 2.9fr),
       gutter: gutter,
       [
-        #octique-inline("location", width: 0.6em) #text(s-small)[Rue Montagne de l'Oratoire 28/76]
-        #v(gap)
-        #h(0.7em) #text(s-small)[B-1000 Brussels]
-        #v(gap)
-        #octique-inline("mail", width: 0.6em) #text(s-small)[#profile.mailto]
-        #v(gap)
-        #octique-inline("globe", width: 0.6em) #text(s-small)[#profile.website]
-        #v(gap)
-        #octique-inline("device-mobile", width: 0.6em) #text(s-small)[#profile.tel]
+        #text(size: 9pt, style: "italic")[
+          Rue Montagne de l'Oratoire 28/76\
+          B-1000 Brussels\
+          #profile.mailto\
+          #profile.website\
+          #profile.tel
+        ]
       ],
       [
         #set par(justify: true)
@@ -208,21 +206,21 @@
 
   // Each professional experience is kept as one indivisible block (cannot split across pages)
   let content = block(breakable: false)[
-    #v(1pt)
+    #v(6pt)
     #text(s, weight: "bold")[#name] #h(1fr) #text(s, style: "italic")[#date_str  |  #location]
-    #v(-1pt)
+    #v(-5pt)
 
     #if important {
       highlight(fill: rgb(224, 224, 224))[#text(s, weight: "semibold", style: "normal")[#title]]
     } else {
       text(s, weight: "semibold", style: "normal")[#title]
     }
-    #v(-1pt)
+    #v(-5pt)
 
     #if details != none {
       text(s-small, style: "italic")[#details]
     }
-    #v(1pt)
+    #v(6pt)
   ]
 
   // JD-fit entries get a light grey highlight on the position name so a recruiter's eye
@@ -266,10 +264,10 @@
     mailto: "contact@ernestsong.com",
     website: "ernestsong.com",
     tel: "+32 476 60 05 90",
-    keywords: "Entrepreneurship, Strategic, P&L, Profit & Loss Responsibility, Growth, Revenue, Profit, ROI, Metrics, Change Management, Change Transition, Leadership, Operations, Performance Improvement, Stakeholders, Budget & Finance",
+    keywords: "Finance Domain Leader, ERP Implementation, ERP Replacement, General Accounting (GL, AP, AR), Financial Close, IFRS, BE-GAAP, Business Blueprint, AS-IS TO-BE Process Design, Workshops, Financial Reporting, Power BI, Cognos, Business Object, Multi-entity, Multi-country, Project Management, Change Management, Stakeholder Management, User Training, French, Dutch",
     quote: "Finance leader with 15+ years leading accounting and transformation mandates for multi-entity, multi-country organisations across BE, FR and NL. I specialise in General Accounting (GL, AP, AR) and financial-close leadership, and in guiding ERP replacements from AS-IS diagnosis to SAP S/4HANA go-live. What sets me apart is perspective: I've sat on both the operator's and the executive-recruiter's side of the table, so I read the numbers and the organisation behind them. I bring calm under pressure, rigorous Power BI / Cognos reporting, and a genuine commitment to turning finance into a lever for growth."
   ),
-  position: "Chief Growth & Transformation Officer",
+  position: "Finance Domain Leader",
 
   // ── Education ──
   education: [
@@ -354,181 +352,3 @@
 
 #v(gap)
 
-#entry(
-  "Strategic Business Analyst & Finance Automation Lead (Freelancer)",
-  "Engie SEM",
-  "January 2026", "Present",
-  "Brussels, BE",
-  [
-    - Led the financial controlling pilot phase for the SAP S/4HANA migration across French subsidiaries, successfully acting as the core Business Analyst bridging IT architecture and strategic business operations.
-    - Designed, built, and deployed a robust, automated budget modeling tool from scratch within a critical 2-week timeline, ensuring operational continuity during a resource gap and replacing an unreliable legacy framework.
-    - Streamlined and automated financial closing processes for commodity trading activities, deploying advanced PowerQuery ETL workflows to safely ingest batches of 1,500+ bookings per close with zero human intervention.
-    - Reconciled complex financial data structures between middle-office databases (IVDB) and SAP S/4HANA while restructuring and simplifying the Work Breakdown Structure (WBS) project codes to optimize portfolio monitoring.
-  ]
-)
-
-#v(gap)
-
-#entry(
-  "Senior Operational Excellence & Data Lead (Freelancer)",
-  "Holcim",
-  "January 2024", "December 2025",
-  "Nivelles, BE",
-  [
-    - Leveraged data insights derived from market analysis to restructure production workflows post-M&A, significantly enhancing efficiency.
-    - Managed SAP HANA migration, restructuring data and ensuring system integrity.
-    - Developed rebate models (matrix & automated SAP), aligning with commercial strategy.
-    - Implemented Qliksense with new data for financial reporting and insights.
-    - Ensured data reliability and liaised with auditors on rebate matters.
-  ]
-)
-
-#v(gap)
-
-#entry(
-  "Cash Flow & Financial Modeling Specialist (Freelancer)",
-  "Engie Tractebel",
-  "March 2023", "December 2023",
-  "Brussels, BE",
-  [
-    - Design cashflow reporting and cash exposure per project.
-    - Assessment of financing needs in local entity, credit analysis of specific counterpart and impairment testing.
-    - Develop Finance data modelling from SAP for HANA and design Power BI reporting.
-  ]
-)
-
-#v(gap)
-
-#entry(
-  "Investment & Corporate Development Analyst (Freelancer)",
-  "Shurgard",
-  "February 2022", "February 2023",
-  "Brussels, BE",
-  [
-    - Analyzed and managed real estate projects, including construction, redevelopment, and acquisition of self-storage businesses.
-    - Maintained project dashboard and initiated corporate development projects to improve department policies and procedures.
-    - Designed the data model and visualization for the Investment department's Business Intelligence efforts.
-    - Collaborated in the development of a new pricing model using Artificial Intelligence.
-  ]
-)
-
-#v(gap)
-
-#entry(
-  "Freelance CFO / Fundraising Consultant",
-  "Magnetrap",
-  "November 2020", "January 2022",
-  "Mons, BE",
-  [
-    - Acted as interim CFO and led fundraising, organizing €3M in debt/equity fund raises.
-    - Created cash flow projections, business plans, and long-term financial goals.
-    - Monitored company performance and implemented corrective actions as needed.
-    - Prepared operating results reports and managed financial models for long-term use.
-  ]
-)
-
-#v(gap)
-
-#entry(
-  "Director Business Process Automation",
-  "Tobania",
-  "February 2020", "October 2020",
-  "Brussels, BE",
-  [
-    - Led development and implementation of citizen developer business model using RPA and self-service BI, including pricing strategy and roadmap.
-    - Managed business development, including marketing strategy, pre-sales, and sales, and identified new business opportunities.
-    - Implemented process optimization, standardization, and harmonization to improve efficiency and profitability for customers.
-    - Provided regular, tailored reports to help customers monitor and control costs and make data-driven business decisions, and established change management structures and strategies to facilitate successful adoption of new processes and technologies.
-  ]
-)
-
-#v(gap)
-
-#entry(
-  "Founder",
-  "Soap collect",
-  "January 2019", "Present",
-  "Phnom Penh, KH",
-  [
-    - Established a non-profit organization focused on providing hygiene products to disadvantaged communities.
-    - Formed partnerships with luxury hotel chains to source used soap for reconditioning.
-  ]
-)
-
-#v(gap)
-
-#entry(
-  "Performance Management Project Leader",
-  "Degroof Petercam",
-  "January 2018", "December 2018",
-  "Brussels, BE",
-  [
-    - Finance Transformation Operating Model (FTOM)
-    - Designed and implemented a client-centric performance management system.
-    - Optimized finance close process for improved governance, internal control, and data quality.
-    - Led projects related to regulatory reporting sourcing and followed BPM standards.
-    - Conducted gap analysis of business requirements and existing procedures to identify areas for improvement.
-  ]
-)
-
-#v(gap)
-
-#entry(
-  "Managing Director & Head of Project Financial Modeling / Cursus Grand Talent",
-  "Vinci Airports",
-  "February 2016", "December 2017",
-  "Brussels, BE & Lisbon, PT",
-  [
-    - Value creation: valuation at 4 times of acquisition cost.
-    - Led deployment of airport operations at 50+ locations in various countries.
-    - Developed long-term financial business model including analysis of macroeconomic impact, capital expenditures, and concession valuation.
-    - Negotiated extension of concession contract with Portuguese authorities and implemented new financial business model to improve budgeting and forecasting processes.
-    - Managed accounting and financial reporting in accordance with BE-GAAP standards.
-  ]
-)
-
-#v(gap)
-
-#entry(
-  "Freelance Finance Consolidation & Reporting Consultant",
-  "Rexel",
-  "September 2014", "January 2016",
-  "Paris, FR",
-  [
-    - Led the implementation of IFRS financial reporting for Asia-Pacific, Latin America, and Canadian subsidiaries.
-    - Spearheaded the restructuring process and integration of SAP BPC and Cognos reporting systems.
-    - Performed annual budgeting, monthly forecasting, and analyses of actual vs. budgeted/estimated results.
-    - Led the strategic planning process for the organization.
-  ]
-)
-
-#v(gap)
-
-#entry(
-  "Financial Auditor Supervisor",
-  "KPMG Audit",
-  "January 2011", "August 2014",
-  "Paris, FR",
-  [
-    - Conducted audits of financial statements using various accounting standards, including testing of key processes in accordance with SOX requirements.
-    - Experienced in auditing financial modeling for long-term contracts, particularly in the context of Public-Private Partnerships (PPP).
-    - Certified FP7 Grant Agreements for the EU Research program and led audit teams and supervised financial auditors.
-    - Developed partnerships and identified new markets to support business growth.
-    Main sector: Construction (Vinci, Eiffage, Colas), Real estate (Nexity), Water distribution (Veolia), International parcels distribution (Geopost from La Poste group), Security (Brink's), Healthcare (DomusVie).
-  ]
-)
-
-#v(gap)
-
-#entry(
-  "Deputy CFO Trainee",
-  "ICM - Brain & Spine Institute", 
-  "November 2009", "August 2010",
-  "Paris, FR",
-  [
-    - Implemented the budget system and prepared business plans for the scientific teams.
-    - Established the internal control system for purchasing and donation processes and managed bank reconciliation.
-    - #set smartquote(enabled: false)
-      Prepared the institutional audit necessary for the certification by the "Comité de la Charte".
-  ]
-)

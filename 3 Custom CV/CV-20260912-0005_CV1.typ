@@ -206,21 +206,21 @@
 
   // Each professional experience is kept as one indivisible block (cannot split across pages)
   let content = block(breakable: false)[
-    #v(6pt)
+    #v(1pt)
     #text(s, weight: "bold")[#name] #h(1fr) #text(s, style: "italic")[#date_str  |  #location]
-    #v(-5pt)
+    #v(-1pt)
 
     #if important {
       highlight(fill: rgb(224, 224, 224))[#text(s, weight: "semibold", style: "normal")[#title]]
     } else {
       text(s, weight: "semibold", style: "normal")[#title]
     }
-    #v(-5pt)
+    #v(-1pt)
 
     #if details != none {
       text(s-small, style: "italic")[#details]
     }
-    #v(6pt)
+    #v(1pt)
   ]
 
   // JD-fit entries get a light grey highlight on the position name so a recruiter's eye
@@ -352,6 +352,8 @@
 
 #v(gap)
 
+#set par(leading: 4pt)
+
 #entry(
   "Strategic Business Analyst & Finance Automation Lead (Freelancer)",
   "Engie SEM",
@@ -366,7 +368,7 @@
   important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Senior Operational Excellence & Data Lead (Freelancer)",
@@ -382,7 +384,7 @@
   important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Cash Flow & Financial Modeling Specialist (Freelancer)",
@@ -397,7 +399,7 @@
   important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Investment & Corporate Development Analyst (Freelancer)",
@@ -413,7 +415,7 @@
   important: false
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Head of Controlling",
@@ -429,7 +431,7 @@
   important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Director Business Process Automation",
@@ -445,7 +447,7 @@
   important: false
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Founder",
@@ -459,7 +461,7 @@
   important: false
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Performance Management Project Leader",
@@ -476,7 +478,7 @@
   important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Managing Director & Head of Project Financial Modeling / Cursus Grand Talent",
@@ -493,10 +495,10 @@
   important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
-  "Finance Consolidation & Reporting Consultant",
+  "Freelance Finance Consolidation & Reporting Consultant",
   "Rexel",
   "September 2014", "January 2016",
   "Paris, FR",
@@ -508,7 +510,7 @@
   important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Financial Auditor Supervisor",
@@ -523,7 +525,7 @@
   important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Deputy CFO Trainee",

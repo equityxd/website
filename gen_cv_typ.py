@@ -49,13 +49,17 @@ def highlight_accounting(body, keywords):
 
     Works on the raw generator source: splits on `#entry(` and flips the flag in accounting blocks.
     """
+    # Preserve the preamble (e.g. #set par/list leading overrides) that precedes the
+    # first #entry() so line-spacing directives are not dropped by the split below.
+    m = re.search(r"#entry\(", body)
+    preamble = body[: m.start()] if m else ""
     out = []
     for block in re.split(r"#entry\(", body)[1:]:
         low = block.lower()
         if "important: false" in block and any(kw in low for kw in keywords):
             block = block.replace("important: false", "important: true", 1)
         out.append("#entry(" + block)
-    return "".join(out)
+    return preamble + "".join(out)
 
 BASE = "1 Source/SONG Ernest - CV v1.typ"
 OUT_DIR = "3 Custom CV"
@@ -275,6 +279,7 @@ def main():
         "            - MS Office (advanced Excel / Power Query)\n"
     )
     cv1_body = (
+        "#set par(leading: 4pt)\n\n"
         "#entry(\n"
         '  "Strategic Business Analyst & Finance Automation Lead (Freelancer)",\n'
         '  "Engie SEM",\n'
@@ -288,7 +293,7 @@ def main():
         "  ],\n"
         "  important: true\n"
         ")\n\n"
-        "#v(gap)\n\n"
+        "#v(0pt)\n\n"
         "#entry(\n"
         '  "Senior Operational Excellence & Data Lead (Freelancer)",\n'
         '  "Holcim",\n'
@@ -302,7 +307,7 @@ def main():
         "  ],\n"
         "  important: true\n"
         ")\n\n"
-        "#v(gap)\n\n"
+        "#v(0pt)\n\n"
         "#entry(\n"
         '  "Cash Flow & Financial Modeling Specialist (Freelancer)",\n'
         '  "Engie Tractebel",\n'
@@ -316,7 +321,7 @@ def main():
         "  ],\n"
         "  important: false\n"
         ")\n\n"
-        "#v(gap)\n\n"
+        "#v(0pt)\n\n"
         "#entry(\n"
         '  "Investment & Corporate Development Analyst (Freelancer)",\n'
 
@@ -331,7 +336,7 @@ def main():
         "  ],\n"
         "  important: false\n"
         ")\n\n"
-        "#v(gap)\n\n"
+        "#v(0pt)\n\n"
         "#entry(\n"
         '  "Head of Controlling",\n'
         '  "Magnetrap",\n'
@@ -345,7 +350,7 @@ def main():
         "  ],\n"
         "  important: false\n"
         ")\n\n"
-        "#v(gap)\n\n"
+        "#v(0pt)\n\n"
         "#entry(\n"
         '  "Director Business Process Automation",\n'
         '  "Tobania",\n'
@@ -359,7 +364,7 @@ def main():
         "  ],\n"
         "  important: false\n"
         ")\n\n"
-        "#v(gap)\n\n"
+        "#v(0pt)\n\n"
         "#entry(\n"
         '  "Founder",\n'
         '  "Soap collect",\n'
@@ -371,7 +376,7 @@ def main():
         "  ],\n"
         "  important: false\n"
         ")\n\n"
-        "#v(gap)\n\n"
+        "#v(0pt)\n\n"
         "#entry(\n"
         '  "Performance Management Project Leader",\n'
         '  "Degroof Petercam",\n'
@@ -386,7 +391,7 @@ def main():
         "  ],\n"
         "  important: false\n"
         ")\n\n"
-        "#v(gap)\n\n"
+        "#v(0pt)\n\n"
         "#entry(\n"
         '  "Managing Director & Head of Project Financial Modeling / Cursus Grand Talent",\n'
 
@@ -402,9 +407,9 @@ def main():
         "  ],\n"
         "  important: false\n"
         ")\n\n"
-        "#v(gap)\n\n"
+        "#v(0pt)\n\n"
         "#entry(\n"
-        '  "Finance Consolidation & Reporting Consultant",\n'
+        '  "Freelance Finance Consolidation & Reporting Consultant",\n'
 
         '  "Rexel",\n'
         '  "September 2014", "January 2016",\n'
@@ -416,7 +421,7 @@ def main():
         "  ],\n"
         "  important: true\n"
         ")\n\n"
-        "#v(gap)\n\n"
+        "#v(0pt)\n\n"
         "#entry(\n"
         '  "Financial Auditor Supervisor",\n'
         '  "KPMG Audit",\n'
@@ -430,7 +435,7 @@ def main():
         "  ],\n"
         "  important: true\n"
         ")\n\n"
-        "#v(gap)\n\n"
+        "#v(0pt)\n\n"
         "#entry(\n"
         '  "Deputy CFO Trainee",\n'
         '  "ICM - Brain & Spine Institute", \n'
@@ -470,7 +475,7 @@ EXPECTED_TITLES = {
     "Soap collect": "Founder",
     "Degroof Petercam": "Performance Management Project Leader",
     "Vinci Airports": "Managing Director & Head of Project Financial Modeling / Cursus Grand Talent",
-    "Rexel": "Finance Consolidation & Reporting Consultant",
+    "Rexel": "Freelance Finance Consolidation & Reporting Consultant",
     "KPMG Audit": "Financial Auditor Supervisor",
     "ICM - Brain & Spine Institute": "Deputy CFO Trainee",
 }
