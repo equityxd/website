@@ -498,7 +498,7 @@
 #v(0pt)
 
 #entry(
-  "Freelance Finance Consolidation & Reporting Consultant",
+  "Finance Consolidation & Reporting Consultant (Freelancer)",
   "Rexel",
   "September 2014", "January 2016",
   "Paris, FR",

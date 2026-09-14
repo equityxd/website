@@ -409,7 +409,7 @@ def main():
         ")\n\n"
         "#v(0pt)\n\n"
         "#entry(\n"
-        '  "Freelance Finance Consolidation & Reporting Consultant",\n'
+        '  "Finance Consolidation & Reporting Consultant (Freelancer)",\n'
 
         '  "Rexel",\n'
         '  "September 2014", "January 2016",\n'
@@ -475,7 +475,7 @@ EXPECTED_TITLES = {
     "Soap collect": "Founder",
     "Degroof Petercam": "Performance Management Project Leader",
     "Vinci Airports": "Managing Director & Head of Project Financial Modeling / Cursus Grand Talent",
-    "Rexel": "Freelance Finance Consolidation & Reporting Consultant",
+    "Rexel": "Finance Consolidation & Reporting Consultant (Freelancer)",
     "KPMG Audit": "Financial Auditor Supervisor",
     "ICM - Brain & Spine Institute": "Deputy CFO Trainee",
 }
