@@ -67,6 +67,7 @@ def _subprocess_stream(script, extra_args):
     """Run a pipeline script, yielding stripped stdout lines."""
     proc = subprocess.Popen(
         [sys.executable, str(BASE_DIR.parent / script), *extra_args],
+        cwd=str(BASE_DIR.parent),  # scripts use relative paths (e.g. "1 Source/…")
         stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1,
     )
     assert proc.stdout is not None
@@ -118,8 +119,10 @@ async def generate(request: Request):
                 q.put(("progress", f"Documents: {line}"))
 
             # Stage 3 — CV render (best-effort; never fails the whole run).
-            q.put(("progress", "Rendering CV PDF…"))
-            for line in _subprocess_stream("build_cv.py", []):
+            # Uses the validated Typst .typ pipeline (gen_cv_typ.py), which reads
+            # the base template, writes a JD-tailored .typ, and compiles to PDF.
+            q.put(("progress", "Rendering CV PDF (Typst .typ)…"))
+            for line in _subprocess_stream("gen_cv_typ.py", [str(coll["jd_path"])]):
                 q.put(("progress", f"CV: {line}"))
 
             q.put(("progress", f"✓ Complete (serial {serial})."))
