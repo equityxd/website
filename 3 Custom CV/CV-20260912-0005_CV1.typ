@@ -496,7 +496,7 @@
 #v(gap)
 
 #entry(
-  "Freelance Finance Consolidation & Reporting Consultant",
+  "Finance Consolidation & Reporting Consultant",
   "Rexel",
   "September 2014", "January 2016",
   "Paris, FR",
