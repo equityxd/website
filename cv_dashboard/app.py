@@ -79,9 +79,31 @@ def _subprocess_stream(script, extra_args):
 # ---------------------------------------------------------------------------
 # API: index
 # ---------------------------------------------------------------------------
+import hashlib
+
+
+def _hash(path: str) -> str:
+    """Return a short content hash for a static asset, used for cache-busting."""
+    try:
+        return hashlib.sha256(open(path, encoding="utf-8").read().encode("utf-8")).hexdigest()[:16]
+    except OSError:
+        return ""
+
+
 @app.get("/", response_model=None)
 async def index():
-    return HTMLResponse((STATIC_DIR / "index.html").read_text(encoding="utf-8"))
+    html = (STATIC_DIR / "index.html").read_text(encoding="utf-8")
+    # Force fresh JS/CSS on every load so stale cached assets can't cause a
+    # "still checking" / dead UI after code changes.
+    html = html.replace(
+        'href="style.css"',
+        f'href="style.css?v={_hash("static/style.css")}"',
+    )
+    html = html.replace(
+        '<script src="app.js"></script>',
+        f'<script src="app.js?v={_hash("static/app.js")}"></script>',
+    )
+    return HTMLResponse(html)
 
 
 # ---------------------------------------------------------------------------
