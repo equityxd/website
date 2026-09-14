@@ -1,7 +1,0 @@
-INTERVIEW PREP 4/6 — Serial CV-20260912-0005 (STAR)
-============================================================
-Q. Describe a time you managed multiple stakeholders with conflicting priorities.
-SITUATION: Tobania — rolling out RPA + self-service BI to many users.
-TASK: Align business, sales and operations behind a new way of working.
-ACTION: Established change-management structures, delivered tailored stakeholder reports to monitor/control costs, ran adoption workshops.
-RESULT: Successful adoption of new processes/technology and improved cost visibility — transferable to cross-domain ERP coordination.

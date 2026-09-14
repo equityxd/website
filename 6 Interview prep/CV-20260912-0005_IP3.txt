@@ -1,7 +1,0 @@
-INTERVIEW PREP 3/6 — Serial CV-20260912-0005 (STAR)
-============================================================
-Q. Give an example of improving an accounting process through automation.
-SITUATION: Financial close was manual and error-prone.
-TASK: Automate the close while keeping control intact.
-ACTION: Built a PowerQuery ETL pipeline ingesting 1,500+ bookings per close with zero manual intervention.
-RESULT: Faster, error-free closes — reusable accounting/automation experience for the new ERP's finance flows.

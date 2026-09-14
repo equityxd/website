@@ -204,6 +204,9 @@ def compile_pdf(typ_path, pdf_path):
 
 
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] == "--test":
+        run_tests()
+        return
     if len(sys.argv) > 1:
         jd = load_jd(sys.argv[1])
         jd_label = sys.argv[1]
@@ -528,22 +531,6 @@ def run_tests():
     if failed > 0:
         raise SystemExit(1)
     print("All tests passed.")
-
-
-def main():
-    if len(sys.argv) > 1 and sys.argv[1] == "--test":
-        run_tests()
-        return
-    if len(sys.argv) > 1:
-        jd = load_jd(sys.argv[1])
-        jd_label = sys.argv[1]
-    else:
-        jd = load_jd(None)
-        jd_label = "7 Input Job description/New Text Document.txt"
-
-    print("=== Targeting JD ===")
-    print(jd[:200] if jd else "(no JD file found)")
-    print("=" * 60)
 
 
 if __name__ == "__main__":
