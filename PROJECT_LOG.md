@@ -127,6 +127,25 @@ ATS structural caveats still open (not auto-applied, design-sensitive): icon-bas
 - Verified: all bullets <=25 words (was the blocker), 0 fraction/artifact chars, 0 em-dash artifacts, 4 apostrophes (2x l'Oratoire street name, 2x Master's - all legit).
 - Note: "l'Oratoire" stays (French street name in address), not a French-language sentence.
 
+## RenderCV + JD-tailoring pipeline (YAML-based, replaces `.typ` generator)
+
+Pivoted from the Typst `.typ` template to a **RenderCV YAML** data model, plus a
+JD-driven tailoring script. Benefits: single source of truth (YAML), deterministic
+render, no contact-box spacing bugs, no `.typ` authoring.
+
+- `tailor_cv.py`: reads base `cv.yaml` + a JD, then:
+  - rewrites the **Profile summary** to echo the JD's core keywords (truthfully),
+  - **reorders Experience** so JD-relevant roles rise to the top (by keyword-overlap score),
+  - refreshes **Competencies** with matched skill labels.
+  Deterministic + idempotent. Emits `3 Custom CV/CV-<serial>_CV1.yaml`.
+- `build_cv.py`: RenderCV → PDF + PNG. Accepts `--yaml <path>`; the standard output
+  PDF name (`CV-<serial>_CV1.pdf`) is derived from the input YAML basename.
+- `run_cv_builder.bat`: launcher now runs **tailor_cv.py → build_cv.py** (full JD-tailored
+  RenderCV pipeline) instead of the old `gen_cv_typ.py` `.typ` generator.
+
+Verified end-to-end: tailored PDF for JD `CV-20260912-0006` renders (4 pages) and the
+Profile summary changes vs base (`..., financial-close and ERP replacement`).
+
 ## Confirmed CV metrics (replaced ~estimates with user-provided real data)
 - Holcim: master records = 500K; annual rebate volume = €150M; reporting-cycle reduction = 50%.
 - All other metrics kept as ~estimates (Engie SEM revenue/stakeholders/project-book; Tractebel portfolio ~€18M + lending book ~€35M; Magnetrap budget/goals/margins; Rexel turnover ~€500M; KPMG audit adj ~35%, PPP portfolio ~€48M, team size ~8, funding ~€9M).

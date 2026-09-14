@@ -51,8 +51,12 @@ if not defined JD_FILE (
 echo        Using JD: 2 Job description\%JD_FILE%
 echo.
 
-REM Generate the tailored CV (PDF) directly — no interactive pi needed.
-python gen_cv_typ.py "2 Job description\%JD_FILE%"
+REM Derive the JD filename stem (strip the directory) for output naming.
+set JD_STEM=%JD_FILE:~18%
+
+REM 1) Tailor the RenderCV YAML to the JD, 2) render it to PDF + previews.
+python tailor_cv.py "%JD_FILE%" "3 Custom CV/CV-%JD_STEM%_CV1.yaml"
+python build_cv.py --yaml "3 Custom CV/CV-%JD_STEM%_CV1.yaml"
 
 if errorlevel 1 (
     echo.

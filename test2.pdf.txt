@@ -1,0 +1,5 @@
+=== C:/MyDev/MyCV/test2.pdf  (A4 width ~595pt; <164=contact-left, >164=quote-right) ===
+  74.54  cx= 221.0  QUOTE  This is a quote line at 12.94pt line box.
+  74.54  cx= 221.0  QUOTE  This is a second quote line at 12.94pt line box.
+  94.98  cx= 172.2  QUOTE  contact email value here
+  94.98  cx= 172.2  QUOTE  contact email value here

@@ -1,0 +1,24 @@
+=== test_contact.pdf  (A4 width ~595pt; <164=contact-left, >164=quote-right) ===
+  74.54  cx= 230.8  QUOTE  set page(page_a4, margin: 12pt) set text(lang: “en”) set par(leading: 7pt)
+  94.19  cx= 368.4  QUOTE  This is a long quote line one that wraps to make sure the inter-line spacing of the quote
+ 105.85  cx= 366.2  QUOTE  paragraph is stable and reproducible for measuring against the contact block on the left.
+ 114.11  cx= 123.2  CONTACT  Rue Montagne de l’Oratoire
+ 125.88  cx=  80.7  CONTACT  28/76
+  149.0  cx= 107.4  CONTACT  B-1000 Brussels
+ 191.93  cx= 116.0  CONTACT  Email marker value here
+ 234.85  cx= 125.3  CONTACT  www dot ernestsong dot com
+ 277.77  cx= 100.9  CONTACT  +32 476 60 05 90
+ 296.78  cx= 368.4  QUOTE  This is a long quote line one that wraps to make sure the inter-line spacing of the quote
+ 296.89  cx= 123.2  CONTACT  Rue Montagne de l’Oratoire
+ 308.43  cx= 366.2  QUOTE  paragraph is stable and reproducible for measuring against the contact block on the left.
+ 308.66  cx= 123.4  CONTACT  28/76 B-1000 Brussels Email
+ 320.44  cx= 116.8  CONTACT  marker value here www
+ 332.21  cx= 129.1  CONTACT  doternestsong dot com +32 476
+ 343.98  cx=  85.7  CONTACT  60 05 90
+ 362.99  cx= 368.4  QUOTE  This is a long quote line one that wraps to make sure the inter-line spacing of the quote
+ 374.64  cx= 366.2  QUOTE  paragraph is stable and reproducible for measuring against the contact block on the left.
+  379.3  cx= 123.2  CONTACT  Rue Montagne de l’Oratoire
+ 391.07  cx=  80.7  CONTACT  28/76
+  424.0  cx= 116.0  CONTACT  Email marker value here
+ 456.92  cx= 124.2  CONTACT  www doternestsong dot com
+ 489.84  cx= 100.9  CONTACT  +32 476 60 05 90

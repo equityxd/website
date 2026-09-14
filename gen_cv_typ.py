@@ -109,14 +109,10 @@ def transform(label, quote, position, keywords, left_col, right_col, body):
     )
     assert old_grid in t, "competencies grid anchor not found"
 
-    # 5a) Rec 8 - Competencies grid (two balanced columns, no callout)
-    new_grid = ("          [\n"
-                + left_col
-                + "          ],\n"
-                + "          [\n"
-                + right_col
-                + "          ]\n")
-    t = t.replace(old_grid, new_grid, 1)
+    # 5a) KEEP the base v1 competencies grid UNCHANGED (do not reinvent the layout;
+    #     only the content field values below change — the grid structure stays as v1).
+    #     (The old code restructured the grid headers, which broke vertical spacing.)
+    assert old_grid in t, "competencies grid anchor not found"
 
     # 5b) Rec 7 - ATS: octique contact icons -> plain text-labelled lines (machine-readable)
     old_contact = '''        #octique-inline("location", width: 0.6em) #text(s-small)[Rue Montagne de l\'Oratoire 28/76]
@@ -145,6 +141,11 @@ def transform(label, quote, position, keywords, left_col, right_col, body):
     assert old_contact in t, "old_contact not found in base"
     t = t.replace(old_contact, new_contact, 1)
 
+    # Title block: restored to v1's original layout (no padding).
+    old_title = '      #text(s-name, weight: "bold")[#profile.name] #h(10pt) #text(s-name, style: "normal", "\u25c6") #h(10pt) #text(s-name, style: "normal")[#position]'
+    assert old_title in t, "title block not found in base"
+    t = t.replace(old_title, old_title, 1)
+
 
     # 5) Body: replace everything from the Professional Experience header to EOF
 
@@ -155,7 +156,7 @@ def transform(label, quote, position, keywords, left_col, right_col, body):
     t = t[:pos] + header_line + body
 
     out = "3 Custom CV/CV-20260912-0005_CV%s.typ" % label
-    with open(out, "w", encoding="utf-8") as f:
+    with open(out, "w", encoding="utf-8", newline="\n") as f:
         f.write(t)
     print("Wrote", out)
 

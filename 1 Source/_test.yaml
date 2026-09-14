@@ -1,0 +1,11 @@
+cv:
+  name: Ernest SONG
+  headline: Finance Leader & Transformation Officer
+  location: B-1000 Brussels
+  email: contact@ernestsong.com
+  website: https://ernestsong.com
+  phone: +32 476 60 05 90
+  sections:
+    Test Section:
+      - Built foundation model infrastructure serving 2M+ monthly API requests.
+      - Raised \$18M Series A led by Sequoia Capital.

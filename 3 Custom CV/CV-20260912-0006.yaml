@@ -1,0 +1,256 @@
+cv:
+  name: Ernest SONG
+  headline: Chief Growth & Transformation Officer
+  location: B-1000 Brussels, Belgium
+  email: contact@ernestsong.com
+  phone: +32 476 60 05 90
+  website: https://ernestsong.com
+  photo: null
+  sections:
+    Profile:
+    - name: 'Finance leader with 15+ years leading accounting, financial-close and
+        ERP replacement mandates for multi-entity, multi-country organisations (BE,
+        FR, NL). My expertise lands on the JD''s core needs: Erp, Financiers, Processus.
+        I specialise in General Accounting (GL, AP, AR), Business Blueprint sign-off,
+        workshops with stakeholders, and guiding ERP transformations from AS-IS diagnosis
+        to go-live. General Accounting (GL, AP, AR) and financial-close leadership,
+        and in guiding ERP replacements from AS-IS diagnosis to SAP S/4HANA go-live.
+        What sets me apart is perspective: I''ve sat on both the operator''s and the
+        executive-recruiter''s side of the table, so I read the numbers and the organisation
+        behind them. I bring calm under pressure, rigorous Power BI / Cognos reporting,
+        and a genuine commitment to turning finance into a lever for growth.'
+    Experience:
+    - company: Engie SEM
+      position: Strategic Business Analyst & Finance Automation Lead (Freelancer)
+      start_date: 2026-01
+      end_date: present
+      location: Brussels, BE
+      highlights:
+      - Led the financial controlling pilot phase for the SAP S/4HANA migration across
+        French subsidiaries, successfully acting as the core Business Analyst bridging
+        IT architecture and strategic business operations.
+      - Designed, built, and deployed a robust, automated budget modeling tool from
+        scratch within a critical 2-week timeline, ensuring operational continuity
+        during a resource gap and replacing an unreliable legacy framework.
+      - Streamlined and automated financial closing processes for commodity trading
+        activities, deploying advanced PowerQuery ETL workflows to safely ingest batches
+        of 1,500+ bookings per close with zero human intervention.
+      - Reconciled complex financial data structures between middle-office databases
+        (IVDB) and SAP S/4HANA while restructuring and simplifying the Work Breakdown
+        Structure (WWS) project codes to optimize portfolio monitoring.
+    - company: Degroof Petercam
+      position: Performance Management Project Leader
+      start_date: 2018-01
+      end_date: 2018-12
+      location: Brussels, BE
+      highlights:
+      - Finance Transformation Operating Model (FTOM)
+      - Designed and implemented a client-centric performance management system.
+      - Optimized finance close process for improved governance, internal control,
+        and data quality.
+      - Led projects related to regulatory reporting sourcing and followed BPM standards.
+      - Conducted gap analysis of business requirements and existing procedures to
+        identify areas for improvement.
+    - company: Magnetrap
+      position: Freelance CFO / Fundraising Consultant
+      start_date: 2020-11
+      end_date: 2022-01
+      location: Mons, BE
+      highlights:
+      - Acted as interim CFO and led fundraising, organizing €3M in debt/equity fund
+        raises.
+      - Created cash flow projections, business plans, and long-term financial goals.
+      - Monitored company performance and implemented corrective actions as needed.
+      - Prepared operating results reports and managed financial models for long-term
+        use.
+    - company: Engie Tractebel
+      position: Cash Flow & Financial Modeling Specialist (Freelancer)
+      start_date: 2023-03
+      end_date: 2023-12
+      location: Brussels, BE
+      highlights:
+      - Design cashflow reporting and cash exposure per project.
+      - Assessment of financing needs in local entity, credit analysis of specific
+        counterpart and impairment testing.
+      - Develop Finance data modelling from SAP for HANA and design Power BI reporting.
+    - company: Shurgard
+      position: Investment & Corporate Development Analyst (Freelancer)
+      start_date: 2022-02
+      end_date: 2023-02
+      location: Brussels, BE
+      highlights:
+      - Analyzed and managed real estate projects, including construction, redevelopment,
+        and acquisition of self-storage businesses.
+      - Maintained project dashboard and initiated corporate development projects
+        to improve department policies and procedures.
+      - Designed the data model and visualization for the Investment department's
+        Business Intelligence efforts.
+      - Collaborated in the development of a new pricing model using Artificial Intelligence.
+    - company: Rexel
+      position: Freelance Finance Consolidation & Reporting Consultant
+      start_date: 2014-09
+      end_date: 2016-01
+      location: Paris, FR
+      highlights:
+      - Led the implementation of IFRS financial reporting for Asia-Pacific, Latin
+        America, and Canadian subsidiaries.
+      - Spearheaded the restructuring process and integration of SAP BPC and Cognos
+        reporting systems.
+      - Performed annual budgeting, monthly forecasting, and analyses of actual vs.
+        budgeted/estimated results.
+      - Led the strategic planning process for the organization.
+    - company: KPMG Audit
+      position: Financial Auditor Supervisor
+      start_date: 2011-01
+      end_date: 2014-08
+      location: Paris, FR
+      highlights:
+      - Conducted audits of financial statements using various accounting standards,
+        including testing of key processes in accordance with SOX requirements.
+      - Experienced in auditing financial modeling for long-term contracts, particularly
+        in the context of Public-Private Partnerships (PPP).
+      - Certified FP7 Grant Agreements for the EU Research program and led audit teams
+        and supervised financial auditors.
+      - Developed partnerships and identified new markets to support business growth.
+      - 'Main sector: Construction (Vinci, Eiffage, Colas), Real estate (Nexity),
+        Water distribution (Veolia), International parcels distribution (Geopost from
+        La Poste group), Security (Brink''s), Healthcare (DomusVie).'
+    - company: ICM - Brain & Spine Institute
+      position: Deputy CFO Trainee
+      start_date: 2009-11
+      end_date: 2010-08
+      location: Paris, FR
+      highlights:
+      - Implemented the budget system and prepared business plans for the scientific
+        teams.
+      - Established the internal control system for purchasing and donation processes
+        and managed bank reconciliation.
+      - Prepared the institutional audit necessary for the certification by the 'Comité
+        de la Charte'.
+    - company: Holcim
+      position: Senior Operational Excellence & Data Lead (Freelancer)
+      start_date: 2024-01
+      end_date: 2025-12
+      location: Nivelles, BE
+      highlights:
+      - Leveraged data insights derived from market analysis to restructure production
+        workflows post-M&A, significantly enhancing efficiency.
+      - Managed SAP HANA migration, restructuring data and ensuring system integrity.
+      - Developed rebate models (matrix & automated SAP), aligning with commercial
+        strategy.
+      - Implemented Qliksense with new data for financial reporting and insights.
+      - Ensured data reliability and liaised with auditors on rebate matters.
+    - company: Tobania
+      position: Director Business Process Automation
+      start_date: 2020-02
+      end_date: 2020-10
+      location: Brussels, BE
+      highlights:
+      - Led development and implementation of citizen developer business model using
+        RPA and self-service BI, including pricing strategy and roadmap.
+      - Managed business development, including marketing strategy, pre-sales, and
+        sales, and identified new business opportunities.
+      - Implemented process optimization, standardization, and harmonization to improve
+        efficiency and profitability for customers.
+      - Provided regular, tailored reports to help customers monitor and control costs
+        and make data-driven business decisions, and established change management
+        structures and strategies to facilitate successful adoption of new processes
+        and technologies.
+    - company: Vinci Airports
+      position: Managing Director & Head of Project Financial Modeling / Cursus Grand
+        Talent
+      start_date: 2016-02
+      end_date: 2017-12
+      location: Brussels, BE & Lisbon, PT
+      highlights:
+      - 'Value creation: valuation at 4 times of acquisition cost.'
+      - Led deployment of airport operations at 50+ locations in various countries.
+      - Developed long-term financial business model including analysis of macroeconomic
+        impact, capital expenditures, and concession valuation.
+      - Negotiated extension of concession contract with Portuguese authorities and
+        implemented new financial business model to improve budgeting and forecasting
+        processes.
+      - Managed accounting and financial reporting in accordance with BE-GAAP standards.
+    - company: Soap collect
+      position: Founder
+      start_date: 2019-01
+      end_date: present
+      location: Phnom Penh, KH
+      highlights:
+      - Established a non-profit organization focused on providing hygiene products
+        to disadvantaged communities.
+      - Formed partnerships with luxury hotel chains to source used soap for reconditioning.
+    Education:
+    - institution: ESCPS Business School
+      area: '#1 FT 2026'
+      degree: Specialized Master's degree
+      date: 2011
+      location: Paris, FR
+      summary: Auditing and Consulting
+      highlights:
+      - 'Ranked #1 full-time Master in 2026 (FT Rankings)'
+    - institution: Université Paris Nanterre
+      area: Management Science and Financial Control
+      degree: Master's degree
+      date: 2010
+      location: Paris, FR
+      summary: Management Science and Financial Control
+    Competencies:
+    - name: Business
+      highlights:
+      - MS Office (advanced Excel, Power Query)
+    - name: ERP
+      highlights:
+      - SAP HANA
+    - name: Business Intelligence
+      highlights:
+      - MS Power BI
+      - QlikSense
+      - Business Object
+      - Cognos
+      - Hyperion
+    - name: RPA
+      highlights:
+      - UIpath
+      - MS PowerAutomate
+    - name: Agile
+      highlights:
+      - Jira
+      - Confluence
+    - name: Data & Analytics
+      highlights:
+      - VBA
+      - SQL
+      - R
+    - name: Financiers
+      highlights: []
+    - name: Processus
+      highlights: []
+    - name: Gestion
+      highlights: []
+    Languages:
+    - name: 'Native:'
+      highlights:
+      - French
+      - Khmer
+      - Teochew
+    - name: 'Proficient:'
+      highlights:
+      - English
+    - name: 'Basics:'
+      highlights:
+      - Dutch (A2)
+      - Spanish
+      - Mandarin
+    Interests:
+    - Sustainable development
+    - Powerlifting
+    - Mountain biking
+    - Tennis
+    Interpersonal:
+    - Fast-learner
+    - Problem solver
+    - Diplomacy
+    - Driven
+    - Autonomous
+    - Teamplayer

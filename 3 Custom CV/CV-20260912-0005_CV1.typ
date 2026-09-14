@@ -132,38 +132,37 @@
           columns: (1fr, 1fr),
           gutter: 8pt,
           [
-            ==== Accounting – Finance
-            - General Accounting (GL, AP, AR)
-            - Financial Close
-            - Consolidated GL Reporting
+            ==== Business
+            - MS Office (advanced Excel, Power Query)
 
-            ==== ERP Implementation – Replacement
-            - ERP replacement (new-ERP platform readiness)
-            - SAP S/4HANA
-            - AS-IS → TO-BE process design
-            - Business Blueprint (BBP) sign-off
+            ==== ERP
+            - SAP HANA
 
-            ==== Financial Reporting → BI
+            ==== Business Intelligence
             - MS Power BI
-            - Cognos
+            - QlikSense
             - Business Object
+            - Cognos
+            - Hyperion
+
+            ==== RPA
+            - UIpath
+            - MS PowerAutomate
           ],
           [
-            ==== RPA / Automation
-            - UIPath
-            - MS PowerAutomate
-            - PowerQuery ETL
-
-            ==== Workshops → Stakeholders
-            - Cross-functional workshops
-            - MS PowerPoint (workshop presentations)
-            - Change – communication
-            - User training
-
-            ==== Agile → Tools
+            ==== Agile
             - Jira
             - Confluence
-            - MS Office (advanced Excel / Power Query)
+
+            ==== Data & Analytics
+            - VBA
+            - SQL
+            - R
+
+            ==== Data & Analytics
+            - VBA
+            - SQL
+            - R
           ]
         )
       ],
