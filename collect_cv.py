@@ -215,15 +215,56 @@ class SessionWindow:
                   font=("Segoe UI", 9)).grid(row=3, column=0, sticky="w")
 
         def done():
+            # Collect the JD, then RUN the collection pipeline BEFORE closing the
+            # window. The window must stay alive while _run_pipeline runs, because
+            # the pipeline reports progress/errors through Tk message boxes. If the
+            # window were destroyed first (previous behaviour), _run_pipeline would
+            # crash with "TclError: application has been destroyed" and the user
+            # would see nothing created.
             try:
                 self.source_type = "Job Description (text)"
                 self.source_value = self._text.get("1.0", "end").strip()
                 if not self.source_value:
                     messagebox.showinfo("CV Builder", "No input received — please paste the Job Description.")
                     return
-                _safe_destroy(self.root)
+                # Run the pipeline; only close the window once it has succeeded.
+                ok = self._run_pipeline_from_ui()
+                if ok:
+                    _safe_destroy(self.root)
             except Exception as e:
+                # Any unexpected error keeps the window open so the user can see it.
+                self._progress(f"\u2717 Unexpected error: {e}")
                 messagebox.showerror("CV Builder", f"Something went wrong:\n{e}")
+
+        def _run_pipeline_from_ui(self):
+            """Wrapper used by the OK button.
+
+            Runs the collection pipeline while the window is alive, updates the live
+            progress label, and reports the outcome. Returns True on success, False
+            on failure. The window is intentionally kept open on failure so the user
+            can see what went wrong.
+            """
+            try:
+                self._run_pipeline(self.source_value, self.source_type, on_progress=self._progress)
+                self._progress("\u2713 Collection complete")
+                messagebox.showinfo(
+                    "CV Builder — Success",
+                    "Session collected successfully!\n\n"
+                    "The Job Description has been saved and the Excel tracker updated.\n"
+                    "Next: run the LLM generation to produce the tailored documents.",
+                )
+                return True
+            except Exception as e:
+                self._progress(f"\u2717 Collection failed: {e}")
+                messagebox.showerror(
+                    "CV Builder — Error",
+                    f"Collection failed:\n{e}\n\n(See the progress area above for details.)",
+                )
+                return False
+
+        def _progress(self, msg):
+            """Update the live progress label (GUI-only helper)."""
+            self.status_label.configure(text=msg)
 
         tk.Button(p, text="OK — Run process", command=done, width=16,
                   font=("Segoe UI", 9)).grid(row=5, column=0, sticky="w")
@@ -287,15 +328,25 @@ def _safe_destroy(root):
 
 
 # ── Main ───────────────────────────────────────────────────────────────
-def _run_pipeline(jtext, source_type, source_value):
-    """Shared processing pipeline used by both GUI and CLI entry points."""
-    print("CV Builder — Data Collection Engine")
-    print("=" * 44)
+def _run_pipeline(jtext, source_type, source_value=None, on_progress=None):
+    """Shared processing pipeline used by both GUI and CLI entry points.
 
-    # 2. Validate
+    If `on_progress` is supplied it is called with progress strings (GUI mode);
+    otherwise progress is printed to stdout (CLI mode). Errors are raised so the
+    caller can report them via message boxes.
+    """
+    def log(msg=""):
+        if on_progress:
+            on_progress(msg)
+        else:
+            print(msg)
+
+    log("CV Builder — Data Collection Engine")
+    log("=" * 44)
+
+    # 1. Validate
     if len(jtext) < 20:
-        messagebox.showinfo("CV Builder", "Job description too short — please paste the full text.")
-        return
+        raise RuntimeError("Job description too short — please paste the full text.")
 
     # 3. Serial + workbook + save JD + manifest
     wb, ws = load_workbook()
@@ -335,14 +386,11 @@ def _run_pipeline(jtext, source_type, source_value):
     row = add_session_row(ws, data)
     wb.save(WORKBOOK)
 
-    print(f"[serial]     {serial}")
-    print(f"[jd_file]    2 Job description/{safe}.txt")
-    print(f"[manifest]   {os.path.relpath(manifest, BASE_DIR)}")
-    print(f"[excel_log]  Application_Tracker.xlsx -> row {row}")
-    messagebox.showinfo(
-        "CV Builder",
-        f"Session logged!\n\nSerial: {serial}\nJD saved to 2 Job description/{safe}.txt\nExcel tracker updated.\n\nNow run the LLM generation (pi) to produce the documents."
-    )
+    log(f"Serial      {serial}")
+    log(f"JD file     2 Job description/{safe}.txt")
+    log(f"Manifest    {os.path.relpath(manifest, BASE_DIR)}")
+    log(f"Excel log   Application_Tracker.xlsx -> row {row}")
+    return {"serial": serial, "jd_path": jd_path, "manifest": manifest, "row": row}
 
 
 if __name__ == "__main__":
