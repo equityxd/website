@@ -330,7 +330,7 @@ def main():
         ")\n\n"
         "#v(gap)\n\n"
         "#entry(\n"
-        '  "Freelane CFO / Fundraising Consultant",\n'
+        '  "Head of Controlling",\n'
         '  "Magnetrap",\n'
         '  "November 2020", "January 2022",\n'
         '  "Mons, BE",\n'

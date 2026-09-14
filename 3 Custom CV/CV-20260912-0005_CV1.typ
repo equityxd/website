@@ -416,7 +416,7 @@
 #v(gap)
 
 #entry(
-  "Freelane CFO / Fundraising Consultant",
+  "Head of Controlling",
   "Magnetrap",
   "November 2020", "January 2022",
   "Mons, BE",
