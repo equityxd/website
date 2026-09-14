@@ -55,27 +55,151 @@ def next_serial(existing_rows=0):
 
 
 # ── URL fetch ──────────────────────────────────────────────────────────
-def fetch_url_text(url):
-    """Fetch a URL and return its plain-text body (best-effort)."""
-    req = urllib.request.Request(
-        url, headers={"User-Agent": "Mozilla/5.0 (CV-Builder Collector)"}
-    )
-    ctx = ssl._create_unverified_context()
+def _is_url(value):
+    """Return True if the given string looks like an http(s) URL."""
+    return bool(re.match(r"^https?://", (value or "").strip(), re.I))
+
+
+def _safe_remove(el):
+    """Best-effort removal of a node from its parent (lxml handles namespaces)."""
     try:
+        parent = el.getparent()
+        if parent is not None:
+            parent.remove(el)
+    except Exception:
+        pass
+
+
+def _strip_tags_fallback(text):
+    """Naive tag-stripping fallback used when lxml parsing is not available."""
+    text = re.sub(r"<script[^>]*>.*?</script>", " ", text, flags=re.S)
+    text = re.sub(r"<style[^>]*>.*?</style>", " ", text, flags=re.S)
+    text = re.sub(r"<[^>]+>", "\n", text)
+    text = re.sub(r"\n\s*\n+", "\n\n", text)
+    return text.strip()
+
+
+def _tree_to_text(node):
+    """Collect readable text from an lxml node, normalising whitespace."""
+    parts = [ln.strip() for ln in node.itertext() if ln.strip()]
+    return "\n".join(parts)
+
+
+def _find_main_content(doc):
+    """Try to isolate the main article / job-content block via common markers."""
+    selectors = [
+        "//article",
+        "//main",
+        "//[contains(@class, 'job')]",
+        "//[contains(@class, 'article')]",
+        "//[contains(@class, 'post')]",
+        "//[contains(@class, 'entry')]",
+        "//[contains(@id, 'content')]",
+        "//[contains(@id, 'main')]",
+        "//[data-testid]",
+    ]
+    for sel in selectors:
+        try:
+            found = doc.xpath(sel)
+        except Exception:
+            found = []
+        if found:
+            return found[0]
+    return None
+
+
+def _extract_readable(raw, charset="utf-8"):
+    """Turn an HTML byte body into readable plain text.
+
+    Removes scripts/styles/iframes, then tries to isolate the main article /
+    job content via common markers before extracting text. Falls back to a
+    naive tag-stripper if lxml parsing is unavailable.
+    """
+    text = raw.decode(charset, errors="ignore")
+    try:
+        import lxml.html
+        try:
+            doc = lxml.html.fromstring(text, parser=lxml.html.HTMLParser())
+        except Exception:
+            return _strip_tags_fallback(text).strip()
+
+        for tag in ("script", "style", "noscript", "iframe", "svg",
+                    "template", "head", "nav", "footer", "header", "form"):
+            for el in doc.xpath(" //" + tag + "//* | //" + tag):
+                _safe_remove(el)
+
+        main = _find_main_content(doc)
+        target = main if main is not None else (doc.body if doc.body is not None else doc)
+        body = _tree_to_text(target)
+        if body and len(body.strip()) >= 40:
+            return body.strip()
+
+        return _strip_tags_fallback(text).strip()
+    except Exception:
+        return _strip_tags_fallback(text).strip()
+
+
+def fetch_url_text(url):
+    """Fetch a URL and return its readable plain-text body.
+
+    Uses the requests library when available (robust redirect / cookie /
+    header handling) and falls back to urllib otherwise. Raises RuntimeError
+    with an actionable message on any failure (connection, DNS, HTTP status,
+    SSL, timeout, or empty / JS-rendered content).
+    """
+    url = url.strip()
+    if not _is_url(url):
+        raise RuntimeError(f"Not a URL: {url!r}")
+
+    requests_error = None
+    try:
+        import requests
+        headers = {
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            ),
+            "Accept-Language": "en-US,en;q=0.9",
+        }
+        with requests.get(url, headers=headers, timeout=30,
+                          allow_redirects=True) as r:
+            r.raise_for_status()
+            charset = r.encoding or "utf-8"
+            text = _extract_readable(r.content, charset)
+            if not text or len(text.strip()) < 20:
+                raise RuntimeError(
+                    "URL fetch returned too little content (" + str(len(text)) +
+" chars). The page may be JavaScript-rendered, "
+                    "behind a consent/login wall, or require interaction."
+                )
+            return text.strip()
+    except Exception as e:
+        requests_error = e
+
+    # Fallback: urllib (stdlib only)
+    try:
+        req = urllib.request.Request(
+            url, headers={"User-Agent": "Mozilla/5.0 (CV-Builder Collector)"}
+        )
+        ctx = ssl._create_unverified_context()
         with urllib.request.urlopen(req, context=ctx, timeout=30) as r:
             raw = r.read()
             charset = "utf-8"
             ct = r.headers.get("Content-Type", "")
             if "charset=" in ct:
                 charset = ct.split("charset=")[1].split(";")[0]
+            text = _extract_readable(raw, charset)
+            if not text or len(text.strip()) < 20:
+                raise RuntimeError(
+                    "URL fetch returned too little content (" + str(len(text)) +
+" chars). The page may be JavaScript-rendered, "
+                    "behind a consent/login wall, or require interaction."
+                )
+            return text.strip()
     except Exception as e:
-        raise RuntimeError(f"URL fetch failed: {e}")
-    text = raw.decode(charset, errors="ignore")
-    text = re.sub(r"<script[^>]*>.*?</script>", " ", text, flags=re.S)
-    text = re.sub(r"<style[^>]*>.*?</style>", " ", text, flags=re.S)
-    text = re.sub(r"<[^>]+>", "\n", text)
-    text = re.sub(r"\n\s*\n+", "\n\n", text)
-    return text.strip()
+        raise RuntimeError(
+            f"URL fetch failed: {requests_error or e}"
+        )
 
 
 # ── Excel workbook ─────────────────────────────────────────────────────
@@ -236,11 +360,12 @@ class SessionWindow:
             # crash with "TclError: application has been destroyed" and the user
             # would see nothing created.
             try:
-                self.source_type = "Job Description (text)"
-                self.source_value = self._text.get("1.0", "end").strip()
-                if not self.source_value:
+                raw = self._text.get("1.0", "end").strip()
+                if not raw:
                     messagebox.showinfo("CV Builder", "No input received — please paste the Job Description.")
                     return
+                # Auto-detect URLs: fetch + parse the page, otherwise use pasted text.
+                self.source_value, self.source_type = self._resolve_jtext(raw)
                 # Run the pipeline; only close the window once it has succeeded.
                 ok = self._run_pipeline_from_ui()
                 if ok:
@@ -249,6 +374,17 @@ class SessionWindow:
                 # Any unexpected error keeps the window open so the user can see it.
                 self._progress(f"\u2717 Unexpected error: {e}")
                 messagebox.showerror("CV Builder", f"Something went wrong:\n{e}")
+
+    def _resolve_jtext(self, value):
+        """Return (jtext, source_type).
+
+        If `value` is a URL, fetch + parse the page and mark the source as
+        'URL'; otherwise return the pasted text as-is with its source type.
+        """
+        if _is_url(value):
+            text = fetch_url_text(value)
+            return text, "URL"
+        return value, "Job Description (text)"
 
         def _run_pipeline_from_ui(self):
             """Wrapper used by the OK button.
@@ -494,7 +630,8 @@ if __name__ == "__main__":
             messagebox.showinfo("CV Builder", "No input received — cancelled.")
             _safe_destroy(root)
             sys.exit(0)
-        jtext = win.source_value if win.source_type != "URL" else fetch_url_text(win.source_value)
+        # Input was already resolved (auto-fetched if it was a URL) by done().
+        jtext = win.source_value
         source_type = win.source_type
         source_value = jtext
 
