@@ -453,5 +453,98 @@ def main():
     compile_pdf(typ_path, pdf_path)
 
 
+# ---------------------------------------------------------------------------
+# Test mode: validate titles + the accounting-scope highlighting logic.
+# ---------------------------------------------------------------------------
+
+EXPECTED_TITLES = {
+    "Engie SEM": "Strategic Business Analyst & Finance Automation Lead (Freelancer)",
+    "Holcim": "Senior Operational Excellence & Data Lead (Freelancer)",
+    "Engie Tractebel": "Cash Flow & Financial Modeling Specialist (Freelancer)",
+    "Shurgard": "Investment & Corporate Development Analyst (Freelancer)",
+    "Magnetrap": "Head of Controlling",
+    "Tobania": "Director Business Process Automation",
+    "Soap collect": "Founder",
+    "Degroof Petercam": "Performance Management Project Leader",
+    "Vinci Airports": "Managing Director & Head of Project Financial Modeling / Cursus Grand Talent",
+    "Rexel": "Freelance Finance Consolidation & Reporting Consultant",
+    "KPMG Audit": "Financial Auditor Supervisor",
+    "ICM - Brain & Spine Institute": "Deputy CFO Trainee",
+}
+
+# Entries that should render in light grey (important: true) after highlighting.
+EXPECTED_HIGHLIGHTED = {
+    "Engie SEM", "Holcim", "Engie Tractebel", "Magnetrap",
+    "Degroof Petercam", "Vinci Airports", "Rexel", "KPMG Audit",
+    "ICM - Brain & Spine Institute",
+}
+
+
+def extract_cv1_body():
+    """Return the raw cv1_body string literal from this source file."""
+    src = open("gen_cv_typ.py", encoding="utf-8").read()
+    start = src.index("    cv1_body = (\n") + len("    cv1_body = (\n")
+    end = src.index("\n    transform(", start)
+    return src[start:end]
+
+
+def run_tests():
+    """Validate titles and the dynamic highlighting behaviour."""
+    src = open("gen_cv_typ.py", encoding="utf-8").read()
+    body = extract_cv1_body()
+    highlighted = highlight_accounting(body, ACCOUNTING_KEYWORDS)
+
+    passed = 0
+    failed = 0
+
+    print("=== TEST: titles ===")
+    for org, title in EXPECTED_TITLES.items():
+        title_line = '  "%s",\\n' % title
+        if title_line in src:
+            print("PASS  %-26s = %s" % (org, title))
+            passed += 1
+        else:
+            print("FAIL  %-26s title missing: %s" % (org, title))
+            failed += 1
+
+    print("\n=== TEST: highlighting (important: true -> light grey) ===")
+    for org in EXPECTED_TITLES:
+        for block in re.split(r"#entry\(", highlighted)[1:]:
+            if '"%s",' % org in block:
+                is_true = "important: true" in block
+                expected = org in EXPECTED_HIGHLIGHTED
+                got = "grey" if is_true else "normal"
+                want = "grey" if expected else "normal"
+                status = "PASS" if got == want else "FAIL"
+                print("%s  %-26s = %-6s (expected %s)" % (status, org, got, want))
+                if got == want:
+                    passed += 1
+                else:
+                    failed += 1
+                break
+
+    print("\n" + "=" * 60)
+    print("Total: %d passed, %d failed" % (passed, failed))
+    if failed > 0:
+        raise SystemExit(1)
+    print("All tests passed.")
+
+
+def main():
+    if len(sys.argv) > 1 and sys.argv[1] == "--test":
+        run_tests()
+        return
+    if len(sys.argv) > 1:
+        jd = load_jd(sys.argv[1])
+        jd_label = sys.argv[1]
+    else:
+        jd = load_jd(None)
+        jd_label = "7 Input Job description/New Text Document.txt"
+
+    print("=== Targeting JD ===")
+    print(jd[:200] if jd else "(no JD file found)")
+    print("=" * 60)
+
+
 if __name__ == "__main__":
     main()
