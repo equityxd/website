@@ -127,11 +127,11 @@ def transform(label, quote, position, keywords, left_col, right_col, body):
 '''
 
     new_contact = '''        #text(size: 9pt, style: "italic")[
-          Rue Montagne de l'Oratoire 28/76\\
-          B-1000 Brussels\\
-          #profile.mailto\\
-          #profile.website\\
-          #profile.tel
+          #fa-icon("location-dot", fill: rgb("#333333")) Rue Montagne de l'Oratoire 28/76\\
+          #fa-icon("location-dot", fill: rgb("#333333")) B-1000 Brussels\\
+          #fa-icon("envelope", fill: rgb("#333333")) #profile.mailto\\
+          #fa-icon("globe", fill: rgb("#333333")) #profile.website\\
+          #fa-icon("mobile", fill: rgb("#333333")) #profile.tel
         ]
 '''
 
