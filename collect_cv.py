@@ -26,6 +26,7 @@ import ssl
 import urllib.request
 import datetime
 import openpyxl
+import threading
 from openpyxl.styles import Font
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog, filedialog
@@ -196,9 +197,22 @@ class SessionWindow:
                  font=("Segoe UI", 10, "bold")).grid(row=0, column=0, sticky="w")
         tk.Label(p, text="No other fields needed — just paste the full JD text, or load a .txt file.",
                  bg="#f4f4f4", font=("Segoe UI", 8), fg="#555").grid(row=1, column=0, sticky="w", pady=(4, 10))
+        # Compact status footer (quick one-line status)
         self.status_label = tk.Label(p, bg="#f4f4f4", fg="#c0392b",
                                      font=("Segoe UI", 8), anchor="w")
         self.status_label.grid(row=6, column=0, sticky="w")
+
+        # Live progress console — a small scrollable log so the user can see
+        # every step of the collection pipeline as it happens.
+        log_frame = tk.Frame(p, bg="#f4f4f4")
+        log_frame.grid(row=7, column=0, sticky="nw", pady=4)
+        self._log_area = tk.Text(log_frame, height=8, width=92, bg="#1e1e1e",
+                                 fg="#e6e6e6", font=("Consolas", 8),
+                                 wrap="word", insertbackground="#000")
+        log_sb = tk.Scrollbar(log_frame, command=self._log_area.yview)
+        log_sb.pack(side="right", fill="y")
+        self._log_area.pack(side="left", fill="both", expand=True)
+        self._log_area.configure(state="disabled")
 
         # Tall, scrollable text box — no practical paste limit
         txt_frame = tk.Frame(p, bg="#f4f4f4")
@@ -239,32 +253,71 @@ class SessionWindow:
         def _run_pipeline_from_ui(self):
             """Wrapper used by the OK button.
 
-            Runs the collection pipeline while the window is alive, updates the live
-            progress label, and reports the outcome. Returns True on success, False
-            on failure. The window is intentionally kept open on failure so the user
-            can see what went wrong.
+            Runs the collection pipeline in a background thread so the GUI stays
+            responsive, and pumps a live progress log so the user can see each
+            step. Returns True on success, False on failure. The window is kept
+            open on failure so the user can see what went wrong.
             """
-            try:
-                self._run_pipeline(self.source_value, self.source_type, on_progress=self._progress)
-                self._progress("\u2713 Collection complete")
-                messagebox.showinfo(
-                    "CV Builder — Success",
-                    "Session collected successfully!\n\n"
-                    "The Job Description has been saved and the Excel tracker updated.\n"
-                    "Next: run the LLM generation to produce the tailored documents.",
-                )
-                return True
-            except Exception as e:
-                self._progress(f"\u2717 Collection failed: {e}")
-                messagebox.showerror(
-                    "CV Builder — Error",
-                    f"Collection failed:\n{e}\n\n(See the progress area above for details.)",
-                )
-                return False
+            self._set_status("Collecting… please wait")
+            self._log("CV Builder — Data Collection Engine")
+            self._log("=" * 44)
+
+            state = {"kind": None, "payload": None}
+            lock = threading.Lock()
+
+            def report(msg):
+                with lock:
+                    state["kind"] = "progress"
+                    state["payload"] = msg
+
+            def worker():
+                try:
+                    self._run_pipeline(self.source_value, self.source_type, on_progress=report)
+                    with lock:
+                        state["kind"] = "success"
+                        state["payload"] = None
+                except Exception as e:  # noqa: BLE001
+                    with lock:
+                        state["kind"] = "failure"
+                        state["payload"] = e
+
+            t = threading.Thread(target=worker, daemon=True)
+            t.start()
+
+            def poll():
+                with lock:
+                    kind = state["kind"]
+                    payload = state["payload"]
+                if kind == "progress":
+                    self._log(payload)
+                    self.root.after(50, poll)
+                elif kind == "success":
+                    self._log("\u2713 Collection complete")
+                    self._set_status("\u2713 Collection complete")
+                    messagebox.showinfo(
+                        "CV Builder — Success",
+                        "Session collected successfully!\n\n"
+                        "The Job Description has been saved and the Excel tracker updated.\n"
+                        "Next: run the LLM generation to produce the tailored documents.",
+                    )
+                    _safe_destroy(self.root)
+                elif kind == "failure":
+                    e = payload
+                    self._log(f"\u2717 Collection failed: {e}")
+                    self._set_status(f"\u2717 Collection failed")
+                    messagebox.showerror(
+                        "CV Builder — Error",
+                        f"Collection failed:\n{e}\n\n(See the progress area above for details.)",
+                    )
+                elif kind is None:
+                    self.root.after(50, poll)
+
+            self.root.after(50, poll)
+            return True
 
         def _progress(self, msg):
-            """Update the live progress label (GUI-only helper)."""
-            self.status_label.configure(text=msg)
+            """Append a line to the live progress console (GUI-only helper)."""
+            self._log(msg)
 
         tk.Button(p, text="OK — Run process", command=done, width=16,
                   font=("Segoe UI", 9)).grid(row=5, column=0, sticky="w")
@@ -276,6 +329,20 @@ class SessionWindow:
         self.root.focus_force()
         self._text.focus_set()
         self.root.after(50, lambda: self.root.focus_force())
+
+    def _log(self, msg=""):
+        """Append a line to the live progress console (GUI-only helper)."""
+        try:
+            self._log_area.configure(state="normal")
+            self._log_area.insert("end", f"{msg}\n" if msg else "\n")
+            self._log_area.see("end")
+            self._log_area.configure(state="disabled")
+        except Exception:
+            pass
+
+    def _set_status(self, msg):
+        """Update the compact status footer (GUI-only helper)."""
+        self.status_label.configure(text=msg)
 
     def _on_paste(self, event=None):
         """Read the Windows clipboard directly and insert it. Works even when
