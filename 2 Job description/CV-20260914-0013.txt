@@ -1,0 +1,4 @@
+Senior Financial Consolidation Reporter
+Rexel, France
+Build financial consolidation and month-end close reporting.
+Automate reporting with Python and SQL.
