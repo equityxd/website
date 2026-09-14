@@ -2,13 +2,13 @@
   30.26  cx= 297.6  QUOTE  Ernest SONG
   30.26  cx= 297.6  QUOTE  ◆
   30.26  cx= 297.6  QUOTE  Finance Domain Leader
-  69.01  cx=  93.4  CONTACT  ◆ Rue Montagne de l’Oratoire 28/76 ◆
+  69.01  cx=  86.2  CONTACT  Rue Montagne de l’Oratoire 28/76
   69.01  cx= 379.4  QUOTE  Finance leader with 15+ years leading accounting and transformation mandates for multi-entity, multi-
-  81.95  cx=  66.2  CONTACT  B-1000 Brussels ◆ mail
+  81.95  cx=  62.6  CONTACT  B-1000 Brussels mail
   81.95  cx= 379.4  QUOTE  country organisations across BE, FR and NL. I specialise in General Accounting (GL, AP, AR) and financial-
-  94.89  cx=  75.2  CONTACT  contact@ernestsong.com ◆
+  94.89  cx=  71.6  CONTACT  contact@ernestsong.com
   94.89  cx= 379.6  QUOTE  close leadership, and in guiding ERP replacements from AS-IS diagnosis to SAP S/4HANA go-live. What sets
- 107.83  cx=  87.2  CONTACT  ernestsong.com ◆ +32 476 60 05 90
+ 107.83  cx=  83.6  CONTACT  ernestsong.com +32 476 60 05 90
  107.83  cx= 379.6  QUOTE  me apart is perspective: I've sat on both the operator's and the executive-recruiter's side of the table, so
  120.77  cx= 379.6  QUOTE  I read the numbers and the organisation behind them. I bring calm under pressure, rigorous Power BI /
  133.71  cx= 346.2  QUOTE  Cognos reporting, and a genuine commitment to turning finance into a lever for growth.

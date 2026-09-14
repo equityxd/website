@@ -127,11 +127,7 @@ def transform(label, quote, position, keywords, left_col, right_col, body):
 '''
 
     new_contact = '''        #text(size: 9pt, style: "italic")[
-          ◆ Rue Montagne de l'Oratoire 28/76
-          ◆ B-1000 Brussels
-          ◆ mail #profile.mailto
-          ◆ #profile.website
-          ◆ #profile.tel
+          Rue Montagne de l'Oratoire 28/76          B-1000 Brussels          mail #profile.mailto          #profile.website          #profile.tel
         ]
 '''
 
