@@ -7,13 +7,15 @@ rem -----------------------------------------------------------
 cd /d "%~dp0\.."
 python -m pip install -r cv_dashboard/requirements.txt >nul 2>&1
 
-rem Kill any stale server already holding the port, so we never serve an old build.
-for /f "tokens=2 skip=1" %%i in ('netstat -aon ^| findstr ":%PORT%" ^| findstr "LISTENING"') do (
-  taskkill /PID %%i /F >nul 2>&1
-)
-
 set HOST=127.0.0.1
 set PORT=8000
+
+rem Kill any stale server already holding the port, so we never serve an old build.
+rem (PID is the LAST whitespace-delimited field on each LISTENING line.)
+for /f "tokens=* delims=" %%a in ('netstat -aon ^| findstr ":%PORT%" ^| findstr "LISTENING"') do (
+  for %%b in (%%a) do (set LASTPID=%%b)
+  if defined LASTPID taskkill /PID %LASTPID% /F >nul 2>&1
+)
 
 echo -----------------------------------------------------------
 echo  CV Builder Dashboard
