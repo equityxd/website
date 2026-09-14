@@ -43,7 +43,6 @@ def main():
     except Exception as e:
         print(f"  FAILED -> {type(e).__name__}: {e}")
 
-    print("\n=== 4. uvicorn python processes ===")
     procs = subprocess.run(
         ["cmd", "/c", "tasklist"], capture_output=True, text=True, timeout=10
     ).stdout
@@ -53,6 +52,8 @@ def main():
             print("   ", l.strip())
     else:
         print("  NO uvicorn process found — server is not running.")
+
+    input("\n--- Press ENTER to close this window ---")
 
 
 if __name__ == "__main__":
