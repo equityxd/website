@@ -92,11 +92,11 @@
       gutter: gutter,
       [
         #text(size: 9pt, style: "italic")[
-          #fa-icon("location-dot", fill: rgb("#333333")) Rue Montagne de l'Oratoire 28/76\
-          #fa-icon("location-dot", fill: rgb("#333333")) B-1000 Brussels\
-          #fa-icon("envelope", fill: rgb("#333333")) #profile.mailto\
-          #fa-icon("globe", fill: rgb("#333333")) #profile.website\
-          #fa-icon("mobile", fill: rgb("#333333")) #profile.tel
+          Rue Montagne de l'Oratoire 28/76\
+          B-1000 Brussels\
+          #profile.mailto\
+          #profile.website\
+          #profile.tel
         ]
       ],
       [
@@ -394,13 +394,13 @@
     - Assessed local financing needs, performed countercredit analysis, and conducted impairment testing.
     - Engineered finance data models from SAP HANA, delivering 8 Power BI executive dashboards that turned raw transactions into decision-ready insights for finance leadership.
   ],
-  important: false
+  important: true
 )
 
 #v(gap)
 
 #entry(
-  "Freelance M&A / Corporate Development Consultant",
+  "M&A / Corporate Development Consultant (Freelancer)",
   "Shurgard",
   "February 2022", "February 2023",
   "Brussels, BE",
@@ -416,7 +416,7 @@
 #v(gap)
 
 #entry(
-  "Freelance CFO / Fundraising Consultant",
+  "Head of Controlling",
   "Magnetrap",
   "November 2020", "January 2022",
   "Mons, BE",
@@ -426,7 +426,7 @@
     - Monitored company performance and drove corrective actions.
     - Prepared operating results reports and maintained financial models for long-term use.
   ],
-  important: false
+  important: true
 )
 
 #v(gap)
@@ -473,13 +473,13 @@
     - Led projects related to regulatory reporting sourcing and followed BPM standards.
     - Conducted gap analysis of business requirements and existing procedures to identify areas for improvement.
   ],
-  important: false
+  important: true
 )
 
 #v(gap)
 
 #entry(
-  "Freelance Business Development & Financial Modeling Director",
+  "Head of Controlling",
   "Vinci Airports",
   "February 2016", "December 2017",
   "Brussels, BE & Lisbon, PT",
@@ -490,13 +490,13 @@
     - Negotiated extension of concession contract with Portuguese authorities and implemented new financial business model to improve budgeting and forecasting processes.
     - Managed accounting and financial reporting in accordance with BE-GAAP standards.
   ],
-  important: false
+  important: true
 )
 
 #v(gap)
 
 #entry(
-  "Freelance Finance Consolidation & Reporting Consultant",
+  "Head of Controlling",
   "Rexel",
   "September 2014", "January 2016",
   "Paris, FR",
@@ -536,5 +536,5 @@
     - #set smartquote(enabled: false)
       Prepared the institutional audit necessary for the certification by the "Comité de la Charte".
   ],
-  important: false
+  important: true
 )

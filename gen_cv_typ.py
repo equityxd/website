@@ -22,9 +22,40 @@ The output follows an ATS-optimised structure:
 
 All claims are truthful; metrics are only used where the base CV supports them.
 """
+import re
 import sys
 import subprocess
 from pathlib import Path
+
+# Accounting-scope signals: an #entry mentioning any of these is highlighted (important: true).
+ACCOUNTING_KEYWORDS = (
+    "be-gAAP", "fr gaap", "ifrs", "sox",
+    "accounting", "audited financial statements", "financial auditor",
+    "financial reporting", "consolidated reporting",
+    "financial close", "finance close", "GL/AP/AR",
+    "financial modeling", "financial modelling",
+    "cash flow", "cash-flow", "treasury", "controlling", "cfo",
+    "bank reconciliation", "budgeting", "forecasting",
+    "financing", "fundraising",
+)
+
+
+def highlight_accounting(body, keywords):
+    """Highlight (important: true) every #entry block that mentions accounting-scope keywords.
+
+    Flips `important: false` -> `important: true` only when a keyword appears in the entry's
+    details, so accounting / finance-reporting experiences stand out in light grey; non-accounting
+    entries keep their declared important flag.
+
+    Works on the raw generator source: splits on `#entry(` and flips the flag in accounting blocks.
+    """
+    out = []
+    for block in re.split(r"#entry\(", body)[1:]:
+        low = block.lower()
+        if "important: false" in block and any(kw in low for kw in keywords):
+            block = block.replace("important: false", "important: true", 1)
+        out.append("#entry(" + block)
+    return "".join(out)
 
 BASE = "1 Source/SONG Ernest - CV v1.typ"
 OUT_DIR = "3 Custom CV"
@@ -127,11 +158,11 @@ def transform(label, quote, position, keywords, left_col, right_col, body):
 '''
 
     new_contact = '''        #text(size: 9pt, style: "italic")[
-          #fa-icon("location-dot", fill: rgb("#333333")) Rue Montagne de l'Oratoire 28/76\\
-          #fa-icon("location-dot", fill: rgb("#333333")) B-1000 Brussels\\
-          #fa-icon("envelope", fill: rgb("#333333")) #profile.mailto\\
-          #fa-icon("globe", fill: rgb("#333333")) #profile.website\\
-          #fa-icon("mobile", fill: rgb("#333333")) #profile.tel
+          Rue Montagne de l'Oratoire 28/76\\
+          B-1000 Brussels\\
+          #profile.mailto\\
+          #profile.website\\
+          #profile.tel
         ]
 '''
 
@@ -284,7 +315,8 @@ def main():
         ")\n\n"
         "#v(gap)\n\n"
         "#entry(\n"
-        '  "Freelance M&A / Corporate Development Consultant",\n'
+        '  "M&A / Corporate Development Consultant (Freelancer)",\n'
+
         '  "Shurgard",\n'
         '  "February 2022", "February 2023",\n'
         '  "Brussels, BE",\n'
@@ -298,7 +330,7 @@ def main():
         ")\n\n"
         "#v(gap)\n\n"
         "#entry(\n"
-        '  "Freelance CFO / Fundraising Consultant",\n'
+        '  "Head of Controlling",\n'
         '  "Magnetrap",\n'
         '  "November 2020", "January 2022",\n'
         '  "Mons, BE",\n'
@@ -353,7 +385,8 @@ def main():
         ")\n\n"
         "#v(gap)\n\n"
         "#entry(\n"
-        '  "Freelance Business Development & Financial Modeling Director",\n'
+        '  "Head of Controlling",\n'
+
         '  "Vinci Airports",\n'
         '  "February 2016", "December 2017",\n'
         '  "Brussels, BE & Lisbon, PT",\n'
@@ -368,7 +401,8 @@ def main():
         ")\n\n"
         "#v(gap)\n\n"
         "#entry(\n"
-        '  "Freelance Finance Consolidation & Reporting Consultant",\n'
+        '  "Head of Controlling",\n'
+
         '  "Rexel",\n'
         '  "September 2014", "January 2016",\n'
         '  "Paris, FR",\n'
@@ -408,6 +442,8 @@ def main():
         "  important: false\n"
         ")\n"
     )
+
+    cv1_body = highlight_accounting(cv1_body, ACCOUNTING_KEYWORDS)
 
     transform(1, cv1_quote, cv1_position, cv1_keywords, cv1_left, cv1_right, cv1_body)
 
