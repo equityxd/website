@@ -14,12 +14,3 @@ __pycache__/
 # Keep the empty "0 Old" folder out of git for now (git ignores empty dirs)
 # Re-enable if you start putting files back in it:
 # 0 Old/
-
-# --- Generated artifacts are NOT source; keep them out of the repo ---
-# They regenerate on every run, so tracking them would cause noise + divergence.
-2 Job description/            # input JD text
-3 Custom CV/                  # generated .pdf + .typ
-5 Custom Cover Letter/        # generated .docx
-6 Interview Prep/             # generated .docx
-4 Application monitoring/manifests/   # per-JD manifest txt
-4 Application monitoring/Application_Tracker.xlsx  # rolling tracker (regenerates)
