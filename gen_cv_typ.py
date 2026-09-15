@@ -84,6 +84,38 @@ def load_jd(path):
     return ""
 
 
+def _extract_position(jd):
+    """Best-effort extraction of the target job title from the JD text.
+
+    Two signals, in order:
+      1. A title following a strong lead-in ("...looking for an experienced <TITLE>...").
+      2. The most-repeated Title-Case standalone line (the highlighted title is repeated
+         throughout the JD body).
+    Falls back to an empty string when no title-like candidate is found (e.g. old French
+    JDs with no clean English title). LinkedIn UI boilerplate is filtered out.
+    """
+    _NOISE = {
+        "view company", "show more", "from freelancer to permanent roles",
+        "recommended", "recommended by linkedin", "linkedin members",
+        "recommendations", "how to become",
+    }
+    m = re.search(
+        r"looking for (?:an|a|an experienced)\s+([A-Z][A-Za-zÀ-ÿ/&]{5,80}?)\s+(?:to help|and this|you|we|/|,|\.)",
+        jd, re.IGNORECASE,
+    )
+    if m:
+        return " ".join(m.group(1).split())
+    counts = {}
+    for line in jd.splitlines():
+        s = line.strip()
+        if s and not s.endswith((".", "?", "!")) and re.match(r"^[A-Z][A-Za-zÀ-ÿ &/\-]{3,}$", s):
+            if s.lower() not in _NOISE:
+                counts[s] = counts.get(s, 0) + 1
+    if counts and max(counts.values()) >= 2:
+        return max(counts, key=counts.get)
+    return ""
+
+
 def transform(out_base, label, quote, position, keywords, left_col, right_col, body):
     """Apply the JD-tailored overrides to the base template and write the .typ file."""
     with open(BASE, encoding="utf-8") as f:
@@ -226,12 +258,28 @@ def main():
     if len(sys.argv) > 1 and sys.argv[1] == "--test":
         run_tests()
         return
-    if len(sys.argv) > 1:
-        jd = load_jd(sys.argv[1])
-        jd_label = sys.argv[1]
+    # Parse arguments: `--position <TITLE>` (explicit override) plus a final positional
+    # JD path. The positional is always the last token.
+    _args = sys.argv[1:]
+    position = None
+    for _i, _a in enumerate(_args):
+        if _a == "--position" and _i + 1 < len(_args):
+            position = _args[_i + 1]
+        elif _a.startswith("--position="):
+            position = _a.split("=", 1)[1]
+
+    _jd_path = _args[-1] if _args else None
+    if _jd_path:
+        jd = load_jd(_jd_path)
+        jd_label = _jd_path
     else:
         jd = load_jd(None)
         jd_label = "7 Input Job description/New Text Document.txt"
+
+    # Honour the explicit `--position`, else derive it best-effort from the JD text so
+    # the CV reflects the specific job being targeted.
+    if not position:
+        position = _extract_position(jd)
 
     print("=== Targeting JD ===")
     print(jd[:200] if jd else "(no JD file found)")
@@ -252,7 +300,7 @@ def main():
         "I bring calm under pressure, rigorous Power BI / Cognos reporting, and a genuine "
         "commitment to turning finance into a lever for growth."
     )
-    cv1_position = "Finance Domain Leader"
+    position = position or "Finance Domain Leader"
     cv1_keywords = (
         "Finance Domain Leader, ERP Implementation, ERP Replacement, General Accounting (GL, AP, AR), "
         "Financial Close, IFRS, BE-GAAP, Business Blueprint, AS-IS TO-BE Process Design, Workshops, "
@@ -474,7 +522,7 @@ def main():
     label = serial.rsplit("-", 1)[1] if "-" in serial else "1"  # "0032" part
     out_base = f"3 Custom CV/{serial}"
 
-    transform(out_base, label, cv1_quote, cv1_position, cv1_keywords, cv1_left, cv1_right, cv1_body)
+    transform(out_base, label, cv1_quote, position, cv1_keywords, cv1_left, cv1_right, cv1_body)
 
     # Compile the PDF
     typ_path = f"{out_base}_CV{label}.typ"

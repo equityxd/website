@@ -181,7 +181,7 @@ async def generate(request: Request):
             q.put(("progress", "Rendering CV PDF (Typst)…"))
             for step in _run_and_step(
                 "gen_cv_typ.py",
-                [str(coll["jd_path"])],
+                ["--position", coll.get("title", ""), str(coll["jd_path"])],
                 [
                     # Only the "Compiled <path>" line is a real completion check;
                     # the "Running: typst compile …" / "Wrote ….typ" lines stay as info.

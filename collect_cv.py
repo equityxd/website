@@ -531,6 +531,38 @@ def _safe_destroy(root):
 
 
 # ── Main ───────────────────────────────────────────────────────────────
+def extract_position(jd):
+    """Best-effort extraction of the target job title from the JD text.
+
+    Two signals, in order:
+      1. A title following a strong lead-in ("...looking for an experienced <TITLE>...").
+      2. The most-repeated Title-Case standalone line (the highlighted title is repeated
+ throughout the JD body).
+    Falls back to an empty string when no title-like candidate is found (e.g. old French
+    JDs with no clean English title). LinkedIn UI boilerplate is filtered out.
+    """
+    _NOISE = {
+        "view company", "show more", "from freelancer to permanent roles",
+        "recommended", "recommended by linkedin", "linkedin members",
+        "recommendations", "how to become",
+    }
+    m = re.search(
+        r"looking for (?:an|a|an experienced)\s+([A-Z][A-Za-zÀ-ÿ/&]{5,80}?)\s+(?:to help|and this|you|we|/|,|\.)",
+        jd, re.IGNORECASE,
+    )
+    if m:
+        return " ".join(m.group(1).split())
+    counts = {}
+    for line in jd.splitlines():
+        s = line.strip()
+        if s and not s.endswith((".", "?", "!")) and re.match(r"^[A-Z][A-Za-zÀ-ÿ &/\-]{3,}$", s):
+            if s.lower() not in _NOISE:
+                counts[s] = counts.get(s, 0) + 1
+    if counts and max(counts.values()) >= 2:
+        return max(counts, key=counts.get)
+    return ""
+
+
 def _run_pipeline(jtext, source_type, source_value=None, on_progress=None):
     """Shared processing pipeline used by both GUI and CLI entry points.
 
@@ -593,7 +625,13 @@ def _run_pipeline(jtext, source_type, source_value=None, on_progress=None):
     log(f"JD file     2 Job description/{safe}.txt")
     log(f"Manifest    {os.path.relpath(manifest, BASE_DIR)}")
     log(f"Excel log   Application_Tracker.xlsx -> row {row}")
-    return {"serial": serial, "jd_path": jd_path, "manifest": manifest, "row": row}
+    return {
+        "serial": serial,
+        "jd_path": jd_path,
+        "manifest": manifest,
+        "row": row,
+        "title": extract_position(jtext),
+    }
 
 
 if __name__ == "__main__":
