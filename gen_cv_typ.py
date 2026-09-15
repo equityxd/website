@@ -23,6 +23,7 @@ The output follows an ATS-optimised structure:
 All claims are truthful; metrics are only used where the base CV supports them.
 """
 import io
+import os
 import re
 import sys
 import subprocess
@@ -83,7 +84,7 @@ def load_jd(path):
     return ""
 
 
-def transform(label, quote, position, keywords, left_col, right_col, body):
+def transform(out_base, label, quote, position, keywords, left_col, right_col, body):
     """Apply the JD-tailored overrides to the base template and write the .typ file."""
     with open(BASE, encoding="utf-8") as f:
         t = f.read()
@@ -194,7 +195,7 @@ def transform(label, quote, position, keywords, left_col, right_col, body):
     pos = t.index(header_line)
     t = t[:pos] + header_line + body
 
-    out = "3 Custom CV/CV-20260912-0005_CV%s.typ" % label
+    out = f"{out_base}_CV{label}.typ"
     with open(out, "w", encoding="utf-8", newline="\n") as f:
         f.write(t)
     print("Wrote", out)
@@ -211,6 +212,14 @@ def compile_pdf(typ_path, pdf_path):
         print(res.stderr)
         raise SystemExit(1)
     print("Compiled", pdf_path)
+
+
+def parse_serial(jd_label):
+    """Extract the serial (a CV-YYYYMMDD-NNNN token) from the JD filename."""
+    import re
+    base = os.path.basename(jd_label)
+    m = re.search(r"(CV-\d{8}-\d{4})", base)
+    return m.group(1) if m else f"CV-{datetime.date.today().isoformat().replace('-', '')}"
 
 
 def main():
@@ -459,11 +468,17 @@ def main():
 
     cv1_body = highlight_accounting(cv1_body, ACCOUNTING_KEYWORDS)
 
-    transform(1, cv1_quote, cv1_position, cv1_keywords, cv1_left, cv1_right, cv1_body)
+    # Build the output base name from the JD's serial (e.g. CV-20260915-0032) so the
+    # rendered CV is a distinct file per JD, rather than always overwriting 0005.
+    serial = parse_serial(jd_label)
+    label = serial.rsplit("-", 1)[1] if "-" in serial else "1"  # "0032" part
+    out_base = f"3 Custom CV/{serial}"
+
+    transform(out_base, label, cv1_quote, cv1_position, cv1_keywords, cv1_left, cv1_right, cv1_body)
 
     # Compile the PDF
-    typ_path = "3 Custom CV/CV-20260912-0005_CV1.typ"
-    pdf_path = "3 Custom CV/CV-20260912-0005_CV1.pdf"
+    typ_path = f"{out_base}_CV{label}.typ"
+    pdf_path = f"{out_base}_CV{label}.pdf"
     compile_pdf(typ_path, pdf_path)
 
 
