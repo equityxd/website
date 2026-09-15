@@ -72,7 +72,7 @@
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
       let buffer = "";
-      let pendingType = null; // "progress" | "error" from the first data: line
+      let pendingType = null; // "progress" | "error" | "done" from the first data: line
 
       const readLoop = async () => {
         while (true) {
@@ -86,13 +86,14 @@
           for (const rawLine of lines) {
             const line = rawLine.trim();
             if (line === "") {
-              pendingType = null; // frame boundary
+              // blank line = event boundary; do NOT reset pendingType so a
+              // trailing single-line "data: done" event is not lost.
               continue;
             }
             if (line.startsWith("data: ")) {
               const payload = line.slice(6);
               if (pendingType === null) {
-                // First data: line is the event type ("progress" | "error")
+                // First data: line is the event type ("progress" | "error" | "done")
                 pendingType = payload;
               } else {
                 // Second data: line is the message
@@ -108,7 +109,13 @@
       };
 
       await readLoop();
-      logLine("✓ Stream complete.", "line-done");
+      // The "done" event is emitted as a single-line frame ("data: done"),
+      // so it never triggers the emit path above; handle it explicitly here.
+      if (pendingType === "done") {
+        logLine("✓ All documents generated successfully.", "line-done");
+      } else {
+        logLine("✓ Stream complete.", "line-done");
+      }
     } catch (err) {
       if (err.name === "AbortError") {
         logLine("Aborted.", "line-warn");
