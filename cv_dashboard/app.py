@@ -170,6 +170,19 @@ async def generate(request: Request):
 
 
 # ---------------------------------------------------------------------------
+# API: static assets (app.js / style.css referenced at root in index.html)
+# ---------------------------------------------------------------------------
+@app.get("/app.js")
+async def serve_app_js():
+    return FileResponse(STATIC_DIR / "app.js")
+
+
+@app.get("/style.css")
+async def serve_style_css():
+    return FileResponse(STATIC_DIR / "style.css")
+
+
+# ---------------------------------------------------------------------------
 # API: download (path-traversal safe)
 # ---------------------------------------------------------------------------
 @app.get("/download")
