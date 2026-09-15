@@ -63,17 +63,44 @@ def fetch_input_text(input_value, input_type):
 # ---------------------------------------------------------------------------
 # Subprocess streaming helper
 # ---------------------------------------------------------------------------
-def _subprocess_stream(script, extra_args):
-    """Run a pipeline script, yielding stripped stdout lines."""
+def _run_and_step(script, extra_args, label_map):
+    """Run a pipeline script and yield clean, per-document completion steps.
+
+    `label_map` is a list of `(needle, label)` pairs. For each non-empty stdout
+    line, the first `needle` that appears in the line yields a checked step
+    `"✓ {label} → {path}"`; otherwise the line is passed through as plain info.
+    A `label` of `None` means "pass the line through as-is". Raises RuntimeError
+    on a non-zero exit code so a failed step fails the whole run.
+    """
     proc = subprocess.Popen(
         [sys.executable, str(BASE_DIR.parent / script), *extra_args],
         cwd=str(BASE_DIR.parent),  # scripts use relative paths (e.g. "1 Source/…")
-        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1,
+        # The pipeline scripts emit emoji/UTF-8 text; decode the captured pipe as
+        # UTF-8 rather than the locale's cp1252 so characters like 📍 don't raise
+        # 'charmap' codec can't decode byte 0x8d.
+        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", bufsize=1,
     )
     assert proc.stdout is not None
-    for line in proc.stdout:
-        yield line.rstrip("\n")
+    for raw in proc.stdout:
+        line = raw.rstrip("\n")
+        stripped = line.strip()
+        if not stripped:
+            continue
+        for needle, label in label_map:
+            if needle is not None and needle in stripped:
+                parts = stripped.split(None, 1)
+                path = parts[1].strip() if len(parts) > 1 else stripped
+                if label is None:
+                    yield stripped
+                else:
+                    yield f"✓ {label} → {path}"
+                break
+        else:
+            yield stripped  # informational line (headers, typst commands, etc.)
     proc.wait()
+    if proc.returncode != 0:
+        raise RuntimeError(f"{os.path.basename(script)} failed (exit code {proc.returncode})")
+
 
 
 # ---------------------------------------------------------------------------
@@ -136,18 +163,35 @@ async def generate(request: Request):
             q.put(("progress", f"✓ Collected → serial {serial}"))
 
             # Stage 2 — cover letter + interview prep (subprocess).
-            q.put(("progress", "Generating cover letter + interview prep…"))
-            for line in _subprocess_stream("generate_documents.py", [str(coll["jd_path"])]):
-                q.put(("progress", f"Documents: {line}"))
+            # Emit an explicit checked step for each document so the user can
+            # confirm every artefact was actually produced.
+            q.put(("progress", "Generating documents…"))
+            for step in _run_and_step(
+                "generate_documents.py",
+                [str(coll["jd_path"])],
+                [
+                    ("CL1", f"Cover letter ({serial}_CL1.docx)"),
+                    ("IP1", f"Interview prep ({serial}_IP1.docx)"),
+                    ("Application_Tracker", "Application tracker updated"),
+                ],
+            ):
+                q.put(("progress", step))
 
-            # Stage 3 — CV render (best-effort; never fails the whole run).
-            # Uses the validated Typst .typ pipeline (gen_cv_typ.py), which reads
-            # the base template, writes a JD-tailored .typ, and compiles to PDF.
-            q.put(("progress", "Rendering CV PDF (Typst .typ)…"))
-            for line in _subprocess_stream("gen_cv_typ.py", [str(coll["jd_path"])]):
-                q.put(("progress", f"CV: {line}"))
+            # Stage 3 — CV render (Typst .typ → PDF), emitted as an explicit check.
+            q.put(("progress", "Rendering CV PDF (Typst)…"))
+            for step in _run_and_step(
+                "gen_cv_typ.py",
+                [str(coll["jd_path"])],
+                [
+                    # Only the "Compiled <path>" line is a real completion check;
+                    # the "Running: typst compile …" / "Wrote ….typ" lines stay as info.
+                    ("Compiled", f"CV PDF ({serial}_CV…)"),
+                    (".typ", None),
+                ],
+            ):
+                q.put(("progress", step))
 
-            q.put(("progress", f"✓ Complete (serial {serial})."))
+            q.put(("progress", f"✓ All documents generated for serial {serial}."))
             q.put(("done", None))
         except Exception as exc:
             q.put(("error", str(exc)))
