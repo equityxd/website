@@ -98,6 +98,7 @@
                 // Second data: line is the message
                 if (pendingType === "error") logLine(payload, "line-error");
                 else if (pendingType === "done") logLine(payload, "line-done");
+                else if (payload.startsWith("\u2713")) logLine(payload, "line-done"); // a completed check → green
                 else logLine(payload, "line-info");
                 pendingType = null;
               }
