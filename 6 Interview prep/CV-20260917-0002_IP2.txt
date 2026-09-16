@@ -1,0 +1,23 @@
+INTERVIEW PREP — Question 2 of 6
+=================================
+Q: Describe a time you identified process gaps, inefficiencies and improvement opportunities and acted on them.
+
+SITUATION
+Engie SEM — finance automation mandate (Jan 2026 – Present). The organisation relied on an unreliable legacy budget framework.
+
+TASK
+Identify inefficiencies and deliver improvement opportunities while keeping operations continuous under a resource gap.
+
+ACTION
+- Mapped the existing budget process and quantified the gaps/inefficiencies.
+- Designed, built and deployed a new automated budget model from scratch under a critical 2-week timeline.
+- Automated financial-close ingestion with PowerQuery ETL workflows, processing 1,500+ bookings per close with zero human intervention.
+
+RESULT
+- Replaced an unreliable legacy framework with a robust, from-scratch automated model.
+- Kept operations continuous during a resource gap.
+- Achieved high-volume close ingestion (1,500+ bookings/close) with zero manual intervention.
+
+RECRUITER NOTE / PROBE
+- Direct fit for the JD's "identify gaps, inefficiencies and improvement opportunities."
+- Probe: how prioritisation was done, and how "improvement opportunities" were quantified for stakeholders.

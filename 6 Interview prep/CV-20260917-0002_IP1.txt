@@ -1,0 +1,23 @@
+INTERVIEW PREP — Question 1 of 6
+=================================
+Q: Tell me about a time you had to assess and document AS-IS processes, systems, data and interfaces across a business.
+
+SITUATION
+Current freelance mandate as Strategic Business Analyst & Finance Automation Lead at Engie SEM (Jan 2026 – Present), on a SAP S/4HANA migration.
+
+TASK
+Assess and document the existing (AS-IS) processes, systems, data and interfaces across the business to establish a diagnosis before transformation — the JD's first responsibility.
+
+ACTION
+- Acted as the core Business Analyst bridging IT architecture and strategic business operations.
+- Assessed and documented AS-IS processes, systems, data and interfaces between the middle-office (IVDB) database and SAP S/4HANA.
+- Restructured and simplified Work Breakdown Structure (WDS) project codes to strengthen portfolio monitoring and reporting.
+
+RESULT
+- Established a clear AS-IS baseline linking the middle-office data to the ERP.
+- Improved portfolio monitoring and reporting fidelity.
+- Set the diagnosis that informed subsequent requirements and remediation.
+
+RECRUITER NOTE / PROBE
+- Ask which interfaces were in scope and how data lineage was validated.
+- Note: evidence is implementation/migration; probe depth of "documentation" artefacts vs. a formal requirements-engineering discipline.

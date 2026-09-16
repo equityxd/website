@@ -1,0 +1,17 @@
+COVER LETTER 5
+==============
+Candidate: Ernest SONG | Serial CV-20260917-0002
+Role: Business Analyst – Greenfield ERP Project
+
+Dear Hiring Manager,
+
+I apply for the Business Analyst – Greenfield ERP position, bringing a blend of analyst-on-an-ERP-migration experience and process-improvement discipline that maps onto your top requirements.
+
+On AS-IS diagnosis and process mapping, I have assessed and documented AS-IS processes, data and interfaces across a middle-office database and SAP S/4HANA, and mapped production workflows to remove inefficiencies — delivering a from-scratch budget model in a 2-week window. On requirements gathering and fit-gap analysis, I facilitate stakeholder sessions to capture and prioritise requirements, and conduct fit-gap analysis of business requirements against existing procedures. On ERP selection support, I evaluate ERP/BI solutions against operational needs and implement solutions such as Qliksense over new data sources.
+
+On the gaps: I do not have a formal RFI/RFP or standalone workshop-facilitation track record, and my sector background is not logistics/transport. I close these with a structured onboarding approach, criteria-ready evaluation artefacts, stakeholder briefings during demonstrations, and my ESCP auditing/consulting qualification for rigorous requirements documentation — and I move quickly to learn a new sector's operating context.
+
+Based in Brussels, available for a hybrid contract, I would welcome a conversation.
+
+Kind regards,
+Ernest SONG

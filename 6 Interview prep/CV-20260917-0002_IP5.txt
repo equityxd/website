@@ -1,0 +1,22 @@
+INTERVIEW PREP — Question 5 of 6
+=================================
+Q: Describe a time you developed business, functional, data and integration requirements for a programme.
+
+SITUATION
+Engie Tractebel (Mar–Dec 2023), Cash Flow & Financial Modeling Specialist, project finance reporting atop SAP.
+
+TASK
+Define and structure requirements — business, functional, data and integration — to connect ERP data to business outcomes.
+
+ACTION
+- Defined cash-flow reporting (business/functional) and per-project cash-exposure (data) requirements for project finance.
+- Modelled finance data from SAP and designed Power BI reporting to connect ERP data to actionable business insights (integration).
+- Assessed subsidiary financing needs through credit analysis and impairment testing (business/compliance requirements).
+
+RESULT
+- Connected ERP data to decision-ready BI reporting.
+- Established clear business and data requirements underpinning project-finance reporting.
+
+RECRUITER NOTE / PROBE
+- Strong on business/data/integration requirements; weaker on non-functional requirements — this is a documented gap.
+- Probe: how non-functional requirements (performance, security, availability) were handled, and whether requirements were baselined/version-controlled with stakeholders.

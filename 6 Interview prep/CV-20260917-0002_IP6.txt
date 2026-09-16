@@ -1,0 +1,22 @@
+INTERVIEW PREP — Question 6 of 6
+=================================
+Q: Tell me about a time you worked with external vendors or integrators and drove adoption of a new process/system.
+
+SITUATION
+Tobania (Feb–Oct 2020), Director Business Process Automation, introducing RPA and self-service BI to client teams.
+
+TASK
+Select/align vendor and integrator capabilities and drive successful adoption of new processes and tools.
+
+ACTION
+- Assessed process and capability needs and defined a pricing strategy and BI/analytics roadmap for a RPA + self-service BI citizen-developer model.
+- Delivered tailored stakeholder reporting to help clients monitor costs and make data-driven decisions.
+- Established change-management structures and adoption strategies to enable successful adoption of new processes and tools.
+
+RESULT
+- Enabled adoption of new processes and automation across client teams.
+- Improved efficiency and profitability through standardisation and harmonisation.
+
+RECRUITER NOTE / PROBE
+- Covers the "systems integrator / change adoption" half of the vendor requirement; the "ERP vendor selection" half is not evidenced.
+- Probe: nature of the vendor/integrator relationship (managed vs. advisory), decision-making authority, and how adoption was measured.

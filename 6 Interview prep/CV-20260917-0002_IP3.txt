@@ -1,0 +1,24 @@
+INTERVIEW PREP — Question 3 of 6
+=================================
+Q: Give an example of when you led a workshop with business stakeholders and process owners to capture and prioritise requirements.
+
+SITUATION
+Degroof Petercam (Jan 2018 – Dec 2018), Performance Management Project Leader, contributing to a Finance Transformation Operating Model (FTOM).
+
+TASK
+Capture and prioritise requirements from business stakeholders and process owners, and align them against standards.
+
+ACTION
+- Facilitated stakeholder sessions to capture requirements.
+- Structured and prioritised requirements against BPM standards.
+- Contributed to establishing the future-state operating model (FTOM).
+- Ran fit-gap analysis of business requirements versus existing procedures to identify improvement opportunities.
+
+RESULT
+- Produced a prioritised, standards-aligned requirements baseline.
+- Directly supported establishing the future-state operating model — a JD responsibility.
+- Optimized the finance-close process for governance, internal control and data quality.
+
+RECRUITER NOTE / PROBE
+- This is the strongest "transferable" evidence for workshop facilitation, though the CV frames it as "facilitated" rather than "led" workshops.
+- Probe: group sizes, how conflicting requirements were resolved, and which process owners were involved — to substantiate facilitation depth.

@@ -1,0 +1,22 @@
+INTERVIEW PREP — Question 4 of 6
+=================================
+Q: Walk me through how you have evaluated ERP/BI solutions against business requirements and operational needs to support selection.
+
+SITUATION
+Hol Cim (Jan 2024 – Dec 2025), Senior Operational Excellence & Data Lead, post-M&A with new data sources and a need for reliable financial reporting.
+
+TASK
+Support solution selection and establish evaluation criteria, then implement the chosen tool — covering part of the JD's ERP-selection responsibility.
+
+ACTION
+- Evaluated ERP/BI solutions against business requirements and operational needs.
+- Prepared the functional/data basis for selection and collaborated with vendors.
+- Selected and implemented Qliksense over new data sources.
+
+RESULT
+- Improved insight reliability for financial reporting.
+- Delivered a data-driven reporting capability aligned to commercial strategy (rebate models across matrix and automated SAP).
+
+RECRUITER NOTE / PROBE
+- Partial coverage of the RFI/RFP / vendor-selection / demonstration requirements — the CV shows solution *evaluation and implementation*, not a formal selection programme or RFP process.
+- Probe: whether "evaluation against requirements" was structured with explicit criteria/catalogue, and the scale of vendor engagement, to distinguish selection experience from ad-hoc tooling adoption.

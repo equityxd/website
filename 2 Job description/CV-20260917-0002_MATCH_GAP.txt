@@ -1,0 +1,134 @@
+MATCH & GAP ANALYSIS
+=====================
+Candidate: Ernest SONG
+Target Role: Business Analyst – Greenfield ERP Project (Brussels, BE | Hybrid 3 days on-site | Contract/Freelance | Logistics/Transport)
+Prepared by: Tech Recruiter / Executive Resume Strategist
+Serial: CV-20260917-0002
+
+----------------------------------------------------------------------------
+DIRECT MATCHES
+----------------------------------------------------------------------------
+JD: "Experience as a Business Analyst within ERP transformation / implementation
+  programmes."
+  Evidence: Current mandate titled "Strategic Business Analyst & Finance
+  Automation Lead (Freelancer)" at Engie SEM (Jan 2026 – Present), explicitly
+  "acting as the core Business Analyst bridging IT architecture and strategic
+  business operations" during a "SAP S/4HANA migration".
+
+JD: "Assess and document AS-IS processes, systems, data and interfaces across
+  the business."
+  Evidence: "Assessed and documented AS-IS processes, systems, data and
+  interfaces between the middle-office (IVDB) database and SAP S/4HANA";
+  Hol Cim "assessed AS-IS data structures and managed the SAP HANA migration".
+
+JD: "Identify process gaps, inefficiencies, pain points and improvement
+  opportunities."
+  Evidence: "Identified process gaps, inefficiencies and improvement
+  opportunities, replacing an unreliable legacy budget framework with a new
+  from-scratch automated model delivered within a 2-week timeline";
+  Tobania "Identified process improvement opportunities ... to improve
+  efficiency and profitability".
+
+JD: "Develop business, functional, non-functional, data and integration
+  requirements."
+  Evidence: Competency block lists Business / ERP / BI / RPA / Agile / Data
+  skills; experience shows business- and data-requirements gathering across
+  multiple mandates (Rexel consolidation, Engie cash-flow requirements,
+  Vinci concession models).
+
+JD: "Lead workshops with business stakeholders and process owners to capture
+  and prioritise requirements."
+  Evidence: Degroof Petercam "Facilitated stakeholder sessions to capture and
+  prioritise requirements against BPM standards" + "established change
+  management structures ... to facilitate successful adoption".
+
+JD: "Experience working with ERP vendors and/or systems integrators."
+  Evidence: Collaboration with IT architecture and auditors throughout;
+  SAP HANA / S/4HANA / BPC / Cognos ecosystem exposure.
+
+Supporting tooling expectation:
+  Evidence: Jira, Confluence, Power BI, QlikSense, Cognos, Business Objects,
+  Hyperion, SQL, VBA, R, Power Automate, UIPath.
+
+----------------------------------------------------------------------------
+TRANSFERABLE (related experience that fulfills implicit JD requirements)
+----------------------------------------------------------------------------
+- Process mapping & improvement: Tobania "Director Business Process Automation"
+  — process optimization, standardization, harmonization, RPA + self-service BI.
+  Transfers cleanly to the JD's process-mapping expectation.
+- Requirements & stakeholder workshops: FTOM (Finance Transformation Operating
+  Model) + performance-management system design at Degroof Petercam imply
+  requirements capture and stakeholder engagement.
+- Data & integration exposure: SQL, VBA, R, PowerQuery ETL (1,500+ bookings),
+  IVDB↔SAP reconciliation — supports the JD's "data and interfaces" pillar.
+- Change management: keyword "Change Management / Change Transition" + adoption
+  structures supports greenfield implementation/adoption aspects.
+- ERP-selection-adjacent: financial-modeling / valuation / selection of BI/ERP
+  solutions (Holcim Qliksense selection over new data sources) equips him to
+  "evaluate solutions against business requirements".
+- Future-state operating model: FTOM contribution supports the JD's
+  "establish the future-state operating model" responsibility.
+
+----------------------------------------------------------------------------
+CRITICAL GAPS
+----------------------------------------------------------------------------
+1. ERP SELECTION / RFP — JD: "Develop the ERP requirements catalogue and
+   evaluation criteria", "Support RFI/RFP, vendor selection and ERP
+   demonstrations", "Evaluate ERP solutions against business requirements."
+   GAP: No evidence of RFI/RFP, vendor selection, or formal ERP demos. His SAP
+   exposure is implementation/migration, not selection.
+
+2. WORKSHOP FACILITATION — JD: "Lead workshops with business stakeholders and
+   process owners."
+   GAP: No explicit evidence of *leading* facilitated workshops; stakeholder
+   mention is largely passive ("liaised with auditors"). (Degroof Petercam
+   "facilitated stakeholder sessions" softens this gap.)
+
+3. VENDOR / SYSTEMS INTEGRATOR MANAGEMENT — JD: "Experience working with ERP
+   vendors and/or systems integrators."
+   GAP: No evidence of formally managing external ERP vendors or systems
+ integrators.
+
+4. NON-FUNCTIONAL & INTEGRATION REQUIREMENTS — JD: "Develop business,
+   functional, non-functional, data and integration requirements."
+   GAP: Non-functional requirements are not evidenced; interface/data work is
+   present but framed as reconciliation/ETL, not formal requirements
+   engineering.
+
+5. SECTOR — JD sector is Logistics / Transport.
+   GAP: Candidate's background is Finance/Accounting/Real Estate/Airports — no
+   logistics or transport sector exposure is evident.
+
+6. TITLE / PERMANENT BA ROLE — JD: "Experience as a Business Analyst within
+   ERP transformation."
+   NOTE: BA experience is in FREELANCE / consultancy engagements; primary
+   career identity remains "Finance leader / CFO / transformation executive".
+   This is a positioning gap rather than a hard skills gap.
+
+7. EDUCATION / QUALIFICATIONS — JD lists qualifications as "Key Experience."
+   Note: ESCP (Auditing & Consulting) + Master's in Financial Control. Strong
+   fit for a finance-oriented BA, but no dedicated Business Analyst
+   certification/qualification is listed.
+
+----------------------------------------------------------------------------
+OVERALL ASSESSMENT
+----------------------------------------------------------------------------
+Fit: PARTIAL — STRONG ON TECHNIQUES, WEAK ON SELECTION & FACILITATION.
+
+The candidate is a credible ERP-transformation Business Analyst with real SAP
+S/4HANA migration experience and solid process/data/requirements skills. He is
+a strong match on the "AS-IS diagnosis", "process mapping", "fit-gap analysis",
+and "requirements gathering" pillars of the JD.
+
+However, the role is a GREENFIELD ERP SELECTION mandate, and the candidate's
+evidence is weighted toward IMPLEMENTATION/MIGRATION and FINANCE CONTROL, not
+the selection, RFI/RFP, vendor evaluation and workshop-facilitation pillars the
+JD emphasizes. The strongest gap is the absence of explicit ERP selection, RFP
+and standalone workshop-facilitation experience.
+
+Recommended next-step questions for the recruiter:
+- Does the mandate emphasize ERP selection (RFP/vendor) or implementation —
+  and which does the candidate's profile best serve?
+- Can workshop facilitation and vendor/integrator management be demonstrated via
+  consultative engagements not fully captured on the CV?
+- Is logistics/transport sector experience a hard requirement or a plus?
