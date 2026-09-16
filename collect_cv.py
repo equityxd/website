@@ -267,32 +267,35 @@ present in the candidate's base CV (1 Source/SONG Ernest - CV v1.typ) plus the J
 {jtext}
 ==== END JOB DESCRIPTION ====
 
-EXECUTE THE FOLLOWING AND WRITE EACH DELIVERABLE TO ITS FOLDER:
+ALL deliverables below must be written as a SINGLE set into the one per-application
+folder for this job (named "YYYYMMDD - Company - Position"). Write ONE of each:
 
-1) MATCH & GAP ANALYSIS  ->  folder "2 Job description"
+1) MATCH & GAP ANALYSIS  ->  filename "{serial}_MATCH_GAP.txt"
    Create a simple comparative breakdown:
      - Direct Matches : skills/tools/experience that directly match the JD.
      - Transferable   : related experience that fulfills implicit JD requirements.
      - Critical Gaps  : required skills/qualifications missing from the CV.
 
-2) 3 CUSTOM CVs       ->  folder "3 Custom CV"
+2) 1 CUSTOM CV         ->  filename "{serial}_CV1.typ"
    Rewrite bullet points using exact JD keyword phrasing, ONLY where real
    experience supports it. Restructure the summary into a high-impact
    "Value Proposition" answering the JD's primary business pain point.
    Every bullet = Action Verb + Context/Tech + Metric or Outcome, without
-   inflating the real role. Produce 3 distinct tailored versions.
+   inflating the real role. Produce EXACTLY ONE tailored CV (not several versions).
    Keep the visual formatting of SONG Ernest - CV v1 (only change the content).
+   Position-name preservation: keep each professional-experience job title VERBATIM;
+   the ONLY change allowed is stripping a trailing "(freelance)" tag. Otherwise
+   the title must remain identical.
 
-3) 5 CUSTOM COVER LETTERS ->  folder "5 Custom Cover Letter"
-   Draft 5 concise, high-converting cover letters (under 250 words each)
-   that bridge the candidate's background to the JD's top 3 requirements.
-   Include an honest, proactive statement on how his unique perspective
-   covers any minor skill gaps, without apologizing for them.
+3) 1 COVER LETTER       ->  filename "{serial}_CL1.txt"
+   Draft ONE concise, high-converting cover letter (under 250 words) that bridges
+   the candidate's background to the JD's top 3 requirements. Include an honest,
+   proactive statement on how his unique perspective covers any minor skill gaps,
+   without apologizing for them.
 
-4) 6 INTERVIEW PREP    ->  folder "6 Interview Prep"
-   Provide 6 targeted behavioral interview questions likely based on this JD,
-   with outline answers based strictly on the candidate's real CV experiences,
-   using the STAR method (Situation, Task, Action, Result).
+4) 1 INTERVIEW PREP     ->  filename "{serial}_IP1.txt"
+   Provide ONE interview-prep document that groups STAR-based (Situation, Task,
+   Action, Result) Q&A outlines based strictly on the candidate's real CV experiences.
 
 OUTPUT: Confirm each file was written and list the file paths.
 """
@@ -563,6 +566,24 @@ def extract_position(jd):
     return ""
 
 
+def _extract_company(jd):
+    """Best-effort extraction of the target company from the JD text.
+
+    Looks for a proper-noun phrase after lead-ins like "chez / at / de / at the".
+    Returns an empty string when no clean candidate is found.
+    """
+    cm = re.search(
+        r"(?:chez|at|de)\s+([A-Z][A-ZÀ-ÿ\s]{3,40})",
+        jd, re.IGNORECASE,
+    )
+    if cm:
+        company = " ".join(w for w in cm.group(1).split() if w.strip())
+        # normalise to Title Case
+        company = " ".join(w[:1].upper() + w[1:] for w in company.split())
+        return company.strip()
+    return ""
+
+
 def _run_pipeline(jtext, source_type, source_value=None, on_progress=None):
     """Shared processing pipeline used by both GUI and CLI entry points.
 
@@ -597,8 +618,8 @@ def _run_pipeline(jtext, source_type, source_value=None, on_progress=None):
 
     manifest = write_manifest(
         serial=serial,
-        company="",
-        position="",
+        company=company,
+        position=position,
         recruiter="",
         source_type=source_type,
         source=(source_value if source_type == "URL" else "(pasted text)"),
@@ -606,10 +627,13 @@ def _run_pipeline(jtext, source_type, source_value=None, on_progress=None):
     )
 
     # 4. Update Excel row
+    position = extract_position(jtext)
+    company = _extract_company(jtext)
+
     data = {
         "Serial Number": serial,
-        "Company": "",
-        "Position": "",
+        "Company": company,
+        "Position": position,
         "Recruiter Name": "",
         "Date": today,
         "Source Type": source_type,
@@ -630,7 +654,8 @@ def _run_pipeline(jtext, source_type, source_value=None, on_progress=None):
         "jd_path": jd_path,
         "manifest": manifest,
         "row": row,
-        "title": extract_position(jtext),
+        "title": position,
+        "company": company,
     }
 
 

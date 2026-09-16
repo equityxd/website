@@ -150,6 +150,9 @@ BASE_CV = BASE_DIR / "1 Source" / "SONG Ernest - CV v1.typ"
 
 JOB_DIR = BASE_DIR / "2 Job description"
 
+# One folder per job application, named "YYYYMMDD - Company - Position".
+APPLICATIONS_DIR = BASE_DIR / "Job Applications"
+
 
 
 # ---------------------------------------------------------------------------
@@ -435,6 +438,8 @@ def _cv_prompt(jd_text, cv_ctx):
         "- Use exact JD keyword phrasing ONLY where real experience supports it.\n"
 
         "- Restructure the summary into a high-impact 'Value Proposition' answering the JD's pain point.\n"
+
+        "- Position-name preservation: the job TITLE (position name) of each professional-experience entry must stay VERBATIM. The ONLY permitted change is removing a trailing \"(freelance)\" tag when the role became permanent; every other word of the title must remain identical.\n"
 
         "- Output VALID Typst. Balance every `#text[...]`, `#grid(...)`, `#if {...}` etc.\n"
 
@@ -747,13 +752,129 @@ def _collect(label, folder, ext, serial, on_progress=None):
 
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Application-folder helpers (one folder per job application) + docx conversion
+# ---------------------------------------------------------------------------
+
+
+def _slug(text):
+
+    """Sanitize a string for safe use as a folder / file name component.
+
+    Keeps the " - " separators readable while replacing Windows-invalid
+    characters (_) with underscores.
+
+    """
+
+    if not text:
+
+        return ""
+
+    return re.sub(r"[^\w\-.]", "_", str(text)).strip(" .")
+
+
+
+def _app_folder(serial, company="", position=""):
+
+    """Return the per-application output folder named "YYYYMMDD - Company - Position".
+
+    The date is derived from the serial (CV-YYYYMMDD-NNNN); company/position
+    are free-form but fall back to safe placeholders so a folder always exists.
+
+    """
+
+    ymd = serial[3:11] if len(serial) >= 11 else _today()
+
+    comps = [ymd, company or "Unknown Company", position or "Unknown Position"]
+
+    return APPLICATIONS_DIR / " - ".join(_slug(c) for c in comps)
+
+
+
+def _txt_to_docx(src_txt, dst_docx):
+
+    """Convert an LLM-produced .txt file into a proper .docx (deterministic).
+
+    Returns the docx path on success, or None on failure (logged).
+
+    """
+
+    try:
+
+        from docx import Document
+
+    except ImportError:
+
+        _debug("python-docx unavailable; skipping txt -> docx conversion")
+
+        return None
+
+
+    try:
+
+        with open(src_txt, "r", encoding="utf-8") as fh:
+
+            content = fh.read()
+
+        doc = Document()
+
+        for line in content.split("\n"):
+
+            doc.add_paragraph(line)
+
+        doc.save(dst_docx)
+
+        _debug(f"converted {Path(src_txt).name} -> {Path(dst_docx).name}")
+
+        return dst_docx
+
+    except Exception as exc:
+
+        _debug(f"txt_to_docx failed {Path(src_txt).name}: {exc}")
+
+        return None
+
+
+
+def _clean_stale(folder, serial, ext, keep_labels=()):
+
+    """Remove files of extension `ext` in `folder` that do NOT match
+
+    ``{serial}_{label}.{ext}`` for any label in `keep_labels`, so only a single
+    canonical document of each kind survives.
+
+    """
+
+    folder = Path(folder)
+
+    if not folder.exists():
+
+        return
+
+    for f in folder.glob(f"*.{ext}"):
+
+        kept = any(f.name.startswith(f"{serial}_{lbl}") for lbl in keep_labels)
+
+        if not kept:
+
+            try:
+
+                f.unlink()
+
+                _debug(f"removed stale {f.name}")
+
+            except OSError as exc:
+
+                _debug(f"could not remove stale {f.name}: {exc}")
+
+
 # Helpers: PDF compilation, typst error reporting, tracker update
 
 # ---------------------------------------------------------------------------
 
 
 
-def compile_pdf(serial, on_progress=None):
+def compile_pdf(serial, on_progress=None, app_folder=None):
 
     """Compile the LLM-generated .typ CV(s) to PDF via the python-typst module.
 
@@ -787,7 +908,8 @@ def compile_pdf(serial, on_progress=None):
 
 
 
-    typ_files = sorted(CV_DIR.glob(f"{serial}_CV*.typ"))
+    folder = Path(app_folder) if app_folder is not None else CV_DIR
+    typ_files = sorted(folder.glob(f"{serial}_CV*.typ"))
 
     if not typ_files:
 
@@ -959,7 +1081,7 @@ def _typst_error_report(serial, on_progress=None):
 
 
 
-def run_generation(jd_path, on_progress=None):
+def run_generation(jd_path, on_progress=None, company="", position=""):
 
     """Run the LLM-driven generation for one JD file, step by step.
 
@@ -974,19 +1096,25 @@ def run_generation(jd_path, on_progress=None):
     # Wall-clock start so every progress line carries its elapsed processing time.
     t_start = time.monotonic()
 
+    def _fmt(secs):
+        # Timing shown consistently in M:SS (minutes) throughout the log.
+        return f"{int(secs // 60):02d}:{secs % 60:05.1f}"
+
     def log(msg=""):
-        # Prefix each progress line with the running elapsed time so the user can
-        # see the pace of generation.
-        elapsed = time.monotonic() - t_start
-        prefix = f"[{elapsed:6.1f}s] " if msg else ""
+        # Prefix each progress line with the running elapsed time (in minutes) so
+        # the user can see the pace of generation.
+        prefix = f"[{_fmt(time.monotonic() - t_start)}] " if msg else ""
         if on_progress:
             on_progress(f"{prefix}{msg}")
         else:
             print(f"{prefix}{msg}", flush=True)
 
     def _dur(t0):
-        """Return a human-readable duration since marker t0 (used for per-step timing)."""
-        return f"{time.monotonic() - t0:06.1f}s"
+        """Return a human-readable duration since marker t0 in M:SS form (e.g. 07:52.3)."""
+        secs = time.monotonic() - t0
+        mins = int(secs // 60)
+        rest = secs % 60
+        return f"{mins:02d}:{rest:05.1f}"
 
 
 
@@ -1014,6 +1142,10 @@ def run_generation(jd_path, on_progress=None):
 
     manifest = _read_manifest(serial)
 
+    # Per-application output folder: "YYYYMMDD - Company - Position".
+    app_folder = _app_folder(serial, company=company, position=position)
+    os.makedirs(app_folder, exist_ok=True)
+
     jd_text = Path(jd_path).read_text(encoding="utf-8")
 
     base_cv = BASE_CV.read_text(encoding="utf-8") if BASE_CV.exists() else ""
@@ -1031,6 +1163,7 @@ def run_generation(jd_path, on_progress=None):
     log(f"Manifest    {MANIFEST_DIR / re.sub(r'[^\w\-.]', '_', serial)}.txt")
 
     log(f"CV context  {len(cv_ctx)} chars (reduced from full {len(base_cv)} bytes)")
+    log(f"App folder  {os.path.relpath(app_folder, BASE_DIR)}")
 
 
 
@@ -1044,6 +1177,13 @@ def run_generation(jd_path, on_progress=None):
 
     produced = {}  # label -> path
 
+    # Remove stale artefacts from prior runs so only ONE canonical doc of each
+    # kind survives inside the per-application folder.
+    _debug("cleaning stale artefacts in app folder")
+    _clean_stale(app_folder, serial, "typ", keep_labels=("CV1",))
+    _clean_stale(app_folder, serial, "docx", keep_labels=("CL1", "IP1", "Doyen_DomainLeader_Argumentation"))
+    _clean_stale(app_folder, serial, "txt", keep_labels=("MATCH_GAP",))
+
 
 
     # --- Step 1: Match & Gap Analysis ---
@@ -1053,7 +1193,16 @@ def run_generation(jd_path, on_progress=None):
 
     _run_pi(_match_gap_prompt(jd_text, cv_ctx), log)
 
-    gap_path = _collect("MATCH_GAP", JOB_DIR, "txt", serial, on_progress=log)
+    # Keep the JD input inside the per-application folder for easy retrieval.
+    jd_dest = app_folder / f"{serial}.txt"
+    try:
+        if str(jd_path) != str(jd_dest) and not jd_dest.exists():
+            _debug(f"stored JD -> {jd_dest.name}")
+            Path(jd_dest).write_text(jd_text, encoding="utf-8")
+    except OSError as exc:
+        _debug(f"could not store JD file: {exc}")
+
+    gap_path = _collect("MATCH_GAP", app_folder, "txt", serial, on_progress=log)
 
     produced["match_gap"] = str(gap_path)
 
@@ -1070,7 +1219,7 @@ def run_generation(jd_path, on_progress=None):
 
     typst_errors = ""
 
-    cv_path = CV_DIR / f"{serial}_CV1.typ"
+    cv_path = app_folder / f"{serial}_CV1.typ"
 
     for attempt in range(max_regenerate + 1):
 
@@ -1086,7 +1235,7 @@ def run_generation(jd_path, on_progress=None):
 
         _run_pi(prompt, log)
 
-        cv_path = _collect("CV1", CV_DIR, "typ", serial, on_progress=log)
+        cv_path = _collect("CV1", app_folder, "typ", serial, on_progress=log)
 
         errors = _typst_error_report(serial, on_progress=log)
 
@@ -1122,11 +1271,32 @@ def run_generation(jd_path, on_progress=None):
 
     _run_pi(_cover_letter_prompt(jd_text, facts), log)
 
-    cl_path = _collect("CL1", COVER_DIR, "docx", serial, on_progress=log)
+    # The LLM writes text; convert it to a real Word docx inside the app folder.
+    cl_docx = app_folder / f"{serial}_CL1.docx"
+    cl_src = _collect("CL1", app_folder, "docx", serial, on_progress=log)
+    if not os.path.isfile(cl_docx):
+        cl_txt = _collect("CL1", app_folder, "txt", serial, on_progress=log)
+        if os.path.isfile(cl_txt):
+            _debug(f"converting cover letter {Path(cl_txt).name} -> docx")
+            _txt_to_docx(cl_txt, str(cl_docx))
+            try:
+                if cl_txt != cl_docx:
+                    cl_txt.unlink()
+            except OSError:
+                pass
 
-    produced["cover_letter"] = str(cl_path)
+    # Ensure only ONE cover letter survives (the LLM sometimes writes CL1..CL5).
+    for _extra in app_folder.glob(f"{serial}_CL*.txt"):
+        if _extra.name not in (f"{serial}_CL1.txt",):
+            try:
+                _debug(f"removed extra cover-letter {_extra.name}")
+                _extra.unlink()
+            except OSError as exc:
+                _debug(f"could not remove {_extra.name}: {exc}")
 
-    log(f"\u2713 Cover Letter -> {cl_path.name}")
+    produced["cover_letter"] = str(cl_docx)
+
+    log(f"\u2713 Cover Letter -> {cl_docx.name}")
     log(f"\u23f1 Step 3/5 Cover Letter — {_dur(t_step)}")
 
 
@@ -1137,11 +1307,32 @@ def run_generation(jd_path, on_progress=None):
 
     _run_pi(_interview_prep_prompt(jd_text, facts), log)
 
-    ip_path = _collect("IP1", INTERVIEW_DIR, "docx", serial, on_progress=log)
+    # The LLM writes text; convert it to a real Word docx inside the app folder.
+    ip_docx = app_folder / f"{serial}_IP1.docx"
+    ip_src = _collect("IP1", app_folder, "docx", serial, on_progress=log)
+    if not os.path.isfile(ip_docx):
+        ip_txt = _collect("IP1", app_folder, "txt", serial, on_progress=log)
+        if os.path.isfile(ip_txt):
+            _debug(f"converting interview prep {Path(ip_txt).name} -> docx")
+            _txt_to_docx(ip_txt, str(ip_docx))
+            try:
+                if ip_txt != ip_docx:
+                    ip_txt.unlink()
+            except OSError:
+                pass
 
-    produced["interview_prep"] = str(ip_path)
+    # Ensure only ONE interview-prep item survives (the LLM sometimes writes IP1..IP6).
+    for _extra in app_folder.glob(f"{serial}_IP*.txt"):
+        if _extra.name not in (f"{serial}_IP1.txt",):
+            try:
+                _debug(f"removed extra interview prep {_extra.name}")
+                _extra.unlink()
+            except OSError as exc:
+                _debug(f"could not remove {_extra.name}: {exc}")
 
-    log(f"\u2713 Interview Prep -> {ip_path.name}")
+    produced["interview_prep"] = str(ip_docx)
+
+    log(f"\u2713 Interview Prep -> {ip_docx.name}")
     log(f"\u23f1 Step 4/5 Interview Prep — {_dur(t_step)}")
 
 
@@ -1152,7 +1343,7 @@ def run_generation(jd_path, on_progress=None):
 
     _run_pi(_dossier_prompt(jd_text, manifest), log)
 
-    dossier_path = _collect("Doyen_DomainLeader_Argumentation", DOSSIER_DIR, "docx", serial, on_progress=log)
+    dossier_path = _collect("Doyen_DomainLeader_Argumentation", app_folder, "docx", serial, on_progress=log)
 
 
 
@@ -1173,7 +1364,7 @@ def run_generation(jd_path, on_progress=None):
 
     # Post-step: compile the CV .typ(s) to PDF so artefacts are submission-ready.
 
-    pdf_paths = compile_pdf(serial, on_progress=log)
+    pdf_paths = compile_pdf(serial, on_progress=log, app_folder=app_folder)
 
 
 
@@ -1188,7 +1379,7 @@ def run_generation(jd_path, on_progress=None):
 
         "serial": serial,
 
-        "jd_path": os.path.relpath(jd_path, BASE_DIR),
+        "app_folder": os.path.relpath(app_folder, BASE_DIR),
 
         "produced": {k: os.path.relpath(v, BASE_DIR) for k, v in produced.items()},
 

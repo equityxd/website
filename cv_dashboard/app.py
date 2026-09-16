@@ -174,6 +174,8 @@ async def generate(request: Request):
             gen_engine.run_generation(
                 str(coll["jd_path"]),
                 on_progress=lambda m: q.put(("progress", f"{m}")),
+                company=coll.get("company", ""),
+                position=coll.get("title", ""),
             )
             q.put(("progress", f"✓ All documents generated for serial {serial}."))
             q.put(("done", None))
