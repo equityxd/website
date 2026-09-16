@@ -180,6 +180,32 @@ _LLM_RETRY_BASE_DELAY = float(os.environ.get("PI_LLM_RETRY_BASE_DELAY", "20"))
 
 
 
+# ---------------------------------------------------------------------------
+# Hidden debug log
+# ---------------------------------------------------------------------------
+
+# A dot-prefixed (hidden) log at the project root that captures diagnostics
+# (pi return code, stderr snippets, typst compile errors, per-step timing,
+# renames) so reproducibility issues such as "unclosed delimiter" can be
+# investigated later and the process improved.
+DEBUG_LOG = BASE_DIR / ".generation_debug.log"
+
+
+def _debug(msg=""):
+    """Append a timestamped entry to the hidden debug log (best-effort)."""
+    try:
+        ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        line = f"[{ts}] {msg}"
+        with open(DEBUG_LOG, "a", encoding="utf-8") as fh:
+            fh.write(line + "\n")
+    except Exception:
+        # Never let debug logging break the generation flow.
+        pass
+
+    return line
+
+
+
 
 
 def _pi_executable():
@@ -592,6 +618,8 @@ def _run_pi(prompt_text, on_progress, timeout=None):
 
             last_err = "LLM step timed out."
 
+            _debug(f"pi-timeout: prompt={len(prompt_text)} chars | killed process")
+
             continue
 
 
@@ -613,6 +641,13 @@ def _run_pi(prompt_text, on_progress, timeout=None):
         detail = (stderr_raw or "").strip()
 
         last = stdout_raw.strip().splitlines()[-5:] if stdout_raw else []
+
+        # Best-effort: append structured diagnostics to the hidden debug log so
+        # reproducibility issues (e.g. "unclosed delimiter") can be traced.
+        _debug(
+            f"pi-exit {proc.returncode} | prompt={len(prompt_text)} chars "
+            f"| stderr={detail!r} | last-output={last!r}"
+        )
 
         try:
 
@@ -783,6 +818,64 @@ def compile_pdf(serial, on_progress=None):
     return pdfs
 
 
+
+
+
+def _compile_typ_to_pdf(typ_path, on_progress=None):
+
+    """Compile a single generated .typ file to its sibling .pdf via python-typst.
+
+    Returns the PDF path on success, or None on failure (logged). This lets the
+    .pdf artefact be produced immediately whenever a valid .typ lands, rather
+    than only at the very end of the run.
+
+    """
+
+    def _log(m):
+
+        if on_progress:
+
+            on_progress(m)
+
+        else:
+
+            print(m, flush=True)
+
+
+    try:
+
+        import typst
+
+    except Exception as exc:
+
+        _debug(f"python-typst unavailable: {exc}")
+
+        _log("\u26a9 python-typst module not available; skipping PDF compilation")
+
+        return None
+
+
+    typ_path = str(typ_path)
+
+    pdf_path = str(Path(typ_path).with_suffix(".pdf"))
+
+    try:
+
+        typst.compile(typ_path, pdf_path)
+
+        _debug(f"compiled {Path(typ_path).name} -> {Path(pdf_path).name}")
+
+        _log(f"\u2713 Compiled {Path(typ_path).name} -> {Path(pdf_path).name}")
+
+        return pdf_path
+
+    except Exception as exc:
+
+        _debug(f"typst-compile-fail {Path(typ_path).name}: {exc}")
+
+        _log(f"\u2717 Failed to compile {Path(typ_path).name}: {exc}")
+
+        return None
 
 
 
@@ -1008,6 +1101,13 @@ def run_generation(jd_path, on_progress=None):
     if typst_errors:
 
         log(f"\u26a0 Max regeneration attempts ({max_regenerate}) reached; returning best-effort artefacts.")
+
+    # Per-typ: compile whatever .typ was produced to its sibling .pdf now,
+    # so the PDF artefact exists immediately (not only at the end of the run).
+
+    _debug(f"compiling produced CV .typ for {serial}")
+
+    _compile_typ_to_pdf(cv_path, on_progress=log)
 
     produced["cv"] = str(cv_path)
 
