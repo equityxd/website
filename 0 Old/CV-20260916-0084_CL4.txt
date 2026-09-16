@@ -1,0 +1,13 @@
+COVER LETTER 4/5 — Serial CV-20260916-0084
+============================================================
+Dear Jeremie,
+
+I am applying for the Lead BI & Analytics Consultant role. The challenge you describe — reconciling programme-specific requirements under a common data model across multiple funding programmes — maps directly onto my multi-entity consolidation and multi-domain stakeholder-reporting experience.
+
+Across Rexel (IFRS cross-subsidiary reporting across Asia-Pacific, Latin America and Canada) and Holcim (post-M&A production-data restructuring), I have established consolidated, standardized reporting over fragmented multi-site data, integrated SAP BPC/Cognos systems, and defined shared business definitions so that disparate sources roll up into one auditable picture. That is precisely the "common data model across multiple funding programmes while accommodating programme-specific requirements" ask in the JD.
+
+I also define meaningful KPIs, metrics and business definitions, set governance standards, and present findings clearly to both technical and non-technical stakeholders. I am explicit that Microsoft Fabric, lakehouse and Oracle/MySQL are adjacencies I would ramp on with a structured plan, while my core BI/enterprise-reporting, data-modelling and governance skills let me contribute immediately.
+
+I would welcome a conversation about establishing a consistent data foundation across your funding programmes.
+Best regards,
+Ernest SONG

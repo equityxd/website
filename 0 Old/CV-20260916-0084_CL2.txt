@@ -1,0 +1,13 @@
+COVER LETTER 2/5 — Serial CV-20260916-0084
+============================================================
+Dear Jeremie,
+
+I am applying for the Lead BI & Analytics Consultant role, and my profile maps closely onto the "Data transformation / analytics programme" core you describe. I have repeatedly delivered AS-IS → TO-BE data transformations at scale: leading the SAP S/4HANA migration data work (Engie SEM), restructuring the SAP HANA environment post-M&A (Holcim), and building ETL ingestion pipelines that process 1,500+ bookings per close with zero human intervention.
+
+Beyond the engineering, I close the loop between raw data and decision-ready reporting — transforming SAP-sourced data via Power BI / QlikSense into insights leaders can act on — which is the essence of the role. My ESCP education in Auditing & Consulting, plus SOX and FP7 grant-certification experience, gives me a disciplined, auditable approach to data quality and governance.
+
+I will be transparent about the tooling deltas: Microsoft Fabric, data-lakehouse architecture and Oracle/MySQL are gaps I would ramp on with a structured onboarding plan. My core BI/enterprise-reporting and data-modelling foundation lets me add value from day one while I close those adjacencies.
+
+I would welcome a conversation about how I can contribute to establishing a consistent, governed data foundation for your funding programmes.
+Best regards,
+Ernest SONG

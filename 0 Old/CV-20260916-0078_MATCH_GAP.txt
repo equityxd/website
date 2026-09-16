@@ -1,0 +1,203 @@
+================================================================================
+MATCH & GAP ANALYSIS — Serial CV-20260916-0078
+================================================================================
+CANDIDATE : Ernest SONG
+TARGET ROLE: Director of Finance (United States)
+SOURCE JD  : Indeed "Director of Finance" aggregation page
+             (indeed.com/career/finance-director, updated September 7, 2026)
+PREPARED BY: Principal Tech Recruiter & Executive Resume Strategist
+DATE       : 2026-09-16
+
+--------------------------------------------------------------------------------
+NOTE ON JD NATURE (factual)
+--------------------------------------------------------------------------------
+The supplied source is NOT a single-employer requirements document. It is an
+Indeed aggregation / salary-insights page. Its only "role" signals are the six
+sample openings and salary metadata shown on the page:
+  - "Director, Strategic Finance" (Instacart, Remote)            $231k-$254.5k/yr
+  - "Director of Finance - Plant" (Chobani, Allentown, PA)        $140k-$190k/yr
+  - "Finance Director" (Saab, East Syracuse, NY)                 $165.7k-$223.8k/yr
+  - "Director of Client Finance" (FindLev, Remote)               $160k-$170k/yr
+  - "Director of Finance" (Marriott International, Tampa, FL)     $110k-$120k/yr
+  - "Senior Director of Finance" (average)                         $183,135/yr
+Overall US average base salary $125,087/yr; range $74,970 - $208,709/yr.
+Inferred role themes: corporate / plant / client-level Director of Finance at
+the intersection of financial reporting, budgeting & forecasting, P&L /
+operations partnering, strategic finance, and ERP-backed transformation.
+The analysis below maps Ernest's REAL evidence against those inferred
+core requirements. No candidate figures, dates or qualifications are invented.
+
+================================================================================
+PHASE 1 — RECRUITER AUDIT & ATS STRATEGY
+================================================================================
+
+1. TOP-20 JD KEYWORDS (ranked 1-20 by priority)
+--------------------------------------------------------------------------------
+ 1. Director of Finance / Finance Director          (role-title match)
+ 2. Financial reporting (monthly / quarterly)       (plant / client finance)
+ 3. Budgeting & forecast                            (strategic finance)
+ 4. P&L responsibility / profit & loss              (director ownership)
+ 5. Financial close / month-end close               (operational finance)
+ 6. Cross-functional / operations partnering        (plant & client)
+ 7. Strategic finance / strategic planning          (JD "Strategic Finance")
+ 8. Multi-entity consolidation / GL (AP, AR)       (multi-site ops)
+ 9. Cash flow management / cash exposure            (director of finance)
+10. Variance analysis (actual vs budget)           (reporting cadence)
+11. Treasury / financing needs / credit analysis    (JD financing needs)
+12. BI / dashboards (Power BI)                     (decision-support)
+13. ERP (SAP S/4HANA / SAP HANA)                   (implementation projects)
+14. Team leadership / stakeholder management       (director-level)
+15. Governance & internal control                  (compliance context)
+16. Regulatory reporting                            (sourced regulatory)
+17. Financial modeling / business planning          (strategic finance)
+18. M&A / corporate development                    (plant / consolidation)
+19. Change management / change transition           (transformation)
+20. Remote / multi-location / multi-country         (remote + global sites)
+
+2. ATS MAPPING (keyword -> target section & target frequency)
+--------------------------------------------------------------------------------
+  Financial reporting     -> Summary + Competencies + Experience (3-4x)
+  Budgeting/forecasting   -> Summary + Experience (3x)
+  P&L responsibility       -> Summary + Experience (2-3x)
+  Financial close          -> Competencies + Experience (3x)
+  Multi-entity/GL (AP/AR)  -> Competencies + Experience (3x)
+  Cash flow management     -> Experience (2x)
+  Variance analysis        -> Experience (2x)
+  Strategic finance        -> Summary + Experience (2x)
+  BI / Power BI            -> Competencies + Experience (2x)
+  ERP SAP S/4HANA          -> Competencies + Experience (2x)
+  Team leadership          -> Interpersonal + Experience (2x)
+  Governance/control       -> Experience (1-2x)
+  Regulatory reporting     -> Experience (1-2x)
+  M&A / corporate dev      -> Experience (1x)
+  Remote/multi-country     -> Contact + Experience (2x)
+Target strategy: place exact-match phrases in the Summary, then reinforce them
+across Competencies and Professional Experience so the candidate ranks for both
+role-title and core-functional keywords (ATS best practice; no keyword stuffing).
+
+3. TERMINLOGY SWAPS (5 exact swaps aligning CV language with the JD)
+--------------------------------------------------------------------------------
+  Swap 1: "Chief Growth & Transformation Officer" -> "Director of Finance"
+          (adopt the exact target role title on the title block).
+  Swap 2: "financial-close leadership" -> "month-end / financial close
+          leadership" (adopt the JD's operational-close vocabulary).
+  Swap 3: "power / legacy framework" -> "budgeting & forecasting model"
+          (adopt the JD's planning vocabulary).
+  Swap 4: "business objectives" -> "P&L responsibility / profit & loss"
+          (adopt the JD's ownership vocabulary).
+  Swap 5: "cross-organisational" -> "cross-functional / operations partnering"
+          (adopt the JD's partnering vocabulary).
+
+4. ATS FORMAT FLAGS (parsing issues + fixes)
+--------------------------------------------------------------------------------
+  - Flag: icon-based contact block (octique) can confuse ATS parsers.
+    Fix  : replace icons with plain-text labels (Phone / Address / Email / Web).
+  - Flag: "Chief Growth & Transformation Officer" title mismatch vs JD.
+    Fix  : set title to "Director of Finance" (exact JD title match).
+  - Flag: keyword density concentrated in a metadata field only.
+    Fix  : surface exact-match phrases in Summary, Competencies, Experience.
+  - Flag: inconsistent section terminology (Business / ERP / BI / RPA / Agile).
+    Fix  : reorganise into JD-aligned categories (Reporting, Close/GL, BI,
+           ERP, Modeling, Governance, Cash/Treasury, Change/Agile, M&A).
+  - Flag: duplicate "Data & Analytics" competency blocks.
+    Fix  : dedupe; keep SQL / VBA / R once.
+  - Fix  : ensure ATS-friendly plain text (no icon glyphs in contact).
+
+5. HUMAN SCAN SCORE (current base CV, before rewrite)
+--------------------------------------------------------------------------------
+  Content JD-fit        : 6/10  (strong finance/ERP/BI, weak explicit P&L/title)
+  6-second scan impact  : 5/10  (title mismatch + icon contact dilute the point)
+  Overall recruiter read  : "deep operator/consultant, but not obviously pitched
+                            to a Director of Finance role"
+  Post-rewrite target   : Content 9/10, Scan 8-9/10.
+
+6. GAPS (explicit base-CV vs JD deltas — factual, covered)
+--------------------------------------------------------------------------------
+  GAP A: Title mismatch ("Chief Growth & Transformation Officer" vs JD title).
+         Cover: set title to "Director of Finance"; summary foregrounds reporting,
+         close, budgeting & forecasting, P&L — the JD's core.
+  GAP B: No named "direct reports / finance org chart" in recent engagements
+         (freelance/project model). Cover: proven cross-functional partnering and
+         team leadership; management ramp plan stated in cover letter.
+  GAP C: US GAAP / SEC / public-company context not used directly.
+         Cover: IFRS / BE-GAAP consolidation foundation transfers cleanly to a US
+         cadence; structured onboarding ramp offered.
+  GAP D: All experience is European (BE / FR / PT); role targets United States.
+         Cover: remote / multi-country comfort (Asia-Pacific, LatAm, Canada
+         subsidiaries); fast-learning profile with explicit US-context ramp.
+  GAP E: No dedicated standing day-to-day AP/AR bookkeeping role.
+         Cover: ESCP auditing qualification + rapid domain learning; AP/AR evident
+         in consolidation and close experience.
+  GAP F: Salary anchoring can sit below some US director bands.
+         Cover: positionable across the observed US$110k-255k range depending on
+         company size and angle.
+
+================================================================================
+PHASE 2 — PER-BULLET DEEP REWRITE (evidence, not invention)
+================================================================================
+Every rewrite follows [Power Verb + Context + Quantified/Concrete Impact] at
+18-25 words and pulls only from the base CV. Highlights per role:
+  - Engie SEM (current): direct financial reporting/controlling + month-end
+    PowerQuery ETL (1,500+ bookings, zero manual) + budgeting model from scratch.
+  - Holcim (2024-2025): SAP HANA migration consolidation + Qliksense reporting.
+  - Rexel (2014-2016): IFRS financial reporting + annual budgeting, monthly
+    forecasting, variance analysis -> single strongest core-functional fit.
+  - Engie Tractebel (2023): cash-flow reporting, per-project cash exposure,
+    credit analysis, impairment testing -> treasury/cash fit.
+  - Magnetrap: interim CFO arranging €3M debt/equity financing -> P&L/finance.
+  - Vinci Airports: concession valuation (4x), 50+ locations, BE-GAAP -> multi-site.
+  - KPMG Audit: SOX process testing, multi-standard statements -> governance.
+  - Degroof Petercam: FTOM governance + regulatory-reporting sourcing -> direct fit.
+
+================================================================================
+PHASE 3 — FINAL CV GENERATION (3 distinctive flavours)
+================================================================================
+Three bespoke CVs, each pinned to one JD angle while staying truthful. Common
+ATS-friendly rules applied to all three:
+  - No icons in the contact block; clean plain-text contact line.
+  - Exact role title "Director of Finance" preserved.
+  - Keywords placed in Summary, Competencies, and Experience.
+  - Bullets at 18-25 words, power-verb + context + quantified impact.
+  - No invented metrics; only figures present in the base CV are reused.
+  CV1: "Director of Finance — Financial Reporting, Close & Budgeting"
+  CV2: "Director of Finance — Strategic Finance & ERP Transformation"
+  CV3: "Director of Finance — Plant & Operations Partnering"
+
+================================================================================
+PHASE 4 — COVER LETTERS (English-only, <250 words each)
+================================================================================
+Five tailored cover letters, each emphasising a different JD angle (reporting,
+strategic finance, plant/operations, client finance, remote/global). All claims
+are drawn from the base CV; two honest gaps are disclosed without apology:
+  - Explicit standing day-to-day AP/AR bookkeeping as a dedicated role.
+  - US GAAP / SEC / public-company context, which has not been used directly.
+
+================================================================================
+PHASE 5 — INTERVIEW PREP (STAR, English-only)
+================================================================================
+Six interview-prep documents, each built around a JD-relevant STAR question
+(ERP integration, month-end automation, cross-functional partnering, budgeting
+from scratch, financial reporting / consolidation, cash flow / treasury), with
+STAR fields drawn truthfully from the candidate's real experience.
+
+================================================================================
+PHASE 6 — APPLICATION DOSSIER
+================================================================================
+"Doyen_DomainLeader_Argumentation.docx" maps inferred JD requirements to
+concrete candidate evidence and lists honest gaps. All claims are evidence-based;
+nothing is invented.
+
+================================================================================
+HONEST GAP REGISTER (never masked; only covered)
+--------------------------------------------------------------------------------
+ - US GAAP / SEC / public-company context: not used directly; covered by a
+   structured onboarding ramp (IFRS / BE-GAAP consolidation foundation transfers
+   cleanly to US cadence).
+ - US-based employer / US work context: all experience is European (BE / FR /
+   PT); addressed via a clear ramp plan and a fast-learning profile.
+ - Explicit standing day-to-day AP/AR bookkeeping as a dedicated role: covered
+   by ESCP auditing qualification and rapid domain learning.
+ - Named finance-org-chart / direct reports: influence and team leadership are
+   proven; management structure addressed with a ramp plan.
+ - Salary anchoring below US director bands at some postings: positionable via
+   broad US$110k-255k range depending on angle.

@@ -1,0 +1,140 @@
+MATCH & GAP ANALYSIS
+Candidate: Ernest SONG
+Target Role: Director of Finance (United States)
+Prepared by: Principal Tech Recruiter / Executive Resume Strategist
+Date: 2026-09-16
+Basis: Candidate CV (base profile + professional experience, as extracted) vs. supplied JD text.
+
+NOTE ON SOURCE DATA (factual)
+--------------------------------------------------------------------------------
+The supplied "Job Description" is NOT a single-employer requirements document. It is an
+Indeed aggregation / salary-insights page for "Director of Finance in United States."
+Its only role signals are the six sample openings and salary metadata shown on the page:
+  - "Director, Strategic Finance" (Instacart, Remote)                 $231k - $254.5k/yr
+  - "Director of Finance - Plant" (Chobani, Allentown, PA)           $140k - $190k/yr
+  - "Finance Director" (Saab, East Syracuse, NY)                     $165.7k - $223.8k/yr
+  - "Director of Client Finance" (FindLev, Remote)                  $160k - $170k/yr
+  - "Director of Finance" (Marriott International, Tampa, FL)        $110k - $120k/yr
+  - "Senior Director of Finance" (average)                            ~$183,135/yr
+Overall US average base salary $125,087/yr; salary range $74,970 (low) - $208,709 (high).
+
+Because the JD contains no explicit Requirements / Qualifications section, gap analysis is
+constrained: I can only assess fit against the role title, the comparative postings, and
+the finance-director expectations implied by the page — not against a bespoke requirements list.
+All mappings below are traceable to the candidate's real CV evidence; nothing is invented.
+
+================================================================================
+DIRECT MATCHES  (real CV evidence satisfies inferred JD requirements)
+================================================================================
+- Finance-leader identity + P&L/finance keywords. The JD centers on "Director of Finance."
+  Candidate states: "Finance leader with 15+ years leading accounting and transformation
+  mandates for multi-entity, multi-country organisations across BE, FR and NL." Keywords
+  list explicitly includes: "P&L, Profit & Loss Responsibility, Growth, Revenue, Profit,
+  ROI, Metrics, Budget & Finance" — directly aligned with the role framing.
+
+- Financial reporting (inferred JD #2). "Led the implementation of IFRS financial reporting
+  for Asia-Pacific, Latin America, and Canadian subsidiaries" (Rexel); "Led the financial
+  controlling ... as the core Business Analyst" (Engie SEM).
+
+- Month-end / financial close leadership. "Streamlined and automated financial closing
+  processes ... deploying advanced PowerQuery ETL workflows to safely ingest batches of
+  1,500+ bookings per close with zero human intervention" (Engie SEM). This is the one hard
+  quantitative close metric present in the CV.
+
+- Budgeting & forecasting. "Designed, built, and deployed a robust, automated budget modeling
+  tool from scratch within a critical 2-week timeline" (Engie SEM); "Performed annual budgeting,
+  monthly forecasting, and analyses of actual vs. budgeted/estimated results" (Rexel).
+
+- Multi-entity GL/AP/AR + consolidation. "Reconciled complex financial data structures between
+  middle-office databases (IVDB) and SAP S/4HANA while restructuring ... WDS project codes"
+  (Engie SEM); multi-entity consolidation across BE/FR/NL (Rexel, Vinci Airports).
+
+- BI dashboards (Power BI / Cognos / QlikSense). Competencies list Power BI, Cognos, QlikSense,
+  Business Object, Hyperion; "design Power BI reporting" (Engie Tractebel).
+
+- ERP (SAP S/4HANA / SAP HANA). "Led the financial controlling pilot phase for the SAP S/4HANA
+  migration"; "Managed SAP HANA migration, restructuring data and ensuring system integrity" (Holcim).
+
+- Cash flow / financing / treasury-adjacent. "Design cashflow reporting and cash exposure per
+  project. Assessment of financing needs in local entity, credit analysis ... and impairment
+  testing" (Engie Tractebel).
+
+TRANSFERABLE  (fulfills implicit JD requirements)
+================================================================================
+- ERP replacement / transformation leadership (from AS-IS diagnosis to SAP S/4HANA go-live)
+  supports the finance-systems and change-management implicit in director-level finance roles
+  (Engie SEM, Holcim).
+
+- Stakeholder + change management. Lists "Change Management, Change Transition, Leadership,
+  Stakeholders" as keywords; evidences "Established change management structures and strategies
+  to facilitate successful adoption" (Tobania) and "Designed and implemented a client-centric
+  performance management system" (Degroof Petercam).
+
+- Governance, internal control, audit rigor. KPMG Audit: "Conducted audits of financial
+  statements ... testing of key processes in accordance with SOX requirements"; Rexel IFRS
+  consolidation. KPMG background + ESCP "Auditing and Consulting" specialized master's (ESCP
+  Business School, #1 FT 2026) support governance/internal-control expectations.
+
+- P&L / treasury oversight as interim CFO (Magnetrap): "organizing €3M in debt/equity fund
+  raises," "Created cash flow projections, business plans, and long-term financial goals,"
+  "Monitored company performance and implemented corrective actions" — maps to the planning /
+  analysis side of a finance-director role.
+
+- Data/analytics capability. SQL, VBA, R, Jira, Power Automate, UIPath support the "turning
+  finance into a lever for growth" narrative.
+
+CRITICAL GAPS  (required skills / qualifications missing from the CV)
+================================================================================
+- Title mismatch. JD target is "Director of Finance." Candidate's stated position is
+  "Chief Growth & Transformation Officer," and most recent/relevant roles are framed as
+  "Strategic Business Analyst & Finance Automation Lead," "Senior Operational Excellence &
+  Data Lead," etc. (all freelance). No explicit corporate "Director of Finance / CFO / Head of
+  Finance" title is held at scale; the strongest P&L/finance leadership is interim/consulting
+  (Interim CFO at Magnetrap only).
+
+- No demonstrable direct-report / standing finance-function leadership. Director-of-Finance
+  roles typically own a finance team and reporting line. The CV is project/mandate-based
+  (freelance); there is no clear indication of direct reports or running a day-to-day finance
+  function. (Strongest team-leading signals are audit teams at KPMG and 50+ airport sites at
+  Vinci Airports — transferable but not corporate-finance org leadership.)
+
+- Compensation / geography misalignment. JD comparatives are US-based / remote (US$ ranges).
+  Candidate is located in Brussels, BE (address "B-1000 Brussels"; roles listed "Brussels, BE /
+  Paris, FR / Phnom Penh, KH"). No US work authorization or US-based intent is evidenced, and no
+  compensation expectations are stated in the CV — a likely screening blocker for the comparable
+  postings.
+
+- Scope of the JD itself. The provided JD contains no "Requirements" or "Qualifications"
+  section — only salary data and comparable listings. Therefore hard qualifications (e.g.,
+  CPA/CMA, specific years of leadership) cannot be verified as gaps from the JD text; claims of
+  mismatch must be treated as inferred, not JD-stated.
+
+- Qualitative, under-metricated outcomes. Several bullets are qualitative (e.g.,
+  "significantly enhancing efficiency," "improving efficiency and profitability"), and experience
+  is increasingly "automation / data / operational excellence" rather than corporate finance
+  ownership (treasury, capital allocation, investor relations, board reporting) — limiting
+  confidence in measuring director-level impact.
+
+================================================================================
+SUMMARY
+================================================================================
+MATCH: Candidate is a strong finance-systems, reporting, budgeting/forecasting, close and
+ERP-transformation professional whose keywords (P&L, Budget & Finance, ROI, Metrics) and tools
+(Power BI, Cognos, QlikSense, SAP HANA, Excel/Power Query) directly support the reporting and
+operational side of a Director of Finance function.
+
+GAP: The strongest mismatches are (1) title/seniority framing (consulting/freelance, no explicit
+corporate Head of Finance / CFO tenure), (2) no demonstrable direct-report / team-leadership
+evidence, and (3) geography / compensation — candidate is Brussels-based while the comparable
+postings are US/remote. The JD provided lacks a requirements section, so qualification-based gaps
+cannot be conclusively established from the source text.
+
+RECOMMENDED NEXT STEPS
+- Confirm work authorization / willingness to work US-based or remote, and target compensation.
+- Reframe headline to emphasize finance-leadership / ownership language and, where true, any
+  Head of Finance / CFO / team-leadership tenure.
+- Add concrete quantitative outcomes (team size, $ Managed, savings, close-time reduction) to
+  strengthen director-level credibility.
+- Explicitly map automation/data experience to "strategic finance / finance-as-a-lever-for-growth."
+
+--- End of analysis ---

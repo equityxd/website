@@ -1,0 +1,7 @@
+INTERVIEW PREP 5/6 — Serial CV-20260916-0084 (STAR)
+============================================================
+Q. Tell me about a time you had to bridge business stakeholders, architecture and technical delivery teams.
+SITUATION: Engie SEM (Strategic Business Analyst & Finance Automation Lead, Jan 2026–Present, Brussels) during the SAP S/4HANA migration.
+TASK: Serve as the connective tissue between IT architecture, business stakeholders and delivery teams.
+ACTION: Acted as the core Business Analyst, translating complex IT architecture into operational reality and vice-versa; reconciled middle-office (IVDB) data with SAP S/4HANA; restructured WWS project codes so architecture served business monitoring needs; deployed PowerQuery ETL and Power BI so delivery produced usable insight.
+RESULT: Aligned architecture, business intent and technical delivery — a repeatable consulting pattern for bridging those three sides across BI/analytics programmes.

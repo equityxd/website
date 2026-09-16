@@ -1,0 +1,13 @@
+COVER LETTER 3/5 — Serial CV-20260916-0084
+============================================================
+Dear Jeremie,
+
+I am applying for the Lead BI & Analytics Consultant role, and I am specifically drawn to the emphasis on establishing "BI/data standards and governance practices" and producing "consistent, reliable, auditable reporting." My background is audited-data-led: I certified FP7 Grant Agreements for the EU Research program, tested key processes against SOX, and optimized finance-close processes for governance, internal control and data quality — an operator who treats data reliability as a discipline.
+
+I bring hands-on enterprise BI/QlikSense/Cognos reporting, SAP HANA/S/4HANA data stewardship, and experience defining KPIs, metrics and shared business definitions across finance, real estate and operations. I can design the reporting and metrics layer, set the standards, and bridge business stakeholders, architecture and delivery — all while operating both strategically and hands-on.
+
+I will address the tooling deltas (Microsoft Fabric, Oracle/MySQL, metadata tooling) as an explicit onboarding/ramp plan rather than disguise them. Combined with my non-profit founding experience (Soap collect) and EU grant-certification context, I understand the public/non-profit and funding-management realities this mandate operates in.
+
+I would welcome a conversation to discuss how I can help you establish governance that makes reporting trustworthy.
+Best regards,
+Ernest SONG

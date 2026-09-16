@@ -1,0 +1,7 @@
+INTERVIEW PREP 2/6 — Serial CV-20260916-0084 (STAR)
+============================================================
+Q. Tell me about a time you translated a complex business process into a data and reporting model.
+SITUATION: Engie SEM (Strategic Business Analyst & Finance Automation Lead, Jan 2026–Present, Brussels) — SAP S/4HANA migration; cash-flow/budget data needed turning into decision-ready insight.
+TASK: Translate complex finance/business processes into data models and reporting that leaders can act on.
+ACTION: Acted as core Business Analyst bridging IT architecture and business operations; designed and built a budget-modelling tool from scratch within a 2-week timeline; engineered PowerQuery ETL ingestion (1,500+ bookings per close, zero human intervention); rebuilt Power BI reporting over SAP-sourced data so raw data became actionable insight.
+RESULT: Decision-ready reporting feeding real leadership decisions, with automated ingestion removing manual error — the kind of translate-process-into-reporting capability the role requires.

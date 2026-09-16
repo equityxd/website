@@ -150,3 +150,62 @@ Profile summary changes vs base (`..., financial-close and ERP replacement`).
 - Holcim: master records = 500K; annual rebate volume = €150M; reporting-cycle reduction = 50%.
 - All other metrics kept as ~estimates (Engie SEM revenue/stakeholders/project-book; Tractebel portfolio ~€18M + lending book ~€35M; Magnetrap budget/goals/margins; Rexel turnover ~€500M; KPMG audit adj ~35%, PPP portfolio ~€48M, team size ~8, funding ~€9M).
 - Verified: file has proper UTF-8 € (0x20ac), 0 replacement chars, 11 ~ tokens remaining.
+
+## 2026-09-16 — Engine refactor: step-by-step generation with small focused prompts
+
+**Problem diagnosed & resolved.** The previous engine used one giant ~30 KB prompt
+(single `_build_prompt` + `_invoke_pi`). Testing showed the local LLM hangs forever
+on prompts ≥ ~15 KB of context (exit 124 / empty output). The full base CV (~18 KB) +
+JD (~3.5 KB) + manifest (~6 KB) ≈ 30 KB exceeded the model's usable context.
+
+**Fix — `generation/engine.py`, committed (`b436e5a`):**
+- Split the single mega-prompt into per-deliverable small-prompt pi calls, each kept
+  minimal (base CV reduced to ~17 KB meaningful content via `_cv_content`).
+- `_run_pi`: one focused pi invocation with SIGTERM/timeout retry + exponential backoff
+  (`PI_MAX_LLM_RETRIES`, `PI_LLM_RETRY_BASE_DELAY`).
+- `_collect`: canonicalises LLM-written deliverables to the expected `{serial}_{label}.{ext}`.
+- `run_generation` orchestrates Match & Gap → CV (self-healing Typst recompile) →
+  Cover Letter → Interview Prep → Dossier → compile PDFs → tracker update.
+- Removed the clobbering `_write_deliverable`; replaced with `_collect`.
+
+**Verified end-to-end (both paths):**
+- Direct `run_generation` on `CV-20260914-0019`: all 5 steps succeed, `_collect`
+  renamed the dossier file correctly, PDFs compiled, tracker row updated, elapsed ~467 s.
+- Web dashboard `/api/generate` via `TestClient` (new session `CV-20260916-0083`):
+  status 200, 134 stream events, all artifacts + manifest + tracker row 84 produced,
+  elapsed ~554 s.
+- Both confirm the context-threshold hang is gone and deliverables land at canonical
+  paths.
+
+## 2026-09-17 — Progress-log line breaks + per-step/total timing + test-phase cleanup
+
+**A. Process-log readability (`cv_dashboard/static/app.js`).**
+- `logLine()` previously rendered each progress line as a `<span>` (inline), so
+  consecutive log lines collided on one visual line. Switched to a block-level
+  `<div>` per entry so every progress message starts on its own line (the
+  surrounding `#log` `<pre>` keeps `whitespace-pre` wrapping).
+
+**B. Timing (`generation/engine.py`).**
+- Added `t_start = time.monotonic()` before `log`; the `log` wrapper now prefixes
+  every progress line with a running clock (`[  12.3s]`), so the pace of
+  generation is visible.
+- Added `_dur(t0)` returning a per-step duration; each step (1/5 → 5/5) logs
+  `⏱ Step N/5 <name> — <dur>`, and the run logs a final `⏱ TOTAL — <dur>`.
+- Handled the `▶`/`…` mojibake in the Step-1 header (restored the correct U+25B6
+  glyph; timing glyphs use the escaped `\u23f1` form, consistent with the
+  existing `\u2713` style).
+
+**C. Test-phase cleanup ("move, don't delete").**
+- Moved every generated document out of `2 Job description`, `3 Custom CV`,
+  `5 Custom Cover Letter`, `6 Interview prep`, `7 Input Job description`,
+  `Temp` and `4 Application monitoring/manifests` into `0 Old`.
+  `1 Source` was left untouched.
+- Reset `4 Application monitoring/Application_Tracker.xlsx`: kept only the header
+  row (was 85 rows → 1). The tracker is testing-phase bookkeeping; fresh
+  sessions repopulate it on the next `/api/generate` run.
+
+**Verification:**
+- `engine.py` passes `py_compile` + `ast.parse`; `import engine` succeeds.
+- `app.js` `logLine` now uses `<div>` (block-level).
+- Tracker opens cleanly, 1 row (header), ~5 KB.
+- Working folders empty; 467 files archived to `0 Old`.

@@ -1,0 +1,27 @@
+Application dossier -- Director of Finance (United States)
+Poste: Director of Finance (United States)
+Indeed 'Director of Finance' aggregation page (indeed.com/career/finance-director)
+Tout la preuve ci-dessous est tirée du CV de base; aucun chiffre, qualification n'a été inventé.
+Part 1 -- Argumentaire: pertinente et vraie, base de la fonction
+Sur base de la description de fonction (Director of Finance):
+• Financial reporting (monthly / quarterly) & multi-entity reporting: Rexel: IFRS financial reporting across Asia-Pacific, Latin America and Canadian subsidiaries; Engie SEM: direct financial reporting and controlling across French subsidiaries as core Business Analyst.
+• Month-end / financial close leadership: Engie SEM: PowerQuery ETL pipeline ingesting close data; 1,500+ bookings processed per close with zero manual intervention, shortening the close and reducing error risk.
+• Budgeting & forecasting / variance analysis: Rexel: annual budgeting, monthly forecasting and variance analysis; Engie SEM: built a budgeting/forecasting model from scratch within a critical ~2-week window, replacing an unreliable legacy framework.
+• P&L responsibility / operations partnering: Magnetrap: interim CFO with P&L and cash oversight; Vinci Airports: financial modeling across 50+ operations (multi-site partnering).
+• Cash flow management / treasury / financing: Engie Tractebel: per-project cash exposure, credit analysis and impairment testing; Magnetrap: arranged €3M debt/equity financing as interim CFO.
+• Strategic finance / financial modeling / business planning: Vinci Airports: long-term concession business models (CapEx, macroeconomic impact, concession valuation) delivered at ≈4x acquisition cost; Engie SEM budget model.
+• Business Intelligence / dashboards (Power BI): Engie SEM: Power BI dashboards; Holcim: Qliksense rebate-model reporting; general BI tooling (Power BI, Cognos, QlikSense, Business Objects, Hyperion).
+• ERP (SAP S/4HANA / SAP HANA) implementation & change: Engie SEM: core Business Analyst on SAP S/4HANA go-live; Holcim: SAP HANA migration with data restructuring; Tobania: change-management adoption of RPA + self-service BI.
+• Multi-entity GL (AP / AR) / consolidation: KPMG Audit (multi-standard statements), Rexel IFRS consolidation, Engie multi-entity controlling — consolidation foundation across BE/FR/NL.
+• Governance, internal control & regulatory reporting: KPMG Audit: SOX process testing; Degroof Petercam: FTOM governance and regulatory-reporting sourcing — direct-match governance and regulatory-reporting evidence.
+• Team leadership / stakeholder management: Interim CFO and business-leadership roles with cross-department coordination and stakeholder partnering across IT, operations and customers.
+• Remote / multi-location / multi-country: Experience spanning BE, FR, NL, PT + subsidiaries across Asia-Pacific, Latin America and Canada; comfortable operating across sites.
+Part 2 -- Formulaire rempli
+
+Remarque: champs = a confirmer par le recruteur. A remplir/manipuler avant envoi.
+Honest gap register
+• US GAAP / SEC / public-company context — not used directly; covered by a structured onboarding ramp (IFRS / BE-GAAP consolidation foundation transfers cleanly to US cadence).
+• US-based employer / US work context — all experience is European (BE / FR / PT); addressed via a clear ramp plan and a fast-learning profile.
+• Explicit standing day-to-day AP/AR bookkeeping as a dedicated role — covered by ESCP auditing qualification and rapid domain learning.
+• Named finance-org-chart / direct reports — influence and team leadership are proven; org-structure ramp plan included.
+• Salary anchoring below US director bands — positionable across the observed US$110k-255k range depending on angle.

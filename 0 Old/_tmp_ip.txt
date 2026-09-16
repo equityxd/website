@@ -1,0 +1,12 @@
+Serial CV-20260914-0019
+────────────────────────────────────────────────────────────
+Interview Prep — Serial CV-20260914-0019 (STAR)
+Role: Director of Finance (US) — JD: Indeed 'Director of Finance' aggregation.
+────────────────────────────────────────────────────────────
+Tell me about a time ERP integration
+SITUATION:
+Engie SEM — SAP S/4HANA migration pilot across French subsidiaries.
+TASK:
+Acted as the core Business Analyst bridging IT architecture and business operations; drove AS-IS to TO-BE process design; ran finance workshops; reconciled the middle-office (IVDB) data with S/4HANA and simplified WDS project coding.
+RESULT:
+A clean finance transition with a reconciled, monitorable project structure — directly reusable for any ERP replacement rollout.

@@ -1,0 +1,7 @@
+INTERVIEW PREP 3/6 — Serial CV-20260916-0084 (STAR)
+============================================================
+Q. Tell me about a time you defined meaningful KPIs, metrics and business definitions.
+SITUATION: Shurgard (Investment & Corporate Development Analyst, Feb 2022–Feb 2023, Brussels) and Holcim ( rebate/commercial context).
+TASK: Define measurable KPIs, metrics and shared business definitions so reporting is comparable and trustworthy.
+ACTION: Shurgard — designed the investment department's data model and BI visualizations, defining measurable investment KPIs; built the investment data model and dashboards. Holcim — built rebate models (matrix & automated SAP) aligned to commercial strategy and shared business definitions, and ensured data reliability while liaising with auditors.
+RESULT: Comparable, audit-backed metrics and consistent business definitions that made multi-domain reporting trustworthy and decision-ready — a template for defining KPIs across multiple funding programmes.

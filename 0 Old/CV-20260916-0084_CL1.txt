@@ -1,0 +1,13 @@
+COVER LETTER 1/5 — Serial CV-20260916-0084
+============================================================
+Dear Jeremie,
+
+I am applying for the Lead BI & Analytics Consultant role. The JD's central ask — establishing a consistent data foundation and governance, defining KPIs/business definitions, and delivering auditable reporting across diverse funding programmes and stakeholders — sits squarely at the intersection of my experience: Business Intelligence, data architecture, data governance and business transformation.
+
+As the core Business Analyst on the SAP S/4HANA migration (Engie SEM) I have bridged IT architecture, data governance and business operations; I have repeatedly engineered ETL ingestion pipelines (PowerQuery, 1,500+ bookings per close with zero human intervention), governed financial reporting (QlikSense, Cognos) and defined measurable KPIs. My ESCP Master's in Auditing & Consulting embeds an audit/reliability mindset that maps directly to the governance and data-quality requirements in the brief.
+
+I recognise two tooling gaps — Microsoft Fabric and Oracle/MySQL — and I would treat their onboarding as part of my ramp plan; every other modern-BI/enterprise-reporting environment in the JD (Power BI, QlikSense, Cognos, Business Objects, SAP HANA/S/4HANA) I can operate hands-on today. I work confidently both at strategy level and in the details, and I communicate clearly to technical and non-technical audiences.
+
+I would welcome a conversation to discuss how I can contribute to your data-transformation and analytics programme.
+Best regards,
+Ernest SONG

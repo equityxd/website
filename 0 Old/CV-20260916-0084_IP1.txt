@@ -1,0 +1,7 @@
+INTERVIEW PREP 1/6 — Serial CV-20260916-0084 (STAR)
+============================================================
+Q. Tell me about a time you established a common data / reporting foundation across multiple domains or entities while accommodating specifics.
+SITUATION: Rexel (Reporting Consolidation Manager, 2014–2016, Paris) — IFRS cross-subsidiary reporting across Asia-Pacific, Latin America and Canada; and Holcim (Senior Operational Excellence & Data Lead, Jan 2024–Dec 2025, Nivelles) post-M&A.
+TASK: Reconcile programme/subsidiary-specific requirements under one consistent, auditable reporting foundation.
+ACTION: At Rexel I integrated SAP BPC + Cognos, standardized consolidation, and ran annual budgeting/monthly forecasting reporting; at Holcim I restructured production data post-M&A and implemented QlikSense financial reporting over new data, ensuring data reliability and auditor liaison.
+RESULT: One consolidated, standardized reporting picture across fragmented multi-site data — directly reusable for reconciling multiple funding programmes under a common data model while keeping programme-specific requirements.

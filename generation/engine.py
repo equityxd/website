@@ -878,15 +878,22 @@ def run_generation(jd_path, on_progress=None):
 
     """
 
+    # Wall-clock start so every progress line carries its elapsed processing time.
+    t_start = time.monotonic()
+
     def log(msg=""):
-
+        # Prefix each progress line with the running elapsed time so the user can
+        # see the pace of generation.
+        elapsed = time.monotonic() - t_start
+        prefix = f"[{elapsed:6.1f}s] " if msg else ""
         if on_progress:
-
-            on_progress(msg)
-
+            on_progress(f"{prefix}{msg}")
         else:
+            print(f"{prefix}{msg}", flush=True)
 
-            print(msg, flush=True)
+    def _dur(t0):
+        """Return a human-readable duration since marker t0 (used for per-step timing)."""
+        return f"{time.monotonic() - t0:06.1f}s"
 
 
 
@@ -948,6 +955,7 @@ def run_generation(jd_path, on_progress=None):
 
     # --- Step 1: Match & Gap Analysis ---
 
+    t_step = time.monotonic()
     log("▶ Step 1/5 Match & Gap Analysis…")
 
     _run_pi(_match_gap_prompt(jd_text, cv_ctx), log)
@@ -957,6 +965,7 @@ def run_generation(jd_path, on_progress=None):
     produced["match_gap"] = str(gap_path)
 
     log(f"\u2713 Match & Gap -> {gap_path.name}")
+    log(f"\u23f1 Step 1/5 Match & Gap Analysis — {_dur(t_step)}")
 
 
 
@@ -1003,6 +1012,7 @@ def run_generation(jd_path, on_progress=None):
     produced["cv"] = str(cv_path)
 
     log(f"\u2713 CV .typ -> {cv_path.name}")
+    log(f"\u23f1 Step 2/5 Tailored CV .typ — {_dur(t_step)}")
 
 
 
@@ -1017,6 +1027,7 @@ def run_generation(jd_path, on_progress=None):
     produced["cover_letter"] = str(cl_path)
 
     log(f"\u2713 Cover Letter -> {cl_path.name}")
+    log(f"\u23f1 Step 3/5 Cover Letter — {_dur(t_step)}")
 
 
 
@@ -1031,6 +1042,7 @@ def run_generation(jd_path, on_progress=None):
     produced["interview_prep"] = str(ip_path)
 
     log(f"\u2713 Interview Prep -> {ip_path.name}")
+    log(f"\u23f1 Step 4/5 Interview Prep — {_dur(t_step)}")
 
 
 
@@ -1055,6 +1067,7 @@ def run_generation(jd_path, on_progress=None):
     produced["dossier"] = str(dossier_path)
 
     log(f"\u2713 Dossier -> {dossier_path.name}")
+    log(f"\u23f1 Step 5/5 Application Dossier — {_dur(t_step)}")
 
 
 
@@ -1068,7 +1081,8 @@ def run_generation(jd_path, on_progress=None):
 
     tracker_path = update_tracker(serial, pdf_paths, produced, on_progress=log)
 
-
+    # Wall-clock total for the whole generation run.
+    log(f"\u23f1 TOTAL — {_dur(t_start)}")
 
     summary = {
 

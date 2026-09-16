@@ -1,0 +1,101 @@
+MATCH & GAP ANALYSIS
+Lead BI & Analytics Consultant — European Non-Profit / International Programmes
+Candidate: Ernest SONG
+Prepared by: Senior Tech Recruiter & Executive Resume Strategist
+
+================================================================================
+DIRECT MATCHES
+================================================================================
+- BI tooling / enterprise reporting ecosystem: The JD lists "Power BI/enterprise reporting environments" as a nice-to-have technical environment. The candidate CV demonstrates direct toolchain coverage: "MS Power BI," "QlikSense," "Business Object," "Cognos," and "Hyperion" (Competencies / Business Intelligence block).
+
+- BI/analytics hands-on delivery: JD asks for "Proven experience leading BI or analytics initiatives." The CV provides concrete examples:
+  * Holcim (Jan 2024 – Dec 2025): "Implemented Qliksense with new data for financial reporting and insights."
+  * Engie Tractebel (Mar 2023): "design Power BI reporting" and "Develop Finance data modelling from SAP for HANA."
+  * Shurgard (Feb 2022 – Feb 2023): "Designed the data model and visualization for the Investment department's Business Intelligence efforts."
+  * Tobania (Feb 2020 – Oct 2020): "self-service BI" and "regular, tailored reports to help customers monitor and control costs and make data-driven business decisions."
+
+- Data warehouses / analytical platforms / dimensional modelling: JD references "data warehouses, analytical platforms and modern BI ecosystems" and "dimensional modelling." The candidate repeatedly works with SAP HANA (a relational/hybrid data platform) and builds reporting atop it (Engie SEM, Holcim, Engie Tractebel). This satisfies the analytical-platform/BI-ecosystem requirement in a finance-data context.
+
+- Translating business processes into data & reporting models: JD essential criterion. Directly evidenced:
+  * Engie SEM: "Reconciled complex financial data structures between middle-office databases (IVDB) and SAP S/4HANA."
+  * Engie Tractebel: "Design cashflow reporting and cash exposure per project."
+  * Holcim: "Leveraged data insights derived from market analysis to restructure production workflows."
+
+- Define KPIs, metrics & business definitions: JD essential. The CV references metrics/ROI in its profile keywords ("Metrics, ROI") and builds reporting/reporting requirements (cash flow reporting, budget monitoring, rebate models).
+
+- Stakeholder management across business & technology: JD essential. Evidenced: Engie SEM — "acting as the core Business Analyst bridging IT architecture and strategic business operations"; Holcim — "liaised with auditors on rebate matters."
+
+- Multiple business domains / reporting requirements: JD criterion. The candidate spans trading/commodity (Engie SEM), production/M&A (Holcim), real estate/investment (Shurgard), hospitality/airports (Vinci Airports), consolidation/IFRS (Rexel), and audit (KPMG). This is demonstrable multi-domain experience.
+
+- International / large-scale organisations: JD criterion. The CV shows multi-country exposure ("across BE, FR and NL," "50+ locations in various countries," subsidiaries across Asia-Pacific, Latin America, Canada) and major corporates (Engie, Holcim, KPMG, Vinci, Rexel, Degroof Petercam).
+
+- Strategic + hands-on operating level: JD requirement. The quote states "I read the numbers and the organisation behind them"; roles span executive ("interim CFO," "Director," "Managing Director") and hands-on delivery (ETL/Power Query, dashboard building).
+
+- Communication in English: JD requirement ("Excellent communication skills in English"). The CV lists languages as "Proficient: English" and positions the candidate as presenting to technical and non-technical audiences.
+
+- Standards & governance adjacency: JD asks to "Establish standards for BI development... reporting and analytical consistency" and "Support the identification and resolution of data quality... issues." Evidenced adjacencies: "BPM standards" (Degroof Petercam), "internal control and data quality" (Degroof Petercam), "standardization, and harmonization" (Tobania), "ensuring system integrity" (Holcim).
+
+- Non-profit / programme environment adjacency: JD flags European non-profit, grants, funding, and EU-funded programmes as particularly valuable. Notable direct hit: KPMG Audit entry — "Certified FP7 Grant Agreements for the EU Research program." This is a genuine, relevant connection to EU-funded programme environments. Also: Founder of a non-profit ("Soap collect").
+
+================================================================================
+TRANSFERABLE (related experience fulfilling implicit JD requirements)
+================================================================================
+- Data Architecture / Data Governance (implicit JD core): The JD core is "Business Intelligence / Analytics combined with Data Architecture or Data Governance." The candidate's architecture-adjacent experience transfers:
+  * SAP S/4HANA migration/legacy system transitions (Engie SEM, Holcim) maps to the JD's "transition from conceptual and logical data models into physical data structures" and "legacy enterprise systems."
+  * "Restructuring and simplifying the Work Breakdown Structure (WWS) project codes" (Engie SEM) transfers to data-modeling/metadata discipline.
+  * Data reconciliation between IVDB and SAP (Engie SEM) transfers to data-governance/data-quality work.
+
+- BI strategy & roadmap: JD "Lead the definition and evolution of the organisation's BI and analytics strategy." Transfers from Tobania "pricing strategy and roadmap" and "self-service BI" leadership, and from transformation/operating-model work (Degroof Petercam Finance Transformation Operating Model).
+
+- Data quality frameworks: JD nice-to-have. Transfers via "data quality" governance work (Degroof Petercam) and audit/data-reliability discipline (Holcim "Ensured data reliability"; KPMG audit controls / SOX).
+
+- Leadership / guidance to professionals: JD "Provide guidance and leadership to BI, analytics and data professionals." Transfers from multi-person leadership roles ("led audit teams," "Managing Director & Head of...").
+
+- Modern cloud data platforms: JD nice-to-have. Partially transfers via SAP HANA / cloud ERP contexts, though native cloud-data-platform exposure is not explicitly stated.
+
+================================================================================
+CRITICAL GAPS
+================================================================================
+Evidence-based gaps where the CV does not substantively address JD requirements:
+
+1. Formal Data Architecture / Data Governance role experience — MISSING / UNPROVEN.
+  The JD core qualification is "strong background in Business Intelligence / Analytics combined with Data Architecture or Data Governance." The candidate's career is finance/accounting/transformation, not dedicated data-architecture or data-governance ownership. Architecture/governance appears as adjacent task context, not as a defined professional discipline.
+
+2. Conceptual, Logical AND Physical Data Modelling — NOT DEMONSTRATED.
+  JD: "Strong understanding of Conceptual, Logical and Physical Data Modelling." The CV mentions "data model" construction (Shurgard, Engie Tractebel) but provides no evidence of formal data-modelling methodology across the conceptual→logical→physical spectrum, ER/dimensional modelling theory, or data modeling tooling.
+
+3. Data Lakehouse / Microsoft Fabric / modern cloud data platforms — NOT PRESENT.
+  JD nice-to-have: "Microsoft Fabric," "Data Lakehouse architectures," "Modern cloud data platforms." No mention anywhere in the CV.
+
+4. Data warehousing & dimensional modelling — NOT EXPLICITLY STATED.
+  JD nice-to-have: "Data warehousing and dimensional modelling," "Data warehousing and analytical platforms." The CV emphasizes SAP HANA (OLTP/hybrid) and BI tooling, but does not cite data-warehouse or dimensional (star/snowflake) modelling experience.
+
+5. Data governance / metadata management / data quality frameworks — LIMITED.
+  JD nice-to-have: "Data governance and metadata management," "Data quality frameworks." The CV shows isolated data-quality/internal-control tasks but no formal data-governance framework, catalog/metadata management, or governance program ownership.
+
+6. Oracle / MySQL / legacy enterprise systems — NOT PRESENT.
+  JD nice-to-have: "Oracle," "MySQL," "Legacy enterprise systems." No mention in the CV (SAP HANA appears, but not Oracle/MySQL).
+
+7. Leading dedicated BI / analytics initiatives within complex organisations — PARTIAL.
+  JD essential: "Proven experience leading BI or analytics initiatives within complex organisations." The candidate leads BI-adjacent reporting/analytics within finance transformations, but not as a standalone "BI/Analytics" function/lead. Framing is finance-leadership, not BI/Analytics consultancy or leadership.
+
+8. Common data model across multiple programmes / programme-specific requirements — NOT EVIDENCED.
+  JD: "Help establish a common data model across multiple funding programmes while accommodating programme-specific requirements." No evidence of enterprise/multi-programme data modeling.
+
+9. Enterprise data architecture / roadmap & governance capability (strategic layer) — PARTIAL/UNPROVEN.
+  JD: "Help define the roadmap for future BI, analytics and data governance capabilities" and "Enterprise data architecture." Strategy work is present (pricing roadmap, transformation), but not framed as BI/data-governance roadmap or enterprise data architecture.
+
+10. Multi-programme / international funding or programme-management systems — NOT PRESENT.
+  JD: "International programme/funding management systems" and "European Commission-funded programmes or similar international funding models." The only touchpoint is KPMG's "Certified FP7 Grant Agreements for the EU Research program" (audit/certification context), which does not demonstrate operating/analyzing EU-funded programme management systems.
+
+11. Language confirmation risk — VERIFY.
+  JD requires fluent English for presenting to technical and non-technical audiences. CV lists "Proficient: English," which a recruiter should confirm against the fluency required for a stakeholder-facing consultancy role.
+
+================================================================================
+SUMMARY
+================================================================================
+STRONG FIT DIMENSIONS: Power BI / enterprise BI tooling (Power BI, QlikSense, Business Object, Cognos, Hyperion), BI/analytics reporting delivery, multi-domain stakeholder & multi-country exposure, finance-data ETL/reporting, and a genuine EU-funded-programme (FP7) touchpoint.
+
+PRIMARY MISALIGNMENT: The role is a dedicated BI/Data-Governance/Data-Architecture consultancy seat. The candidate is a Finance/Transformation leader whose BI and data work is applied within finance mandates, not a standalone data profession. The most material gaps are: no demonstrated formal data architecture/governance ownership, no conceptual→logical→physical data modelling evidence, and no exposure to the JD's specific stack (Microsoft Fabric, Data Lakehouse, data warehousing/dimensional modelling, Oracle/MySQL, cloud data platforms).
+
+NET ASSESSMENT: Partial match. The candidate is a strong BI-reporting and stakeholder/transformation profile but does not, as documented, meet the core Data Architecture / Data Governance essential qualifications. Best positioned for BI/analytics reporting or finance-analytics adjacent mandates; not a confirmed fit for a lead data-architecture/governancy consultancy without validating the modelling and governance depth.

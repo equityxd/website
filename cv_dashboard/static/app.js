@@ -16,10 +16,12 @@
 
   // ---- Helpers -----------------------------------------------------------
   function logLine(msg, cls) {
-    const span = document.createElement("span");
-    span.className = cls || "line-info";
-    span.textContent = msg;
-    els.log.appendChild(span);
+    // Use a block-level element (div) so each log entry starts on its own line.
+    // (Previously a <span> was used, which is inline and concatenated messages.)
+    const line = document.createElement("div");
+    line.className = cls || "line-info";
+    line.textContent = msg;
+    els.log.appendChild(line);
     els.log.scrollTop = els.log.scrollHeight;
   }
 

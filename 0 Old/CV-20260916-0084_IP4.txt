@@ -1,0 +1,7 @@
+INTERVIEW PREP 4/6 — Serial CV-20260916-0084 (STAR)
+============================================================
+Q. Tell me about a time you established governance or standards to make reporting auditable.
+SITUATION: KPMG Audit (Financial Auditor Supervisor, 2011–2014, Paris) and Degroof Petercam (Performance Management Project Leader, 2018, Brussels).
+TASK: Establish governance/quality standards so reporting could be trusted and audited.
+ACTION: KPMG — tested key processes against SOX, certified FP7 Grant Agreements for the EU Research program, and applied auditable data standards; Degroof — optimized the finance-close process for governance, internal control and data quality, and led regulatory-reporting sourcing against BPM standards.
+RESULT: Reporting that is consistent, reliable and auditable, with internal-control and data-quality standards embedded — directly transferable to establishing "BI/data standards and governance practices" for auditable reporting.

@@ -42,6 +42,10 @@ try:
     import collect_cv
 except Exception as exc:  # pragma: no cover - defensive
     raise SystemExit(f"Could not import collect_cv: {exc}")
+try:
+    import generation.engine as gen_engine
+except Exception as exc:  # pragma: no cover - defensive
+    raise SystemExit(f"Could not import generation.engine: {exc}")
 
 
 app = FastAPI(title="CV Builder Dashboard")
@@ -162,35 +166,15 @@ async def generate(request: Request):
             serial = coll.get("serial", "unknown")
             q.put(("progress", f"✓ Collected → serial {serial}"))
 
-            # Stage 2 — cover letter + interview prep (subprocess).
-            # Emit an explicit checked step for each document so the user can
-            # confirm every artefact was actually produced.
-            q.put(("progress", "Generating documents…"))
-            for step in _run_and_step(
-                "generate_documents.py",
-                [str(coll["jd_path"])],
-                [
-                    ("CL1", f"Cover letter ({serial}_CL1.docx)"),
-                    ("IP1", f"Interview prep ({serial}_IP1.docx)"),
-                    ("Application_Tracker", "Application tracker updated"),
-                ],
-            ):
-                q.put(("progress", step))
-
-            # Stage 3 — CV render (Typst .typ → PDF), emitted as an explicit check.
-            q.put(("progress", "Rendering CV PDF (Typst)…"))
-            for step in _run_and_step(
-                "gen_cv_typ.py",
-                ["--position", coll.get("title", ""), str(coll["jd_path"])],
-                [
-                    # Only the "Compiled <path>" line is a real completion check;
-                    # the "Running: typst compile …" / "Wrote ….typ" lines stay as info.
-                    ("Compiled", f"CV PDF ({serial}_CV…)"),
-                    (".typ", None),
-                ],
-            ):
-                q.put(("progress", step))
-
+            # Stage 2 — LLM-driven full-document generation (Option B).
+            # Drives pi to produce the complete application package (Match & Gap
+            # Analysis, tailored CV, cover letters, interview prep, dossier) from
+            # the collected JD + base CV + manifest, then updates the tracker.
+            q.put(("progress", "LLM generating documents (Phase 1-3)…"))
+            gen_engine.run_generation(
+                str(coll["jd_path"]),
+                on_progress=lambda m: q.put(("progress", f"{m}")),
+            )
             q.put(("progress", f"✓ All documents generated for serial {serial}."))
             q.put(("done", None))
         except Exception as exc:

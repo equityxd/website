@@ -1,0 +1,13 @@
+COVER LETTER 5/5 — Serial CV-20260916-0084
+============================================================
+Dear Jeremie,
+
+I am applying for the Lead BI & Analytics Consultant role. The two elements you highlight — "multiple business domains, stakeholders and reporting requirements" and working within "European public sector, non-profit, grants, funding" — correspond directly to my dual background: I lead BI/analytics and data-transformation engagements, and I founded and run the non-profit Soap collect, operating inside EU grant / funding-management contexts.
+
+I can translate complex business processes across finance, real estate and operations into data and reporting models, define KPIs/metrics, and set governance standards for auditable reporting. My track record includes bridging IT architecture and business operations on the SAP S/4HANA migration, building Power BI / QlikSense reporting, automating close ingestion (PowerQuery, 1,500+ bookings per close) and governing multi-entity IFRS consolidation reporting — delivering stakeholder reporting that works for both technical and non-technical audiences.
+
+I am candid that Microsoft Fabric, lakehouse and Oracle/MySQL are tooling deltas I would ramp on with a structured onboarding plan; my core BI/analytics, data-modelling and governance capabilities let me add value from the outset. I work both at strategy level and hands-on, respect deadlines and communicate clearly.
+
+I would welcome a conversation to discuss how I can contribute to establishing a consistent data foundation and governance across your funding programmes.
+Best regards,
+Ernest SONG

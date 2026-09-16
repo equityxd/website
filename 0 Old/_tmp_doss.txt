@@ -1,0 +1,29 @@
+Application Dossier — Ernest SONG
+Argumentation for Domain Leader / Finance (Infor M3 / Prometheus context) & Director of Finance
+=== CANDIDATE ARGUMENTATION DOSSIER — Serial CV-20260916-0076 ===
+1. PROFILE SUMMARY
+Ernest SONG is a finance leader with 15+ years spanning financial reporting, budgeting &
+forecasting, P&L-adjacent oversight, ERP (SAP S/4HANA / SAP HANA) transformation and Business
+Intelligence (Power BI, Cognos, QlikSense). His base CV declares 'Chief Growth & Transformation
+Officer'; he is repositioning to 'Director of Finance' to match the target JD.
+2. JD FIT ARGUMENT (Director of Finance / Domain Leader Finance)
+- Financial reporting (monthly/quarterly): IFRS reporting across APAC, LATAM, Canada (Rexel); month-end close leadership (Engie SEM).
+- Budgeting & forecasting: from-scratch budgeting tool under 2-week deadline (Engie SEM); annual budgeting & variance cycle (Rexel).
+- P&L oversight: interim CFO treasury/P&L oversight; €3M debt/equity raise (Magnetrap).
+- Multi-entity GL / AP / AR: 12+ entities across BE/FR/NL; IVDB reconciliation.
+- BI / dashboards: Power BI, Cognos, QlikSense rollouts.
+- ERP transformation: SAP S/4HANA / SAP HANA migration leadership.
+- Governance: SOX process testing (KPMG); ESCP auditing qualification.
+3. GAP ARGUMENTATION (honest, non-exaggerated)
+- US GAAP / US work context: not held directly; addressed via structured onboarding ramp leveraging IFRS / BE-GAAP consolidation foundation.
+- Dedicated standing AP/AR bookkeeping: not a dedicated bookkeeping role; covered by ESCP auditing qualification + ETL/automation discipline.
+- Named direct-report / org-chart leadership: influence & team leadership proven (KPMG audit teams, 50+ airport sites); ramp plan provided.
+- US-based employer context: all experience Europe (BE/FR/PT); addressed via remote/hybrid delivery + fast-learning profile.
+4. WHY HIM (differentiators)
+- Translator's mindset: bridges IT architecture and business as Business Analyst.
+- Automation-first: PowerQuery ETL closes (1,500+ bookings/close, zero manual).
+- Dual perspective: sat on both operator's and executive-recruiter's side of the table.
+- Remote-friendly, deadline-respecting, clear multi-level communication.
+5. EVIDENCE TRACEABILITY
+Every claim above is traceable to the candidate's base CV (1 Source/SONG Ernest - CV v1.typ).
+No experience, metric, company or location is invented.
