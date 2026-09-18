@@ -4,7 +4,7 @@ import os, sys, time
 sys.path.insert(0, os.path.dirname(__file__))
 from generation import engine
 
-jd_path = "2 Job description/CV-20260914-0019.txt"
+jd_path = "job_descriptions/CV-20260914-0019.txt"
 
 def on_progress(m):
     print(f"[{time.strftime('%H:%M:%S')}] {m}", flush=True)

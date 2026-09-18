@@ -1,0 +1,85 @@
+INTERPREP — STAR Q&A OUTLINES — Serial CV-20260917-0009
+=========================================================
+Source: candidate's base CV (source/SONG Ernest - CV v1.typ) + JD only.
+All outlines are built strictly from the candidate's real recorded experiences.
+
+NOTE TO CANDIDATE: These are outline skeletons (key Action/Result bullets), not
+word-for-word scripts. Expand with your own numbers and phrasing during prep.
+
+----------------------------------------------------------
+Q1. "Walk me through your experience building a multi-year business plan / MTP."
+----------------------------------------------------------
+S — Interim CFO at Magnetrap (2020–2022) and multi-year concession modelling at Vinci Airports (2016–2017).
+T — Need to build business plans, long-term financial models and budgeting/forecasting for a growing business.
+A — Built cash-flow projections, business plans and long-term financial models at Magnetrap; developed multi-year concession financial model with macroeconomic, capex and valuation assumptions at Vinci; negotiated concession-extension budgeting/forecasting process.
+R — Supported €3M debt/equity fundraising; improved budgeting/forecasting processes; informed long-term planning.
+JD bridge — Directly covers "développement du plan financier pluriannuel / Medium-Term Plan 2026–2030."
+
+----------------------------------------------------------
+Q2. "Give an example of strong cash-flow / working-capital / financial modelling."
+----------------------------------------------------------
+S — Engie Tractebel cash-flow assignment (2023) and Engie SEM financial close.
+T — Deliver project cash-flow reporting and per-project financing-need assessment; keep close reliable at scale.
+A — Designed project-level cash-flow reporting and financing-need assessment; developed finance data models from SAP HANA and designed Power BI reporting; automated close via PowerQuery ETL (1,500+ bookings/close, zero manual intervention).
+R — Decision-ready investor/leadership insights; operational continuity during staffing gaps.
+JD bridge — Covers "solide en cash-flow / working capital" + financial modelling.
+
+----------------------------------------------------------
+Q3. "How have you handled consolidation, P&L / bilan reporting across regions?"
+----------------------------------------------------------
+S — Rexel Reporting Consolidation Manager (2014–2016), multi-entity LATAM/APAC/Canada.
+T — Deliver consolidated IFRS reporting and ongoing budgeting/forecasting.
+A — Led IFRS consolidated reporting; integrated SAP BPC + Cognos reporting; ran annual budgeting and monthly forecasting (actual vs budget).
+R — Strengthened GL/AP consolidated reporting; consistent budget/forecast cycle.
+JD bridge — Matches "maître du bilan, reporting et consolidation" + challenging regions on the fund.
+
+----------------------------------------------------------
+Q4. "Describe your M&A / due-diligence / post-acquisition integration experience."
+----------------------------------------------------------
+S — Shurgard Investment & Corporate Development (2022–2023) and Holcim (2024–2025).
+T — Work on transactions and integrate acquired operations post-M&A.
+A — Worked on self-storage M&A (structuring, negotiation, divestitures; due-diligence-adjacent analysis); restructured production workflows post-M&A at Holcim; partnered with auditors on rebate matters.
+R — Efficient deal structuring; efficiency gains post-integration; reliable auditor-liaison on rebate data.
+JD bridge — Covers M&A, due diligence and post-acquisition integration (a named atout).
+
+----------------------------------------------------------
+Q5. "When did you challenge regional/functional stakeholders on the fund?"
+----------------------------------------------------------
+S — Cross-region consolidation (Rexel) and consolidation controlling across French subsidiaries (Engie SEM).
+T — Ensure regional P&L/cash/CAPEX numbers hold up on the fund.
+A — Reconciled IVDB↔SAP S/4HANA data; restructured WBS codes to strengthen portfolio/CAPEX monitoring; challenged/consolidated financial controlling during migration.
+R — Preserved the group consolidation pipeline through go-live; stronger portfolio monitoring.
+JD bridge — Directly maps "challenging les différentes régions sur le fond."
+
+----------------------------------------------------------
+Q6. "Tell me about turning consolidated data into investor/bank/stakeholder analysis."
+----------------------------------------------------------
+S — Magnetrap investor reporting and Engie Tractebel BI delivery.
+T — Prepare investor/bank-facing analysis from consolidated data.
+A — Prepared operating-results reports for investors; developed finance data models from SAP HANA into Power BI reporting.
+R — Investor- and banking-stakeholder-ready analysis; faster reporting cycles via Qlik Sense at Holcim.
+JD bridge — Covers "préparation d’analyses financiers destinées aux investisseurs, banques et autres stakeholders."
+
+----------------------------------------------------------
+Q7. "How do you cover the Lucanet / consolidation-tool gap quickly?"
+----------------------------------------------------------
+S — Fast onboarding on consolidation/reporting tools evidenced by SAP BPC, Cognos, Business Object, Hyperion, Power BI, QlikSense deployments.
+T — Embed the MTP into a consolidation/reporting tool (Lucanet).
+A — Leverage existing consolidation/reporting stack; treat Lucanet as a configurable layer over SAP BPC/Cognos patterns already mastered.
+R — Short onboarding; your own JD confirms Lucanet is nice-to-have, not indispensable.
+JD bridge — Honest, proactive gap-cover without overclaiming.
+
+----------------------------------------------------------
+Q8. "Why this freelance corporate mandate, and can you work autonomously?"
+----------------------------------------------------------
+S — Entire recent career is freelance/consulting, delivered end-to-end.
+T — Independent analysis, autonomous delivery, clean stakeholder communication.
+A — Ran finance close, modelling, BI, change management and investor reporting alone across multiple countries and entities.
+R — Reliable standalone delivery; adaptable to 4-day week / extension.
+JD bridge — Covers "analyses de manière autonome" + communication with management/stakeholders.
+
+----------------------------------------------------------
+TRUTHFULNESS DECLARATION
+Every STAR outline above is derived only from the candidate's base CV
+(source/SONG Ernest - CV v1.typ). No fabricated achievements, figures or
+employers have been introduced.

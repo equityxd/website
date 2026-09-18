@@ -33,26 +33,26 @@ echo.
 echo [2/2] Generating tailored documents from the collected JD...
 echo.
 
-REM Locate the most recently created JD file in "2 Job description".
+REM Locate the most recently created JD file in "job_descriptions".
 REM `/od` sorts oldest-first, so keeping the last entry yields the newest.
 set JD_FILE=
-for /f "delims=" %%a in ('dir /b /od "2 Job description\*.txt" 2>nul') do (
-    set JD_FILE=2 Job description\%%a
+for /f "delims=" %%a in ('dir /b /od "job_descriptions\*.txt" 2>nul') do (
+    set JD_FILE=job_descriptions\%%a
 )
 
 if not defined JD_FILE (
     echo.
-    echo [!] No JD .txt file found in "2 Job description".
+    echo [!] No JD .txt file found in "job_descriptions".
     echo     Run the collector first (paste the JD and press 'Run process').
     pause
     exit /b 1
 )
 
-echo        Using JD: 2 Job description\%JD_FILE%
+echo        Using JD: job_descriptions\%JD_FILE%
 echo.
 
 REM 1) Generate the JD-tailored CV (.typ + PDF) via the .typ generator.
-REM    gen_cv_typ.py <JD.txt>  ->  3 Custom CV/CV-20260912-0005_CV1.typ / .pdf
+REM    gen_cv_typ.py <JD.txt>  ->  custom_cv/CV-20260912-0005_CV1.typ / .pdf
 python gen_cv_typ.py "%JD_FILE%"
 
 if errorlevel 1 (
@@ -63,7 +63,7 @@ if errorlevel 1 (
 )
 
 REM Generate 1 cover letter + 1 interview-prep (Word) and update the monitoring tracker.
-python generate_documents.py "2 Job description\%JD_FILE%"
+python generate_documents.py "job_descriptions\%JD_FILE%"
 
 if errorlevel 1 (
     echo.

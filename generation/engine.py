@@ -14,17 +14,19 @@ produce the full application package described by the manifest:
 
 
 
-    1. Match & Gap Analysis   -> 2 Job description/
+    1. Match & Gap Analysis   -> job_descriptions/
 
-    2. Tailored CV (.typ)     -> 3 Custom CV/<serial>_CV1.typ   (+ compiled .pdf)
+    2. Tailored CV (.typ)     -> custom_cv/<serial>_CV1.typ   (+ compiled .pdf)
 
-    3. Tailored Cover Letter  -> 5 Custom Cover Letter/<serial>_CL1.docx
+    3. Tailored Cover Letter  -> cover_letters/<serial>_CL1.docx
 
     4. Interview Prep (STAR)  -> 6 Interview Prep/<serial>_IP1.docx
 
-    5. Application Dossier    -> 7 Input Job description/
+    5. Application Dossier    -> input_job_description/
 
-    6. Tracker + status update -> 4 Application monitoring/Application_Tracker.xlsx
+    6. Recruiter Fit Message   -> application_monitoring/<serial>_RM1.docx
+
+    7. Tracker + status update -> application_monitoring/Application_Tracker.xlsx
 
 
 
@@ -78,7 +80,7 @@ Usage:
 
     python generation/engine.py "<path/to/JD.txt>"        # LLM-generate for one JD
 
-    python generation/engine.py                              # newest JD in 2 Job description
+    python generation/engine.py                              # newest JD in job_descriptions
 
 
 
@@ -95,6 +97,8 @@ import sys
 import json
 
 import time
+
+import datetime
 
 import subprocess
 
@@ -134,21 +138,21 @@ except (AttributeError, ValueError):
 
 BASE_DIR = Path(__file__).resolve().parent.parent          # .../MyCV
 
-CV_DIR = BASE_DIR / "3 Custom CV"
+CV_DIR = BASE_DIR / "custom_cv"
 
-COVER_DIR = BASE_DIR / "5 Custom Cover Letter"
+COVER_DIR = BASE_DIR / "cover_letters"
 
 INTERVIEW_DIR = BASE_DIR / "6 Interview Prep"
 
-DOSSIER_DIR = BASE_DIR / "7 Input Job description"
+DOSSIER_DIR = BASE_DIR / "input_job_description"
 
-MANIFEST_DIR = BASE_DIR / "4 Application monitoring" / "manifests"
+MANIFEST_DIR = BASE_DIR / "application_monitoring" / "manifests"
 
-WORKBOOK = BASE_DIR / "4 Application monitoring" / "Application_Tracker.xlsx"
+WORKBOOK = BASE_DIR / "application_monitoring" / "Application_Tracker.xlsx"
 
-BASE_CV = BASE_DIR / "1 Source" / "SONG Ernest - CV v1.typ"
+BASE_CV = BASE_DIR / "source" / "SONG Ernest - CV v1.typ"
 
-JOB_DIR = BASE_DIR / "2 Job description"
+JOB_DIR = BASE_DIR / "job_descriptions"
 
 # One folder per job application, named "YYYYMMDD - Company - Position".
 APPLICATIONS_DIR = BASE_DIR / "Job Applications"
@@ -196,9 +200,11 @@ DEBUG_LOG = BASE_DIR / ".generation_debug.log"
 
 def _debug(msg=""):
     """Append a timestamped entry to the hidden debug log (best-effort)."""
+    # Assign `line` BEFORE the try so a logging failure (e.g. unwritable DEBUG_LOG)
+    # can never leave it unbound and raise UnboundLocalError at `return line`.
+    ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    line = f"[{ts}] {msg}"
     try:
-        ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        line = f"[{ts}] {msg}"
         with open(DEBUG_LOG, "a", encoding="utf-8") as fh:
             fh.write(line + "\n")
     except Exception:
@@ -217,17 +223,28 @@ def _pi_executable():
 
     candidates = []
 
-    npm_root = os.environ.get("APPDATA", os.path.expanduser("~/.npm"))
+    # npm global bins on Windows are installed as .cmd/.ps1/.js (not bare `pi`),
+    # so look across common extensions rather than assuming a bare name or .exe.
+    exts = ("", ".cmd", ".ps1", ".js")
 
-    candidates.append(os.path.join(os.environ.get("APPDATA", ""), "npm", "pi"))
+    npm_dirs = [
+        os.environ.get("APPDATA", ""),
+        os.environ.get("LOCALAPPDATA", ""),
+    ]
 
-    candidates.append(os.path.join(os.environ.get("LOCALAPPDATA", ""), "npm", "pi"))
+    for d in npm_dirs:
+
+        for ext in exts:
+
+            if d:
+
+                candidates.append(os.path.join(d, "npm", "pi" + ext))
 
     for dir_ in os.environ.get("PATH", "").split(os.pathsep):
 
-        candidates.append(os.path.join(dir_, "pi"))
+        for ext in exts:
 
-        candidates.append(os.path.join(dir_, "pi.exe"))
+            candidates.append(os.path.join(dir_, "pi" + ext))
 
     for c in candidates:
 
@@ -372,6 +389,16 @@ def _candidate_facts(manifest):
     if m:
 
         facts["target_role"] = m.group(1).strip()
+
+    m = re.search(r"Recruiter\s*:\s*(.+)", manifest)
+
+    if m:
+
+        recruiter = m.group(1).strip()
+
+        # Treat placeholders / missing values as "unknown" rather than the literal "N/A".
+
+        facts["recruiter"] = None if recruiter.upper() in ("N/A", "NA", "–", "") else recruiter
 
     return facts
 
@@ -518,6 +545,79 @@ def _dossier_prompt(jd_text, manifest):
         "==== MANIFEST (session metadata) ====\n" + manifest.strip() + "\n"
 
         "==== JOB DESCRIPTION ====\n" + jd_text.strip()
+
+    )
+
+
+
+def _recruiter_message_prompt(jd_text, facts, recruiter_name):
+
+    """Reverse-engineered prompt for the recruiter-fit 'cheat-sheet' message.
+
+    Reproduces the kind of message Ernest SONG sends to his recruiter (Milète / Michèle)
+    when a new opportunity arrives: a warm, confident, recruiter-ready email that maps the
+    candidate's REAL experience to the JD's specific requirements, framed as a quick
+    cheat-sheet ahead of a recruiter/client call. Output is a single .docx message.
+
+    The structure mirrors a validated human-written example (greeting -> conviction ->
+    JD-context acknowledgement -> time-pressure frame -> themed cheat-sheet -> profile
+    summary -> warm closing), but every section and heading is derived fresh from the
+    incoming JD + candidate facts, so it generalises to any future JD.
+    """
+
+    role = facts.get("target_role", "the target role")
+
+    return (
+        "You are Ernest SONG, a senior executive finance professional, writing a warm but "
+        "confident email to your recruiter, " + str(recruiter_name) + ", who has just "
+        "passed you a new opportunity. Your goal is to make it trivial for them to sell you "
+        "to their client, so hand them a ready-to-use 'fit cheat-sheet'.\n\n"
+
+        "==== TARGET ROLE ====\n" + role + "\n\n"
+
+        "==== JOB DESCRIPTION ====\n" + jd_text.strip() + "\n\n"
+
+        "==== CANDIDATE FACTS (your real CV — your source of truth) ====\n" + facts.get("content", "") + "\n\n"
+
+        "==== EMAIL STRUCTURE (follow exactly) ====\n"
+
+        "1) Greet the recruiter by name at the very top ('Dear " + str(recruiter_name) + ",').\n"
+
+        "2) Open with genuine conviction: you are the ideal candidate for this client and "
+        "this opportunity is your top priority.\n"
+
+        "3) State that you reviewed the role/scope, then explicitly name 1-2 of the JD's "
+        "defining themes (e.g. high growth + acquisitions + Medium-Term Plan) and how they "
+        "align perfectly with your core expertise.\n"
+
+        "4) Add a short 'time is short' frame: acknowledge that they are meeting the client "
+        "soon, so here is a compact cheat-sheet proving your fit.\n"
+
+        "5) Provide the CHEAT-SHEET of 3-4 THEMED SECTIONS. Derive each section heading "
+        "directly from the JD's actual requirements (e.g. 'Medium-Term Plan / Multi-year "
+        "Planning', 'Group Controlling, Consolidation & Technical Mastery', 'Investor "
+        "Support, M&A & Due Diligence', 'Business Partner Mindset & Systems'). Under each "
+        "heading cite 2-3 concrete evidence bullets drawn STRICTLY from your real CV — "
+        "include company names, years, and hard numbers (turnover, deal sizes, budget, "
+        "headcount). Ensure every major JD requirement is backed by at least one bullet.\n"
+
+        "6) Close with a short PROFILE SUMMARY of exactly these four labelled lines: "
+        "Profile (e.g. 'Executive Finance Professional (15+ years)'), Education, "
+        "Positioning (your target niche), and Availability (immediate, location, schedule).\n"
+
+        "7) Final line: confirm the updated CV is attached, wish them a good evening, and "
+        "reference the upcoming conversation.\n\n"
+
+        "==== RULES ====\n"
+
+        "- Tone: warm, professional, self-assured — never arrogant, never apologetic.\n"
+
+        "- Base EVERY claim on the candidate's real CV facts. No fabrication and no "
+        "invented numbers; if a precise figure is unknown, describe the impact qualitatively.\n"
+
+        "- Keep it scannable: short paragraphs and punchy bullet lists (roughly under 400 words).\n"
+
+        "- Output ONLY the email body, ready to paste into an email client (no meta-commentary).\n"
 
     )
 
@@ -1181,7 +1281,7 @@ def run_generation(jd_path, on_progress=None, company="", position=""):
     # kind survives inside the per-application folder.
     _debug("cleaning stale artefacts in app folder")
     _clean_stale(app_folder, serial, "typ", keep_labels=("CV1",))
-    _clean_stale(app_folder, serial, "docx", keep_labels=("CL1", "IP1", "Doyen_DomainLeader_Argumentation"))
+    _clean_stale(app_folder, serial, "docx", keep_labels=("CL1", "IP1", "Doyen_DomainLeader_Argumentation", "RM1"))
     _clean_stale(app_folder, serial, "txt", keep_labels=("MATCH_GAP",))
 
 
@@ -1362,6 +1462,52 @@ def run_generation(jd_path, on_progress=None, company="", position=""):
 
 
 
+    # --- Step 6/6: Recruiter 'Fit Cheat-Sheet' Email (docx) ---
+
+    log("▶ Step 6/6 Recruiter Fit Message...")
+
+    recruiter_name = facts.get("recruiter") or "the recruiter"
+
+    rm_stdout, _ = _run_pi(_recruiter_message_prompt(jd_text, facts, recruiter_name), log)
+
+    # The LLM writes text; convert it to a real Word docx inside the app folder.
+    rm_docx = app_folder / f"{serial}_RM1.docx"
+    rm_src = _collect("RM1", app_folder, "docx", serial, on_progress=log)
+    if not os.path.isfile(rm_docx):
+        rm_txt = _collect("RM1", app_folder, "txt", serial, on_progress=log)
+        if os.path.isfile(rm_txt):
+            _debug(f"converting recruiter message {Path(rm_txt).name} -> docx")
+            _txt_to_docx(rm_txt, str(rm_docx))
+            try:
+                if rm_txt != rm_docx:
+                    rm_txt.unlink()
+            except OSError:
+                pass
+    # Fallback: if the LLM printed the message to stdout instead of writing a file,
+    # persist it as RM1.txt and convert to docx (mirrors the cover-letter step).
+    if not os.path.isfile(rm_docx) and rm_stdout and not os.path.isfile(app_folder / f"{serial}_RM1.txt"):
+        _debug(f"recruiter message not written by LLM; persisting stdout -> RM1.txt")
+        (app_folder / f"{serial}_RM1.txt").write_text(rm_stdout, encoding="utf-8")
+        _txt_to_docx(app_folder / f"{serial}_RM1.txt", str(rm_docx))
+
+    # Ensure only ONE recruiter-message artefact survives (the LLM sometimes writes RM1..RM3).
+    for _extra in app_folder.glob(f"{serial}_RM*.txt"):
+        if _extra.name not in (f"{serial}_RM1.txt",):
+            try:
+                _debug(f"removed extra recruiter message {_extra.name}")
+                _extra.unlink()
+            except OSError as exc:
+                _debug(f"could not remove {_extra.name}: {exc}")
+
+    produced["recruiter_message"] = str(rm_docx)
+
+    if not os.path.isfile(rm_docx):
+        log(f"⚠ Recruiter Fit Message not produced: {rm_docx}")
+
+    log(f"✓ Recruiter Fit Message -> {rm_docx.name}")
+    log(f"⏱ Step 6/6 Recruiter Fit Message — {_dur(t_step)}")
+
+
     # Post-step: compile the CV .typ(s) to PDF so artefacts are submission-ready.
 
     pdf_paths = compile_pdf(serial, on_progress=log, app_folder=app_folder)
@@ -1479,7 +1625,7 @@ def update_tracker(serial, pdf_paths, produced=None, on_progress=None):
 
     patterns = ("*.pdf", "*.docx")
 
-    for sub in ("3 Custom CV", "5 Custom Cover Letter", "6 Interview Prep"):
+    for sub in ("custom_cv", "cover_letters", "6 Interview Prep"):
 
         for pattern in patterns:
 
@@ -1489,7 +1635,24 @@ def update_tracker(serial, pdf_paths, produced=None, on_progress=None):
 
                     doc_paths.append(str(f))
 
-    gap = BASE_DIR / "2 Job description" / f"{serial}_MATCH_GAP.txt"
+    # Recruiter Fit Message + dossier live in the per-application sub-folders
+    # (named by date, not by serial), so walk one level of sub-folder.
+
+    for app_sub in APPLICATIONS_DIR.glob("*"):
+
+        if not app_sub.is_dir():
+
+            continue
+
+        for pattern in patterns:
+
+            for f in sorted(app_sub.glob(pattern)):
+
+                if f.name.startswith(f"{serial}_"):
+
+                    doc_paths.append(str(f))
+
+    gap = BASE_DIR / "job_descriptions" / f"{serial}_MATCH_GAP.txt"
 
     if gap.exists():
 
@@ -1511,7 +1674,9 @@ def update_tracker(serial, pdf_paths, produced=None, on_progress=None):
 
         f"{len([p for p in doc_paths if 'CL' in p])} cover letter(s) + "
 
-        f"{len([p for p in doc_paths if 'IP' in p])} interview prep(s)"
+        f"{len([p for p in doc_paths if 'IP' in p])} interview prep(s) + "
+
+        f"{len([p for p in doc_paths if 'RM' in p])} recruiter message(s)"
 
     )
 
@@ -1553,7 +1718,7 @@ if __name__ == "__main__":
 
         if not jd_path:
 
-            print("[error] no JD .txt file found in 2 Job description")
+            print("[error] no JD .txt file found in job_descriptions")
 
             sys.exit(1)
 

@@ -1,0 +1,112 @@
+CV GENERATION TASK — Serial CV-20260917-0010
+============================================
+
+CONTEXT
+You are acting as a principal tech recruiter and executive resume strategist.
+The candidate is applying for a specific position. Align his updated CV with the
+target Job Description to maximize his match rate while STRICTLY adhering to
+100% TRUTHFULNESS and factual accuracy.
+Never invent experience, fake metrics, or exaggerate his background.
+
+SESSION METADATA
+- Serial Number : CV-20260917-0010
+- Company       : Financial Modelling
+- Position      : N/A
+- Recruiter     : N/A
+- Source Type   : Job Description (text)
+- Source        : (pasted text)
+- Target Role   : Chief Growth & Transformation Officer
+
+INPUT: The Job Description is appended below this block. Use ONLY the facts
+present in the candidate's base CV (source/SONG Ernest - CV v1.typ) plus the JD.
+
+==== JOB DESCRIPTION ====
+Bonjour Ernest,
+
+Pour un groupe international, je recherche actuellement un(e) Senior FP&A/ Group Controller freelance expérimenté(e) pour une mission stratégique au niveau corporate.
+
+Le contexte :
+
+L’organisation a connu une forte croissance ces dernières années, notamment grâce à plusieurs acquisitions, et se trouve aujourd’hui dans une phase stratégique importante.
+
+L’équipe Corporate Finance souhaite renforcer temporairement ses équipes avec un profil senior capable d’apporter son expertise en business planning, financial modelling, consolidation et investor support.
+
+Dans les prochains mois, l’accent sera notamment mis sur le développement du plan financier pluriannuel ainsi que sur la préparation d’analyses financières destinées aux investisseurs, banques et autres stakeholders.
+
+Votre rôle :
+
+Vous accompagnez le CFO et l’équipe Corporate Controlling dans l’élaboration du Medium-Term Plan 2026-2030 ainsi que dans son intégration progressive dans Lucanet.
+
+Vous collaborez étroitement avec plusieurs régions internationales et analysez et challengez notamment :
+
+• le P&L
+• le bilan
+• le cash-flow
+• le working capital
+• les CAPEX
+• les movement schedules
+
+Vous intervenez également sur des sujets de financial modelling, d’analyses historiques, de demandes d’investisseurs et de problématiques financières stratégiques.
+
+Un soutien dans le cadre de projets M&A, due diligence et post-acquisition integration peut également faire partie de la mission.
+
+Un plus si vous :
+
+• disposez d’au moins 10 à 15 ans d’expérience pertinente en finance
+• êtes solide en financial modelling, cash-flow et working capital
+• avez une excellente maîtrise du bilan, du reporting et de la consolidation
+• avez une expérience en Group Controlling, Corporate Finance ou FP&A
+• êtes capable de réaliser des analyses de manière autonome et de challenger les différentes régions sur le fond
+• communiquez aisément avec le management et les autres stakeholders
+• maîtrisez parfaitement l’anglais et idéalement également le français
+• avez une expérience avec Lucanet ou un autre outil de consolidation/reporting
+• avez une expérience en audit, M&A, due diligence ou investor reporting, ce qui constitue un réel atout
+
+Informations pratiques :
+
+Début : dès que possible
+
+Durée : minimum 6 mois, avec possibilité de prolongation
+
+Régime : idéalement temps plein, 4 jours par semaine peuvent être envisagés pour le bon profil
+
+Langues : anglais indispensable, français fortement apprécié
+
+Lucanet : nice-to-have, mais pas indispensable
+
+Bien cordialement,
+
+Michèle
+==== END JOB DESCRIPTION ====
+
+ALL deliverables below must be written as a SINGLE set into the one per-application
+folder for this job (named "YYYYMMDD - Company - Position"). Write ONE of each:
+
+1) MATCH & GAP ANALYSIS  ->  filename "CV-20260917-0010_MATCH_GAP.txt"
+   Create a simple comparative breakdown:
+     - Direct Matches : skills/tools/experience that directly match the JD.
+     - Transferable   : related experience that fulfills implicit JD requirements.
+     - Critical Gaps  : required skills/qualifications missing from the CV.
+
+2) 1 CUSTOM CV         ->  filename "CV-20260917-0010_CV1.typ"
+   Rewrite bullet points using exact JD keyword phrasing, ONLY where real
+   experience supports it. Restructure the summary into a high-impact
+   "Value Proposition" answering the JD's primary business pain point.
+   Every bullet = Action Verb + Context/Tech + Metric or Outcome, without
+   inflating the real role. Produce EXACTLY ONE tailored CV (not several versions).
+   Keep the visual formatting of SONG Ernest - CV v1 (only change the content).
+   Position-name preservation: keep each professional-experience job title VERBATIM;
+   the ONLY change allowed is stripping a trailing "(freelance)" tag. Otherwise
+   the title must remain identical.
+
+3) 1 COVER LETTER       ->  filename "CV-20260917-0010_CL1.txt"
+   Draft ONE concise, high-converting cover letter (under 250 words) that bridges
+   the candidate's background to the JD's top 3 requirements. Include an honest,
+   proactive statement on how his unique perspective covers any minor skill gaps,
+   without apologizing for them.
+
+4) 1 INTERVIEW PREP     ->  filename "CV-20260917-0010_IP1.txt"
+   Provide ONE interview-prep document that groups STAR-based (Situation, Task,
+   Action, Result) Q&A outlines based strictly on the candidate's real CV experiences.
+
+OUTPUT: Confirm each file was written and list the file paths.

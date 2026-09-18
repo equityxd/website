@@ -7,10 +7,10 @@ Outputs two parts in one document:
   Part 2 -- The availability / fit table completed (the form the recruiter sent).
 
 Usage:
-    python gen_doyen_argumentation.py            # write to "7 Input Job description/"
+    python gen_doyen_argumentation.py            # write to "input_job_description/"
     python gen_doyen_argumentation.py <output.docx>   # custom path
 
-Based on: 2 Job description/CV-20260912-0005 (Doyen Auto / Infor M3) + MATCH_GAP analysis.
+Based on: job_descriptions/CV-20260912-0005 (Doyen Auto / Infor M3) + MATCH_GAP analysis.
 Every claim is drawn from the candidate's base CV; nothing invented.
 """
 import sys
@@ -140,7 +140,7 @@ def build_doc():
 
 
 def main():
-    out = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("7 Input Job description/Doyen_DomainLeader_Argumentation.docx")
+    out = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("input_job_description/Doyen_DomainLeader_Argumentation.docx")
     doc = build_doc()
     out.parent.mkdir(parents=True, exist_ok=True)
     doc.save(str(out))

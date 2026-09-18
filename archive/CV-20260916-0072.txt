@@ -1,0 +1,54 @@
+CV GENERATION TASK — Serial CV-20260916-0072
+============================================
+
+CONTEXT
+You are acting as a principal tech recruiter and executive resume strategist.
+The candidate is applying for a specific position. Align his updated CV with the
+target Job Description to maximize his match rate while STRICTLY adhering to
+100% TRUTHFULNESS and factual accuracy.
+Never invent experience, fake metrics, or exaggerate his background.
+
+SESSION METADATA
+- Serial Number : CV-20260916-0072
+- Company       : N/A
+- Position      : N/A
+- Recruiter     : N/A
+- Source Type   : Job Description (text)
+- Source        : (pasted text)
+- Target Role   : Chief Growth & Transformation Officer
+
+INPUT: The Job Description is appended below this block. Use ONLY the facts
+present in the candidate's base CV (source/SONG Ernest - CV v1.typ) plus the JD.
+
+==== JOB DESCRIPTION ====
+job_descriptions/CV-20260914-0019.txt
+==== END JOB DESCRIPTION ====
+
+EXECUTE THE FOLLOWING AND WRITE EACH DELIVERABLE TO ITS FOLDER:
+
+1) MATCH & GAP ANALYSIS  ->  folder "job_descriptions"
+   Create a simple comparative breakdown:
+     - Direct Matches : skills/tools/experience that directly match the JD.
+     - Transferable   : related experience that fulfills implicit JD requirements.
+     - Critical Gaps  : required skills/qualifications missing from the CV.
+
+2) 3 CUSTOM CVs       ->  folder "custom_cv"
+   Rewrite bullet points using exact JD keyword phrasing, ONLY where real
+   experience supports it. Restructure the summary into a high-impact
+   "Value Proposition" answering the JD's primary business pain point.
+   Every bullet = Action Verb + Context/Tech + Metric or Outcome, without
+   inflating the real role. Produce 3 distinct tailored versions.
+   Keep the visual formatting of SONG Ernest - CV v1 (only change the content).
+
+3) 5 CUSTOM COVER LETTERS ->  folder "cover_letters"
+   Draft 5 concise, high-converting cover letters (under 250 words each)
+   that bridge the candidate's background to the JD's top 3 requirements.
+   Include an honest, proactive statement on how his unique perspective
+   covers any minor skill gaps, without apologizing for them.
+
+4) 6 INTERVIEW PREP    ->  folder "6 Interview Prep"
+   Provide 6 targeted behavioral interview questions likely based on this JD,
+   with outline answers based strictly on the candidate's real CV experiences,
+   using the STAR method (Situation, Task, Action, Result).
+
+OUTPUT: Confirm each file was written and list the file paths.

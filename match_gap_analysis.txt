@@ -1,133 +1,128 @@
 MATCH & GAP ANALYSIS
-=====================
-Candidate: Ernest SONG
-Target Role: Business Analyst – Greenfield ERP Project (Brussels, Hybrid)
-Sector: Logistics / Transport
-Prepared by: Tech Recruiter / Executive Resume Strategist
+Candidate: Ernest Song
+Target position: Senior FP&A / Group Controller (freelance), international group
+Prepared by: Principal Tech Recruiter / Executive Resume Strategist
+Method: Factual comparison only. JD text cited as evidence. No metrics, companies or figures invented.
 
-----------------------------------------------------------------------------
+=====================================================================
 DIRECT MATCHES
-----------------------------------------------------------------------------
-The candidate demonstrates strong, direct alignment on the core technical
-theme of the role — ERP transformation with SAP:
+=====================================================================
 
-- JD requirement: "Experience as a Business Analyst within ERP transformation /
-  implementation programmes."
-  Evidence: Candidate positions himself as "Strategic Business Analyst" and
-  states he has "acting as the core Business Analyst bridging IT architecture
-  and strategic business operations" during a "SAP S/4HANA migration".
-  Quote: "guiding ERP replacements from AS-IS diagnosis to SAP S/4HANA go-live."
+1. FINANCIAL MODELLING
+   - JD: "intervenez également sur des sujets de financial modelling"
+   - CV: "Investor Support & Financial Modelling" listed under Core competencies; cash-flow reporting and cash-exposure modelling at Engie Tractebel; "Develop Finance data modelling from SAP for HANA and design Power BI reporting."
+   - FIT: Strong.
 
-- JD responsibility: "Assess and document AS-IS processes, systems, data and
-  interfaces across the business."
-  Evidence: Candidate's headline quote explicitly claims AS-IS diagnosis
-  experience; at Holcim he "Managed SAP HANA migration, restructuring data and
-  ensuring system integrity."
+2. CASH FLOW
+   - JD: "le cash-flow" listed as a core analysis domain; "solide en ... cash-flow"
+   - CV: "Cash Flow Management" competency; role explicitly titled "Cash Flow & Financial Modeling Specialist" at Engie Tractebel; "Design cashflow reporting and cash exposure per project."
+   - FIT: Strong.
 
-- JD responsibility: "Identify process gaps, inefficiencies, pain points and
-  improvement opportunities."
-  Evidence: "Conducted gap analysis of business requirements and existing
-  procedures to identify areas for improvement" (Degroof Petercam).
+3. WORKING CAPITAL
+   - JD: "le working capital" listed as a core analysis domain.
+   - CV: "Working Capital Management" listed under Core competencies.
+   - FIT: Present ( competency listed; role-specific detail not elaborated).
 
-- JD responsibility: "Develop business, functional, non-functional, data and
-  integration requirements."
-  Evidence: Competency lists Business/ERP/BI/RPA/Data skills; experience shows
-  business requirements gathering across multiple mandates.
+4. P&L ANALYSIS & FORECASTING
+   - JD: "le P&L" listed as a core analysis domain.
+   - CV: "P&L Analysis & Forecasting" listed under Core competencies; "actual vs. budgeted/estimated results" at Rexel.
+   - FIT: Present.
 
-- JD responsibility: "Lead workshops with business stakeholders and process
-  owners to capture and prioritise requirements."
-  Evidence: Keyword "Stakeholders" present; experience references liaising
-  with auditors and cross-functional collaborators.
+5. CONSOLIDATION & REPORTING
+   - JD: "maîtrise parfaite du bilan, du reporting et de la consolidation"
+   - CV: "Consolidation & Financial Reporting (IFRS / BE-GAAP)" and "Group Controlling" listed; "Reporting Consolidation Manager" role at Rexel; led IFRS implementation and "integration of SAP BPC and Cognos reporting systems."
+   - FIT: Strong (particularly reporting/consolidation history).
 
-- JD context: "Experience working with ERP vendors and/or systems integrators."
-  Evidence: SAP is the named ERP system throughout; collaboration with IT
-  architecture and auditors is demonstrated.
+6. BALANCE SHEET (bilan)
+   - JD: "le bilan" listed as a core analysis domain; "maîtrise parfaite du bilan."
+   - CV: Not explicitly listed as a competency. Background in General Accounting / GL/AP/AR and audit (KPMG) underpins balance-sheet understanding, but no explicit "bilan" claim.
+   - FIT: Implicit / partial.
 
-- Supporting tooling: JD expects requirements/analysis tooling.
-  Evidence: Jira, Confluence (Agile), Power BI, SQL, VBA, QlikSense, Cognos,
-  Business Object, Hyperion, UIPath, Power Automate.
+7. CAPEX
+   - JD: "les CAPEX" listed as a core analysis domain.
+   - CV: "CAPEX Planning" listed; "capital expenditures" modelling at Vinci Airports.
+   - FIT: Present.
 
-----------------------------------------------------------------------------
-TRANSFERABLE (related experience that fulfills implicit JD requirements)
-----------------------------------------------------------------------------
-- Process mapping & improvement: "Director Business Process Automation" at
-  Tobania — "Implemented process optimization, standardization, and
-  harmonization to improve efficiency and profitability." This directly
-  transfers to the JD's process-mapping expectation.
-- Requirements & stakeholder workshops: Finance transformation operating model
-  (FTOM) and performance-management system design at Degroof Petercam imply
-  stakeholder engagement and requirements capture.
-- Data & integration exposure: SQL, VBA, R, PowerQuery ETL (ingesting 1,500+
-  bookings), IVDB↔SAP reconciliation — supports the JD's "data and
-  interfaces" documentation requirement.
-- Change management: Keyword "Change Management / Change Transition" +
-  "established change management structures and strategies to facilitate
-  successful adoption" — supports implementation/ adoption aspects of a
-  greenfield programme.
-- ERP selection-adjacent: Financial-modeling / valuation background (Vinci
-  Airports, URBGARD) equips him to "evaluate solutions against business
-  requirements," a core ERP-selection activity.
+8. M&A, DUE DILIGENCE, POST-ACQUISITION INTEGRATION
+   - JD: "projets M&A, due diligence et post-acquisition integration peut également faire partie de la mission."
+   - CV: "M&A: Due Diligence & Post-Acquisition Integration" listed under Core competencies; post-M&A workflow restructuring at Holcim.
+   - FIT: Strong.
 
-----------------------------------------------------------------------------
+9. GROUP CONTROLLING / CORPORATE FINANCE / FP&A
+   - JD: "expérience en Group Controlling, Corporate Finance ou FP&A"
+   - CV: "Group Controlling" listed; CFO/finance leadership, financial controlling pilot at Engie SEM, corporate development at Shurgard.
+   - FIT: Strong.
+
+10. MEDIUM-TERM PLAN / MULTI-YEAR BUSINESS PLANNING
+    - JD: "l'élaboration du Medium-Term Plan 2026-2030" and "développement du plan financier pluriannuel."
+    - CV: "Medium-Term Plan (Multi-Year Business Planning)" listed under Core competencies; "long-term financial goals," business plans at Magnetrap.
+    - FIT: Strong.
+
+11. INVESTOR SUPPORT
+    - JD: "préparation d'analyses financières destinées aux investisseurs" and "demandes d'investisseurs."
+    - CV: "Investor Support & Financial Modelling" listed; fundraising / debt & equity raise of €3M at Magnetrap; investor BI dashboards at Shurgard.
+    - FIT: Strong.
+
+12. LANGUAGE - ENGLISH
+    - JD: "anglais indispensable"
+    - CV: "Proficient: English"
+    - FIT: Strong.
+
+13. LANGUAGE - FRENCH
+    - JD: "fortement apprécié" (French strongly desirable)
+    - CV: "Native: French"
+    - FIT: Ideal / perfect.
+
+14. FREELANCE / CONTRACT MODE
+    - JD: freelance mission, minimum 6 months, full-time.
+    - CV: All recent engagements are structured as (Freelancer) engagements; current mandate "Freelancer" at Engie SEM.
+    - FIT: Strong.
+
+=====================================================================
+TRANSFERABLE
+=====================================================================
+
+- Financial modelling & cash-flow depth: multiple role-titled and project evidences (Engie Tractebel, Magnetrap, Vinci Airports) support the "solide en financial modelling, cash-flow" requirement even where JD wording differs.
+- Consolidation & financial reporting: Rexel (Reporting Consolidation Manager, IFRS roll-out) plus KPMG audit background provide a robust consolidation/reporting foundation.
+- Autonomous analysis & challenging regions on the substance: JD "capable de réaliser des analyses de manière autonome et de challenger les différentes régions." CV evidence shows cross-region, multi-country mandates (BE, FR, NL; Asia-Pacific, Latin America, Canada) and stakeholder/auditor liaison, supporting independent delivery and challenge.
+- Communication with management & stakeholders: JD "commune aisément avec le management et les autres stakeholders." CV repeatedly shows stakeholder bridging (IT architecture vs. business, auditors, commercial strategy, authorities).
+- ERP / consolidation-tooling: JD lists "Lucanet ou un autre outil de consolidation/reporting" as a plus; candidate lacks Lucanet explicitly but has SAP HANA/BPC, Cognos, Business Object, Hyperion, Power BI, QlikSense — a broadly transferable reporting/ERP skill set.
+- Business planning & forecasting: medium-term plan competency plus budgeting/forecasting and strategic planning at Rexel.
+- Experience length: JD "10 à 15 ans d'expérience pertinente en finance." CV quotes "15+ years leading accounting and transformation mandates for multi-entity, multi-country organisations." Aligns with the seniority band.
+- Investor / strategic finance: investor support, valuation (Vinci Airports "valuation at 4 times of acquisition cost"), financing-need assessment, credit/impairment testing.
+
+=====================================================================
 CRITICAL GAPS
-----------------------------------------------------------------------------
-The following JD requirements have NO supporting evidence in the CV:
+=====================================================================
 
-1. ERP SELECTION / RFP — JD: "Develop the ERP requirements catalogue and
-   evaluation criteria," "Support RFI/RFP, vendor selection and ERP
-   demonstrations," "Evaluate ERP solutions against business requirements."
-   GAP: No evidence of RFI/RFP, vendor selection, ERP demos, or a requirements
-   catalogue. His SAP exposure is implementation/migration, not selection.
+1. LUCANET
+   - JD: "expérience avec Lucanet ou un autre outil de consolidation/reporting" is a nice-to-have; "Lucanet : nice-to-have, mais pas indispensable."
+   - CV: No mention of Lucanet anywhere. Working tools list SAP HANA, Power BI, QlikSense, Business Object, Cognos, Hyperion, RPA, Agile — but not Lucanet.
+   - IMPACT: Low-to-moderate (explicitly non-essential in the JD).
 
-2. WORKSHOP FACILITATION — JD: "Lead workshops with business stakeholders and
-   process owners."
-   GAP: No explicit evidence of LEADING workshops or facilitation; stakeholder
-   mention is passive ("liaised with auditors").
+2. BALANCE SHEET (bilan) explicit mastery
+   - JD: "le bilan" is a core analysis deliverable; "maîtrise parfaite du bilan."
+   - CV: Bilan not listed as a competency. Supported implicitly by accounting/GL/AR and KPMG audit background, but not stated outright.
+   - IMPACT: Moderate (core JD deliverable; worth clarifying/interviewing).
 
-3. VENDOR / SYSTEMS INTEGRATOR MANAGEMENT — JD: "Experience working with ERP
-   vendors and/or systems integrators."
-   GAP: No evidence of managing external ERP vendors or systems integrators.
+3. "Movement schedules"
+   - JD: "les movement schedules" listed as a core analysis domain.
+   - CV: Not mentioned.
+   - IMPACT: Low-to-moderate (specific consolidation artifact; can be assessed in interview).
 
-4. NON-FUNCTIONAL & INTEGRATION REQUIREMENTS — JD: "Develop business,
-   functional, non-functional, data and integration requirements."
-   GAP: Non-functional requirements are not evidenced; interface/data work is
-   present but framed as reconciliation/ETL, not requirements engineering.
+4. Explicit "FP&A" title / group-level corporate finance track record
+   - JD frames the role as "Senior FP&A / Group Controller" at corporate level, challenging multiple international regions.
+   - CV: Group Controlling and FP&A-adjacent experience are present, but the profile reads more as accounting/transformation/ERP and CFO/fundraising than a pure standing FP&A / group-controlling function at a corporate group.
+   - IMPACT: Moderate ( positioning/narrative gap rather than a hard skills gap; addressable in cover letter / interview).
 
-5. CORE TITLE / PERMANENT BA ROLE — JD: "Experience as a Business Analyst
-   within ERP transformation / implementation programmes."
-   NOTE: The candidate's BA experience is in FREELANCE / consultancy engagements,
-   and his primary career identity is "Finance leader / CFO / transformation
-   executive." The current BA title is attached to a "Finance Automation Lead"
-   mandate. This is a positioning gap rather than a hard skills gap.
+5. English "essential" / French "desirable" — already satisfied, no gap.
 
-6. SECTOR — JD sector is Logistics / Transport.
-   GAP: Candidate's background is Finance/Accounting/Real Estate/Airports — no
-   logistics or transport sector exposure is evident.
-
-7. EDUCATION / QUALIFICATIONS — JD lists qualifications as "Key Experience."
-   Note: ESCP (Auditing & Consulting) + Master's in Financial Control. Strong
-   fit for a finance-oriented BA, but no dedicated Business Analyst
-   certification/qualification is listed.
-
-----------------------------------------------------------------------------
+=====================================================================
 OVERALL ASSESSMENT
-----------------------------------------------------------------------------
-Fit: PARTIAL / STRONG ON TECHNIQUES, WEAK ON SELECTION & FACILITATION.
+=====================================================================
 
-The candidate is a credible ERP-transformation Business Analyst with real
-SAP S/4HANA migration experience and solid process/data/requirements skills.
-He is a strong match on the "AS-IS diagnosis," "process mapping," "fit-gap
-analysis," and "requirements gathering" pillars of the JD.
+The candidate is a STRONG FIT for this mission. The JD's headline technical needs — financial modelling, cash-flow, working capital, P&L, CAPEX, consolidation, reporting, group controlling, M&A / due diligence / post-acquisition integration, medium-term (multi-year) planning, investor support — are all demonstrable on the CV. Language fit is ideal (native French, proficient English), and the candidate is already operating as a freelancer, matching the engagement model.
 
-However, the role is a GREENFIELD ERP SELECTION mandate, and the candidate's
-evidence is weighted toward IMPLEMENTATION/MIGRATION and FINANCE CONTROL, not
-the selection, RFI/RFP, vendor evaluation, and workshop-facilitation pillars
-the JD emphasizes. The strongest gap is the absence of explicit ERP selection,
-RFP, and standalone workshop-facilitation experience.
+The genuine, JD-specified gaps are limited: Lucanet (explicitly non-essential), explicit balance-sheet mastery, movement schedules, and a clearer standing FP&A / group-controller positioning. These are largely interview-assessable and do not disqualify the profile.
 
-Recommended next-step questions for the recruiter:
-- Does the mandate emphasize ERP selection (RFP/vendor) or implementation —
-  and which does the candidate's profile best serve?
-- Can workshop facilitation and vendor/integrator be demonstrated via
-  consultative engagements not fully captured on the CV?
-- Is logistics/transport sector experience a hard requirement or a plus?
+Recommended next step: position the candidate as a senior FP&A / Group Controller with a strong consolidation-reporting and financial-control backbone; emphasize multi-region autonomy, investor support, and M&A integration; and proactively address the balance-sheet and movement-schedules items and the Lucanet nice-to-have during screening.

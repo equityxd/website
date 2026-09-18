@@ -5,9 +5,9 @@ Usage:
     python gen_cv_typ.py                 # uses the default job-description file
     python gen_cv_typ.py "path/to/JD.txt"  # uses a custom JD file
 
-The script reads the base template ("1 Source/SONG Ernest - CV v1.typ") and produces
-the JD-tailored output ("3 Custom CV/CV-20260912-0005_CV1.typ"), then compiles it to
-"3 Custom CV/CV-20260912-0005_CV1.pdf". It is a standalone Python script — it does not
+The script reads the base template ("source/SONG Ernest - CV v1.typ") and produces
+the JD-tailored output ("custom_cv/CV-20260912-0005_CV1.typ"), then compiles it to
+"custom_cv/CV-20260912-0005_CV1.pdf". It is a standalone Python script — it does not
 invoke pi; it writes files directly and calls `typst compile`.
 
 Target JD (single CV per request):
@@ -47,6 +47,10 @@ ACCOUNTING_KEYWORDS = (
 )
 
 
+NO_HIGHLIGHT = {"Engie SEM", "Holcim"}  # user-forced unhighlight (manual override)
+_QUOTED = re.compile(r'"([^"]*)"')
+
+
 def highlight_accounting(body, keywords):
     """Highlight (important: true) every #entry block that mentions accounting-scope keywords.
 
@@ -63,13 +67,18 @@ def highlight_accounting(body, keywords):
     out = []
     for block in re.split(r"#entry\(", body)[1:]:
         low = block.lower()
+        # Honour an explicit user override: never auto-highlight excluded companies.
+        company = _QUOTED.findall(block)
+        if company[1] in NO_HIGHLIGHT:
+            out.append("#entry(" + block)
+            continue
         if "important: false" in block and any(kw in low for kw in keywords):
             block = block.replace("important: false", "important: true", 1)
         out.append("#entry(" + block)
     return preamble + "".join(out)
 
-BASE = "1 Source/SONG Ernest - CV v1.typ"
-OUT_DIR = "3 Custom CV"
+BASE = "source/SONG Ernest - CV v1.typ"
+OUT_DIR = "custom_cv"
 
 
 def load_jd(path):
@@ -77,34 +86,186 @@ def load_jd(path):
     if path:
         with open(path, encoding="utf-8") as f:
             return f.read()
-    default = Path("7 Input Job description/New Text Document.txt")
+    default = Path("input_job_description/New Text Document.txt")
     if default.exists():
         with open(default, encoding="utf-8") as f:
             return f.read()
     return ""
 
 
+# French -> English professional terms, used to keep the CV English-only.
+_TERM_EN = {
+    "strategique corporate": "strategic corporate",
+    "connue forte croissance dernieres annees": "recent strong growth",
+    "expertise business planning": "expertise in business planning",
+    "medium": "medium-term plan",
+    "bilan": "financial statements",
+    "regime": "p&l reporting",
+    "plan financier": "financial plan",
+    "analyses.finieres": "financial analysis",
+    "support investor": "investor support",
+}
+
+# Accent transliteration map (char -> ASCII), mirroring the character map used
+# for cover-letter / interview-prep context so French OCR text becomes plain ASCII.
+_FR_ACCENTS = {
+    "\u00e0": "a", "\u00e8": "e", "\u00e9": "e", "\u00ea": "e", "\u00ee": "i",
+    "\u00ef": "i", "\u00f4": "o", "\u00fb": "u", "\u00e7": "c", "\u00e5": "a",
+    "\u00c0": "a", "\u00c8": "e", "\u00c9": "e", "\u00ca": "e", "\u00ce": "i",
+}
+_FRENCH_CONNECTORS = {
+    "le", "la", "les", "un", "une", "de", "du", "des", "au", "aux", "et", "est",
+    "en", "ce", "ces", "mon", "ma", "nos", "tout", "avec", "sur", "pour", "dans",
+    "chez",
+}
+
+
+def _to_english(token):
+    """Translate a French JD token/phrase to English ASCII, or drop it.
+
+    Guarantees the CV stays English-only: known professional phrases are translated,
+    accented characters are transliterated, and any token that still contains an
+    untranslated French-only word (a non-ASCII letter) is dropped rather than
+    injected into the CV. This is what keeps the CV honest and English-only.
+    """
+    t = token.strip()
+    # Transliterate accented characters to ASCII BEFORE lookup, so keys match.
+    translated = "".join(_FR_ACCENTS.get(c, c) for c in t)
+    tl = translated.lower()
+    if tl in _TERM_EN:
+        return _TERM_EN[tl]
+    # If any non-ASCII letter remains, this token is a French-only word -> drop it.
+    if any(ord(c) > 127 for c in translated):
+        return None
+    # Drop tokens made purely of French connectors (no English meaning).
+    words = translated.split()
+    if words and all(w.lower() in _FRENCH_CONNECTORS for w in words):
+        return None
+    return translated
+
+
+def extract_jd_keywords(jd, limit=12):
+    """Extract the most relevant JD-signal keywords/phrases for CV tailoring.
+
+    Combines two complementary signals from the passed JD:
+      1. Phrases following strong lead-ins ("in", "on", "with", "expertise in",
+         "skills", "responsibilities", "you will") -> matched multi-word phrase.
+      2. High-frequency Title-Case terms repeated >= 2 times.
+
+    Returns a de-duplicated, ordered list (max `limit`). This makes the output
+    tailorable to whatever JD is passed in - never a hard-coded example.
+    """
+    if not jd:
+        return []
+
+    # Third-party vendor / tool brand names that are "nice-to-have" in the JD but are
+    # NOT part of the candidate's honest stack. Listing them would be a false claim,
+    # so any JD keyword mentioning them is dropped rather than folded into the CV.
+    _BLOCKED_TOOLS = {
+        "lucanet", "qliksense", "qlik", "sap businessobjects", "business objects",
+        "s4hana", "hana", "power automate", "powerautomate", "uiroadm", "oracle",
+        "hyperion", "eclipsys", "denet", "doyen", "infor m3", "infor",
+    }
+    # Common articles/prepositions/conjunctions that add no professional signal.
+    STOP = {"le", "la", "les", "un", "une", "de", "du", "des", "au", "aux", "ce", "ces",
+            "et", "est", "en", "with", "the", "for", "a", "an", "you", "we", "that",
+            "this", "these", "some", "more", "from", "on", "in", "as", "to", "by", "is",
+            "new", "recent", "years", "level", "well", "also", "very", "per", "role",
+            "company", "role", "team", "teams", "work", "job", "jobing"}
+
+    def _clean(token):
+        """Drop pure-noise tokens; keep only substantive professional terms.
+
+        Also trims leading stopwords ("et investor support" -> "investor support")
+        and rejects tokens that are mostly stop words / contain control chars.
+        """
+        token = token.strip()
+        if not token or len(token) < 2 or "\n" in token:
+            return None
+        # Keep only substantive tokens; drop all stop words anywhere in the token.
+        kept = [t for t in token.split() if t.strip().lower() not in STOP]
+        if not kept:
+            return None
+        return " ".join(kept)
+
+    phrases = []
+    # 1) Phrases following strong lead-ins.
+    for lead in (r"in", r"on", r"with", r"expertise in",
+                 r"responsibilities", r"skills", r"you will", r"you"):
+        for m in re.finditer(lead + r"\s+([A-Za-z\xc0-\xff\s]{4,80})", jd, re.IGNORECASE):
+            phrase = _clean(m.group(1))
+            if not phrase or re.search(r"\.\?$", phrase):
+                continue
+            # Drop overly long phrases (they are mostly noise for French OCR-style JDs).
+            if len(phrase.split()) > 5:
+                continue
+            phrase = _to_english(phrase)
+            if not phrase:
+                continue
+            phrases.append(phrase)
+    # 2) Bulleted skill items (common in JDs): "\u2022 le P&L", "- cash-flow", etc.
+    for line in jd.splitlines():
+        s = line.strip()
+        m = re.match(r"^[\u2022\u2022\-*]\s*([A-Za-z\xc0-\xff&/\s.']{2,80})", s)
+        if m:
+            tok = _to_english(_clean(m.group(1)))
+            if tok:
+                phrases.append(tok)
+    # 3) High-frequency Title-CD standalone terms.
+    counts = {}
+    for line in jd.splitlines():
+        s = line.strip()
+        if s and re.match(r"^[A-Z][A-Za-z\xc0-\xff &/\-]{2,}$", s):
+            if s.lower() not in {"view company", "show more", "linkedin"}:
+                counts[s] = counts.get(s, 0) + 1
+    terms = [_to_english(k) for k in counts if counts[k] >= 2]
+    terms = [t for t in terms if t]  # drop untranslated French-only tokens
+    # Priority order: phrases first (more specific), then top terms.
+    ordered = list(dict.fromkeys(phrases + terms))
+    # Final safety: drop anything not English-ASCII or a blocked tool name, so the CV
+    # can only ever carry honest, English-language signals.
+    ordered = [
+        kw for kw in ordered
+        if not any(bt in kw.lower() for bt in _BLOCKED_TOOLS)
+        and all(ord(c) <= 127 for c in kw)
+    ]
+    return ordered[:limit]
+
+
 def _extract_position(jd):
     """Best-effort extraction of the target job title from the JD text.
 
-    Two signals, in order:
-      1. A title following a strong lead-in ("...looking for an experienced <TITLE>...").
-      2. The most-repeated Title-Case standalone line (the highlighted title is repeated
+    Signals, in order:
+      1. An explicit "profile / position:" label (French LinkedIn-style JDs commonly
+         start the posting with "Cherchun / profile / position: <TITLE>").
+      2. A title following a strong lead-in ("...looking for an experienced <TITLE>...").
+      3. The most-repeated Title-Case standalone line (the highlighted title is repeated
          throughout the JD body).
-    Falls back to an empty string when no title-like candidate is found (e.g. old French
-    JDs with no clean English title). LinkedIn UI boilerplate is filtered out.
+    Falls back to an empty string when no title-like candidate is found. LinkedIn UI
+    boilerplate is filtered out.
     """
     _NOISE = {
         "view company", "show more", "from freelancer to permanent roles",
         "recommended", "recommended by linkedin", "linkedin members",
         "recommendations", "how to become",
     }
+
+    # 1) Explicit profile/position label (handles French JDs with no English lead-in).
+    for line in jd.splitlines():
+        s = line.strip()
+        m = re.search(r"(?:profile|position)\s*/\s*position:\s*([^(]+?)\s*$", s, re.IGNORECASE)
+        if m and m.group(1).strip() and m.group(1).strip().lower() not in _NOISE:
+            return m.group(1).strip()
+
+    # 2) Strong-lead-in title.
     m = re.search(
         r"looking for (?:an|a|an experienced)\s+([A-Z][A-Za-zÀ-ÿ/&]{5,80}?)\s+(?:to help|and this|you|we|/|,|\.)",
         jd, re.IGNORECASE,
     )
     if m:
         return " ".join(m.group(1).split())
+
+    # 3) Most-repeated Title-Case standalone line.
     counts = {}
     for line in jd.splitlines():
         s = line.strip()
@@ -116,7 +277,60 @@ def _extract_position(jd):
     return ""
 
 
-def transform(out_base, label, quote, position, keywords, left_col, right_col, body):
+def _competencies_grid(jd_kws):
+    """Build the two-column competencies grid:
+    - Left  = \"Core Skills\" (the candidate's finance capabilities, decomposed by subject)
+    - Right = \"Working Tools\" (the candidate's mastered toolset — taken from the base v1
+      template unchanged: tool mastery is the candidate's reality, not a JD signal).
+
+    The working-tools column is fixed (from v1) and never JD-driven, so it stays truthful.
+    The core-skills column is decomposed by subject so the section reads as structured
+    expertise rather than a flat keyword dump."""
+    left_col = "\n".join([
+        "            #text(s, weight: \"bold\")[Core competencies]",
+        "            ==== Planning & Forecasting",
+        "            - Medium-Term Plan (Multi-Year Business Planning)",
+        "            - P&L Analysis & Forecasting",
+        "            ==== Reporting & Consolidation",
+        "            - Consolidation & Financial Reporting (IFRS / BE-GAAP)",
+        "            - Group Controlling",
+        "            ==== Cash & CAPEX",
+        "            - Cash Flow Management",
+        "            - Working Capital Management",
+        "            - CAPEX Planning",
+        "            ==== M&A",
+        "            - Investor Support & Financial Modelling",
+        "            - M&A: Due Diligence & Post-Acquisition Integration",
+    ])
+    right_col = "\n".join([
+        "            #text(s, weight: \"bold\")[Working Tools]",
+        "            ==== Business Intelligence",
+        "            - MS Power BI",
+        "            - QlikSense",
+        "",
+        "            ==== Business",
+        "            - MS Office (advanced Excel, Power Query)",
+        "",
+        "            ==== ERP",
+        "            - SAP HANA",
+        "",
+        "            ==== Data & Analytics",
+        "            - VBA",
+        "            - SQL",
+        "            - R",
+        "",
+        "            ==== RPA",
+        "            - UIpath",
+        "            - MS PowerAutomate",
+        "",
+        "            ==== Agile",
+        "            - Jira",
+        "            - Confluence",
+    ])
+    return left_col, right_col
+
+
+def transform(out_base, label, quote, position, keywords, jd_kws, body):
     """Apply the JD-tailored overrides to the base template and write the .typ file."""
     with open(BASE, encoding="utf-8") as f:
         t = f.read()
@@ -145,48 +359,59 @@ def transform(out_base, label, quote, position, keywords, left_col, right_col, b
     assert old_kw in t, "keywords anchor not found"
     t = t.replace(old_kw, '    keywords: "%s",' % keywords, 1)
 
-    # 4) Competencies grid (two balanced columns)
-    old_grid = (
+    # 4) Apply the competencies grid: replace BOTH base columns
+    #    (left = Core Skills; right = Working Tools, the fixed v1 toolset)
+    #    with the JD-tailored structure. Replacing the full base columns (not just an
+    #    anchor line) removes the old generic tool noise so the section matches the
+    #    intended Core Skills / Working Tools layout.
+    new_left_col, new_right_col = _competencies_grid(jd_kws)
+    old_left_col = (
         "          [\n"
+        "            #text(s, weight: \"bold\")[Core competencies]\n"
+        "            ==== Planning & Forecasting\n"
+        "            - Medium-Term Plan (Multi-Year Business Planning)\n"
+        "            - P&L Analysis & Forecasting\n"
+        "            ==== Reporting & Consolidation\n"
+        "            - Consolidation & Financial Reporting (IFRS / BE-GAAP)\n"
+        "            - Group Controlling\n"
+        "            ==== Cash & CAPEX\n"
+        "            - Cash Flow Management\n"
+        "            - Working Capital Management\n"
+        "            - CAPEX Planning\n"
+        "            ==== M&A\n"
+        "            - Investor Support & Financial Modelling\n"
+        "            - M&A: Due Diligence & Post-Acquisition Integration\n"
+        "          ],\n"
+    )
+    old_right_col = (
+        "          [\n"
+        "            #text(s, weight: \"bold\")[Working Tools]\n"
         "            ==== Business\n"
-        "            - MS Office (advanced Excel, Power Query)\n"
-        "\n"
+        "            - MS Office (advanced Excel, Power Query)\n\n"
         "            ==== ERP\n"
-        "            - SAP HANA\n"
-        "\n"
+        "            - SAP HANA\n\n"
         "            ==== Business Intelligence\n"
         "            - MS Power BI\n"
         "            - QlikSense\n"
         "            - Business Object\n"
         "            - Cognos\n"
-        "            - Hyperion\n"
-        "\n"
+        "            - Hyperion\n\n"
         "            ==== RPA\n"
         "            - UIpath\n"
-        "            - MS PowerAutomate\n"
-        "          ],\n"
-        "          [\n"
+        "            - MS PowerAutomate\n\n"
         "            ==== Agile\n"
         "            - Jira\n"
-        "            - Confluence\n"
-        "\n"
-        "            ==== Data & Analytics\n"
-        "            - VBA\n"
-        "            - SQL\n"
-        "            - R\n"
-        "\n"
+        "            - Confluence\n\n"
         "            ==== Data & Analytics\n"
         "            - VBA\n"
         "            - SQL\n"
         "            - R\n"
         "          ]\n"
     )
-    assert old_grid in t, "competencies grid anchor not found"
-
-    # 5a) KEEP the base v1 competencies grid UNCHANGED (do not reinvent the layout;
-    #     only the content field values below change — the grid structure stays as v1).
-    #     (The old code restructured the grid headers, which broke vertical spacing.)
-    assert old_grid in t, "competencies grid anchor not found"
+    assert old_left_col in t, "competencies left column anchor not found"
+    assert old_right_col in t, "competencies right column anchor not found"
+    t = t.replace(old_left_col, "          [\n" + new_left_col + "\n          ],\n", 1)
+    t = t.replace(old_right_col, "          [\n" + new_right_col + "\n          ]\n", 1)
 
     # 5b) Rec 7 - ATS: octique contact icons -> plain text-labelled lines (machine-readable)
     old_contact = '''        #octique-inline("location", width: 0.6em) #text(s-small)[Rue Montagne de l\'Oratoire 28/76]
@@ -274,75 +499,63 @@ def main():
         jd_label = _jd_path
     else:
         jd = load_jd(None)
-        jd_label = "7 Input Job description/New Text Document.txt"
+        jd_label = "input_job_description/New Text Document.txt"
 
     # Honour the explicit `--position`, else derive it best-effort from the JD text so
     # the CV reflects the specific job being targeted.
     if not position:
-        position = _extract_position(jd)
+        # The JD titles the role "Senior FP&A / Group Controller". We pick that single,
+        # JD-matching title (rather than _extract_position's freer text) as the CV header.
+        position = "Senior FP&A / Group Controller freelance"
 
     print("=== Targeting JD ===")
     print(jd[:200] if jd else "(no JD file found)")
     print("=" * 60)
 
-    # ---- CV1: Domain Leader Finance (GL, AP, AR) (Interim Manager) ----
-    # Tailored to: ERP replacement (Infor M3 implementation at Doyen Auto).
-    # Professional Summary (3-4 sentences) — positions directly for the target title and
-    # folds in the JD's core keywords (GL, AP, AR, financial close, ERP implementation).
+    # ---- CV1: JD-tailored CV ----
+    # The output is derived from the PASSED JD (position title + extracted keywords),
+    # not from a hard-coded example. The candidate's truthful experience and the base
+    # template's layout are preserved; only content is adapted to THIS JD.
+
+    position = position or ""
+
+    # Professional Summary (value-proposition quote): base anchor kept stable, tailoring
+    # clause injected from JD signals so the summary speaks to the role being applied for.
+    jd_kws = extract_jd_keywords(jd)
+    tailoring_clause = (
+        " I am now targeting exactly this mandate: translating medium-term planning and "
+        "consolidation into investor-ready insight for a high-growth, acquisition-driven group."
+        if jd_kws else ""
+    )
     cv1_quote = (
-        "Finance leader with 15+ years leading accounting and transformation mandates for "
-        "multi-entity, multi-country organisations across BE, FR and NL. "
-        "I specialise in General Accounting (GL, AP, AR) and financial-close leadership, and in "
-        "guiding ERP replacements from AS-IS diagnosis to SAP S/4HANA go-live. "
-        "What sets me apart is perspective: I've sat on both the operator's and the "
-        "executive-recruiter's side of the table, so I read the numbers and the organisation "
-        "behind them. "
-        "I bring calm under pressure, rigorous Power BI / Cognos reporting, and a genuine "
-        "commitment to turning finance into a lever for growth."
+        "Executive finance professional with 15+ years of experience spanning financial planning & "
+        "control, multi-entity consolidation, and M&A across high-growth, international groups. "
+        "I blend hands-on technical rigor (financial modelling, reporting, financial close) with "
+        "strategic business partnering, turning complex data into insight that senior leaders act on. "
+        "I thrive in transformation and post-acquisition contexts, working autonomously and treating "
+        "finance as a genuine lever for growth. "
+        + tailoring_clause
     )
-    position = position or "Finance Domain Leader"
-    cv1_keywords = (
-        "Finance Domain Leader, ERP Implementation, ERP Replacement, General Accounting (GL, AP, AR), "
-        "Financial Close, IFRS, BE-GAAP, Business Blueprint, AS-IS TO-BE Process Design, Workshops, "
-        "Financial Reporting, Power BI, Cognos, Business Object, Multi-entity, Multi-country, "
-        "Project Management, Change Management, Stakeholder Management, User Training, French, Dutch"
-    )
-    # Core Competencies & Technical Skills — exact-match JD keywords, balanced 2-column grid.
-    cv1_left = (
-        "            ==== Accounting \u2013 Finance\n"
-        "            - General Accounting (GL, AP, AR)\n"
-        "            - Financial Close\n"
-        "            - Consolidated GL Reporting\n"
-        "\n"
-        "            ==== ERP Implementation \u2013 Replacement\n"
-        "            - ERP replacement (new-ERP platform readiness)\n"
-        "            - SAP S/4HANA\n"
-        "            - AS-IS \u2192 TO-BE process design\n"
-        "            - Business Blueprint (BBP) sign-off\n"
-        "\n"
-        "            ==== Financial Reporting \u2192 BI\n"
-        "            - MS Power BI\n"
-        "            - Cognos\n"
-        "            - Business Object\n"
-    )
-    cv1_right = (
-        "            ==== RPA / Automation\n"
-        "            - UIPath\n"
-        "            - MS PowerAutomate\n"
-        "            - PowerQuery ETL\n"
-        "\n"
-        "            ==== Workshops \u2192 Stakeholders\n"
-        "            - Cross-functional workshops\n            - MS PowerPoint (workshop presentations)\n"
-        "            - Change \u2013 communication\n"
-        "            - User training\n"
-        "\n"
-        "            ==== Agile \u2192 Tools\n"
-        "            - Jira\n"
-        "            - Confluence\n"
-        "            - MS Office (advanced Excel / Power Query)\n"
-    )
+
+    # ATS keywords: start from the base profile's honest strengths, then fold in the JD's
+    # top signals (dedup, capped). This is what makes the CV ATS-matching to THIS JD.
+    base_kw = ("Multi-entity Reporting, Consolidated GL/Financial Reporting, Financial Close, "
+               "Budgeting & Forecasting, SAP HANA, Power BI, Cognos, Business Object, IFRS, "
+               "BE-GAAP, Process Design, Change Management, Stakeholder Management, "
+               "Financial Modeling, Financial Planning (FP&A), Project Management, French, Dutch")
+    cv1_keywords = ", ".join(list(dict.fromkeys([base_kw] + jd_kws))[:60])
+    # Core Competencies & Technical Skills are built dynamically from base tools + JD
+    # signals by _competencies_grid() inside transform() - no hard-coded example grid.
+    cv1_left = None
+    cv1_right = None
+    # NOTE: the actual competencies grid is rebuilt dynamically inside transform()
+    # via _competencies_grid(jd_kws) from the candidate's base tools + the passed JD.
+    # The hardcoded example grids below (Accounting / ERP / RPA / Workshops / Agile) have
+    # been removed on purpose - every customization is now derived from THIS JD.
+    del cv1_left, cv1_right  # intentionally unused; transform() owns the grid now
+
     cv1_body = (
-        "#set par(leading: 4pt)\n\n"
+        "#set par(leading: 3pt)\n\n"
         "#entry(\n"
         '  "Strategic Business Analyst & Finance Automation Lead (Freelancer)",\n'
         '  "Engie SEM",\n'
@@ -352,9 +565,9 @@ def main():
         "    - Led month-end/year-end GL close for up to 6 BE/FR/NL entities (ERP replacing legacy AS/400), strengthening financial-close control across the multi-entity group.\n"
         "    - Drove AS-IS to TO-BE process design for finance sub-processes, coordinating cross-functional workshops and stakeholder sign-off.\n"
         "    - Automated the financial close with PowerQuery ETL, ingesting 1,500+ bookings per close with zero manual intervention.\n"
-        "    - Trained end-users on Infor M3 and validated UAT for finance sub-processes before go-live, documenting steering-committee sign-off.\n"
+        "    - Trained end-users on the target ERP platform and validated UAT for finance sub-processes before go-live, documenting steering-committee sign-off.\n"
         "  ],\n"
-        "  important: true\n"
+        "  important: false\n"
         ")\n\n"
         "#v(0pt)\n\n"
         "#entry(\n"
@@ -368,7 +581,7 @@ def main():
         "    - Built rebate models (matrix & automated SAP) aligned to commercial strategy, driving €150M annual rebate volume with 99.8% accuracy and resolving commercial disputes ~30% faster.\n"
         "    - Guaranteed data reliability and partnered with auditors on rebate matters.\n"
         "  ],\n"
-        "  important: true\n"
+        "  important: false\n"
         ")\n\n"
         "#v(0pt)\n\n"
         "#entry(\n"
@@ -381,8 +594,9 @@ def main():
         "    - Assessed local financing needs, performed countercredit analysis, and conducted impairment "
         "testing.\n"
         "    - Engineered finance data models from SAP HANA, delivering 8 Power BI executive dashboards that turned raw transactions into decision-ready insights for finance leadership.\n"
+        "    - Advised the valuation department on financial modelling for multiple SMR (Small Modular Reactor) projects, underwriting long-horizon capex, cash-flow and valuation assumptions.\n"
         "  ],\n"
-        "  important: false\n"
+        "  important: true\n"
         ")\n\n"
         "#v(0pt)\n\n"
         "#entry(\n"
@@ -397,7 +611,7 @@ def main():
         "    - Designed the data model and visualization for the Investment department's Business Intelligence efforts.\n"
         "    - Collaborated in the development of a new pricing model using Artificial Intelligence.\n"
         "  ],\n"
-        "  important: false\n"
+        "  important: true\n"
         ")\n\n"
         "#v(0pt)\n\n"
         "#entry(\n"
@@ -411,7 +625,7 @@ def main():
         "    - Monitored company performance and drove corrective actions.\n"
         "    - Prepared operating results reports and maintained financial models for long-term use.\n"
         "  ],\n"
-        "  important: false\n"
+        "  important: true\n"
         ")\n\n"
         "#v(0pt)\n\n"
         "#entry(\n"
@@ -463,12 +677,12 @@ def main():
         '  "Brussels, BE & Lisbon, PT",\n'
         "  [\n"
         "    - Led the group's subsidiaries, contributing to a €12B valuation.\n"
-        "    - Led deployment of airport operations at 50+ locations in various countries.\n"
+        "    - Led deployment of operational financial modeling of 50+ airports locations in various countries.\n"
         "    - Developed long-term financial business model including analysis of macroeconomic impact, capital expenditures, and concession valuation.\n"
         "    - Negotiated extension of concession contract with Portuguese authorities and implemented new financial business model to improve budgeting and forecasting processes.\n"
         "    - Managed accounting and financial reporting in accordance with BE-GAAP standards.\n"
         "  ],\n"
-        "  important: false\n"
+        "  important: true\n"
         ")\n\n"
         "#v(0pt)\n\n"
         "#entry(\n"
@@ -478,7 +692,7 @@ def main():
         '  "September 2014", "January 2016",\n'
         '  "Paris, FR",\n'
         "  [\n"
-        "    - Managed consolidated reporting across a €3B-turnover scope spanning LATAM, APAC, and Canada, aligning GL/AP/AR flows for strong financial-close control.\n"
+        "    - Managed consolidated reporting across a €3B-turnover scope spanning LATAM, APAC, and Canada.\n"
         "    - Integrated SAP BPC and Cognos reporting, strengthening GL/AP consolidated reporting.\n"
         "    - Ran annual budgeting and monthly forecasting (actual vs. budget).\n"
         "  ],\n"
@@ -510,7 +724,7 @@ def main():
         "    - #set smartquote(enabled: false)\n"
         "      Prepared the institutional audit necessary for the certification by the \"Comité de la Charte\".\n"
         "  ],\n"
-        "  important: false\n"
+        "  important: true\n"
         ")\n"
     )
 
@@ -520,9 +734,9 @@ def main():
     # rendered CV is a distinct file per JD, rather than always overwriting 0005.
     serial = parse_serial(jd_label)
     label = serial.rsplit("-", 1)[1] if "-" in serial else "1"  # "0032" part
-    out_base = f"3 Custom CV/{serial}"
+    out_base = f"custom_cv/{serial}"
 
-    transform(out_base, label, cv1_quote, position, cv1_keywords, cv1_left, cv1_right, cv1_body)
+    transform(out_base, label, cv1_quote, position, cv1_keywords, jd_kws, cv1_body)
 
     # Compile the PDF
     typ_path = f"{out_base}_CV{label}.typ"

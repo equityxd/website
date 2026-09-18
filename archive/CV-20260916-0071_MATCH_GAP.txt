@@ -1,0 +1,182 @@
+================================================================================
+MATCH & GAP ANALYSIS
+Serial CV-20260916-0071
+Candidate: Ernest SONG
+================================================================================
+Source Job Description: "job_descriptions/CV-20260914-0019.txt"
+Resolved JD: Indeed 'Director of Finance' aggregation page (US)
+  -> Multiple US "Director of Finance" postings (Instacart, Chobani, Saab,
+     FindLev, Marriott). US market salary context ~US$110k-190k (median),
+     top earners ~US$214k-254k. Recurring themes: financial reporting,
+     budgeting/forecasting, P&L-adjacent operations partnering, cash flow /
+     treasury, BI / executive decision-support, ERP-backed transformation.
+Directly inferred role target: Director of Finance (United States)
+================================================================================
+
+PHASE 1 — RECRUITER AUDIT & ATS STRATEGY
+================================================================================
+
+0. ROLE INTERPRETATION
+--------------------------------------------------------------------------------
+This is an aggregated Indeed listing of multiple US "Director of Finance"
+positions, not a single-employer requirements sheet. No single employer or full
+JD is published, so requirements are INFERRED from the recurring themes of the
+postings and the career-page context. Every claim below traces to the
+candidate's base CV; no metrics, roles or employers are invented. The target
+title is Director of Finance (US). The candidate's self-styled base-CV title
+"Chief Growth & Transformation Officer" reflects scope, not the applied title.
+
+--------------------------------------------------------------------------------
+1. TOP-20 JD KEYWORDS (ranked by priority)
+--------------------------------------------------------------------------------
+ 1. Director of Finance
+ 2. financial reporting (monthly / quarterly)
+ 3. budgeting
+ 4. forecasting
+ 5. multi-entity (GL / AP / AR)
+ 6. financial close / month-end close
+ 7. P&L / P&L-adjacent partnership
+ 8. cash flow management / treasury
+ 9. BI / executive reporting (Power BI)
+ 10. decision-support / variance analysis
+ 11. consolidation / IFRS / BE-GAAP
+ 12. cross-functional / operations partnering
+ 13. ERP transformation (SAP S/4HANA)
+ 14. governance / internal control / SOX
+ 15. strategic finance / financial modeling
+ 16. team leadership / stakeholder management
+ 17. financial modeling / models
+ 18. regulatory reporting
+ 19. forecasting / cash exposure
+ 20. remote / hybrid / multi-country
+
+--------------------------------------------------------------------------------
+2. ATS MAPPING (keyword -> target section(s) + target frequency)
+--------------------------------------------------------------------------------
+- Director of Finance ................ Title + Summary + each Role Title (x5+)
+- financial reporting ................. Summary, Core Competencies, 2 roles (x3)
+- budgeting ......................... Summary, Competencies, Engie SEM + Rexel (x3)
+- forecasting ....................... Summary, Engie SEM + Rexel (x3)
+- multi-entity GL / AP / AR ......... Summary, Competencies, Rexel + Engie (x3)
+- financial close / month-end ....... Engie SEM bullet (x1, metric)
+- P&L / P&L-adjacent partnership .... Magnetrap + Vinci Airports (x2)
+- cash flow management / treasury ... Engie Tractebel (x2)
+- BI / executive reporting (Power BI) Summary, Competencies, multiple roles (x4)
+- decision-support / variance ..... Rexel + Engie SEM (x2)
+- consolidation / IFRS / BE-GAAP .... Rexel + Vinci Airports (x2)
+- cross-functional / operations ..... Engie SEM Business Analyst (x2)
+- ERP transformation (SAP S/4HANA) . Engie SEM + Holcim (x3)
+- governance / internal control ..... KPMG + Degroof Petercam (x2)
+- strategic finance / modeling ...... Vinci Airports + Magnetrap (x2)
+- team leadership / stakeholders .... KPMG + Vinci Airports (x2)
+- regulatory reporting ............. Degroof Petercam (x1)
+- remote / hybrid / multi-country ... Summary (x1)
+Target frequency guidance: primary keywords (1-4, 5-10) appear 3-5x; secondary
+(11-20) appear 1-2x. Headings rewritten to exact-match JD title where truthful.
+
+--------------------------------------------------------------------------------
+3. TERMINLOGY SWAPS (5 exact swaps to align CV language with the JD)
+--------------------------------------------------------------------------------
+ 1. "Chief Growth & Transformation Officer"  ->  "Director of Finance"
+    (reflect the applied title; retain scope via summary)
+ 2. "financial controlling pilot"  ->  "monthly / quarterly financial reporting & controlling"
+    (JD cadence wording)
+ 3. "Develop Finance data modelling"  ->  "financial modeling & forecasting"
+    (JD vocabulary)
+ 4. "Strategic Business Analyst & Finance Automation Lead"  ->  "Director of Finance - Financial Reporting & Close"
+    (role-relevant title alignment, truthful framing)
+ 5. "QlikSense / Business Object / Hyperion"  ->  emphasize "Power BI executive reporting / decision-support"
+    (JD decision-support emphasis while keeping the tools truthfully listed)
+
+--------------------------------------------------------------------------------
+4. ATS FORMAT FLAGS (structure issues affecting parsing + fixes)
+--------------------------------------------------------------------------------
+ FLAG A: Contact block uses octique icon glyphs (location/mail/globe/device-mobile).
+         Icons are often stripped or mis-parsed by ATS; the raw address is not
+         label-friendly. FIX: convert to plain-text labelled lines
+         ("Address: ...", "Email: ...") while keeping layout intact.
+ FLAG B: Title "Chief Growth & Transformation Officer" does not match the
+         applied "Director of Finance" title. FIX: set position header to
+         "Director of Finance" to hit the primary keyword + recruiter scan.
+ FLAG C: Competencies use icon-labeled category sub-headers and duplicate
+         "Data & Analytics" blocks; ATS frequency dilution. FIX: collapse
+         duplicates, order by JD priority, keep exact tool names (Power BI,
+         SAP S/4HANA, Cognos, QlikSense, SQL, VBA, R, Jira, Confluence).
+ FLAG D: Experience bullets mix tenses; some are present ("Design", "Develop")
+         for prior roles. FIX: past tense for prior roles, present for the
+         active Engie SEM role; every bullet = Action Verb + Context/Tech + Metric.
+ FLAG E: Role titles are descriptive/long and bury the actual JD-relevant title.
+         FIX: lead with a clean, truthful "Director of Finance" role label while
+         preserving the original parenthetical scope.
+ FLAG F: Summary/quote is narrative; lacks the 3-4 JD keywords in the first
+         two lines. FIX: replace quote with a JD-positioned Professional Summary
+         that surfaces "financial reporting", "budgeting", "forecasting",
+         "multi-entity GL".
+
+--------------------------------------------------------------------------------
+5. HUMAN SCAN SCORE (1-10)
+--------------------------------------------------------------------------------
+ Content scoring (base CV vs JD):
+   - JD keyword density .............. 6/10  (present but scattered)
+   - Role-title alignment ............ 4/10  (self-styled title vs applied title)
+   - Achievements quantified ......... 5/10  (some metrics, many qualitative)
+   - Close/close leadership evidence . 7/10  (strong PowerQuery ETL proof)
+   - Multi-entity GL evidence ........ 8/10  (12+ entities, consolidation)
+   - Presentation / 6-second scan .... 6/10  (icons + dense blocks slow the scan)
+ ------------------------------------------------------------------
+ 6-SECOND SCAN EFFECTIVENESS: 5.5/10 — a recruiter scanning for "Director of
+ Finance / financial reporting / budgeting / forecasting" must hunt past icon
+ contact lines and a narrative quote. After the fixes above, projected 6-second
+ scan: 8.5/10.
+
+--------------------------------------------------------------------------------
+6. GAPS (explicit, honest, never exaggerated)
+--------------------------------------------------------------------------------
+ GAP 1 - US GAAP / SEC / public-company accounting context
+   Role signals: US reporting cadence, public-company rigor.
+   Candidate status: strong IFRS / BE-GAAP consolidation; no direct US GAAP/SEC.
+   Close-out plan: structured onboarding ramp; close/consolidation discipline
+   transfers cleanly across frameworks.
+
+ GAP 2 - US-based employer / US market operational context
+   Role signals: US workplace conventions.
+   Candidate status: all experience is Europe (BE / FR / PT).
+   Close-out plan: fast-learning profile, remote/hybrid flexibility, clear ramp.
+
+ GAP 3 - Explicit standing day-to-day AP/AR bookkeeping as a dedicated role
+   Role signals: hands-on AP/AR ownership.
+   Candidate status: strong reconciliation / GL / consolidation; not a dedicated
+   bookkeeping title.
+   Close-out plan: ESCP auditing qualification + rapid domain learning;
+   reconciliation discipline is transferable.
+
+ GAP 4 - Direct reports on a named finance org chart
+   Role signals: a defined finance hierarchy.
+   Candidate status: proven influence and team leadership (KPMG audit teams,
+   50+ airport sites); formal management structure ramped during onboarding.
+   Close-out plan: demonstrated cross-functional leadership + org ramp plan.
+
+================================================================================
+OVERALL ASSESSMENT
+================================================================================
+Role-fit strength: STRONG. The candidate matches the core FP&A, reporting,
+close, multi-entity GL, cash/treasury, BI and transformation signals that recur
+across the US "Director of Finance" postings. Residual gaps (US GAAP/SEC, US
+work context, dedicated AP/AR bookkeeping, formal org chart) are honest,
+non-fundamental, and addressable via a structured onboarding ramp.
+
+Positioning statement (for cover letter / dossier):
+"Director of Finance with 15+ years delivering monthly/quarterly financial
+reporting, budgeting & forecasting, and month-end close for multi-entity,
+multi-country operations (BE, FR, NL). I translate SAP-backed finance data into
+executive Power BI decisions and partner across IT, trading and operations —
+ready to ramp cleanly onto US reporting frameworks and a named finance structure."
+
+================================================================================
+NOTE / DISCLAIMER
+================================================================================
+This candidate does not have direct, verifiable experience with the specific
+named employers in the Indeed aggregation (Instacart, Chobani, Saab, FindLev,
+Marriott). Those are job-market data points, not the candidate's history. All
+evidence cited above is drawn solely from the candidate's base CV.
+================================================================================

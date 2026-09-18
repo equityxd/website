@@ -7,7 +7,7 @@ Beginner-friendly tool that turns a Job Description into a structured session.
 
   Step 1. Collects the JD via a single GUI window — just one box to
           paste the full JD text (no extra fields required).
-  Step 2. Saves the JD to "2 Job description/<serial>.txt".
+  Step 2. Saves the JD to "job_descriptions/<serial>.txt".
   Step 3. Appends a new per-session row to the Excel monitoring workbook
           with a unique serial number and structured metadata
           (date, source, status).
@@ -33,8 +33,8 @@ from tkinter import ttk, messagebox, simpledialog, filedialog
 
 # ── Paths ──────────────────────────────────────────────────────────────
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))          # .../MyCV
-JOB_DIR = os.path.join(BASE_DIR, "2 Job description")
-MON_DIR = os.path.join(BASE_DIR, "4 Application monitoring")
+JOB_DIR = os.path.join(BASE_DIR, "job_descriptions")
+MON_DIR = os.path.join(BASE_DIR, "application_monitoring")
 MANIFEST_DIR = os.path.join(MON_DIR, "manifests")
 WORKBOOK = os.path.join(MON_DIR, "Application_Tracker.xlsx")
 
@@ -261,7 +261,7 @@ SESSION METADATA
 - Target Role   : {target_role}
 
 INPUT: The Job Description is appended below this block. Use ONLY the facts
-present in the candidate's base CV (1 Source/SONG Ernest - CV v1.typ) plus the JD.
+present in the candidate's base CV (source/SONG Ernest - CV v1.typ) plus the JD.
 
 ==== JOB DESCRIPTION ====
 {jtext}
@@ -604,6 +604,13 @@ def _run_pipeline(jtext, source_type, source_value=None, on_progress=None):
     if len(jtext) < 20:
         raise RuntimeError("Job description too short — please paste the full text.")
 
+    # Extract metadata BEFORE writing the manifest so `company` / `position`
+    # are always defined before use. When no clean company name can be parsed
+    # (e.g. the JD arrives through an intermediary recruiter), we fall back to
+    # an empty string, which the manifest renders as 'N/A' — generation proceeds.
+    position = extract_position(jtext)
+    company = _extract_company(jtext)
+
     # 3. Serial + workbook + save JD + manifest
     wb, ws = load_workbook()
     n = read_existing_rows(ws)
@@ -626,10 +633,6 @@ def _run_pipeline(jtext, source_type, source_value=None, on_progress=None):
         jtext=jtext,
     )
 
-    # 4. Update Excel row
-    position = extract_position(jtext)
-    company = _extract_company(jtext)
-
     data = {
         "Serial Number": serial,
         "Company": company,
@@ -646,7 +649,7 @@ def _run_pipeline(jtext, source_type, source_value=None, on_progress=None):
     wb.save(WORKBOOK)
 
     log(f"Serial      {serial}")
-    log(f"JD file     2 Job description/{safe}.txt")
+    log(f"JD file     job_descriptions/{safe}.txt")
     log(f"Manifest    {os.path.relpath(manifest, BASE_DIR)}")
     log(f"Excel log   Application_Tracker.xlsx -> row {row}")
     return {

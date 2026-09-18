@@ -25,9 +25,9 @@ def positions(path):
 
 v1 = positions('./v1_fresh.pdf') if os.path.exists('./v1_fresh.pdf') else None
 if v1 is None:
-    os.system('typst compile "1 Source/SONG Ernest - CV v1.typ" ./v1_fresh.pdf >/dev/null 2>&1')
+    os.system('typst compile "source/SONG Ernest - CV v1.typ" ./v1_fresh.pdf >/dev/null 2>&1')
     v1 = positions('./v1_fresh.pdf')
-cust = positions('3 Custom CV/CV-20260912-0005_CV1.pdf')
+cust = positions('custom_cv/CV-20260912-0005_CV1.pdf')
 
 vy = sorted(set(round(v[0], 2) for v in v1))
 print(f"{'Y':>7} {'v1_x':>7} {'v1_text':<52} {'|':<3} {'cust_x':>7} {'cust_text':<52} {'MATCH'}")

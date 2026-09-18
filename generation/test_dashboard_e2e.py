@@ -12,7 +12,7 @@ with TestClient(app.app) as c:
 
     # trigger generation for the Doyen JD
     t0 = time.time()
-    resp = c.post("/api/generate", json={"input": "2 Job description/CV-20260914-0019.txt", "input_type": "text"})
+    resp = c.post("/api/generate", json={"input": "job_descriptions/CV-20260914-0019.txt", "input_type": "text"})
     print("status:", resp.status_code)
     print("elapsed: %.1fs" % (time.time() - t0))
     lines = resp.text.splitlines()

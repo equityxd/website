@@ -1,0 +1,327 @@
+CV GENERATION TASK — Serial CV-20260912-0007
+============================================
+
+CONTEXT
+You are acting as a principal tech recruiter and executive resume strategist.
+The candidate is applying for a specific position. Align his updated CV with the
+target Job Description to maximize his match rate while STRICTLY adhering to
+100% TRUTHFULNESS and factual accuracy.
+Never invent experience, fake metrics, or exaggerate his background.
+
+SESSION METADATA
+- Serial Number : CV-20260912-0007
+- Company       : N/A
+- Position      : N/A
+- Recruiter     : N/A
+- Source Type   : Job Description (text)
+- Source        : (pasted text)
+- Target Role   : Chief Growth & Transformation Officer
+
+INPUT: The Job Description is appended below this block. Use ONLY the facts
+present in the candidate's base CV (source/SONG Ernest - CV v1.typ) plus the JD.
+
+==== JOB DESCRIPTION ====
+En toute confidentialité, je cherche un profil pour l’implementation d’Infor M3 chez Doyen auto à Drogenbos (100% sur site).
+
+ 
+
+Le profil doit avoir une experience poussée en comptabilité.
+
+ 
+
+En analysant ton CV, j’observe surtout un background et de l’experience en controlling.
+
+ 
+
+Je suppose que la mission est trop ‘comptable’ pour toi ?
+
+ 
+
+En toute transparence, en surtout confidentialité, je t’envoie les informations.
+
+ 
+
+Peux-tu me partager en toute honnêteté si cela pourrait te convenir ?
+
+ 
+
+Grand merci,
+
+Mira
+
+ 
+
+Doyen Auto
+
+Doyen fait partie de Parts Holding Europe PHE depuis 2016 (2bio TO), Dieteren Holding
+
+Automobile Parts
+
+12 legal entities BE, FR, NL
+
+Leader Belux
+
+500 FTE (incl HQ 50 FTE)
+
+4 countries
+
+500 mio eur TO
+
+ 
+
+ 
+
+Entity type/structuur/BUs:
+
+Team/colleague profiles  
+
+Project subdivided in functional domains (Finance compta, finance controlling, Achat, Logistique,Sales…)
+
+Each domain has a BPO, Domain Lead, key user,…
+
+There are 2 experts (internals) dedicated to the project:
+
+    Domains Experts Fabienne Crabbe
+    IT expert Virginie Lefevre 
+
+PWC is external implementor
+
+ 
+
+                                        
+
+Region:       
+
+Drogenbos presence mandatory! (max 6jours de telework par mois max à terme)
+
+ 
+
+Reason/context/situation:       
+
+Implementation of Infor M3 (now AS400) - Prometheus project
+
+ 
+
+Une entité du groupe (ACR) est pilote et avait un go live fin 2025
+
+On utilisera les règles 'Golden' (best practices, règles de gestion,…) de ce pilote             
+
+6 entities of the 12 (in BE, NL, FR) are in scope
+
+ 
+
+Les flux/procedures sont peu documentées
+
+ 
+
+ 
+
+Position:          
+
+Domain Leader Finance Comptabilité Générale, AP, AR (Manager de Transition)
+
+ 
+
+Responsibilities/ role /tasks/scope:        
+
+    Describe procedures AS IS - TO BE
+    Lead workshops Accounting
+    Project management: Planning, timing  
+    responsable de l'intégration des processus financiers dans le cadre du projet de remplacement de l'ERP. Il/Elle doit s'assurer que l'ensemble des sous-processus financiers sont correctement modélisés et implémentés dans le nouvel ERP tout en répondant aux exigences spécifiques du domaine financier.
+
+ 
+
+Profile/requirements/experiences:    
+
+    Hands on in accounting
+    Experience distri pieces detachees
+    Project mgt
+    Create nice powerpoints
+
+ 
+
+Reporting lines:    
+
+CFO or Acc dir
+
+ 
+
+Personality:       
+
+    Open
+    Communicative/relational/stakeholder mgt
+    Respecting deadlines 
+
+ 
+
+Languages:     
+
+FR surtout
+
+NL comprehension ou base
+
+ 
+
+Start:      
+
+ ASAP mais au plus tard juin/juillet
+
+ 
+
+FT/PT:          
+
+FT
+
+ 
+
+Duration:   
+
+18 - 24 months
+
+ 
+
+ 
+
+Description de Fonction : Domain Leader Finance Comptabilité Générale, AP, AR (Manager de Transition)
+
+Contexte du projet :
+
+Notre entreprise est en pleine transformation avec le remplacement de notre ancien ERP, IPPAC AS/400, par la solution Infor M3. Le Domain Leader Finance jouera un rôle crucial dans cette transformation, en assurant la cohérence et l'intégration des processus financiers tout au long du projet.
+
+En tant que responsable de la partie Comptable de ce projet, vous serez amené(e) à collaborer avec des équipes provenant de divers domaines (logistique, achats, ventes, controlling etc.) afin de garantir une intégration fluide des processus financiers avec l'ensemble des flux métier. Il est donc essentiel de comprendre les enjeux du secteur de la distribution de pièces détachées automobiles, car les processus financiers sont en bout de flux et doivent s'intégrer de manière cohérente avec les autres départements. Une expérience dans ce secteur serait un véritable atout.
+
+Mission principale :
+
+Le Domain Leader Finance Comptabilité  est responsable de l'intégration des processus financiers dans le cadre du projet de remplacement de l'ERP. Il/Elle doit s'assurer que l'ensemble des sous-processus financiers sont correctement modélisés et implémentés dans le nouvel ERP tout en répondant aux exigences spécifiques du domaine financier.
+
+ 
+
+ 
+
+Responsabilités :
+
+    Participation et supervision de la phase de design :
+    o Participer aux workshops concernant les processus financiers, liés à la comptabilité et au besoin au contrôle de gestion.
+    o Veiller à l’intégration complète des sous-processus financiers dans Infor M3.
+    o Identifier les points critiques durant les workshops et garantir une bonne compréhension des besoins métiers.
+    Gestion du processus de modélisation et d'acceptation :
+    o Valider la modélisation des processus financiers dans Infor M3 et signer le Business Blueprint (BBP).
+    o Identifier les développements spécifiques nécessaires, notamment en matière de rapports, interfaces, conversions de données, et améliorations pour répondre aux besoins spécifiques du domaine financier.
+    o Assurer l'acceptation des solutions proposées pour les différents processus financiers.
+    Suivi de l’avancement et des développements :
+    o Fournir des rapports réguliers sur l’avancement des travaux financiers dans le cadre du projet ERP.
+    o Garantir l'exécution des solutions ERP conformément aux exigences financières du projet.
+    Formation et communication :
+    o Identifier les besoins en formation pour les utilisateurs finaux et veiller à ce qu'ils soient correctement formés sur le nouvel ERP.
+    o Assurer une communication fluide et continue au sein de l’équipe projet et entre les différents départements.
+    o Valider les comptes rendus des workshops et s’assurer que les décisions importantes sont bien communiquées aux parties prenantes.
+    Prise de décisions et validation :
+    o Prendre des décisions sur les processus financiers au nom des utilisateurs finaux, notamment en ce qui concerne la comptabilité et le contrôle de gestion.
+    o Garantir que les tests sur les processus financiers sont réalisés et validés avant la mise en production.
+    Gestion de la cohésion au sein de l’équipe ERP :
+    o Veiller à la bonne cohésion de l’équipe projet, en favorisant une collaboration efficace entre les différents acteurs internes et externes.
+    o Contribuer à la construction d’un lexique commun du processus afin d’assurer une communication homogène au sein de l’équipe projet.
+
+ 
+
+ 
+
+Compétences recherchées :
+
+    Compétences techniques et expertise métier :
+    o Expertise en comptabilité: Maîtrise approfondie des principes comptables et des processus de clôture comptable.
+    o Maîtrise des processus de contrôle de gestion : Capacité à concevoir, mettre en œuvre et superviser des systèmes de contrôle budgétaire, d’analyse de la performance financière et de gestion des coûts.
+    o Gestion de la comptabilité analytique : Compétences solides dans l’analyse des coûts et l’adaptation de la comptabilité analytique dans un ERP.
+    o Gestion des flux financiers: Compétences dans la gestion des flux de trésorerie et la mise en place de reportings financiers efficaces et précis.
+    Compétences en gestion de projets ERP :
+    o Expérience en gestion de projets ERP : Expérience significative dans la gestion de projets ERP, idéalement pour des remplacements d’ERP dans des environnements complexes comme celui de la distribution de pièces détachées automobiles.
+    o Maîtrise des risques financiers dans les projets ERP : Capacité à identifier et évaluer les risques financiers, y compris les impacts sur la comptabilité et la gestion des flux de trésorerie.
+    o Connaissance des ERP et de la business intelligence : Expérience dans la gestion des modules financiers ERP (comptabilité, contrôle de gestion, trésorerie) et responsabilité du changement d’outils de business intelligence.
+    Compétences analytiques et décisionnelles :
+    o Capacité d’analyse et de synthèse : Compétence dans l’analyse des données financières complexes et la prise de décisions stratégiques.
+    o Sens des priorités et prise de décision : Capacité à prioriser les actions et à prendre des décisions éclairées pour aligner les processus financiers avec les objectifs stratégiques.
+    Compétences en communication et leadership :
+    o Leadership et gestion de projet : Capacité à coordonner des équipes multidisciplinaires et à mener des projets à bien dans les délais et le respect du budget.
+    o Compétences interpersonnelles et communication : Excellente capacité à communiquer avec divers interlocuteurs, du top management aux utilisateurs finaux.
+    o Gestion des conflits : Capacité à gérer les divergences et à résoudre rapidement les conflits au sein de l’équipe projet.
+
+ 
+
+ 
+
+En résumé, le Domain Leader Finance doit combiner une forte expertise technique en finance, une expérience pratique dans la gestion de projets ERP, ainsi qu’une capacité à piloter le changement dans un environnement en transformation. Une bonne compréhension du secteur de la distribution de pièces détachées automobiles est un atout supplémentaire pour réussir dans ce rôle.
+
+ 
+
+Manager de transition Emanuela Mascheroni
+
+ 
+
+Business proces leader pour Compta + AP AR GL
+
+ 
+
+    AS400 begrijpen - processen begrijpen (12 entiteiten in totaal maar voor de ERP 6 entiteiten en 3 landen Be Fr NL
+    Boekhoudachtergrond
+    Operationeel
+    Planning opvolgen met andere domain leaders zodat de juiste linken in het systeem zitten
+    360° linken begrijpen met de business
+    Distributie/retail background is een pluspunt 
+
+ 
+
+Team:
+
+    Expert metier logistique et achat ERP - elle ne connait rien de la finance
+    Intern IT Virginie Lefevre
+    Team PwC
+
+ 
+
+Taches
+
+    Workshops processus
+    Business blueprint
+    Vailder les comptes rendus 
+
+Formation
+
+Lexique processus
+
+Back up
+
+Couteau suisse
+
+ 
+
+Pas de teletravail au début après 6 jour par mois
+==== END JOB DESCRIPTION ====
+
+EXECUTE THE FOLLOWING AND WRITE EACH DELIVERABLE TO ITS FOLDER:
+
+1) MATCH & GAP ANALYSIS  ->  folder "job_descriptions"
+   Create a simple comparative breakdown:
+     - Direct Matches : skills/tools/experience that directly match the JD.
+     - Transferable   : related experience that fulfills implicit JD requirements.
+     - Critical Gaps  : required skills/qualifications missing from the CV.
+
+2) 3 CUSTOM CVs       ->  folder "custom_cv"
+   Rewrite bullet points using exact JD keyword phrasing, ONLY where real
+   experience supports it. Restructure the summary into a high-impact
+   "Value Proposition" answering the JD's primary business pain point.
+   Every bullet = Action Verb + Context/Tech + Metric or Outcome, without
+   inflating the real role. Produce 3 distinct tailored versions.
+   Keep the visual formatting of SONG Ernest - CV v1 (only change the content).
+
+3) 5 CUSTOM COVER LETTERS ->  folder "cover_letters"
+   Draft 5 concise, high-converting cover letters (under 250 words each)
+   that bridge the candidate's background to the JD's top 3 requirements.
+   Include an honest, proactive statement on how his unique perspective
+   covers any minor skill gaps, without apologizing for them.
+
+4) 6 INTERVIEW PREP    ->  folder "6 Interview Prep"
+   Provide 6 targeted behavioral interview questions likely based on this JD,
+   with outline answers based strictly on the candidate's real CV experiences,
+   using the STAR method (Situation, Task, Action, Result).
+
+OUTPUT: Confirm each file was written and list the file paths.

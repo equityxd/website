@@ -1,0 +1,22 @@
+[2026-09-18 01:14:17] cleaning stale artefacts in app folder
+[2026-09-18 01:15:51] stored JD -> CV-20260917-0009.txt
+[2026-09-18 01:22:07] compiling produced CV .typ for CV-20260917-0009
+[2026-09-18 01:22:07] typst-compile-fail CV-20260917-0009_CV1.typ: The system cannot find the file specified. (os error 2)
+[2026-09-18 01:35:04] cleaning stale artefacts in app folder
+[2026-09-18 01:36:24] stored JD -> CV-20260917-0009.txt
+[2026-09-18 01:43:32] compiling produced CV .typ for CV-20260917-0009
+[2026-09-18 01:43:32] typst-compile-fail CV-20260917-0009_CV1.typ: The system cannot find the file specified. (os error 2)
+[2026-09-18 01:43:52] converting cover letter CV-20260917-0009_CL1.txt -> docx
+[2026-09-18 01:43:52] converted CV-20260917-0009_CL1.txt -> CV-20260917-0009_CL1.docx
+[2026-09-18 01:52:27] converted CV-20260917-0009_RM1.txt -> CV-20260917-0009_RM1.docx
+[2026-09-18 01:52:38] cleaning stale artefacts in app folder
+[2026-09-18 01:52:38] removed stale CV-20260917-0009_RM1.txt
+[2026-09-18 01:53:57] stored JD -> CV-20260917-0009.txt
+[2026-09-18 02:01:41] compiling produced CV .typ for CV-20260917-0009
+[2026-09-18 02:01:41] typst-compile-fail CV-20260917-0009_CV1.typ: The system cannot find the file specified. (os error 2)
+[2026-09-18 02:03:01] converting interview prep CV-20260917-0009_IP1.txt -> docx
+[2026-09-18 02:03:01] converted CV-20260917-0009_IP1.txt -> CV-20260917-0009_IP1.docx
+[2026-09-18 02:13:22] cleaning stale artefacts in app folder
+[2026-09-18 02:14:51] stored JD -> CV-20260917-0009.txt
+[2026-09-18 02:25:50] compiling produced CV .typ for CV-20260917-0009
+[2026-09-18 02:25:50] typst-compile-fail CV-20260917-0009_CV1.typ: The system cannot find the file specified. (os error 2)

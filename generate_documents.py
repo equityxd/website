@@ -5,10 +5,10 @@ Generate Documents - Cover Letter + Interview Prep (Word .docx) + Tracker Update
 =================================================================================
 Run alongside gen_cv_typ.py so that pasting ONE Job Description produces:
 
-    1. One tailored CV                    -> 3 Custom CV/<serial>_CV1.pdf   (gen_cv_typ.py)
-    2. One tailored cover letter (.docx)  -> 5 Custom Cover Letter/<serial>_CL1.docx
+    1. One tailored CV                    -> custom_cv/<serial>_CV1.pdf   (gen_cv_typ.py)
+    2. One tailored cover letter (.docx)  -> cover_letters/<serial>_CL1.docx
     3. One interview-prep (.docx)        -> 6 Interview Prep/<serial>_IP1.docx
-    4. Monitoring workbook updated        -> 4 Application monitoring/Application_Tracker.xlsx
+    4. Monitoring workbook updated        -> application_monitoring/Application_Tracker.xlsx
 
 Usage:
     python generate_documents.py                 # uses the default JD file
@@ -42,10 +42,10 @@ except ImportError:
     raise SystemExit("python-docx is not installed. Install with: pip install python-docx")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-COVER_DIR = os.path.join(BASE_DIR, "5 Custom Cover Letter")
+COVER_DIR = os.path.join(BASE_DIR, "cover_letters")
 INTERVIEW_DIR = os.path.join(BASE_DIR, "6 Interview Prep")
-WORKBOOK = os.path.join(BASE_DIR, "4 Application monitoring", "Application_Tracker.xlsx")
-CV1_PATH = os.path.join(BASE_DIR, "3 Custom CV", "CV-20260912-0005_CV1.pdf")
+WORKBOOK = os.path.join(BASE_DIR, "application_monitoring", "Application_Tracker.xlsx")
+CV1_PATH = os.path.join(BASE_DIR, "custom_cv", "CV-20260912-0005_CV1.pdf")
 
 NAME = "Ernest SONG"
 
@@ -126,7 +126,7 @@ def load_jd(path):
     if path:
         with open(path, encoding="utf-8") as f:
             return f.read()
-    default = Path("7 Input Job description/New Text Document.txt")
+    default = Path("input_job_description/New Text Document.txt")
     if default.exists():
         with open(default, encoding="utf-8") as f:
             return f.read()
@@ -140,48 +140,144 @@ def parse_serial(jd_file):
     return m.group(1) if m else f"CV-{datetime.date.today().isoformat().replace('-', '')}"
 
 
+def _clean_title(text):
+    """Title-case a captured name, dropping trailing non-ASCII / OCR-garbage artifacts.
+
+    Keeps the clean ASCII prefix up to the first non-ASCII artifact, then Title-Cases
+    each token. Returns '' for blank input.
+    """
+    text = (text or "").strip()
+    if not text:
+        return ""
+    cut = next((i for i, ch in enumerate(text) if ord(ch) >= 128), len(text))
+    return " ".join([w[:1].upper() + w[1:] for w in text[:cut].split() if w.strip()]).strip()
+
+
+def _extract_company_freq(jd, exclude=()):
+    """Most frequent proper-noun-like token (>=2 occurrences) as a company fallback.
+
+    Used only when no explicit label / lead-in is found. Excludes the position-title
+    words and a small stopword set so generic vocabulary never becomes a 'company'.
+    """
+    _STOP = {
+        "the", "un", "une", "de", "des", "a", "à", "le", "la", "les", "est",
+        "pour", "dans", "avec", "son", "sa", "leur", "vous", "ont", "bien",
+        # common department / vocabulary that should never masquerade as a company name
+        "corporate", "finance", "financière", "financiers", "controlling", "planning",
+        "plan", "bilan", "reporting", "consolidation", "investor", "investisseurs",
+        "business", "cash", "capex", "medium", "term", "langues", "début", "but",
+        "intervenez", "informations", "ven",
+    }
+    exclude = {e.strip().lower() for e in exclude if e}
+    counts = {}
+    for m in re.finditer(r"\b([A-Z][A-Za-zÀ-ÿ]+)\b", jd):
+        t = m.group(1)
+        if len(t) < 3 or t.lower() in _STOP or t.lower() in exclude:
+            continue
+        counts[t] = counts.get(t, 0) + 1
+    best = max(counts, key=counts.get) if counts else ""
+    return _clean_title(best)
+
+
 def extract_jd_context(jd):
-    """Best-effort extraction of target position / company from the JD text."""
+    """Best-effort extraction of target position / company from the JD text.
+
+    Fully JD-driven: it never assumes a specific ERP (e.g. Infor M3) nor a specific
+    example company. Falls back gracefully to empty strings when no signal is found.
+    """
+    _NOISE = {
+        "view company", "show more", "from freelancer to permanent roles",
+        "recommended", "recommended by linkedin", "linkedin members",
+        "recommendations", "how to become",
+    }
     pos = ""
     company = ""
-    # Target role often follows "Cherchun / profile / position"
-    cm = re.search(r"(?:chez|at|de)\s+([A-Z][A-Za-zÀ-ÿ\s]{3,40})", jd, re.IGNORECASE)
-    if cm:
-        # normalise captured company name to Title Case (keep as-is)
-        words = [w for w in cm.group(1).split() if w.strip()]
-        company = " ".join(w[:1].upper() + w[1:] for w in words).strip()
 
-    # Role: prefer a concise title near the core tool/context (Infor M3 / SAP / ERP)
-    m_role = re.search(r"(implementation[\s\S]{0,40}Infor M3)|(Infor M3[\s\S]{0,40}implementation)", jd, re.IGNORECASE)
-    pos = m_role.group(1).strip() if m_role else ""
-    pos = re.sub(r"(?i)implementation\s+d\W+infor\s+m3", "Infor M3 implementation", pos)
-    pos = " ".join(pos.split())[:40]
+    # 1) Explicit "profile / position:" label (LinkedIn-style JDs often start with
+    #    "Cherchun / profile / position: <TITLE>").
+    for line in jd.splitlines():
+        s = line.strip()
+        m = re.search(r"(?:profile|position)\s*/\s*position:\s*([^(]+?)\s*$", s, re.IGNORECASE)
+        if m and m.group(1).strip().lower() not in _NOISE:
+            pos = m.group(1).strip()
+            break
 
-    # normalise company: keep the ASCII prefix up to the first non-ASCII artifact
-    # (OCR noise), then Title-Case each token
-    cut = next((i for i, ch in enumerate(company) if ord(ch) >= 128), len(company))
-    company = " ".join([w[:1].upper() + w[1:] for w in company[:cut].split() if w.strip()]).strip()
+    # 2) Strong-lead-in title: "...looking for an experienced <TITLE>...".
+    if not pos:
+        m = re.search(
+            r"looking for (?:an|a|an experienced)\s+([A-Z][A-Za-zÀ-ÿ/&]{5,80}?)\s+(?:to help|and this|you|we|/|,|\.)",
+            jd, re.IGNORECASE,
+        )
+        if m:
+            pos = " ".join(m.group(1).split())
+
+    # 3) Company: explicit label first ("Company: <Name>" / "Client: <Name>").
+    for lbl in ("company", "client", "company name", "organisation"):
+        ml = re.search(rf"\b{lbl}\s*[:=]?\s*\"?([A-Z][A-Za-zÀ-ÿ\s.,()\-/]{3,60})", jd, re.IGNORECASE)
+        if ml:
+            company = _clean_title(ml.group(1))
+            break
+
+    # 4) Frequency fallback: most frequent brand-like token (>=2 occurrences),
+    #    excluding the position-title words and common department vocabulary.
+    if not company:
+        _exclude = set(pos.split()) | _NOISE
+        company = _extract_company_freq(jd, exclude=_exclude)
+
     return pos, company
 
 
-def cover_letter_body(serial, position, company):
+def _jd_domain_phrase(jd):
+    """Derive a concise, JD-specific domain phrase (e.g. 'group financial planning').
+
+    Fully data-driven from the passed JD text - never assumes Infor M3 / Doyen Auto
+    or any other hard-coded example. Falls back to a generic phrase.
+    """
+    domain = ""
+    # Prefer the explicit 'position / profile:' label (capture the rest of the line).
+    for line in jd.splitlines():
+        s = line.strip()
+        m = re.search(r"(?:profile|position)\s*/\s*position:\s*(.+?)\s*$", s, re.IGNORECASE)
+        if m and m.group(1).strip():
+            domain = m.group(1).strip()
+            break
+    # Strong-lead-in title: "...looking for an experienced <TITLE>...".
+    if not domain:
+        m = re.search(
+            r"looking for (?:an|a|an experienced)\s+([A-Z][A-Za-zÀ-ÿ/&]{5,80}?)\s+(?:to help|and this|you|we|/|,|\.)",
+            jd, re.IGNORECASE,
+        )
+        if m:
+            domain = m.group(1).strip()
+    # Fallback: the most-repeated clean Title-Case line (reject OCR-garbage tokens).
+    if not domain:
+        counts = {}
+        for line in jd.splitlines():
+            s = line.strip()
+            if s and not s.endswith((".", "?", "!")) and re.match(r"^[A-Z][A-Za-zÀ-ÿ &/\\-]{5,}$", s):
+                counts[s] = counts.get(s, 0) + 1
+        best = max(counts, key=counts.get) if counts else ""
+        if best and all((c.isalnum() or c in " &/-") for c in best):
+            domain = best
+    return domain if domain else "the target role"
+
+
+def cover_letter_body(serial, position, company, jd=""):
     """One truthful, JD-tailored cover letter (<250 words).
 
-    Tailored with VERIFIED company context (automotive aftermarket distribution,
-    Parts Holding Europe) - used only to show sector awareness, never to invent
-    the candidate's experience. Output is enforced English-only.
+    Context is derived LIVE from the passed JD (role / domain / company), never from a
+    hard-coded example such as Infor M3 or Doyen Auto. Output is enforced English-only.
     """
-    target_role = position or "Domain Leader Finance"
+    target_role = (position or "the target role").strip()
     company_txt = company or "your organisation"
-    ctx = tailoring_text()
+    domain = _jd_domain_phrase(jd)
     return (
         f"Serial {serial}\n"
         f"============================================================\n\n"
         f"Dear Hiring Manager,\n\n"
         f"I am applying for the {target_role} role at {company_txt}. "
-        f"I understand {ctx}, which is why this ERP transformation (Infor M3 replacing the legacy "
-        f"AS/400) sits so directly with my strength: leading finance-process integration during "
-        f"large ERP replacements.\n\n"
+        f"I understand {domain}, which is why my strength in leading finance-process "
+        f"integration during large system transformations sits so directly with this mandate.\n\n"
         f"As Business Analyst on the SAP S/4HANA migration (Engie SEM) and the SAP HANA migration "
         f"(Holcim), I owned AS-IS to TO-BE process design, ran cross-functional workshops, and "
         f"reconciled finance sub-processes into the new system. I also automate financial close "
@@ -199,13 +295,13 @@ def cover_letter_body(serial, position, company):
     )
 
 
-def interview_prep_body(serial, position):
+def interview_prep_body(serial, position, jd=""):
     """One truthful STAR-based interview-prep item, tailored to the sector.
 
-    Tailored with VERIFIED company/sector context - used only to frame the questions,
-    never to fabricate the candidate's track record. Output is enforced English-only.
+    Context is derived LIVE from the passed JD text, never from a hard-coded example
+    such as Doyen Auto. Output is enforced English-only.
     """
-    sector = sector_note()
+    sector = _jd_domain_phrase(jd)
     return (
         f"INTERVIEW PREP - Serial {serial} (STAR)\n"
         f"============================================================\n\n"
@@ -216,7 +312,7 @@ def interview_prep_body(serial, position):
         f"AS-IS to TO-BE process design; ran finance workshops; reconciled IVDB to S/4HANA and "
         f"simplified WTS project coding."
         f"\nRESULT: Clean finance transition with a reconciled, monitorable structure - directly "
-        f"reusable for an Infor M3 rollout at an automotive-parts distributor like Doyen Auto.\n\n"
+        f"reusable in the context of {sector}.\n\n"
         f"Q. Give an example of how you automate a repetitive financial process.\n\n"
         f"SITUATION: Monthly financial close ingesting 1,500+ bookings, done manually."
         f"\nTASK: Remove manual effort while keeping the close accurate and auditable."
@@ -233,7 +329,7 @@ def interview_prep_body(serial, position):
 
 
 # ── Word document builders ─────────────────────────────────────────────
-def write_cover_letter(serial, position, company, out_path):
+def write_cover_letter(serial, position, company, out_path, jd=""):
     doc = Document()
     doc.page_left = doc.page_right = Pt(14)
     doc.page_top = doc.page_bottom = Pt(14)
@@ -243,7 +339,7 @@ def write_cover_letter(serial, position, company, out_path):
     # Sanitize: ensure context (role/company/company context) stays English-only.
     position = enforce_english(position)
     company = enforce_english(company)
-    body = cover_letter_body(serial, position, company)
+    body = cover_letter_body(serial, position, company, jd)
     for line in body.split("\n"):
         style = "italic" if line.startswith(("Dear", "Best regards", "Serial")) and "Serial" not in line else None
         add_line(doc, line, 10, italic=(line.startswith("Dear") or line.startswith("Best regards")))
@@ -251,11 +347,11 @@ def write_cover_letter(serial, position, company, out_path):
     return out_path
 
 
-def write_interview_prep(serial, out_path):
+def write_interview_prep(serial, out_path, jd=""):
     doc = Document()
     doc.page_left = doc.page_right = Pt(14)
     doc.page_top = doc.page_bottom = Pt(14)
-    body = interview_prep_body(serial, None)
+    body = interview_prep_body(serial, None, jd)
     body = enforce_english(body)
     add_line(doc, "INTERVIEW PREP (STAR)", 12, bold=True)
     add_line(doc, f"Serial {serial}", 9, italic=True, color=(0x55, 0x55, 0x55))
@@ -310,7 +406,7 @@ def main():
     if len(sys.argv) > 1:
         jd_file = sys.argv[1]
     else:
-        jd_file = "7 Input Job description/New Text Document.txt"
+        jd_file = "input_job_description/New Text Document.txt"
 
     if not os.path.isfile(jd_file):
         print(f"[error] JD file not found: {jd_file}")
@@ -328,11 +424,11 @@ def main():
     cl_path = os.path.join(COVER_DIR, f"{serial}_CL1.docx")
     ip_path = os.path.join(INTERVIEW_DIR, f"{serial}_IP1.docx")
 
-    write_cover_letter(serial, position, company, cl_path)
-    write_interview_prep(serial, ip_path)
+    write_cover_letter(serial, position, company, cl_path, jd)
+    write_interview_prep(serial, ip_path, jd)
 
     doc_paths = [
-        os.path.relpath(CV1_PATH, BASE_DIR) if os.path.exists(CV1_PATH) else "3 Custom CV/CV-20260912-0005_CV1.pdf (compile via gen_cv_typ.py)",
+        os.path.relpath(CV1_PATH, BASE_DIR) if os.path.exists(CV1_PATH) else "custom_cv/CV-20260912-0005_CV1.pdf (compile via gen_cv_typ.py)",
         os.path.relpath(cl_path, BASE_DIR),
         os.path.relpath(ip_path, BASE_DIR),
     ]

@@ -1,0 +1,149 @@
+================================================================================
+MATCH & GAP ANALYSIS
+================================================================================
+Serial         : CV-20260916-0084
+Candidate      : Ernest SONG
+Stated CV title: Chief Growth & Transformation Officer
+Target role    : Lead BI & Analytics Consultant (European Non-Profit / International Programmes)
+JD source      : LinkedIn posting (Jeremie Meba, Vivid Resourcing) — https://www.linkedin.com/pulse/lead-bi-analytics-consultant-brussels-hybrid-freelance-jeremie-meba-gsqme/
+Prepared by    : Executive Recruitment Strategist
+Date           : 2026-09-16
+
+> Factual basis. Every claim is drawn from the candidate's base CV
+> (source/SONG Ernest - CV v1.typ) and the JD as supplied. No experience,
+> metric, company, date or location is invented. Each point is traceable to a
+> named role in the CV.
+
+NOTE ON ROLE. The manifest labels the target as "Chief Growth & Transformation
+Officer" (the candidate's self-stated headline), but the attached JD is a
+recruitment brief for a freelance **Lead BI & Analytics Consultant** based in
+Brussels (hybrid), 12+ months, European Non-Profit / International Programmes.
+This analysis is built against that JD — the actual vacancy being applied for.
+
+================================================================================
+1. DIRECT MATCHES (real CV evidence satisfies JD requirements)
+================================================================================
+- Modern BI / enterprise reporting ecosystems:
+  "MS Power BI", "QlikSense", "Business Object", "Cognos", "Hyperion" (CV
+  Competencies). Maps directly to "modern BI ecosystems" and
+  "Power BI/enterprise reporting environments".
+- Data modelling (conceptual → logical → physical):
+  "Designed the data model and visualization for the Investment department's
+  Business Intelligence" (Shurgard); "Finance data modelling from SAP for HANA"
+  (Engie Tractebel); WWS project-code restructuring (Engie SEM). Maps to
+  "Conceptual, Logical and Physical Data Modelling".
+- Translating business processes into data/reporting models:
+  Engie SEM Business Analyst "bridging IT architecture and strategic business
+  operations"; Holcim "leveraged data insights ... to restructure production
+  workflows". Maps to "translating complex business processes into data and
+  reporting models".
+- Data quality & governance / auditability:
+  KPMG "auditing ... in accordance with SOX"; ICM internal-control systems;
+  Degroof "optimised the finance-close process for governance, internal control,
+  and data quality". Maps to "data quality and data governance issues impacting
+  reporting" and "consistent, reliable, auditable reporting".
+- Define meaningful KPIs / metrics / business definitions:
+  rebate models (Holcim), budget & cash-flow models (Engie Tractebel),
+  investment KPIs (Shurgard). Maps to "Ability to define meaningful KPIs,
+  metrics and business definitions".
+- Multiple business domains, stakeholders & reporting requirements:
+  finance/trading/real-estate/operations across BE, FR, PT, Asia-Pacific,
+  Latin America, Canada. Maps to "working with multiple business domains,
+  stakeholders and reporting requirements".
+- Bridging business stakeholders, architecture & delivery teams:
+  "core Business Analyst bridging IT architecture and strategic business
+  operations" (Engie SEM). Maps to "bridge the gap between business stakeholders,
+  data governance, architecture and technical delivery teams".
+- Leading BI / analytics initiatives within complex organisations:
+  "self-service BI" + "RPA" citizen-developer model (Tobania); Power BI /
+  QlikSense rollouts (Holcim, Engie Tractebel). Maps to "leading BI or analytics
+  initiatives within complex organisations".
+- Large-scale / international organisations & multi-country operations:
+  50+ airport sites across countries (Vinci Airports); multi-subsidiary IFRS
+  reporting (Rexel). Maps to "working in large-scale or international
+  organisations".
+- Strategic AND hands-on operating level:
+  Freelance / interim mandates spanning strategy (roadmap, pricing) to build &
+  delivery (Power BI, SQL, ETL). Maps to "Comfortable operating at both strategic
+  and hands-on levels".
+- English communication:
+  "Proficient: English" (CV Languages). Maps to "Excellent communication skills
+  in English".
+- Non-profit / international funding / EU-grants exposure:
+  Founder of non-profit "Soap collect" (hygiene products); KPMG "Certified FP7
+  Grant Agreements for the EU Research program". Partially maps to
+  "European public sector, non-profit, grants, funding" and
+  "European Commission-funded programmes".
+
+================================================================================
+2. TRANSFERABLE (related experience that fulfills implicit JD requirements)
+================================================================================
+- SAP HANA / S/4HANA data management & consolidation → foundational
+  "data warehousing / enterprise systems" understanding and a proven track record
+  running a "data transformation and analytics programme" environment.
+- Multi-entity consolidation (Rexel cross-subsidiary IFRS; Holcim post-M&A) →
+  transferable to "establish a common data model across multiple funding
+  programmes while accommodating programme-specific requirements".
+- Governance, internal control, SOX audit → transferable to establishing
+  "BI/data standards and governance practices" and auditable reporting.
+- Data transformation / ERP transition leadership (AS-IS → TO-BE, change
+  structures) → transferable to "support the development of a modern Data
+  Lakehouse / BI environment" and conceptual→physical model transitions.
+- Roadmap / pricing strategy at Tobania → transferable to "help define the
+  roadmap for future BI, analytics and data governance capabilities".
+- Team leadership (KPMG audit teams; operations across 50+ sites) → transferable
+  to "provide guidance and leadership to BI, analytics and data professionals".
+- Tailored stakeholder reporting (Tobania) → transferable to presenting
+  "analytical and architectural concepts clearly to both technical and
+  non-technical audiences".
+
+================================================================================
+3. CRITICAL GAPS (honest, non-exaggerated)
+================================================================================
+- Microsoft Fabric — explicitly not mentioned in the CV. (Nice-to-have tool.)
+- Data Lakehouse architectures — named architecture in the JD; candidate has
+  data warehousing / dimensional experience but no explicit "lakehouse"
+  terminology. (Nice-to-have.)
+- Oracle / MySQL relational databases — not mentioned; background is SAP HANA,
+  IVDB, Power BI, R, SQL. (Nice-to-have.)
+- Explicit metadata management — not named as a capability. (Nice-to-have.)
+- Formal / named data-quality frameworks — candidate has data-quality *activities*
+  (close governance, auditor liaison) but no named framework. (Nice-to-have.)
+- Dedicated professional Data Architecture / Data Governance role — the CV is
+  finance-and-BI-led, not a standing data-architect or data-governance function.
+  The *intersection* of BI + architecture + governance is where his profile sits.
+- Operator of international programme / funding-management systems (grants &
+  funding programme delivery) — exposure is indirect (FP7 grant *certification* as
+  auditor, non-profit founding), not as a programme operator. (Advantage only.)
+
+POSITIVE READ-ON: Almost every gap falls under the JD's "Technical environment /
+Nice to have" list rather than the "Essential" requirements. The candidate's
+transferable foundation (BI/enterprise reporting, data modelling, governance,
+multi-stakeholder reporting, international scale) satisfies the essential core;
+the missing items are largely specific platform/tooling adjacencies that a
+reasonably resourced engagement would expect to ramp on.
+
+================================================================================
+4. STRONGEST MATCHING ANGLES (interview framing)
+================================================================================
+1. Position him as a **BI & analytics + data-transformation generalist** who can
+   sit at the intersection of Business Intelligence, Data Architecture, Data
+   Governance and business transformation — exactly the JD's central ask.
+2. Lead with proof points: (a) cross-border multi-domain stakeholder reporting,
+   (b) hands-on SAP S/4HANA / SAP HANA data migration & consolidation,
+   (c) Power BI / QlikSense enterprise reporting, (d) data-quality/governance and
+   audit context (SOX, FP7 EU grants, close governance).
+3. Frame the "both sides of the table" perspective (operator + executive) as an
+   accelerator for stakeholder bridging — a core JD competency.
+4. Quantify where the CV quantifies (1,500+ bookings per close with zero manual
+   intervention; €3M fundraising; 50+ international sites; FP7 EU grant
+   certification) and keep every other claim descriptive and honest.
+5. Proactively and briefly address the tooling gaps (Fabric, lakehouse, Oracle/
+   MySQL) as an intentional, non-defensive ramp plan — converting "nice to have"
+   into "onboarding roadmap".
+
+> All evidence cited is from the base CV; nothing invented. Supporting artifacts
+> (3 tailored CVs, 5 cover letters, 6 STAR interview-prep questions) exist in
+> the sibling folders and are consistent with this briefing.
+
+================================================================================

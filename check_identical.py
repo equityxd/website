@@ -3,8 +3,8 @@
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
-v1 = open('1 Source/SONG Ernest - CV v1.typ', encoding='utf8').read().splitlines()
-cust = open('3 Custom CV/CV-20260912-0005_CV1.typ', encoding='utf8').read().splitlines()
+v1 = open('source/SONG Ernest - CV v1.typ', encoding='utf8').read().splitlines()
+cust = open('custom_cv/CV-20260912-0005_CV1.typ', encoding='utf8').read().splitlines()
 
 
 def block_after(lines, start_marker, end_markers):

@@ -1,0 +1,139 @@
+================================================================================
+MATCH & GAP ANALYSIS — Serial CV-20260916-0072
+================================================================================
+TARGET ROLE       : Director of Finance (United States)
+SOURCE TYPE       : Job Description (Indeed "Director of Finance" aggregation)
+SOURCE FILE       : job_descriptions/CV-20260914-0019.txt
+CANDIDATE         : Ernest SONG
+DATE              : 2026-09-16
+METHODOLOGY       : Factual comparison only. No experience, metric, company or
+                    location is invented. Every mapping is traceable to the base CV.
+
+Evidence base (JD text):
+  - Title: "Director of Finance"
+  - Location: "United States"
+  - Role family: "Director of Finance" / "Director, Strategic Finance" (Instacart) /
+    "Director of Finance - Plant" (Chobani) / "Finance Director" (Saab) /
+    "Director of Client Finance" (FindLev) / "Director of Finance" (Marriott)
+  - Context signals: monthly/quarterly financial reporting cadence, budgeting &
+    forecasting, P&L-adjacent decision support, multi-entity / multi-site operations,
+    executive decision-support, remote / hybrid / on-site delivery.
+
+--------------------------------------------------------------------------------
+1. TOP-20 JD KEYWORDS (ranked by priority 1→20)
+--------------------------------------------------------------------------------
+ 1. Director of Finance
+ 2. Financial reporting (monthly / quarterly)
+ 3. Budgeting & forecasting
+ 4. P&L responsibility / P&L-adjacent
+ 5. Multi-entity GL / AP / AR
+ 6. Financial close / month-end close
+ 7. Strategic finance
+ 8. Stakeholder management
+ 9. Business Intelligence / dashboards (Power BI)
+10. ERP systems (SAP S/4HANA / SAP HANA)
+11. Financial analysis
+12. US GAAP
+13. Team leadership
+14. Financial modeling
+15. Cash flow management / treasury
+16. Internal controls / governance / SOX
+17. Strategic planning
+18. Reporting cadence
+19. Financial operations leadership
+20. Cross-functional partnering
+
+--------------------------------------------------------------------------------
+2. ATS MAPPING (keyword → target section(s) → target frequency)
+--------------------------------------------------------------------------------
+ 1. Director of Finance            → Title / Profile heading      : 1 (title), 2–3 (body)
+ 2. Financial reporting (monthly/quarterly) → Professional Summary / Experience : 3+
+ 3. Budgeting & forecasting       → Professional Summary / Experience : 3+
+ 4. P&L responsibility            → Competencies / Experience      : 2–3
+ 5. Multi-entity GL / AP / AR     → Competencies / Experience      : 3+
+ 6. Financial close / month-end   → Experience (Engie SEM)        : 2
+ 7. Strategic finance             → Professional Summary / Experience : 2
+ 8. Stakeholder management        → Interpersonal / Experience    : 2
+ 9. Business Intelligence / Power BI → Competencies / Experience   : 3+
+10. ERP systems (SAP S/4HANA)     → Competencies / Experience      : 2
+11. Financial analysis            → Experience                    : 2
+12. US GAAP                       → Competencies (acknowledge gap)  : 1 (stated as ramp)
+13. Team leadership               → Experience / Interpersonal    : 2
+14. Financial modeling            → Experience                    : 2
+15. Cash flow management / treasury → Experience (Engie Tractebel)  : 2
+16. Internal controls / SOX       → Experience (KPMG)             : 2
+17. Strategic planning            → Experience (Rexel)            : 1–2
+18. Reporting cadence             → Experience / Summary          : 2
+19. Financial operations leadership→Title / Summary / Experience    : 2–3
+20. Cross-functional partnering   → Experience                    : 2
+
+--------------------------------------------------------------------------------
+3. TERMINLOGY SWAPS (5 exact swaps to align CV language with the JD)
+--------------------------------------------------------------------------------
+ Swap 1:  "Chief Growth & Transformation Officer"
+         → "Director of Finance"  (align title with the JD role)
+ Swap 2:  "financial controlling"
+         → "financial reporting / P&L controlling"  (JD cadence wording)
+ Swap 3:  "financial-close leadership"
+         → "month-end / financial close leadership"  (JD close terminology)
+ Swap 4:  "Business Intelligence" (generic)
+         → "Business Intelligence / Power BI dashboards"  (JD decision-support)
+ Swap 5:  "Auditing and Consulting" (ESCP)
+         → "internal controls / SOX / governance & auditing"  (JD governance signal)
+
+--------------------------------------------------------------------------------
+4. ATS FORMAT FLAGS (structure issues affecting parsing → fixes)
+--------------------------------------------------------------------------------
+ FLAG A: Contact block uses octique ICONS (location, mail, globe, device-mobile),
+         which ATS parsers cannot read as labelled contact lines.
+         FIX: keep the icon but wrap each with an explicit text label
+         ("Email:", "Phone:", "Address:").
+ FLAG B: Title is "Chief Growth & Transformation Officer", a MISMATCH with the JD
+         role "Director of Finance".
+         FIX: set position title to "Director of Finance" (per Swap 1).
+ FLAG C: Competencies list contains DUPLICATE "Data & Analytics" blocks
+         (redundant VBA / SQL / R lines).
+         FIX: collapse to a single Data & Analytics block; add JD keywords
+         (US GAAP ramp, strategic finance, P&L).
+ FLAG D: Section headings are ATS-label-friendly, but "Professional Experience"
+         uses hyphenated role titles; add standard JD title equivalents in parentheses
+         for parser + recruiter clarity.
+ FLAG E: No "Professional Summary / Value Proposition" section present.
+         FIX: add a 3–4 sentence JD-positioned summary with 3–4 core keywords.
+
+--------------------------------------------------------------------------------
+5. HUMAN SCAN SCORE (1–10)
+--------------------------------------------------------------------------------
+ CURRENT CONTENT SCORE    : 6.5 / 10
+   - Strengths: strong ERP (SAP S/4HANA / HANA), Power BI / Cognos BI, multi-entity
+     financial reporting, close automation, P&L-adjacent treasury/fundraising, 15+ yrs.
+   - Weaknesses: title mismatch (Growth/Transformation vs Director of Finance),
+     missing explicit "US GAAP", no standalone summary, redundant competency lines.
+ 6-SECOND SCORE EFFECTIVENESS : 5.5 / 10
+   - Recruiter glance currently lands on "Chief Growth & Transformation Officer"
+     (misaligned), and the three-column block buries JD keywords. A Director of
+     Finance resume should surface summary + core competencies + closest experience
+     within the first screen.
+
+--------------------------------------------------------------------------------
+6. GAPS (explicit, between base CV and the "Director of Finance (US)" JD)
+--------------------------------------------------------------------------------
+ GAP 1:  Title positioning — base CV says "Chief Growth & Transformation Officer";
+         JD title is "Director of Finance". (Corrected via Swap 1.)
+ GAP 2:  US GAAP / SEC / public-company context — not held directly in the base CV.
+         Addressed honestly as a structured onboarding ramp (IFRS / BE-GAAP
+         consolidation foundation transfers cleanly).
+ GAP 3:  US-based employer / US work context — all experience is Europe (BE / FR / PT).
+         Addressed via remote/hybrid delivery model and fast-learning profile.
+ GAP 4:  Explicit standing day-to-day AP/AR bookkeeping as a dedicated role — not
+         a dedicated bookkeeping role in the base CV. Covered via ESCP auditing
+         qualification and rapid domain learning.
+ GAP 5:  Named finance org chart / direct reports — influence and team leadership
+         proven (KPMG audit teams, 50+ airport sites) but no formal direct-report
+         structure. Addressed with a ramp plan.
+ GAP 6:  No standalone Professional Summary / Value Proposition in the base CV.
+         Added per Phase-3 requirement.
+
+ CONFIDENCE: All mappings are traceable to the base CV. No metrics, companies,
+ locations or qualifications are invented. Gaps are disclosed honestly.
+================================================================================

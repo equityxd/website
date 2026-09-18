@@ -78,7 +78,7 @@ def _run_and_step(script, extra_args, label_map):
     """
     proc = subprocess.Popen(
         [sys.executable, str(BASE_DIR.parent / script), *extra_args],
-        cwd=str(BASE_DIR.parent),  # scripts use relative paths (e.g. "1 Source/…")
+        cwd=str(BASE_DIR.parent),  # scripts use relative paths (e.g. "source/…")
         # The pipeline scripts emit emoji/UTF-8 text; decode the captured pipe as
         # UTF-8 rather than the locale's cp1252 so characters like 📍 don't raise
         # 'charmap' codec can't decode byte 0x8d.

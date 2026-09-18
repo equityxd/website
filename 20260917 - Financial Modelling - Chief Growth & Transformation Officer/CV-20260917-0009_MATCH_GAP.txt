@@ -1,0 +1,53 @@
+MATCH & GAP ANALYSIS — Serial CV-20260917-0009
+============================================
+Target Role : Senior FP&A / Group Controller freelance (corporate)
+Project     : Multi-year financial plan (Medium-Term Plan 2026–2030) + investor/bank/stakeholder analysis for a high-growth international group (post-acquisition).
+Start       : ASAP · Duration: min. 6 months (extendable) · Regime: full-time (4 days/wk possible) · Languages: English indispensable, French strongly desired
+
+==== 1. DIRECT MATCHES (real experience that maps onto the JD) ====
+FP&A / Business planning / multi-year plan:
+    - Magnetrap (2020–2022, interim CFO): created cash-flow projections, business plans and long-term financial goals; monitored performance and drove corrective actions.
+    - Vinci Airports (2016–2017): developed the long-term financial business model with budgeting/forecasting processes and concession valuation (4x acquisition cost), deployed across 50+ locations in various countries.
+    => Directly supports "développement du plan financier pluriannuel" / Medium-Term Plan 2026–2030.
+Financial modelling / cash-flow / working capital:
+    - Engie Tractebel (2023): designed project-level cash-flow reporting and per-project cash exposure; assessed local financing needs; performed counterpart credit analysis and impairment testing; developed finance data models from SAP HANA and designed Power BI reporting.
+    - Engie SEM (2026–Present): built a from-scratch automated budget-modelling tool within a 2-week window; automated financial close via PowerQuery ETL workflows, ingesting batches of 1,500+ bookings per close with zero human intervention.
+    => Real grounding in cash-flow, working-capital discipline and financial modelling.
+Consolidation & reporting (bilan / reporting):
+    - Rexel (2014–2016): led IFRS consolidated reporting across Asia-Pacific, Latin America and Canada; integrated SAP BPC + Cognos; ran annual budgeting and monthly forecasting (actual vs budget).
+    - KPMG Audit (2011–2014): audited financial statements under multiple standards (BE-GAAP, IFRS, SOX) — financial-statement / bilan grounding.
+    => Matches "maîtrasse du bilan, du reporting et de la consolidation."
+M&A / due diligence / post-acquisition integration:
+    - Shurgard (2022–2023): analysed and managed real estate transactions including acquisition of self-storage businesses (restructuring, divestitures).
+    - Holcim (2024–2025): post-M&A production workflow restructuring integrating acquired operations; auditor liaison on rebate matters.
+    => Real M&A and post-acquisition integration experience — called out as a "réel atout" in the JD.
+Investor / bank / stakeholder support:
+    - Magnetrap: prepared operating-results reports for investors; maintained financial models for banking stakeholders.
+    => Matches "préparation d’analyses financières destinées aux investisseurs, banques et autres stakeholders."
+Cross-region collaboration / challenging on the fund:
+    - Multi-country scopes (BE, FR, NL, PT); reconciled middle-office (IVDB) against SAP S/4HANA; restructured WBS codes to strengthen portfolio monitoring.
+    => Supports "challenging les différentes régions sur le fond."
+Tools stack (consolidation/reporting/BI):
+    - SAP HANA, SAP BPC, Cognos, Business Object, Hyperion, Power BI, QlikSense, advanced Excel/Power Query — directly relevant to consolidation/reporting and financial modelling.
+Languages:
+    - French native (desired), English proficient (indispensable). ✓ Both JD language requirements satisfied.
+
+==== 2. TRANSFERABLE (related experience fulfilling implicit JD requirements) ====
+- Medium-Term Plan / consolidation tooling embedment: SAP S/4HANA migration experience (Engie SEM, Holcim) gives a fast track to "intégration progressive dans Lucanet" (a consolidation/reporting tool — learnable, see gaps).
+- P&L / CAPEX reasoning: Vinci Airports concession valuation and capex analysis; Engie Tractebel underwrote capex and cash-flow for investor support engagements.
+- Movement-schedules / reconciliation: IVDB↔SAP reconciliation and WBS-code restructuring support balance-sheet movement-analysis work.
+- Autonomy: all recent mandates are freelance/consulting — the candidate works end-to-end and independently, matching "analyses de manière autonome."
+- Stakeholder communication: tailored stakeholder reports (Tobania), Power BI dashboards, change-management structures.
+- Education foundation: ESCPS Specialized Master's in Auditing & Consulting (#1 FT 2026) + Master's in Management Science & Financial Control — strong controller/finance foundation.
+
+==== 3. CRITICAL GAPS (missing or weak vs. the JD) ====
+- LUCANET: no explicit Lucanet experience listed. The JD marks this as nice-to-have, "mais pas indispensable" — a soft, bridgeable gap, not a blocker.
+- Named balance-sheet (bilan) ownership: strongest documented evidence is P&L, cash-flow, budgeting/forecasting, consolidation reporting and audit of financial statements; a dedicated "bilan / movement schedules" ownership role is not explicitly stated.
+- Formal "Group Controlling at pure-corporate level" title at the exact seniority the JD implies (this is a freelance corporate mandating role). His identity is broader "finance leader / CFO / controller," which is a positioning nuance, not a hard skills gap.
+- CAPEX / working capital are evidenced via modelling and planning rather than standalone operational working-capital management.
+
+==== GAP-COVER STATEMENT (proactive, honest) ====
+Ernest is a controller / FP&A / corporate-finance specialist with genuine multi-entity consolidation, multi-year business planning, cash-flow/financial-modelling and M&A experience — the four core pillars of this mandate. The one named "nice-to-have" gap (Lucanet) is explicitly non-indispensable in the JD; his working consolidation/reporting stack (SAP BPC, Cognos, Business Object, Hyperion) accelerates onboarding. His French native + proficient English fully satisfy the language requirements, and his freelance autonomy covers the "work independently / challenge regions on the fund" expectation.
+
+==== TRUTHFULNESS DECLARATION ====
+Every bullet below is drawn only from the candidate's base CV (source/SONG Ernest - CV v1.typ). No experience, metrics or qualifications have been invented or exaggerated.

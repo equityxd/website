@@ -13,7 +13,7 @@ def run_in_thread(jd):
         return ("err", str(exc))
 
 if __name__ == "__main__":
-    jd = sys.argv[1] if len(sys.argv) > 1 else "2 Job description/CV-20260914-0019.txt"
+    jd = sys.argv[1] if len(sys.argv) > 1 else "job_descriptions/CV-20260914-0019.txt"
 
     # Run in a separate thread (simulates the dashboard worker).
     res = {}
