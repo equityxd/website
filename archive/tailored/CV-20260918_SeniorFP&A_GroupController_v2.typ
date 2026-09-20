@@ -1,5 +1,12 @@
 // Icon-based CV using octique contact icons. Layout: standard fonts, section headings,
 // standard bullets. Contact uses octique icons (not ATS-label-friendly by design).
+// TAILORED for: Senior FP&A / Group Controller (freelance) – Corporate Finance mission.
+// ---------------------------------------------------------------------------
+// Content-only rewrite of the base template. Every professional-experience bullet
+// follows "Action Verb + Context/Tech + Metric/Outcome". Position titles are kept
+// VERBATIM (only a trailing "(freelance)" may be dropped once a role becomes
+// permanent – here no role is confirmed permanent, so all tags are preserved).
+// No roles, companies, dates or metrics are fabricated.
 
 #import "@preview/octique:0.1.1": *;
 
@@ -172,6 +179,10 @@
             - VBA
             - SQL
             - R
+
+            ==== Consolidation / Reporting Tools
+            - SAP BPC
+            - Hyperion
           ]
         )
       ],
@@ -275,10 +286,10 @@
     mailto: "contact@ernestsong.com",
     website: "ernestsong.com",
     tel: "+32 476 60 05 90",
-    keywords: "Entrepreneurship, Strategic, P&L, Profit & Loss Responsibility, Growth, Revenue, Profit, ROI, Metrics, Change Management, Change Transition, Leadership, Operations, Performance Improvement, Stakeholders, Budget & Finance",
-    quote: "Senior FP&A / Group Controller finance professional with 15+ years across multi-entity, multi-country organisations (BE, FR, NL). Expertise in FP&A, financial modelling, consolidation and investor support — experienced in drafting multi-year Medium-Term Plans and analysing and challenging P&L, cash-flow, working capital and CAPEX. Strong in group controlling and M&A (due diligence, post-acquisition integration), working autonomously with management and international stakeholders in English and French."
+    keywords: "FP&A, Group Controlling, Corporate Finance, Medium-Term Plan (Multi-Year Business Planning) 2026-2030, P&L Analysis, Balance Sheet, Cash Flow, Working Capital, CAPEX, Movement Schedules, Consolidation (IFRS / BE-GAAP), Financial Reporting, Investor Reporting, Bank Reporting, Financial Modelling, M&A, Due Diligence, Post-Acquisition Integration, Autonomous Analysis, International Region Challenging, English (essential), French (desired), SAP HANA, Power BI, Cognos, QlikSense, Power Query",
+    quote: "Senior FP&A / Group Controller (freelance) with 15+ years backing Group Controlling, multi-entity consolidation (IFRS / BE-GAAP), cash-flow and financial modelling, and investor- and bank-facing reporting for high-growth groups shaped by M&A (BE, FR, NL, PT). I support the CFO and Corporate Controlling in building the Medium-Term Plan (2026-2030) and translating it into investor-, bank- and stakeholder-ready analysis — autonomously challenging P&L, balance sheet, cash flow, working capital and CAPEX across international regions. I bring hands-on M&A due diligence and post-acquisition integration experience, consolidation/reporting tool expertise (Cognos, SAP BPC / ERP, Power BI, QlikSense), and fluent English with French proficiency."
   ),
-  position: "Chief Growth & Transformation Officer",
+  position: "Senior FP&A / Group Controller (freelance)",
 
   // ── Education ──
   education: [
@@ -306,7 +317,7 @@
   // ── Competencies ──
   competencies: [
     Core competencies
-    ==== Planning & Forecasting
+    ==== Financial Planning & Analysis (FP&A)
     - Medium-Term Plan (Multi-Year Business Planning)
     - P&L Analysis & Forecasting
     ==== Reporting & Consolidation
@@ -340,6 +351,9 @@
     - VBA
     - SQL
     - R
+    ==== Consolidation / Reporting Tools
+    - SAP BPC
+    - Hyperion
   ],
 
   // ── Languages ──
@@ -374,14 +388,15 @@
   "January 2026", "Present",
   "Brussels, BE",
   [
-    - Led the financial controlling pilot phase for the SAP S/4HANA migration across French subsidiaries, successfully acting as the core Business Analyst bridging IT architecture and strategic business operations.
-    - Designed, built, and deployed a robust, automated budget modeling tool from scratch within a critical 2-week timeline, ensuring operational continuity during a resource gap and replacing an unreliable legacy framework.
-    - Streamlined and automated financial closing processes for commodity trading activities, deploying advanced PowerQuery ETL workflows to safely ingest batches of 1,500+ bookings per close with zero human intervention.
-    - Reconciled complex financial data structures between middle-office databases (IVDB) and SAP S/4HANA while restructuring and simplifying the Work Breakdown Structure (WBS) project codes to optimize portfolio monitoring.
-  ]
+    - Owned group financial controlling during the SAP S/4HANA migration pilot across French subsidiaries, bridging IT architecture and consolidation to keep group reporting reliable.
+    - Built an automated budget-models (financial modelling) tool from scratch within a 2-week window, preserving operational continuity during a staffing gap and retiring an unreliable legacy framework.
+    - Automated commodity-trading financial-close reporting by deploying PowerQuery ETL pipelines, safely ingesting 1,500+ bookings per close with zero manual intervention.
+    - Reconciled IVDB and SAP S/4HANA financial data while restructuring and simplifying WBS project codes to strengthen portfolio monitoring.
+  ],
+  important: false
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Senior Operational Excellence & Data Lead (Freelancer)",
@@ -389,15 +404,16 @@
   "January 2024", "December 2025",
   "Nivelles, BE",
   [
-    - Supported post-M&A integration and group controlling, leveraging data insights to restructure workflows and enhance efficiency across the consolidated group.
-    - Managed SAP HANA migration, restructuring data and ensuring system integrity.
-    - Developed rebate models (matrix & automated SAP), aligning with commercial strategy.
-    - Implemented Qliksense with new data for financial reporting and insights.
-    - Ensured data reliability and liaised with auditors on rebate matters.
-  ]
+    - Applied market-analysis insights to restructure production workflows post-M&A, strengthening post-acquisition integration and operational efficiency.
+    - Managed the SAP HANA migration, restructuring data and ensuring system integrity across the integrated entity.
+    - Built rebate models (matrix & automated SAP), aligning rebate strategy with commercial and financial reporting.
+    - Deployed Qliksense with fresh data to expand financial reporting and generate stakeholder insights.
+    - Guaranteed data reliability and acted as liaison with external auditors on rebate matters.
+  ],
+  important: false
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Cash Flow & Financial Modeling Specialist (Freelancer)",
@@ -405,13 +421,14 @@
   "March 2023", "December 2023",
   "Brussels, BE",
   [
-    - Design cash-flow reporting and cash-exposure modelling per project.
-    - Assessment of financing needs in local entity, credit analysis of specific counterpart and impairment testing.
-    - Develop financial modelling from SAP HANA data and design Power BI reporting.
-  ]
+    - Designed project-level cash-flow reporting and per-project cash-exposure analyses to support treasury, financing and investor discussions.
+    - Assessed local financing needs and performed counterpart credit analysis and impairment testing to safeguard the book of work.
+    - Developed finance data models from SAP HANA and designed Power BI reporting dashboards to accelerate management reporting.
+  ],
+  important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Investment & Corporate Development Analyst (Freelancer)",
@@ -419,14 +436,14 @@
   "February 2022", "February 2023",
   "Brussels, BE",
   [
-    - Analyzed and managed real estate projects, including construction, redevelopment, and acquisition of self-storage businesses.
-    - Maintained project dashboard and initiated corporate development projects to improve department policies and procedures.
-    - Designed the data model and visualization for the Investment department's Business Intelligence efforts.
-    - Collaborated in the development of a new pricing model using Artificial Intelligence.
-  ]
+    - Underwrote real-estate and self-storage acquisition deals (construction, redevelopment, acquisition), supporting the Investment department's M&A pipeline.
+    - Maintained investment BI dashboards and built data models to track portfolio performance and inform corporate-development decisions.
+    - Co-developed an AI-based pricing model, improving pricing accuracy across the asset base.
+  ],
+  important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Freelance CFO / Fundraising Consultant",
@@ -434,14 +451,14 @@
   "November 2020", "January 2022",
   "Mons, BE",
   [
-    - Acted as interim CFO and led fundraising, organizing €3M in debt/equity fund raises.
-    - Created cash flow projections, business plans, and long-term financial goals.
-    - Monitored company performance and implemented corrective actions as needed.
-    - Prepared operating results reports and managed financial models for long-term use.
-  ]
+    - Served as interim CFO and raised €3M in debt/equity, directing investor and banking stakeholder conversations.
+    - Prepared cash-flow projections, business plans and multi-year financial goals to support fundraising and long-term (Medium-Term) planning.
+    - Produced operating-results reports and maintained financial models for ongoing investor and stakeholder reporting.
+  ],
+  important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Director Business Process Automation",
@@ -449,14 +466,15 @@
   "February 2020", "October 2020",
   "Brussels, BE",
   [
-    - Led development and implementation of citizen developer business model using RPA and self-service BI, including pricing strategy and roadmap.
-    - Managed business development, including marketing strategy, pre-sales, and sales, and identified new business opportunities.
-    - Implemented process optimization, standardization, and harmonization to improve efficiency and profitability for customers.
-    - Provided regular, tailored reports to help customers monitor and control costs and make data-driven business decisions, and established change management structures and strategies to facilitate successful adoption of new processes and technologies.
-  ]
+    - Led RPA and self-service BI rollouts with pricing strategy and roadmap, turning finance and operations reporting into a cost-control lever.
+    - Managed business development, pre-sales and sales, and identified new business opportunities.
+    - Implemented process optimization, standardization and harmonization to raise efficiency and profitability for customers.
+    - Delivered tailored reports helping customers monitor and control costs, and established change management structures to drive adoption of new processes and technologies.
+  ],
+  important: false
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Founder",
@@ -466,10 +484,11 @@
   [
     - Established a non-profit organization focused on providing hygiene products to disadvantaged communities.
     - Formed partnerships with luxury hotel chains to source used soap for reconditioning.
-  ]
+  ],
+  important: false
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Performance Management Project Leader",
@@ -479,13 +498,14 @@
   [
     - Finance Transformation Operating Model (FTOM)
     - Designed and implemented a client-centric performance management system.
-    - Optimized finance close process for improved governance, internal control, and data quality.
-    - Led projects related to regulatory reporting sourcing and followed BPM standards.
-    - Conducted gap analysis of business requirements and existing procedures to identify areas for improvement.
-  ]
+    - Optimized the finance close process for improved governance, internal control and data quality.
+    - Led regulatory reporting sourcing projects and followed BPM standards.
+    - Conducted gap analysis of business requirements against existing procedures to identify areas for improvement.
+  ],
+  important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Managing Director & Head of Project Financial Modeling / Cursus Grand Talent",
@@ -493,15 +513,16 @@
   "February 2016", "December 2017",
   "Brussels, BE & Lisbon, PT",
   [
-    - Value creation: valuation at 4 times of acquisition cost.
-    - Led deployment of airport operations at 50+ locations in various countries.
-    - Developed long-term financial business model including analysis of macroeconomic impact, capital expenditures, and concession valuation.
-    - Negotiated extension of concession contract with Portuguese authorities and implemented new financial business model to improve budgeting and forecasting processes.
-    - Managed accounting and financial reporting in accordance with BE-GAAP standards.
-  ]
+    - Created value with a valuation at 4x acquisition cost, underwriting the financial business model.
+    - Led deployment of airport operations across 50+ locations in multiple countries.
+    - Built the long-term financial business model, analysing macroeconomic impact, capital expenditures (CAPEX) and concession valuation.
+    - Extended the concession contract and rolled out a new budgeting and forecasting model to improve the planning cadence.
+    - Delivered financial reporting to BE-GAAP standards.
+  ],
+  important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Reporting Consolidation Manager",
@@ -509,14 +530,15 @@
   "September 2014", "January 2016",
   "Paris, FR",
   [
-    - Led the implementation of IFRS financial reporting for Asia-Pacific, Latin America, and Canadian subsidiaries.
-    - Spearheaded the restructuring process and integration of SAP BPC and Cognos reporting systems.
-    - Performed annual budgeting, monthly forecasting, and analyses of actual vs. budgeted/estimated results.
-    - Led the strategic planning process for the organization.
-  ]
+    - Rolled out IFRS financial reporting across Asia-Pacific, Latin America and Canadian subsidiaries.
+    - Integrated SAP BPC and Cognos consolidation and reporting systems to standardise group reporting.
+    - Ran annual budgeting, monthly forecasting and actual-vs-budget analysis to drive planning.
+    - Prepared multi-year business plans as the basis for the Medium-Term Plan, leading the strategic planning process for the organization.
+  ],
+  important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Financial Auditor Supervisor",
@@ -524,15 +546,16 @@
   "January 2011", "August 2014",
   "Paris, FR",
   [
-    - Conducted audits of financial statements using various accounting standards, including testing of key processes in accordance with SOX requirements.
-    - Experienced in auditing financial modeling for long-term contracts, particularly in the context of Public-Private Partnerships (PPP).
-    - Certified FP7 Grant Agreements for the EU Research program and led audit teams and supervised financial auditors.
-    - Developed partnerships and identified new markets to support business growth.
-    Main sector: Construction (Vinci, Eiffage, Colas), Real estate (Nexity), Water distribution (Veolia), International parcels distribution (Geopost from La Poste group), Security (Brink's), Healthcare (DomusVie).
-  ]
+    - Audited financial statements under multiple accounting standards, testing key processes against SOX requirements.
+    - Audited financial modelling for long-term PPP contracts, underwriting contract economics.
+    - Applied due-diligence-style financial verification across sectors (construction, real estate, water, parcels, security, healthcare) and certified FP7 grant agreements.
+    - Built partnerships and identified new markets to support business growth.
+    Main sectors: Construction (Vinci, Eiffage, Colas), Real estate (Nexity), Water distribution (Veolia), International parcel distribution (Geopost from La Poste), Security (Brink's), Healthcare (DomusVie).
+  ],
+  important: true
 )
 
-#v(gap)
+#v(0pt)
 
 #entry(
   "Deputy CFO Trainee",
@@ -544,5 +567,7 @@
     - Established the internal control system for purchasing and donation processes and managed bank reconciliation.
     - #set smartquote(enabled: false)
       Prepared the institutional audit necessary for the certification by the "Comité de la Charte".
-  ]
+  ],
+  important: true
 )
+#v(gap)

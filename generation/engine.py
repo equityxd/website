@@ -101,6 +101,7 @@ import time
 import datetime
 
 import subprocess
+import shutil
 
 from pathlib import Path
 
@@ -181,9 +182,9 @@ PI_STEP_TIMEOUT = int(os.environ.get("PI_STEP_TIMEOUT", "900"))
 
 # Transient SIGTERM (exit code 143) / timeout: retry a few times with backoff.
 
-_MAX_LLM_RETRIES = int(os.environ.get("PI_MAX_LLM_RETRIES", "5"))
+_MAX_LLM_RETRIES = int(os.environ.get("PI_MAX_LLM_RETRIES", "3"))
 
-_LLM_RETRY_BASE_DELAY = float(os.environ.get("PI_LLM_RETRY_BASE_DELAY", "20"))
+_LLM_RETRY_BASE_DELAY = float(os.environ.get("PI_LLM_RETRY_BASE_DELAY", "10"))
 
 
 
@@ -369,7 +370,50 @@ def _cv_content(base_cv):
     return "\n\n".join(out)
 
 
+def _compact_facts(base_cv):
 
+    """Extract only the ESSENTIAL candidate content for the LLM prompts.
+
+    The full base CV is ~18 KB (mostly Typst layout boilerplate the LLM does not
+    need). For the cover-letter / interview-prep / recruiter-message prompts we only
+    need: the real profile quote, the target position, and the most recent / most
+    relevant professional-experience entries. This shrinks each prompt by ~70%,
+    which materially speeds up the LLM (smaller context -> faster output).
+
+    Returns a compact, human-readable string.
+
+    """
+
+    if not base_cv:
+        return ""
+
+    out = []
+
+    # 1) Profile quote (the real text, not the boilerplate field).
+    qm = re.search(r'quote: "(.*)"', base_cv, re.S)
+    if qm:
+        out.append("PROFILE QUOTE:\n" + qm.group(1).strip())
+
+    # 2) Position (the role the CV is currently tuned to).
+    posm = re.search(r'position: "([^"]*)"', base_cv)
+    if posm:
+        out.append("CURRENT POSITION:\n" + posm.group(1).strip())
+
+    # 3) The most recent professional-experience entries (first 3 entries only).
+    pe_m = re.search(r"= Professional Experience", base_cv)
+    if pe_m:
+        # Split on the #v(gap) separators between entries; each block is a full
+        # #entry(...) record (the role header contains parens, so a paren-matching
+        # regex would truncate early).
+        body = base_cv[pe_m.end():]
+        # Filter out empty blocks (the body begins with the first #v(gap) separator,
+        # so the first split element is an empty string).
+        entries = [e for e in re.split(r"\n#v\(gap\)\n", body) if e.strip()]
+        for i, entry in enumerate(entries[:3], 1):
+            cleaned = entry.strip().strip("(").strip()
+            out.append("--- EXPERIENCE ENTRY %d ---\n%s" % (i, cleaned))
+
+    return "\n\n".join(out)
 
 
 def _candidate_facts(manifest):
@@ -448,33 +492,41 @@ def _match_gap_prompt(jd_text, cv_ctx):
 
 def _cv_prompt(jd_text, cv_ctx):
 
+    # Targeted-edit prompt: change as LITTLE as possible. Asking the LLM to
+    # rewrite the entire CV from scratch is what makes each step so slow (it must
+    # reconstruct ~6-8 KB of candidate content + the full Typst layout). Asking
+    # it to keep everything identical except a few tailored edits cuts the LLM's
+    # semantic work dramatically while still JD-tailoring the key sections.
+
     return (
 
-        "You are a senior ATS-friendly CV author. Rewrite the candidate's CV content to\n"
-
-        "maximise the match with the target Job Description while STRICTLY adhering to\n"
-
-        "truthfulness. Produce the final Typst source (.typ) for the tailored CV.\n\n"
+        "You are a senior ATS-friendly CV author. Tailor the candidate CV to the"
+        "target Job Description, but change as LITTLE as possible.\n\n"
 
         "RULES:\n"
 
-        "- Preserve the base CV's visual layout and styling; change only the CONTENT.\n"
+        "- Output the FULL Typst source (a complete, valid .typ file).\n"
 
-        "- Rewrite every Professional Experience bullet as: Action Verb + Context/Tech + Metric/Outcome.\n"
+        "- Keep the base CV layout, styling, Education, Competencies, Languages and"
+        "ALL Professional Experience UNCHANGED - do NOT rewrite, reorder or drop anything"
+        "except the targeted edits listed below.\n"
+
+        "- ONLY make these edits:"
+        "  (1) replace the profile/summary with a concise value proposition (2-3 lines"
+        "       that mirror the JD top requirements from the candidate REAL experience;"
+        "  (2) adjust 2-3 of the Professional Experience bullets so they surface the"
+        "       candidate most relevant, TRUE experience for this JD.\n"
 
         "- Use exact JD keyword phrasing ONLY where real experience supports it.\n"
 
-        "- Restructure the summary into a high-impact 'Value Proposition' answering the JD's pain point.\n"
-
-        "- Position-name preservation: the job TITLE (position name) of each professional-experience entry must stay VERBATIM. The ONLY permitted change is removing a trailing \"(freelance)\" tag when the role became permanent; every other word of the title must remain identical.\n"
-
-        "- Output VALID Typst. Balance every `#text[...]`, `#grid(...)`, `#if {...}` etc.\n"
+        "- Preserve each job TITLE (position name) verbatim. The ONLY permitted change is"
+        "   removing a trailing (freelance) tag when the role became permanent.\n"
 
         "- Never fabricate roles, companies, dates or metrics.\n\n"
 
         "==== JOB DESCRIPTION ====\n" + jd_text.strip() + "\n"
 
-        "==== CANDIDATE CONTENT (rewrite these) ====\n" + cv_ctx.strip()
+        "==== CANDIDATE CONTENT (base CV - edit minimally) ====\n" + cv_ctx.strip()
 
     )
 
@@ -498,7 +550,7 @@ def _cover_letter_prompt(jd_text, facts):
 
         "==== JOB DESCRIPTION ====\n" + jd_text.strip() + "\n"
 
-        "==== CANDIDATE FACTS ====\n" + facts.get("content", "")
+        "==== CANDIDATE FACTS ====\n" + facts.get("compact_content", "")
 
     )
 
@@ -522,7 +574,7 @@ def _interview_prep_prompt(jd_text, facts):
 
         "==== JOB DESCRIPTION ====\n" + jd_text.strip() + "\n"
 
-        "==== CANDIDATE FACTS ====\n" + facts.get("content", "")
+        "==== CANDIDATE FACTS ====\n" + facts.get("compact_content", "")
 
     )
 
@@ -577,7 +629,7 @@ def _recruiter_message_prompt(jd_text, facts, recruiter_name):
 
         "==== JOB DESCRIPTION ====\n" + jd_text.strip() + "\n\n"
 
-        "==== CANDIDATE FACTS (your real CV — your source of truth) ====\n" + facts.get("content", "") + "\n\n"
+        "==== CANDIDATE FACTS (your real CV — your source of truth) ====\n" + facts.get("compact_content", "") + "\n\n"
 
         "==== EMAIL STRUCTURE (follow exactly) ====\n"
 
@@ -772,14 +824,553 @@ def _run_pi(prompt_text, on_progress, timeout=None):
 
     raise RuntimeError(f"LLM step failed after {_MAX_LLM_RETRIES} attempts: {last_err}")
 
+def _derive_position_title(jd_text, on_progress=None):
+
+    """Determine the single concise job TITLE for the CV's top-of-page `position:`.
+
+    This is the fix for the reported issue "title isn't correct". Rather than a
+    stale hardcoded fallback, the LLM is asked to DISTINGUISH the exact job
+    position from the JD, so the CV header reflects THIS specific role.
+
+    Strategy:
+      1. Ask the LLM for the single concise job title (small prompt).
+      2. If the LLM path fails, fall back to a keyword search of the JD body.
+
+    Returns the trimmed title string (may be empty if nothing is found).
+
+    """
+
+    def log(msg=""):
+
+        if on_progress:
+
+            on_progress(msg)
+
+        else:
+
+            print(msg, flush=True)
+
+    # 1) Ask the LLM to distinguish the exact job position from the JD.
+    try:
+
+        title_prompt = (
+            "You are extracting the job title for a CV header. Read the Job Description "
+            "below and output ONLY the single concise job TITLE (role/position name). "
+            "Do NOT explain, do NOT add prose. Output just the title phrase.\n\n"
+            "==== JOB Description ====\n" + jd_text.strip() + "\n"
+        )
+
+        stdout_raw, _stderr = _run_pi(title_prompt, log)
+
+        if stdout_raw:
+
+            first = next((ln.strip() for ln in stdout_raw.splitlines() if ln.strip()), "")
+            # Drop a leading label like "Title:" or "Job Title:" if the LLM adds one.
+            first = re.sub(r"^(?:job\\s+title|title)\\s*:\s*", "", first, flags=re.I)
+            if first:
+
+                return first
+
+    except Exception as exc:
+
+        log(f"⚠ LLM title derivation failed: {exc}")
+
+    # 2) Fall back to a keyword search of the JD body (no LLM).
+    try:
+
+        from .gen_cv_typ import _extract_position
+
+        return _extract_position(jd_text)
+
+    except Exception as exc:
+
+        log(f"⚠ JD-title fallback failed: {exc}")
+
+        return ""
+
+def _cv_llm_prompt(jd_text, compact_content, target_role=None):
+
+    """Prompt the LLM to generate ONLY the five tailored CV parts.
+
+    The goal is a HYBRID CV: the layout / styling / education / languages /
+    interests / interpersonal / Working-Tools / keywords fields stay DETERMINISTIC
+    (taken straight from the base template + JD signals), while these FIVE parts are
+    generated by the LLM from the candidate's real experience:
+
+      1. QUOTE        – value-proposition summary
+      2. CORE COMPETENCIES – the left column of the competencies grid
+      3. POSITION NAME – the title of the entry flagged (Freelancer)
+      4. BULLETS      – the bullet list of that same (Freelancer) entry
+      5. HIGHLIGHT    – which company names get `important: true` (light grey)
+
+    Output is a strict five-header block so it can be parsed deterministically.
+
+    """
+
+    return (
+        "You are an expert executive CV writer for a senior FP&A / finance-control "
+        "freelancer. Adapt FIVE specific parts of the CV for the target job.\n\n"
+        "==== TARGET ROLE ====\n" + str(target_role or "the target position") + "\n\n"
+        "==== JOB DESCRIPTION ====\n" + jd_text.strip() + "\n\n"
+        "==== YOUR REAL CV CONTEXT ====\n" + (compact_content or "") + "\n\n"
+        "Produce EXACTLY these five sections, in this exact order, keeping the header "
+        "labels verbatim:\n\n"
+        "QUOTE:\n"
+        "<One high-impact value-proposition summary (2-4 sentences). English only. "
+        "Frame the candidate as an executive finance partner who turns complex data "
+        "into insight. Do NOT mention any third-party vendor/tool brand names.>\n\n"
+        "CORE COMPETENCIES:\n"
+        "<The 'Core competencies' grid content as raw Typst list items grouped under "
+        "'====' sub-category headers, e.g.:\n"
+        "==== Planning & Forecasting\n"
+        "- Medium-Term Plan (Multi-Year Business Planning)\n"
+        "- P&L Analysis & Forecasting\n"
+        "==== Consolidation & Reporting\n"
+        "...> (use only English, ATS-relevant terms; keep it to 3-4 sub-categories)\n\n"
+        "POSITION NAME:\n"
+        "<The exact job title for the entry flagged (Freelancer) — a single concise title.>\n\n"
+        "BULLETS:\n"
+        "<The bullet-point list (Typst '- ...' items) for that same (Freelancer) entry. "
+        "Base them STRICTLY on the candidate's real experience for that role. No fabrication.>\n\n"
+        "HIGHLIGHT:\n"
+        "<The comma-separated list of COMPANY NAMES whose experience is relevant to "
+        "this JD and should be marked 'important: true' (light grey). If none are "
+        "relevant, write NONE.>\n\n"
+        "Rules:\n"
+        "- English only; truthful to the candidate's real experience (no fabrication).\n"
+        "- Do NOT output any other prose before or after these five headers.\n"
+        "- For CORE COMPETENCIES and BULLETS, output raw Typst list syntax only."
+    )
 
 
 
+def _parse_cv_llm_output(raw):
 
-def _collect(label, folder, ext, serial, on_progress=None):
+    """Parse the strict five-header block produced by _cv_llm_prompt.\n\n"
+    "    Returns a dict with keys: quote, competencies, position, bullets, highlight.
+
+    """
+
+    parts = {"quote": "", "competencies": "", "position": "", "bullets": "", "highlight": "NONE"}
+
+    headers = ["QUOTE:", "CORE COMPETENCIES:", "POSITION NAME:", "BULLETS:", "HIGHLIGHT:"]
+
+    lines = raw.splitlines()
+
+    # Index of each header line (first occurrence wins) so section content can
+    # be sliced AFTER the header itself -- the header label is a wrapper, not
+    # part of the payload (the LLM echoes it, which must not leak into the CV).
+
+    header_idx = {h: None for h in headers}
+
+    for i, line in enumerate(lines):
+
+        s = line.strip()
+
+        for h in headers:
+
+            if s == h or s.startswith(h + " "):
+
+                if header_idx[h] is None:
+
+                    header_idx[h] = i
+
+    def section(start_header, end_header):
+
+        """Return the content between `start_header`'s line and the next section
+
+        header (or EOF). Missing headers degrade gracefully to an empty section.
+
+        """
+
+        start = header_idx[start_header]
+
+        if start is None:
+
+            return ""
+
+        if end_header is None:
+
+            end = len(lines)
+
+        else:
+
+            end = header_idx[end_header]
+
+            if end is None:
+
+                end = len(lines)
+
+        return "\n".join(lines[start + 1:end]).strip()
+
+    parts["quote"] = section("QUOTE:", "CORE COMPETENCIES:")
+
+    parts["competencies"] = section("CORE COMPETENCIES:", "POSITION NAME:")
+
+    parts["position"] = section("POSITION NAME:", "BULLETS:")
+
+    parts["bullets"] = section("BULLETS:", "HIGHLIGHT:")
+
+    parts["highlight"] = section("HIGHLIGHT:", None)
+
+    return parts
+
+
+
+_NOISE = {
+    "view company", "show more", "from freelancer to permanent roles",
+    "recommended", "recommended by linkedin", "linkedin members",
+    "recommendations", "how to become",
+}
+
+def _jd_aware_highlight(t, jd_text=""):
+
+    """Deterministically adapt the light-grey highlight to the SPECIFIC JD.
+
+    This is the backstop for "highlighting ... not adapt to the JD". After the LLM's
+    `parts["highlight"]` has been applied, this re-evaluates each #entry and forces
+    `important: true` when the entry's company name or detail text mentions any JD
+    focus term (data-platform / integration / business-analysis signals), and
+    `important: false` otherwise. This guarantees the grey highlight reflects THIS
+    role regardless of what the LLM happened to emit.
+
+    Returns the modified text.
+
+    """
+
+    if not jd_text:
+
+        return t
+
+    # Derive JD focus terms (role title + multi-word phrases), filtering generic
+    # single words so the highlight stays precise (a bare "Business" must not
+    # light up every business-analyst entry).
+    _COMMON = {
+        "business", "data", "platform", "analysis", "management", "experience",
+        "role", "team", "services", "working", "group", "level", "company",
+        "sector", "position", "career", "field",
+    }
+    terms = []
+    seen = set()
+
+    def _add(term):
+
+        if term and term.lower() not in seen:
+
+            seen.add(term.lower())
+            terms.append(term)
+
+    # The role title line is the strongest signal -- keep it whole.
+    for line in jd_text.splitlines():
+
+        s = line.strip()
+
+        if not s or s.lower() in _NOISE:
+
+            continue
+
+        if re.search(r"(analyst|officer|manager|director|lead|consultant|specialist|controller)", s, re.I) and not re.search(r"[.!?]$,", s):
+
+            _add(s)
+
+    # Domain-signal vocabulary -- the second word of a bigram or a standalone token
+    # marks a phrase/word as JD-relevant (data platform / data migration / integration).
+    _DOMAIN = frozenset({
+        "data", "platform", "migration", "transform", "transformation",
+        "integration", "integrations", "infra", "infrastructures", "sap", "hana", "erp",
+    })
+    _SIGNAL_WORDS = {"platform", "migration"}
+    words = re.split(r"[\s,]+", jd_text)
+
+    # Bigram phrases whose second word is a domain signal ("data platform",
+    # "data migration", "data integration"). These precise phrases drive the
+    # whole-word highlight matching.
+    for a, b in zip(words, words[1:]):
+
+        a, b = a.strip(), b.strip()
+
+        if not a or not b:
+
+            continue
+
+        if b.lower() in _DOMAIN:
+
+            phrase = "%s %s" % (a, b)
+
+            _add(phrase)
+
+    # Standalone domain-signal words that carry meaning ("platform", "migration"),
+    # so single-word matches land even without a preceding qualifier. Normalize
+    # plurals to their singular signal ("Platforms" -> "platform") so the keyword
+    # matches the singular form in CV detail text.
+    for tok in re.split(r"[\s,]+", jd_text):
+
+        w = tok.strip()
+
+        w_low = w.lower()
+
+        base = w_low[:-1] if w_low.endswith("s") else w_low
+
+        if base in _DOMAIN and base not in seen:
+
+            _add(base)
+
+            seen.add(base.lower())
+
+    # Filter to MEANINGFUL terms: keep strong single-word signals first (so they
+    # survive the `terms[:14]` cap), then multi-word phrases, then single real
+    # role/tech signals; drop generic common single words.
+    strong, ordered = [], []
+
+    for kw in terms:
+
+        if not kw:
+
+            continue
+
+        words = kw.split()
+
+        if len(words) >= 2:
+
+            ordered.append(kw)
+
+        elif len(words) == 1 and words[0].lower() in _SIGNAL_WORDS:
+
+            strong.append(kw)
+
+    terms = (strong + ordered)[:14]
+
+    def _highlight_block(block):
+
+        company = None
+
+        for m in re.finditer(r'"([^"]*)"', block):
+
+            if company is None:
+
+                company = m.group(1)
+
+            else:
+
+                break
+
+        low = block.lower()
+
+        relevant = any(re.search(r"\b" + re.escape(k.lower()) + r"\b", low) for k in terms) or (
+            company is not None and any(
+                re.search(r"\b" + re.escape(k.lower()) + r"\b", company.lower()) for k in terms
+            )
+        )
+
+        if relevant:
+
+            if "important: false" in low:
+
+                return block.replace("important: false", "important: true", 1)
+
+            if "important: true" in low or "important:" in low:
+
+                return block
+
+            # Relevant entry with no important flag yet -> add important: true
+            # (base entries use the #let default; insert before the closing ')' )
+
+            return block[:-1].rstrip() + "\n  important: true\n)"
+
+        if not relevant and "important: true" in low:
+
+            return block.replace("important: true", "important: false", 1)
+
+        if not relevant and "important: false" in low:
+
+            return block
+
+        # Not relevant with no important flag -> add important: false
+
+        return block[:-1].rstrip() + "\n  important: false\n)"
+
+    # Preserve the preamble before the first #entry( (set par / list directives).
+
+    m = re.search(r"#entry\(", t)
+
+    preamble = t[: m.start()] if m else ""
+
+    parts_out = [preamble]
+
+    for block in re.split(r"#entry\(", t)[1:]:
+
+        parts_out.append("#entry(" + _highlight_block(block))
+
+    return "".join(parts_out)
+
+
+def _apply_cv_parts(base_typ, parts, jd_text=""):
+
+    """Apply the five LLM-generated parts onto the base template text.\n\n"
+    "    - quote        -> the `quote:` field
+    "    - competencies -> the left (Core competencies) column of the grid
+    "    - position     -> the title of the (Freelancer) entry
+    "    - bullets      -> the bullet list of the (Freelancer) entry
+    "    - highlight    -> flip `important:` flags for the JD-relevant companies
+
+    """
+
+    t = base_typ
+
+    # 1) Quote field.
+
+    m = re.search(r'quote: "(.*?)"', t, re.S)
+
+    assert m, "quote field not found in base template"
+
+    # Group 1 is the captured quote text; the replacement preserves it verbatim.
+    t = t[:m.start(1)] + parts["quote"].replace("\n", " ") + t[m.end(1):]
+
+    # 2) Core competencies left column — replace up to the 'Working Tools' header.
+
+    left_start = t.index("#text(s, weight: \"bold\")[Core competencies]")
+
+    right_start = t.index("#text(s, weight: \"bold\")[Working Tools]")
+
+    header_block = t[left_start:right_start]
+
+    first_nl = header_block.index("\n")
+
+    prefix = header_block[:first_nl] + "\n"
+
+    # Defensive (fix for "core competencies and the work tool in the same column"):
+    # the LLM may fold the Working Tools content into the Core Competencies block.
+    # If so, truncate the LLM payload at the first Working Tools header so the tools
+    # land in their OWN right-hand column instead of being merged into Core
+    # competencies. Only truncate when a Working Tools header actually appears inside
+    # the payload (the correct case must stay intact).
+
+    payload = parts["competencies"]
+
+    wt_pos = payload.find("#text(s, weight: \"bold\")[Working Tools]")
+
+    if wt_pos != -1:
+
+        payload = payload[:wt_pos].rstrip()
+
+    t = t[:left_start] + prefix + payload + "\n" + t[right_start:]
+
+    # 3) Position NAME inside the (Freelancer) entry.
+
+    m_title = re.search(r'  "(.*?)\(Freelancer\)",', t)
+
+    assert m_title, "(Freelancer) title not found"
+
+    title_text = parts["position"].rstrip()
+    # The LLM may echo stray Typst "#entry(" prefixes or leftover header
+    # labels (e.g. "POSITION NAME:") into the title string. Strip those so
+    # only a clean single-line title survives (a nested "#entry(#entry("
+    # is invalid Typst and would crash the compile).
+
+    title_text = re.sub(r"#entry\(", "", title_text)
+
+    title_text = re.sub(r"^\s*(?:POSITION\s+NAME:)?\s*", "", title_text, flags=re.I)
+
+    title_text = re.sub(r"\s+", " ", title_text).strip()
+
+    if title_text.endswith("(Freelancer)"):
+        title_text = title_text[: -len("(Freelancer)")].rstrip()
+    title_new = title_text
+
+    if not title_new:
+
+        title_new = m_title.group(1)
+
+    t = t[:m_title.start()] + '  "' + title_new + ' (Freelancer)",' + t[m_title.end():]
+
+    # 4) Bullets of the first (Freelancer) entry — replace the entry's detail
+    #    array body. Use string ops (regex of literal parens is error-prone).
+
+    fre_idx = t.find("(Freelancer)")
+    assert fre_idx != -1, "(Freelancer) entry not found"
+
+    arr_open = t.find("  [", fre_idx)
+    assert arr_open != -1, "(Freelancer) detail array not found"
+
+    arr_close = t.find("  ],", arr_open)
+    assert arr_close != -1, "(Freelancer) detail array close not found"
+
+    NL = chr(10)
+
+    # Strip any leftover "BULLETS:" header label the LLM may echo before the
+    # bullet list so the Typst array body stays a clean list.
+
+    bullets = re.sub(r"^\s*(?:BULLETS:)?\s*", "", parts["bullets"], flags=re.I)
+
+    bullets = re.sub(r"#entry\(", "", bullets)
+
+    new_body = "  [" + NL + bullets.rstrip(NL) + NL + "  ],"
+    t = t[:arr_open] + new_body + t[arr_close + len("  ],"):]
+
+    # 5) Highlight — flip `important:` for the JD-relevant company names.
+
+    highlight_set = {
+        h.strip() for h in parts["highlight"].split(",") if h.strip() and h.strip().upper() != "NONE"
+
+    }
+
+    if highlight_set:
+
+        def _fix_importants(block):
+
+            m_name = re.search(r'  "[^"]*",\n  "([^"]*)",', block)
+
+            if not m_name:
+
+                return block
+
+            company = m_name.group(1)
+
+            target = "important: true" if company in highlight_set else "important: false"
+
+            if "important: true" in block and target == "important: false":
+
+                return block.replace("important: true", "important: false", 1)
+
+            if "important: false" in block and target == "important: true":
+
+                return block.replace("important: false", "important: true", 1)
+
+            return block
+
+        entries = re.split(r"(#entry\()", t)
+
+        out = [entries[0]]
+
+        for i in range(1, len(entries), 2):
+
+            remainder = entries[i + 1] if i + 1 < len(entries) else ""
+
+            block = entries[i] + remainder
+
+            # block already begins with the "#entry(" delimiter captured by
+            # re.split, so do NOT prepend another one (that would create the
+            # invalid nested "#entry(#entry(").
+
+            out.append(_fix_importants(block))
+
+        t = "".join(out)
+
+    # Backstop: make the grey highlight reflect THIS JD deterministically
+    # (fixes "highlighting ... not adapt to the JD"), regardless of the LLM's
+    # emitted `parts["highlight"]`.
+
+    if jd_text:
+
+        t = _jd_aware_highlight(t, jd_text)
+
+    return t
+
+
+
+def _collect(label, folders, ext, serial, on_progress=None):
 
     """Canonicalise a deliverable produced by the LLM agent.
-
 
 
     The LLM writes files autonomously and may name them differently from the
@@ -812,39 +1403,53 @@ def _collect(label, folder, ext, serial, on_progress=None):
 
 
 
-    folder = Path(folder)
+    if isinstance(folders, str):
 
-    expected = folder / f"{serial}_{label}.{ext}"
-
-    if expected.exists():
-
-        return expected
+        folders = [folders]
 
 
 
-    if folder.exists():
+    for folder in folders:
 
-        fresh = [f for f in folder.glob(f"*.{ext}")
+        folder = Path(folder)
 
-                 if not f.name.startswith(f"{serial}_")]
+        expected = folder / f"{serial}_{label}.{ext}"
 
-        if fresh:
+        if expected.exists():
 
-            newest = max(fresh, key=lambda f: f.stat().st_mtime)
+            return expected
 
-            if newest != expected:
+
+
+        if folder.exists():
+
+            # Search by substring label so LLM label variants are caught: an
+            # expected "CL1.txt" also matches a file the agent wrote as "CL.txt".
+
+            found = [f for f in folder.glob(f"*_{label}*.{ext}")]
+
+            for f in found:
 
                 try:
 
-                    newest.rename(expected)
+                    f.rename(expected)
 
-                    log(f"\u21aa Renamed {newest.name} -> {expected.name}")
+                    log(f"\u21aa Renamed {f.name} -> {expected.name}")
 
                 except OSError as exc:
 
-                    log(f"\u26a0 could not rename {newest.name}: {exc}")
+                    log(f"\u26a0 could not rename {f.name}: {exc}")
 
-    return expected
+            if found:
+
+                return expected
+
+    # No match in any candidate folder; return the expected path in the
+    # first (primary) folder — which may not exist if the LLM produced nothing.
+
+    primary = Path(folders[0]) if folders else Path(".")
+
+    return primary / f"{serial}_{label}.{ext}"
 
 
 
@@ -888,6 +1493,34 @@ def _app_folder(serial, company="", position=""):
     comps = [ymd, company or "Unknown Company", position or "Unknown Position"]
 
     return APPLICATIONS_DIR / " - ".join(_slug(c) for c in comps)
+
+
+
+def _infer_app_folder(serial, company, target_role):
+
+    """Compute the per-application folder the LLM agent actually writes into.
+
+
+
+    The manifest instructs the LLM to write all deliverables into a single
+    per-application folder named "YYYYMMDD - Company - Position". The LLM
+    interprets this literally: a BASE_DIR-level folder built from the raw date,
+    company and (manifest) Target Role, WITHOUT the "Job Applications/" prefix
+    and WITHOUT slug sanitisation. The pipeline's _app_folder() uses the Excel
+    title and a "Job Applications/" prefix, so the two rarely match — which is
+    why the pipeline's computed folder usually does not exist while the LCM's
+    folder does. This helper reconstructs the LCM's exact path so the pipeline
+    can find the artefacts wherever they were written.
+
+
+
+    Returns a Path even if it does not yet exist.
+
+    """
+
+    ymd = serial[3:11] if len(serial) >= 11 else _today()
+
+    return BASE_DIR / f"{ymd} - {company} - {target_role}"
 
 
 
@@ -974,10 +1607,15 @@ def _clean_stale(folder, serial, ext, keep_labels=()):
 
 
 
-def compile_pdf(serial, on_progress=None, app_folder=None):
+def compile_pdf(serial, on_progress=None, app_folder=None, folders=None):
 
-    """Compile the LLM-generated .typ CV(s) to PDF via the python-typst module.
+    """Compile the generated .typ CV(s) to PDF via the python-typst module.
 
+
+    Searches the given candidate folders (``folders``), falling back to
+    ``app_folder`` (or ``CV_DIR``) when ``folders`` is not provided. This matters
+    because the CV .typ is relocated into the LCM per-application folder, which
+    differs from the pipeline's app_folder.
 
 
     Returns the list of generated PDF paths (empty if none found).
@@ -1008,12 +1646,15 @@ def compile_pdf(serial, on_progress=None, app_folder=None):
 
 
 
-    folder = Path(app_folder) if app_folder is not None else CV_DIR
-    typ_files = sorted(folder.glob(f"{serial}_CV*.typ"))
+    if folders is None:
+
+        folders = [Path(app_folder) if app_folder is not None else CV_DIR]
+
+    typ_files = sorted({p for f in folders for p in f.glob(f"{serial}_CV*.typ")})
 
     if not typ_files:
 
-        _log("ℹ No .typ files found for {serial}; skipping PDF compilation")
+        _log(f"ℹ No .typ files found for {serial}; skipping PDF compilation")
 
         return []
 
@@ -1101,7 +1742,7 @@ def _compile_typ_to_pdf(typ_path, on_progress=None):
 
 
 
-def _typst_error_report(serial, on_progress=None):
+def _typst_error_report(serial, folders=None, on_progress=None):
 
     """Attempt to compile every generated .typ CV and report the ones that fail.
 
@@ -1139,7 +1780,16 @@ def _typst_error_report(serial, on_progress=None):
 
 
 
-    typ_files = sorted(CV_DIR.glob(f"{serial}_CV*.typ"))
+    # Search every candidate output folder (the LCM writes to its own
+    # per-application folder, not necessarily CV_DIR).
+
+    candidate = []
+
+    for folder in (folders or [CV_DIR]):
+
+        candidate.extend(Path(folder).glob(f"{serial}_CV*.typ"))
+
+    typ_files = sorted(candidate)
 
     if not typ_files:
 
@@ -1178,8 +1828,260 @@ def _typst_error_report(serial, on_progress=None):
     return errors
 
 
+def _run_cv_llm(jd_text, compact_content, target_role=None, on_progress=None):
+
+    """Run the LLM for the five tailored CV parts and return the parsed dict.
+
+    This is the ONLY place the LLM touches CV content: the five user-designated
+    parts (Quote, Core competencies, Position name, Bullets, light-grey Highlight)
+    are generated from the candidate's real experience, while the rest of the CV
+    stays deterministic. Returns None on LLM/subprocess failure so the caller can
+    fall back to the raw deterministic CV.
+
+    """
+
+    def log(msg=""):
+
+        if on_progress:
+
+            on_progress(msg)
+
+        else:
+
+            print(msg, flush=True)
+
+    try:
+
+        prompt = _cv_llm_prompt(jd_text, compact_content, target_role)
+
+        stdout_raw, _stderr = _run_pi(prompt, log)
+
+    except Exception as exc:
+
+        log(f"⚠ CV LLM call failed: {exc}")
+
+        return None
+
+    return _parse_cv_llm_output(stdout_raw)
 
 
+def _compile_pdf_to(typ_path, pdf_path):
+
+    """Compile a .typ to .pdf with the Typst CLI (mirrors gen_cv_typ.py.compile_pdf)."""
+
+    res = subprocess.run(["typst", "compile", str(typ_path), str(pdf_path)],
+                         capture_output=True, text=True)
+
+    if res.returncode != 0:
+
+        raise RuntimeError("typst compile failed: " + res.stdout + "\n" + res.stderr)
+
+
+def _generate_cv_deterministic(serial, jd_path, lcmm_folder, app_folder, on_progress=None):
+
+    """Hybrid CV generation: deterministic scaffolding + LLM-tailored five parts.
+
+    Per the user's design, exactly FIVE parts of the CV are generated by the LLM
+    (Quote, Core competencies, Position name, Bullets, light-grey Highlight), while
+    the rest of the CV — layout / styling / education / languages / interests /
+    interpersonal / Working-Tools / keywords / contact block — stays DETERMINISTIC.
+
+    Strategy: first render the deterministic CV with gen_cv_typ.py (fast, no LLM),
+    then apply the LLM's five parts on top of that scaffolding via _apply_cv_parts.
+    This keeps LLM interactions minimal (a single focused call) and avoids the old
+    full-CV-rewrite retry storms.
+
+    Returns the relocated .typ path (or None on generation failure).
+
+    """
+
+    def log(msg=""):
+
+        if on_progress:
+
+            on_progress(msg)
+
+        else:
+
+            print(msg, flush=True)
+
+    # 1) Render the deterministic CV scaffolding via gen_cv_typ.py (no LLM).
+
+    try:
+
+        gen_script = Path(BASE_DIR) / "gen_cv_typ.py"
+
+        if not gen_script.exists():
+
+            log("⚠ gen_cv_typ.py not found; skipping CV generation")
+
+            return None
+
+        log("ℹ Generating deterministic CV scaffolding via gen_cv_typ.py")
+
+        # Derive the target position TITLE from the JD so the CV's top-of-page
+        # `position:` field reflects THIS specific job (rather than a stale
+        # hardcoded fallback). The LLM is asked for a single concise title; if the
+        # LLM path is unavailable, fall back to a best-effort keyword search of the
+        # JD body. This is what makes the title "a LLM part to distinguish the job
+        # position" (one of the three reported issues).
+        position_title = _derive_position_title(jd_text)
+        log(f"ℹ CV position title -> {position_title!r}")
+
+        proc = subprocess.run(
+
+            [sys.executable, str(gen_script), "--position", position_title, str(jd_path)],
+
+            cwd=str(BASE_DIR),
+
+            capture_output=True,
+
+            text=True,
+
+            timeout=900,
+
+        )
+
+    except FileNotFoundError as exc:
+
+        log(f"⚠ python invocation failed: {exc}")
+
+        return None
+
+    except subprocess.TimeoutExpired:
+
+        log("⚠ gen_cv_typ.py timed out")
+
+        return None
+
+    if proc.returncode != 0:
+
+        log(f"⚠ gen_cv_typ.py exited {proc.returncode}:")
+
+        print(proc.stdout)
+
+        print(proc.stderr)
+
+        return None
+
+    # 2) Read the deterministic .typ as the base for the LLM part overrides.
+
+    typ_candidates = sorted((BASE_DIR / "custom_cv").glob(f"{serial}_CV*.typ"))
+
+    if not typ_candidates:
+
+        log("⚠ gen_cv_typ.py produced no .typ artefact")
+
+        return None
+
+    base_typ = None
+
+    for candidate in typ_candidates:
+
+        try:
+
+            base_typ = candidate.read_text(encoding="utf-8")
+
+        except OSError as exc:
+
+            log(f"⚠ could not read deterministic .typ {candidate.name}: {exc}")
+
+            base_typ = None
+
+            break
+
+    if not base_typ:
+
+        log("⚠ failed to read deterministic .typ")
+
+        return None
+
+    # 3) Compose compact candidate facts for the LLM prompt.
+
+    try:
+
+        base_cv = BASE_CV.read_text(encoding="utf-8") if BASE_CV.exists() else ""
+
+        compact_content = _compact_facts(base_cv)
+
+    except Exception as exc:
+
+        log(f"⚠ could not compose CV facts: {exc}")
+
+        compact_content = ""
+
+    # Derive the target role from the manifest metadata block (same rule as
+    # run_generation) so the CV-parts prompt can be tailored to it.
+
+    target_role = ""
+
+    try:
+
+        manifest_path = Path(BASE_DIR) / "application_monitoring\\manifests" / (serial + ".txt")
+
+        if manifest_path.exists():
+
+            _m = re.search(r"^- Target Role\s*:\s*(.+)", manifest_path.read_text(encoding="utf-8"), re.M)
+
+            target_role = _m.group(1).strip() if _m else ""
+
+    except Exception as exc:
+
+        log(f"⚠ could not derive target role: {exc}")
+
+        target_role = ""
+
+    # 4) Route the five parts through the LLM, then apply them onto the
+    #    deterministic scaffolding so only these five fields become LLM-authored.
+
+    jd_text = Path(jd_path).read_text(encoding="utf-8")
+
+    parts = _run_cv_llm(jd_text, compact_content, target_role, on_progress=log)
+
+    if parts is None:
+
+        log("⚠ LLM CV-parts generation failed; using raw deterministic CV")
+
+    else:
+
+        log("ℹ Applying 5 LLM-tailored parts onto deterministic CV")
+
+        try:
+
+            base_typ = _apply_cv_parts(base_typ, parts, jd_text)
+
+        except Exception as exc:
+
+            log(f"⚠ could not apply LLM CV parts: {exc}")
+
+    # 5) Write the final .typ (_CV1) and compile the PDF, then relocate into the
+    #    LCM per-application folder so `_collect("CV1", ...)` finds them.
+
+    try:
+
+        dest_parent = Path(lcmm_folder)
+
+        dest_parent.mkdir(parents=True, exist_ok=True)
+
+        dest = dest_parent / f"{serial}_CV1.typ"
+
+        Path(dest).write_text(base_typ, encoding="utf-8")
+
+        pdf_dest = dest_parent / f"{serial}_CV1.pdf"
+
+        _compile_pdf_to(dest, pdf_dest)
+
+        cv_path = dest
+
+    except Exception as exc:
+
+        log(f"⚠ could not write/compile final CV: {exc}")
+
+        return None
+
+    log(f"✓ Applied 5 LLM parts -> {dest.name}")
+
+    return cv_path
 
 def run_generation(jd_path, on_progress=None, company="", position=""):
 
@@ -1246,6 +2148,18 @@ def run_generation(jd_path, on_progress=None, company="", position=""):
     app_folder = _app_folder(serial, company=company, position=position)
     os.makedirs(app_folder, exist_ok=True)
 
+    # The LCM writes its deliverables into a BASE_DIR-level folder named
+    # "<date> - <company> - <target_role>" (raw values, no "Job Applications/"
+    # prefix). The pipeline's app_folder uses the Excel title and a prefixed,
+    # slugified path, so it often does not exist while the LCM's folder does.
+    # Reconstruct the LCM's path so we can find the artefacts wherever they
+    # were written.
+    _m = re.search(r"^- Company\s*:\s*(.+)", manifest, re.M)
+    _m2 = re.search(r"^- Target Role\s*:\s*(.+)", manifest, re.M)
+    lcmm_company = _m.group(1).strip() if _m else ""
+    lcmm_target_role = _m2.group(1).strip() if _m2 else ""
+    lcmm_folder = _infer_app_folder(serial, lcmm_company, lcmm_target_role)
+
     jd_text = Path(jd_path).read_text(encoding="utf-8")
 
     base_cv = BASE_CV.read_text(encoding="utf-8") if BASE_CV.exists() else ""
@@ -1272,6 +2186,12 @@ def run_generation(jd_path, on_progress=None, company="", position=""):
     if "content" not in facts:
 
         facts["content"] = cv_ctx
+
+    # Compact facts (profile quote + top 3 experiences) for the LLM prompts --
+    # avoids feeding the ~18 KB full CV into every prompt, which speeds up the LLM.
+    if "compact_content" not in facts:
+
+        facts["compact_content"] = _compact_facts(base_cv)
 
 
 
@@ -1302,7 +2222,7 @@ def run_generation(jd_path, on_progress=None, company="", position=""):
     except OSError as exc:
         _debug(f"could not store JD file: {exc}")
 
-    gap_path = _collect("MATCH_GAP", app_folder, "txt", serial, on_progress=log)
+    gap_path = _collect("MATCH_GAP", [app_folder, lcmm_folder], "txt", serial, on_progress=log)
 
     produced["match_gap"] = str(gap_path)
 
@@ -1313,53 +2233,36 @@ def run_generation(jd_path, on_progress=None, company="", position=""):
 
     # --- Step 2: Tailored CV (.typ) with self-healing ---
 
-    log("▶ Step 2/5 Tailored CV (.typ) with self-healing…")
+    log("▶ Step 2/5 Tailored CV (.typ) — deterministic (gen_cv_typ.py)")
 
-    max_regenerate = int(os.environ.get("PI_MAX_REGENERATE", "2"))
+    # Replaces the previous LLM-driven self-healing CV step. The full-CV LLM rewrite
+    # was the bottleneck (huge prompt + exponential-backoff retries). gen_cv_typ.py
+    # adapts only the JD-relevant elements (quote, position, keywords, competencies
+    # grid, experience body) to THIS JD using the base template + the candidate's
+    # REAL content -- no LLM, no retry storms. Produced artefacts are relocated
+    # into the LCM per-application folder so `_collect("CV1", ...)` finds them.
 
-    typst_errors = ""
+    cv_path = _generate_cv_deterministic(
 
-    cv_path = app_folder / f"{serial}_CV1.typ"
+        serial, jd_path, lcmm_folder, app_folder, on_progress=log
 
-    for attempt in range(max_regenerate + 1):
+    )
 
-        if attempt:
+    if not cv_path:
 
-            log(f"\u2139 Regenerating CV with typst error context (attempt {attempt}/{max_regenerate})…")
+        log("⚠ Deterministic CV generation failed; skipping further CV steps")
 
-            prompt = _cv_prompt(jd_text, cv_ctx) + "\n\n==== TYPST COMPILE ERRORS TO FIX ====\n" + typst_errors
+        # Do not abort the whole run -- surface the failure but continue so the user
 
-        else:
+        # still gets the other deliverables (cover letter, interview prep, dossier, RM1).
 
-            prompt = _cv_prompt(jd_text, cv_ctx)
-
-        _run_pi(prompt, log)
-
-        cv_path = _collect("CV1", app_folder, "typ", serial, on_progress=log)
-
-        errors = _typst_error_report(serial, on_progress=log)
-
-        if not errors:
-
-            typst_errors = ""
-
-            break
-
-        typst_errors = "\n".join(f"{fn}: {msg}" for fn, msg in errors.items())
-
-    if typst_errors:
-
-        log(f"\u26a0 Max regeneration attempts ({max_regenerate}) reached; returning best-effort artefacts.")
-
-    # Per-typ: compile whatever .typ was produced to its sibling .pdf now,
-    # so the PDF artefact exists immediately (not only at the end of the run).
-
-    _debug(f"compiling produced CV .typ for {serial}")
-
-    _compile_typ_to_pdf(cv_path, on_progress=log)
+        return dict(status="partial", cv=None, produced=produced)
 
     produced["cv"] = str(cv_path)
 
+    log(f"✓ CV .typ -> {cv_path.name}")
+
+    log(f"⏱ Step 2/5 Tailored CV .typ -- {_dur(t_step)}")
     log(f"\u2713 CV .typ -> {cv_path.name}")
     log(f"\u23f1 Step 2/5 Tailored CV .typ — {_dur(t_step)}")
 
@@ -1373,9 +2276,11 @@ def run_generation(jd_path, on_progress=None, company="", position=""):
 
     # The LLM writes text; convert it to a real Word docx inside the app folder.
     cl_docx = app_folder / f"{serial}_CL1.docx"
-    cl_src = _collect("CL1", app_folder, "docx", serial, on_progress=log)
+    cl_src = _collect("CL1", [app_folder, lcmm_folder], "docx", serial, on_progress=log)
     if not os.path.isfile(cl_docx):
-        cl_txt = _collect("CL1", app_folder, "txt", serial, on_progress=log)
+        # The agent writes the cover letter as CL.txt (or CL2..CL5), not CL1.txt;
+        # the substring glob in _collect matches any "_CL*" file.
+        cl_txt = _collect("CL", [app_folder, lcmm_folder], "txt", serial, on_progress=log)
         if os.path.isfile(cl_txt):
             _debug(f"converting cover letter {Path(cl_txt).name} -> docx")
             _txt_to_docx(cl_txt, str(cl_docx))
@@ -1409,9 +2314,9 @@ def run_generation(jd_path, on_progress=None, company="", position=""):
 
     # The LLM writes text; convert it to a real Word docx inside the app folder.
     ip_docx = app_folder / f"{serial}_IP1.docx"
-    ip_src = _collect("IP1", app_folder, "docx", serial, on_progress=log)
+    ip_src = _collect("IP1", [app_folder, lcmm_folder], "docx", serial, on_progress=log)
     if not os.path.isfile(ip_docx):
-        ip_txt = _collect("IP1", app_folder, "txt", serial, on_progress=log)
+        ip_txt = _collect("IP1", [app_folder, lcmm_folder], "txt", serial, on_progress=log)
         if os.path.isfile(ip_txt):
             _debug(f"converting interview prep {Path(ip_txt).name} -> docx")
             _txt_to_docx(ip_txt, str(ip_docx))
@@ -1443,7 +2348,7 @@ def run_generation(jd_path, on_progress=None, company="", position=""):
 
     _run_pi(_dossier_prompt(jd_text, manifest), log)
 
-    dossier_path = _collect("Doyen_DomainLeader_Argumentation", app_folder, "docx", serial, on_progress=log)
+    dossier_path = _collect("Doyen_DomainLeader_Argumentation", [app_folder, lcmm_folder], "docx", serial, on_progress=log)
 
 
 
@@ -1472,9 +2377,9 @@ def run_generation(jd_path, on_progress=None, company="", position=""):
 
     # The LLM writes text; convert it to a real Word docx inside the app folder.
     rm_docx = app_folder / f"{serial}_RM1.docx"
-    rm_src = _collect("RM1", app_folder, "docx", serial, on_progress=log)
+    rm_src = _collect("RM1", [app_folder, lcmm_folder], "docx", serial, on_progress=log)
     if not os.path.isfile(rm_docx):
-        rm_txt = _collect("RM1", app_folder, "txt", serial, on_progress=log)
+        rm_txt = _collect("RM1", [app_folder, lcmm_folder], "txt", serial, on_progress=log)
         if os.path.isfile(rm_txt):
             _debug(f"converting recruiter message {Path(rm_txt).name} -> docx")
             _txt_to_docx(rm_txt, str(rm_docx))
@@ -1510,7 +2415,10 @@ def run_generation(jd_path, on_progress=None, company="", position=""):
 
     # Post-step: compile the CV .typ(s) to PDF so artefacts are submission-ready.
 
-    pdf_paths = compile_pdf(serial, on_progress=log, app_folder=app_folder)
+    # Search both candidate folders: the CV .typ lives in the LCM folder while
+    # the other artefacts live in the pipeline app_folder.
+
+    pdf_paths = compile_pdf(serial, on_progress=log, folders=[app_folder, lcmm_folder])
 
 
 

@@ -20,3 +20,68 @@
 [2026-09-18 02:14:51] stored JD -> CV-20260917-0009.txt
 [2026-09-18 02:25:50] compiling produced CV .typ for CV-20260917-0009
 [2026-09-18 02:25:50] typst-compile-fail CV-20260917-0009_CV1.typ: The system cannot find the file specified. (os error 2)
+[2026-09-18 09:41:34] cleaning stale artefacts in app folder
+[2026-09-18 09:43:23] stored JD -> CV-20260918-0011.txt
+[2026-09-18 09:49:18] compiling produced CV .typ for CV-20260918-0011
+[2026-09-18 09:49:18] typst-compile-fail CV-20260918-0011_CV1.typ: The system cannot find the file specified. (os error 2)
+[2026-09-18 10:01:58] recruiter message not written by LLM; persisting stdout -> RM1.txt
+[2026-09-18 10:01:58] converted CV-20260918-0011_RM1.txt -> CV-20260918-0011_RM1.docx
+[2026-09-18 10:26:38] cleaning stale artefacts in app folder
+[2026-09-18 10:28:26] stored JD -> CV-20260918-0011.txt
+[2026-09-18 10:33:12] compiling produced CV .typ for CV-20260918-0011
+[2026-09-18 10:33:12] typst-compile-fail CV-20260918-0011_CV1.typ: The system cannot find the file specified. (os error 2)
+[2026-09-18 10:39:58] recruiter message not written by LLM; persisting stdout -> RM1.txt
+[2026-09-18 10:39:58] converted CV-20260918-0011_RM1.txt -> CV-20260918-0011_RM1.docx
+[2026-09-18 10:49:03] cleaning stale artefacts in app folder
+[2026-09-18 10:50:26] stored JD -> CV-20260918-0011.txt
+[2026-09-18 10:55:27] compiling produced CV .typ for CV-20260918-0011
+[2026-09-18 10:55:27] typst-compile-fail CV-20260918-0011_CV1.typ: The system cannot find the file specified. (os error 2)
+[2026-09-18 11:02:44] recruiter message not written by LLM; persisting stdout -> RM1.txt
+[2026-09-18 11:02:44] converted CV-20260918-0011_RM1.txt -> CV-20260918-0011_RM1.docx
+[2026-09-18 11:07:15] cleaning stale artefacts in app folder
+[2026-09-18 11:07:15] removed stale CV-20260918-0011.txt
+[2026-09-18 11:07:15] removed stale CV-20260918-0011_RM1.txt
+[2026-09-18 11:08:47] stored JD -> CV-20260918-0011.txt
+[2026-09-18 11:23:47] pi-timeout: prompt=22136 chars | killed process
+[2026-09-18 11:39:24] cleaning stale artefacts in app folder
+[2026-09-18 11:41:19] stored JD -> CV-20260918-0011.txt
+[2026-09-18 11:56:19] pi-timeout: prompt=22136 chars | killed process
+[2026-09-18 12:11:59] pi-timeout: prompt=22136 chars | killed process
+[2026-09-18 12:28:20] pi-timeout: prompt=22136 chars | killed process
+[2026-09-18 12:48:22] cleaning stale artefacts in app folder
+[2026-09-18 12:48:22] removed stale CV-20260917-0009.txt
+[2026-09-18 12:50:01] stored JD -> CV-20260917-0009.txt
+[2026-09-18 13:10:51] pi-timeout: prompt=22280 chars | killed process
+[2026-09-18 14:17:59] cleaning stale artefacts in app folder
+[2026-09-18 14:17:59] removed stale CV-20260917-0009.txt
+[2026-09-18 14:19:45] stored JD -> CV-20260917-0009.txt
+[2026-09-18 14:36:49] pi-timeout: prompt=8257 chars | killed process
+[2026-09-18 14:44:05] cleaning stale artefacts in app folder
+[2026-09-18 14:44:05] removed stale CV-20260917-0009.txt
+[2026-09-18 14:48:30] stored JD -> CV-20260917-0009.txt
+[2026-09-18 15:02:32] cleaning stale artefacts in app folder
+[2026-09-18 15:02:32] removed stale CV-20260917-0009.txt
+[2026-09-18 15:04:11] stored JD -> CV-20260917-0009.txt
+[2026-09-18 15:25:18] cleaning stale artefacts in app folder
+[2026-09-18 15:25:18] removed stale CV-20260917-0009.txt
+[2026-09-18 15:26:41] stored JD -> CV-20260917-0009.txt
+[2026-09-18 15:32:43] cleaning stale artefacts in app folder
+[2026-09-18 15:32:43] removed stale CV-20260917-0009.txt
+[2026-09-18 15:34:19] stored JD -> CV-20260917-0009.txt
+[2026-09-18 15:38:21] cleaning stale artefacts in app folder
+[2026-09-18 15:38:21] removed stale CV-20260917-0009.txt
+[2026-09-18 15:39:51] stored JD -> CV-20260917-0009.txt
+[2026-09-19 08:14:40] cleaning stale artefacts in app folder
+[2026-09-19 08:15:54] stored JD -> CV-20260919-0012.txt
+[2026-09-19 23:45:06] cleaning stale artefacts in app folder
+[2026-09-19 23:47:13] stored JD -> CV-20260919-0012.txt
+[2026-09-19 23:52:01] cleaning stale artefacts in app folder
+[2026-09-19 23:52:01] removed stale CV-20260919-0012.txt
+[2026-09-19 23:54:06] stored JD -> CV-20260919-0012.txt
+[2026-09-20 00:02:34] recruiter message not written by LLM; persisting stdout -> RM1.txt
+[2026-09-20 00:02:34] converted CV-20260919-0012_RM1.txt -> CV-20260919-0012_RM1.docx
+[2026-09-20 19:03:48] cleaning stale artefacts in app folder
+[2026-09-20 19:05:11] stored JD -> CV-20260920-0013.txt
+[2026-09-20 19:13:01] recruiter message not written by LLM; persisting stdout -> RM1.txt
+[2026-09-20 19:13:01] converted CV-20260920-0013_RM1.txt -> CV-20260920-0013_RM1.docx
+[2026-09-20 20:38:24] compiled CV-20260920-0013_CV1.typ -> CV-20260920-0013_CV1.pdf

@@ -1,128 +1,111 @@
 MATCH & GAP ANALYSIS
+================================================================================
 Candidate: Ernest Song
-Target position: Senior FP&A / Group Controller (freelance), international group
-Prepared by: Principal Tech Recruiter / Executive Resume Strategist
-Method: Factual comparison only. JD text cited as evidence. No metrics, companies or figures invented.
+Target role: Senior Business/Functional Analyst (Data Platform Transformation) - Freelance, Healthcare Sector, Brussels
+Prepared by: Tech Recruiting / Executive Resume Strategy
 
-=====================================================================
+--------------------------------------------------------------------------------
 DIRECT MATCHES
-=====================================================================
+--------------------------------------------------------------------------------
+- JOB TITLE / ROLE: JD asks for a "Senior Business/Functional Analyst." The candidate
+  currently holds the title "Strategic Business Analyst & Finance Automation Lead
+  (Freelancer)" (Engie SEM, Jan 2026 – Present). This is a direct title/function match.
 
-1. FINANCIAL MODELLING
-   - JD: "intervenez également sur des sujets de financial modelling"
-   - CV: "Investor Support & Financial Modelling" listed under Core competencies; cash-flow reporting and cash-exposure modelling at Engie Tractebel; "Develop Finance data modelling from SAP for HANA and design Power BI reporting."
-   - FIT: Strong.
+- DATA EXPERTISE: JD requires "strong Data expertise." Candidate lists Data & Analytics
+  competencies: SQL, R, MS Power BI, QlikSense, Business Object, Cognos, Hyperion,
+  VBA, and advanced Excel / Power Query. Direct data/BI toolset present.
 
-2. CASH FLOW
-   - JD: "le cash-flow" listed as a core analysis domain; "solide en ... cash-flow"
-   - CV: "Cash Flow Management" competency; role explicitly titled "Cash Flow & Financial Modeling Specialist" at Engie Tractebel; "Design cashflow reporting and cash exposure per project."
-   - FIT: Strong.
+- DATA MIGRATION / NEW PLATFORM: JD requires the candidate to "Participate in data
+  migration efforts, seeing transition from legacy systems to the new data platform."
+  Candidate demonstrates this directly: "Managed SAP HANA migration, restructuring data
+  and ensuring system integrity" (Holcim) and "Led the financial controlling pilot phase
+  for the SAP S/4HANA migration ... acting as the core Business Analyst bridging IT
+  architecture and strategic business operations" (Engie SEM).
 
-3. WORKING CAPITAL
-   - JD: "le working capital" listed as a core analysis domain.
-   - CV: "Working Capital Management" listed under Core competencies.
-   - FIT: Present ( competency listed; role-specific detail not elaborated).
+- FUNCTIONAL ANALYSIS / INTERNAL CUSTOMERS: JD requires "oversee the core business
+  analysis, whilst having conversations with internal customers and collect the
+  functional needs of the application." Candidate's headline role is a Business Analyst
+  that bridges IT architecture and business operations — a functional-analysis function.
 
-4. P&L ANALYSIS & FORECASTING
-   - JD: "le P&L" listed as a core analysis domain.
-   - CV: "P&L Analysis & Forecasting" listed under Core competencies; "actual vs. budgeted/estimated results" at Rexel.
-   - FIT: Present.
+- DATA INTEGRATIONS / ETL: JD mentions "data mappings, and data integrations." Candidate
+  has "deploying advanced PowerQuery ETL workflows" and "Reconciled complex financial
+  data structures between middle-office databases (IVDB) and SAP S/4HANA" — direct ETL
+  / integration evidence.
 
-5. CONSOLIDATION & REPORTING
-   - JD: "maîtrise parfaite du bilan, du reporting et de la consolidation"
-   - CV: "Consolidation & Financial Reporting (IFRS / BE-GAAP)" and "Group Controlling" listed; "Reporting Consolidation Manager" role at Rexel; led IFRS implementation and "integration of SAP BPC and Cognos reporting systems."
-   - FIT: Strong (particularly reporting/consolidation history).
+- LANGUAGE: JD states LANGUAGES: English. Candidate lists English as "Proficient."
 
-6. BALANCE SHEET (bilan)
-   - JD: "le bilan" listed as a core analysis domain; "maîtrise parfaite du bilan."
-   - CV: Not explicitly listed as a competency. Background in General Accounting / GL/AP/AR and audit (KPMG) underpins balance-sheet understanding, but no explicit "bilan" claim.
-   - FIT: Implicit / partial.
+- LOCATION: JD is Brussels (2 days/week, onsite flexible). Candidate is based in
+  B-1000 Brussels (Rue Montagne de l'Oratoire). Location match.
 
-7. CAPEX
-   - JD: "les CAPEX" listed as a core analysis domain.
-   - CV: "CAPEX Planning" listed; "capital expenditures" modelling at Vinci Airports.
-   - FIT: Present.
+- EXPERIENCE DURATION: JD requires "5 years' experience as a Business/Functional Analyst."
+  Candidate reports "15+ years across multi-entity, multi-country organisations" and holds
+  multiple Business Analyst / data-lead freelance mandates. Tenure is well above the
+  5-year bar (subject to confirming how much is strictly "Business/Functional Analyst" vs.
+  finance-control work).
 
-8. M&A, DUE DILIGENCE, POST-ACQUISITION INTEGRATION
-   - JD: "projets M&A, due diligence et post-acquisition integration peut également faire partie de la mission."
-   - CV: "M&A: Due Diligence & Post-Acquisition Integration" listed under Core competencies; post-M&A workflow restructuring at Holcim.
-   - FIT: Strong.
+--------------------------------------------------------------------------------
+TRANSFERABLE (fulfirms implicit JD requirements)
+--------------------------------------------------------------------------------
+- ROOT CAUSE / TROUBLESHOOTING: JD requires to "Troubleshoot data-related issues,
+  identify root causes, and implement solutions." Candidate shows reconciliation and
+  gap-analysis work: "Reconciled complex financial data structures between middle-office
+  databases (IVDB) and SAP S/4HANA," "Conducted gap analysis of business requirements and
+  existing procedures to identify areas for improvement" (Degroof Petercam), and building
+  reliable reporting to fix unreliable legacy frameworks.
 
-9. GROUP CONTROLLING / CORPORATE FINANCE / FP&A
-   - JD: "expérience en Group Controlling, Corporate Finance ou FP&A"
-   - CV: "Group Controlling" listed; CFO/finance leadership, financial controlling pilot at Engie SEM, corporate development at Shurgard.
-   - FIT: Strong.
+- M&A / TRANSFORMATION CONTEXT: JD notes the client is "under acquisition and need to build
+  and maintain scalable data infrastructure." Candidate has direct relevant exposure:
+  "Supported post-M&A integration and group controlling, leveraging data insights to
+  restructure workflows" (Holcim) and "M&A: Due Diligence & Post-Acquisition Integration"
+  (competency). This maps onto the transformation/acquisition environment.
 
-10. MEDIUM-TERM PLAN / MULTI-YEAR BUSINESS PLANNING
-    - JD: "l'élaboration du Medium-Term Plan 2026-2030" and "développement du plan financier pluriannuel."
-    - CV: "Medium-Term Plan (Multi-Year Business Planning)" listed under Core competencies; "long-term financial goals," business plans at Magnetrap.
-    - FIT: Strong.
+- BUSINESS INTELLIGENCE COLLABORATION: JD requires working "closely with a series of
+  Business Intelligence and Functional Analyst profiles." Candidate repeatedly produces BI
+  deliverables ("design Power BI reporting," "Designed the data model and visualization
+  for the Investment department's Business Intelligence efforts," "Implemented Qliksense
+  with new data for financial reporting") and works with Jira/Confluence (Agile).
 
-11. INVESTOR SUPPORT
-    - JD: "préparation d'analyses financières destinées aux investisseurs" and "demandes d'investisseurs."
-    - CV: "Investor Support & Financial Modelling" listed; fundraising / debt & equity raise of €3M at Magnetrap; investor BI dashboards at Shurgard.
-    - FIT: Strong.
+- FUNCTIONAL SPECIFICATIONS / DOCUMENTATION: JD requires "Develop functional specs and
+  documentation for data transformations, data mappings, and data integrations." Candidate
+  produces data models, mappings (WWS code restructuring), ETL workflows, and change-
+  management documentation — transferable documentation skills, though framed around
+  finance rather than generic data platforms.
 
-12. LANGUAGE - ENGLISH
-    - JD: "anglais indispensable"
-    - CV: "Proficient: English"
-    - FIT: Strong.
-
-13. LANGUAGE - FRENCH
-    - JD: "fortement apprécié" (French strongly desirable)
-    - CV: "Native: French"
-    - FIT: Ideal / perfect.
-
-14. FREELANCE / CONTRACT MODE
-    - JD: freelance mission, minimum 6 months, full-time.
-    - CV: All recent engagements are structured as (Freelancer) engagements; current mandate "Freelancer" at Engie SEM.
-    - FIT: Strong.
-
-=====================================================================
-TRANSFERABLE
-=====================================================================
-
-- Financial modelling & cash-flow depth: multiple role-titled and project evidences (Engie Tractebel, Magnetrap, Vinci Airports) support the "solide en financial modelling, cash-flow" requirement even where JD wording differs.
-- Consolidation & financial reporting: Rexel (Reporting Consolidation Manager, IFRS roll-out) plus KPMG audit background provide a robust consolidation/reporting foundation.
-- Autonomous analysis & challenging regions on the substance: JD "capable de réaliser des analyses de manière autonome et de challenger les différentes régions." CV evidence shows cross-region, multi-country mandates (BE, FR, NL; Asia-Pacific, Latin America, Canada) and stakeholder/auditor liaison, supporting independent delivery and challenge.
-- Communication with management & stakeholders: JD "commune aisément avec le management et les autres stakeholders." CV repeatedly shows stakeholder bridging (IT architecture vs. business, auditors, commercial strategy, authorities).
-- ERP / consolidation-tooling: JD lists "Lucanet ou un autre outil de consolidation/reporting" as a plus; candidate lacks Lucanet explicitly but has SAP HANA/BPC, Cognos, Business Object, Hyperion, Power BI, QlikSense — a broadly transferable reporting/ERP skill set.
-- Business planning & forecasting: medium-term plan competency plus budgeting/forecasting and strategic planning at Rexel.
-- Experience length: JD "10 à 15 ans d'expérience pertinente en finance." CV quotes "15+ years leading accounting and transformation mandates for multi-entity, multi-country organisations." Aligns with the seniority band.
-- Investor / strategic finance: investor support, valuation (Vinci Airports "valuation at 4 times of acquisition cost"), financing-need assessment, credit/impairment testing.
-
-=====================================================================
+--------------------------------------------------------------------------------
 CRITICAL GAPS
-=====================================================================
+--------------------------------------------------------------------------------
+- ROLE FOCUS MISMATCH: The JD is a DATA PLATFORM / FUNCTIONAL ANALYST role. The candidate's
+  15+ year career is predominantly FP&A / Group Controller / financial auditing. The "Business
+  / Functional Analyst" title appears only in recent freelance mandates; earlier and much of
+  the history is finance-control/audit. Need to confirm ≥5 years is actually as a
+  Business/Functional Analyst (the JD metric) versus finance-control work.
 
-1. LUCANET
-   - JD: "expérience avec Lucanet ou un autre outil de consolidation/reporting" is a nice-to-have; "Lucanet : nice-to-have, mais pas indispensable."
-   - CV: No mention of Lucanet anywhere. Working tools list SAP HANA, Power BI, QlikSense, Business Object, Cognos, Hyperion, RPA, Agile — but not Lucanet.
-   - IMPACT: Low-to-moderate (explicitly non-essential in the JD).
+- ENTERPRISE DATA PLATFORM / INFRASTRUCTURE: JD wants "good understanding of Data Platforms,
+  Integrations etc." Candidate shows BI tools, SQL/R, and Power Query ETL, but no explicit
+  evidence of enterprise data-platform engineering (data warehouses/lakehouses, cloud data
+  platforms, pipeline/orchestration architecture, data governance). This is the core of the
+  mandate and should be validated with the candidate.
 
-2. BALANCE SHEET (bilan) explicit mastery
-   - JD: "le bilan" is a core analysis deliverable; "maîtrise parfaite du bilan."
-   - CV: Bilan not listed as a competency. Supported implicitly by accounting/GL/AR and KPMG audit background, but not stated outright.
-   - IMPACT: Moderate (core JD deliverable; worth clarifying/interviewing).
+- HEALTHCARE SECTOR: JD states "Experience within the Healthcare sector is also preferred."
+  Candidate's only healthcare exposure is incidental as an auditor (listed end-clients such as
+  DomusVie) — no healthcare business/functional analysis experience. This is a noted gap.
 
-3. "Movement schedules"
-   - JD: "les movement schedules" listed as a core analysis domain.
-   - CV: Not mentioned.
-   - IMPACT: Low-to-moderate (specific consolidation artifact; can be assessed in interview).
+- FORMAL DATA MAPPING / SPEC DOCUMENTS: JD explicitly requires "data mappings" and
+  "functional specifications and documentation." Candidate's artifacts are finance-reporting
+  focused; no explicit evidence of structured data-mapping sheets or functional-spec
+  documentation as standard deliverables. Should be probed.
 
-4. Explicit "FP&A" title / group-level corporate finance track record
-   - JD frames the role as "Senior FP&A / Group Controller" at corporate level, challenging multiple international regions.
-   - CV: Group Controlling and FP&A-adjacent experience are present, but the profile reads more as accounting/transformation/ERP and CFO/fundraising than a pure standing FP&A / group-controlling function at a corporate group.
-   - IMPACT: Moderate ( positioning/narrative gap rather than a hard skills gap; addressable in cover letter / interview).
+- DATA INTEGRATION SCALE / ARCHITECTURE: JD's "data integrations" imply enterprise integration.
+  Candidate evidence is Power Query ETL and reconciliation between specific systems (IVDB/SAP),
+  which is narrower than broad enterprise integration architecture. Gap to confirm.
 
-5. English "essential" / French "desirable" — already satisfied, no gap.
-
-=====================================================================
-OVERALL ASSESSMENT
-=====================================================================
-
-The candidate is a STRONG FIT for this mission. The JD's headline technical needs — financial modelling, cash-flow, working capital, P&L, CAPEX, consolidation, reporting, group controlling, M&A / due diligence / post-acquisition integration, medium-term (multi-year) planning, investor support — are all demonstrable on the CV. Language fit is ideal (native French, proficient English), and the candidate is already operating as a freelancer, matching the engagement model.
-
-The genuine, JD-specified gaps are limited: Lucanet (explicitly non-essential), explicit balance-sheet mastery, movement schedules, and a clearer standing FP&A / group-controller positioning. These are largely interview-assessable and do not disqualify the profile.
-
-Recommended next step: position the candidate as a senior FP&A / Group Controller with a strong consolidation-reporting and financial-control backbone; emphasize multi-region autonomy, investor support, and M&A integration; and proactively address the balance-sheet and movement-schedules items and the Lucanet nice-to-have during screening.
+================================================================================
+NET ASSESSMENT (strategist view)
+================================================================================
+The candidate is a strong DATA/BI + BUSINESS ANALYST with clear, direct evidence on the two
+core JD demands — data migration to a new platform (SAP S/4HANA) and functional business
+analysis — and matches location, language, tenure, and toolset. The primary risks are
+(1) the role is data-platform/functional rather than finance-centric, and (2) the preferred
+Healthcare sector experience is absent. Recommend advancing to the 1-stage interview, with
+prepared probing questions on enterprise data-platform depth, formal data-mapping/spec
+artifacts, and any healthcare-domain exposure.

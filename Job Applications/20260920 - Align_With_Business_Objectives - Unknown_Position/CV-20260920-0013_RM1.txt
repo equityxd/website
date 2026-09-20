@@ -1,0 +1,35 @@
+Dear the recruiter,
+
+Thank you for sharing this opportunity — I've read the brief in full and I'm genuinely excited. To be direct: I believe I'm the right person for this, and this is currently my top priority.
+
+You'll be meeting the client soon, and given how tight timelines usually are, I've prepared a compact fit cheat-sheet below so you can sell me to them with ease.
+
+**FIT CHEAT-SHEET**
+
+**1. Business Analysis & Functional Needs**
+- As Strategic Business Analyst at Engie SEM (2026–present), I sit at the bridge between IT architecture and business operations, running continuous conversations with internal customers to collect and translate functional needs into deliverables.
+- At Degroof Petercam (2018) I ran gap analysis of business requirements vs. existing procedures and designed a client-centric performance system — turning needs into specifications.
+
+**2. Data Platforms, Integrations & Migration**
+- Led the financial controlling pilot for the **SAP S/4HANA migration** across French subsidiaries and managed **SAP HANA migration** at Holcim (2024–2025), ensuring data integrity throughout the legacy-to-new-platform transition.
+- Built PowerQuery ETL workflows to safely ingest **1,500+ bookings per close**, with zero human intervention — a concrete data integration example.
+
+**3. Business Intelligence & Data Solutions**
+- Implemented **Qliksense** at Holcim and designed **Power BI** reporting at Engie Tractebel (2023), translating data gaps into actionable, business-aligned solutions.
+- Designed data models and visualizations for Shurgard's Investment BI (2022–2023), including an AI-driven pricing model.
+
+**4. M&A, Transformation & Change Adoption**
+- Supported **post-M&A integration and group controlling** at Holcim, restructuring workflows for the consolidated group.
+- At Tobania (2020) drove RPA + self-service BI adoption with structured change management; raised **€3M** in debt/equity at Magnetrap (2020–2022).
+- Healthcare exposure via KPMG (DomusVie) and ICM – Brain & Spine Institute, plus real estate/asset M&A at Shurgard.
+
+**PROFILE SUMMARY**
+- **Profile:** Executive Finance Professional (15+ years), FP&A / Group Controller with deep data & transformation hands-on experience
+- **Education:** ESCP Business School (Auditing & Consulting, 2011) · Université Paris Nanterre (Management Science & Financial Control)
+- **Positioning:** Chief Growth & Transformation Officer — the strategic apex of this skill set
+- **Availability:** Immediately, 40 hrs/week, Brussels-based (2 days onsite), English-fluent
+
+My updated CV is attached. Have a good evening, and I look forward to our conversation soon.
+
+Best regards,
+Ernest SONG

@@ -1,0 +1,90 @@
+INTERPREP — STAR Q&A OUTLINES — Serial CV-20260920-0013
+=========================================================
+Role: Senior Business/Functional Analyst (Data Platform Transformation) - Healthcare, Brussels
+Source: candidate's base CV (source/SONG Ernest - CV v1.typ) + JD only.
+All outlines are built strictly from the candidate's real recorded experiences.
+
+NOTE TO CANDIDATE: These are outline skeletons (key Action/Result bullets), not
+word-for-word scripts. Expand with your own numbers and phrasing during prep.
+
+----------------------------------------------------------
+Q1. "Walk me through your experience as a Business/Functional Analyst driving a data platform transformation."
+----------------------------------------------------------
+S — Engie SEM, Senior Business/Functional Analyst (Data Platform Transformation), Jan 2026 – Present.
+T — Drive the data platform transformation while ensuring timely delivery, bridging IT architecture and business operations.
+A — Acted as core Business Analyst conducting requirement-gathering conversations with internal customers to capture functional needs; developed functional specifications and documentation for data transformations, data mappings and data integrations.
+R — Business-IT alignment on the SAP S/4HANA migration pilot; application delivered against functional needs.
+JD bridge — Covers "oversee core business analysis," "collect functional needs," "functional specifications/documentation."
+
+----------------------------------------------------------
+Q2. "Give an example of participating in data migration from legacy systems to a new data platform."
+----------------------------------------------------------
+S — Holcim (Jan 2024 – Dec 2025) and Engie SEM.
+T — Transition from legacy systems onto new data platform while preserving data integrity.
+A — Managed the SAP HANA ERP data migration, restructuring data and ensuring system integrity; led the financial controlling pilot phase for the SAP S/4HANA migration as core Business Analyst bridging IT and business.
+R — Successful legacy-to-new-platform transition with data integrity preserved; operational continuity.
+JD bridge — Covers "participate in data migration efforts, transition from legacy systems to the new data platform."
+
+----------------------------------------------------------
+Q3. "How have you analysed data requirements, identified data gaps and recommended data solutions?"
+----------------------------------------------------------
+S — Engie SEM; Holcim Qlik Sense rollout.
+T — Bridge legacy and new platforms; make finance reporting faster and evidence-based.
+A — Analysed data requirements, identified data gaps between legacy and new platforms, recommended solutions aligned with business objectives; rolled out Qlik Sense delivering 8 executive dashboards that shortened reporting cycles by 50%.
+R — Faster, evidence-based managerial decisions; reduced reporting cycle time by half.
+JD bridge — Covers "analyse data requirements, identify data gaps, and recommend data solutions that align with business objectives."
+
+----------------------------------------------------------
+Q4. "Describe your experience with data integrations / ETL and reconciling data across systems."
+----------------------------------------------------------
+S — Engie SEM (financial close) and Holcim (rebate reporting).
+T — Safely ingest large data volumes and reconcile complex data structures between systems.
+A — Deployed advanced PowerQuery ETL workflows ingesting 1,500+ bookings per close with zero human intervention; reconciled complex financial data structures between middle-office databases (IVDB) and SAP S/4HANA, restructuring WDS project codes.
+R — Zero-error financial ingestion; cleaner portfolio monitoring.
+JD bridge — Covers "data mappings, and data integrations."
+
+----------------------------------------------------------
+Q5. "Give an example of troubleshooting a data-related issue and identifying the root cause."
+----------------------------------------------------------
+S — Engie SEM budget tooling / Holcim rebate reliability.
+T — Replace an unreliable legacy framework; guarantee data reliability with auditors.
+A — Designed, built and deployed a robust automated budget-modeling tool from scratch within a critical 2-week timeline; ensured data reliability and liaised with auditors on rebate matters.
+R — Operational continuity during a resource gap; commercial disputes resolved ~30% faster.
+JD bridge — Covers "troubleshoot data-related issues, identify root causes, and implement solutions."
+
+----------------------------------------------------------
+Q6. "How do you work closely with Business Intelligence and Functional Analyst profiles to ensure timely delivery?"
+----------------------------------------------------------
+S — Holcim (multi-analyte reporting) and Shurgard BI.
+T — Coordinate with BI/Functional Analysts to deliver on time.
+A — Built 8 Power BI executive dashboards in partnership with BI analysts; designed the data model and visualization for the Investment department's Business Intelligence efforts; used Jira/Confluence for Agile delivery.
+R — Timely, reusable BI deliverables consumed by management.
+JD bridge — Covers "working closely with a series of Business Intelligence and Functional Analyst profiles to ensure the timely delivery."
+
+----------------------------------------------------------
+Q7. "This client is under acquisition. What relevant transformation/integration experience do you bring?"
+----------------------------------------------------------
+S — Holcim post-M&A and Shurgard M&A.
+T — Support an organisation under acquisition to build scalable infrastructure.
+A — Supported post-M&A integration and group controlling, leveraging data insights to restructure workflows and enhance efficiency; advised on self-storage M&A transactions (€10M–€80M), structuring acquisitions, restructurings and divestitures.
+R — Streamlined consolidated group workflows; clean M&A structuring.
+JD bridge — Covers "currently under acquisition and need to build and maintain scalable data infrastructure."
+
+----------------------------------------------------------
+Q8. "Any gaps we should be honest about? (Data platforms depth / Healthcare sector)"
+----------------------------------------------------------
+S — Breadth of finance-data work vs. specialist data-platform engineering and healthcare domain.
+T — Be transparent while positioning transferable strength.
+A — Acknowledge BI/SQL/R and Power Query ETL depth rather than bespoke data-engineering pipelines; healthcare exposure is incidental (auditor end-clients such as DomusVie). Position rigorous data reconciliation, data-gap analysis and financial-close controls as fast-accelerator skills for reliable migrations and root-cause troubleshooting.
+R — Trust through honesty; reframes gap as transferable analyst strength.
+JD bridge — Proactive, honest positioning on the two preferred/seniority nuances.
+
+=========================================================
+STRATEGIC NOTES FOR THE INTERVIEW
+=========================================================
+- Lead with the two core JD proofs: (1) data migration to a new platform (SAP S/4HANA / SAP HANA)
+  and (2) functional business analysis with internal customers.
+- Confirm ≥5 years as a Business/Functional Analyst (vs. finance-control history) — quantify analyst years.
+- Be ready to discuss enterprise data-platform specifics and any formal data-mapping / functional-spec artefacts.
+- Raise healthcare exposure candidly and pivot to transferable data-reconciliation / governance strength.
+- Confirm logistics: ASAP start, 40 h/week, 12+ months, Brussels-based with 2 days/week onsite.

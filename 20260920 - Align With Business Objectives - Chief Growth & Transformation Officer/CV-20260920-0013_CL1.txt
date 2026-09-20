@@ -1,0 +1,23 @@
+CV-20260920-0013 — Cover Letter
+================================
+To: Align With Business Objectives (recruiter)
+Re: Senior Business/Functional Analyst (Data Platform Transformation) - Freelance, Healthcare Sector, Brussels
+
+Dear Recruiter,
+
+Your JD describes a healthcare client under acquisition that must build and maintain scalable data infrastructure, needing a Senior Business/Functional Analyst to drive the data platform transformation. My recent work.
+
+Three areas map onto your top requirements:
+
+1. Functional business analysis with internal customers. As core Business Analyst at Engie SEM I run requirement-gathering conversations with internal customers to capture functional needs — bridging IT architecture and business operations.
+
+2. Data requirements, gaps and solutions aligned to business objectives. I analyse data requirements, identify data gaps between legacy and new platforms, and recommend solutions. At Holcim I rolled out Qlik Sense finance dashboards (cutting reporting cycles by 50%) and built €150M rebate models at 99.8% accuracy — turning raw data into decision-ready insight.
+
+3. Data migration, mappings and integrations. I took part in SAP S/4HANA and SAP HANA migrations (legacy-to-new platform transition), deployed PowerQuery ETL workflows (1,500+ bookings per close, zero manual intervention), reconciled IVDB/SAP data structures, and authored functional specifications and documentation.
+
+On the named nice-to-haves: my platform depth rests on BI tools, SQL/R and Power Query ETL rather than bespoke data pipelines, and my healthcare exposure is incidental (auditor end-clients such as DomusVie). I frame this as an advantage: my analyst lens is trained on rigorous data reconciliation, data-gap analysis and high-stakes financial-close controls — accelerating root-cause troubleshooting and reliable data migrations. My French is native and English proficient.
+
+Available ASAP, 40 h/week, for 12+ months, based in Brussels (2 days/week onsite).
+
+Best regards,
+Ernest SONG

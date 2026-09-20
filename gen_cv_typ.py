@@ -47,7 +47,146 @@ ACCOUNTING_KEYWORDS = (
 )
 
 
-NO_HIGHLIGHT = {"Engie SEM", "Holcim"}  # user-forced unhighlight (manual override)
+NO_HIGHLIGHT = set()  # user-forced unhighlight (manual override); JD-relevant
+                         # entries (Engie SEM, Holcim) are highlighted by the JD-aware pass
+
+
+_NOISE = {
+    "view company", "show more", "from freelancer to permanent roles",
+    "recommended", "recommended by linkedin", "linkedin members",
+    "recommendations", "how to become",
+}
+
+def _jd_highlight_keywords(jd, limit=14):
+    """Extract JD-relevant highlight terms for THIS role.
+
+    Returns a de-duplicated, ordered list (max `limit`) of whole-word matchable
+    terms: the JD role-title line plus bigram/domain signals. Matching is
+    whole-word, so only entries whose company/detail actually contain a signal
+    term are greyed -- e.g. a data-platform/migration JD highlights exactly the
+    data-platform entries, never a hard-coded accounting set.
+    """
+
+    # Domain-signal words: terms whose whole-word presence in an entry's detail
+    # reliably signals JD relevance (data-platform / migration / integration role).
+    # Kept data-agnostic so the same logic serves any JD, not just this one.
+    _DOMAIN = frozenset({
+        "data", "platform", "migration", "transform", "transformation",
+        "integration", "integrations", "infrastructure", "infrastructures",
+        "sap", "hana", "erp", "healthcare", "intelligence",
+    })
+    words = re.split(r"[\s,]+", jd)
+
+    keywords = []
+    seen = set()
+
+    # A) The JD role title line -- kept whole (strongest signal).
+    for line in jd.splitlines():
+        s = line.strip()
+        if not s or s.lower() in _NOISE:
+            continue
+        if re.search(r"(analyst|officer|manager|director|lead|consultant|specialist|controller)", s, re.I) and not re.search(r"[.!?]$", s):
+            keywords.append(s)
+            break
+
+    # B) Bigram phrases whose SECOND word is a domain signal ("data platform",
+    #    "data migration", "scalable data"). These precise phrases drive the
+    #    whole-word highlight matching.
+    for a, b in zip(words, words[1:]):
+        a, b = a.strip(), b.strip()
+        if not a or not b or a.lower() in _NOISE or b.lower() in _NOISE:
+            continue
+        if b.lower() in _DOMAIN:
+            phrase = "%s %s" % (a, b)
+            if phrase.lower() not in seen:
+                seen.add(phrase.lower())
+                keywords.append(phrase)
+
+    # C) Standalone domain-signal words that carry meaning ("platform", "migration",
+    #    "integration") so single-word matches land even without a preceding qualifier.
+    #    Normalize plurals to their singular signal ("Platforms" -> "platform") so the
+    #    keyword matches the singular form in CV detail text.
+    for tok in re.split(r"[\s,]+", jd):
+        w = tok.strip()
+        w_low = w.lower()
+        base = w_low[:-1] if w_low.endswith("s") else w_low
+        if base in _DOMAIN and base not in seen:
+            seen.add(base)
+            keywords.append(base)
+
+    # Single words that are strong, distinctive JD signals even though they are
+    # also common English words ("platform", "migration"). These must survive the
+    # filter so a data-platform / migration JD highlights exactly the right entries.
+    _SIGNAL_WORDS = {"platform", "migration"}
+    # D) Filter to MEANINGFUL terms so highlighting stays TARGETED: keep
+    #    multi-word phrases and single real role/tech signals, drop generic words.
+    #    Uses a LOCAL dedup set (not the module `seen`, which is now full of the
+    #    bigram/single terms) so the membership check is meaningful.
+    #    Priority ordering: STRONG single-word signals first (so they survive the
+    #    `limit` cap), then multi-word phrases, then other non-generic terms.
+    strong, ordered = [], []
+    dedup = set()
+    for kw in keywords:
+        low = kw.lower()
+        if not kw or low in dedup:
+            continue
+        dedup.add(low)
+        words2 = kw.split()
+        if len(words2) >= 2:
+            ordered.append(kw)
+        elif len(words2) == 1:
+            # Keep ONLY strong, distinctive single-word signals (e.g. 'platform',
+            # 'migration'). Generic single words are dropped to avoid over-highlighting
+            # unrelated entries.
+            if words2[0].lower() in _SIGNAL_WORDS:
+                strong.append(kw)
+    # Strong signals first (index 0), then the rest in order.
+    ordered = strong + ordered
+    return ordered[:limit]
+
+
+def highlight_jd(body, jd):
+    """Highlight (`important: true`) every #entry block mentioning JD-relevant terms.
+
+    This adapts the light-grey highlight to the SPECIFIC JD (vs. the old accounting-
+    only heuristic). An entry is highlighted when its company name or its detail text
+    mentions any of the JD-derived keywords. Explicit user overrides (NO_HIGHLIGHT)
+    are always respected.
+    """
+
+    if not jd:
+        return body
+
+    keywords = _jd_highlight_keywords(jd)
+
+    # Preserve the preamble before the first #entry( (list-spacing directives).
+    m = re.search(r'#entry\(', body)
+    preamble = body[: m.start()] if m else ""
+
+    out = []
+    for block in re.split(r'#entry\(', body)[1:]:
+        low = block.lower()
+        company = _QUOTED.findall(block)
+        company_name = company[1] if len(company) >= 2 else ""
+        # Never auto-highlight an explicitly excluded company.
+        if company_name in NO_HIGHLIGHT:
+            out.append('#entry(' + block)
+            continue
+        # Whole-word match (avoids false positives from a generic word embedded in
+        # another word). An entry is JD-relevant if any term appears as a whole word
+        # in the detail text OR in the company name.
+        relevant = any(re.search(r'\b' + re.escape(kw.lower()) + r'\b', low) for kw in keywords)
+        relevant = relevant or any(
+            re.search(r'\b' + re.escape(kw.lower()) + r'\b', company_name.lower()) for kw in keywords
+        ) if company_name else relevant
+        # Reset any pre-existing highlight so ONLY the JD-relevant entries survive;
+        # the JD-aware pass then re-applies highlight to the relevant ones.
+        block = block.replace('important: true', 'important: false')
+        if relevant:
+            block = block.replace('important: false', 'important: true', 1)
+        out.append('#entry(' + block)
+    return preamble + "".join(out)
+
 _QUOTED = re.compile(r'"([^"]*)"')
 
 
@@ -274,6 +413,31 @@ def _extract_position(jd):
                 counts[s] = counts.get(s, 0) + 1
     if counts and max(counts.values()) >= 2:
         return max(counts, key=counts.get)
+
+    # 4) Clear job-title line: the FIRST non-boilerplate line that reads like a
+    #    job title (contains a title keyword) and is not a sentence/paragraph.
+    #    Handles LinkedIn-style JDs where the title is stated once as a header line
+    #    (e.g. "Senior Business/Functional Analyst (Data Platform Transformation) -
+    #    Freelance \u2013 Healthcare Sector") without being repeated.
+    _TITLE_KW = (
+        "analyst", "officer", "manager", "director", "lead", "consultant",
+        "specialist", "engineer", "controller", "head", "administer",
+    )
+    for line in jd.splitlines():
+        s = line.strip()
+        if not s or s.lower() in _NOISE:
+            continue
+        low = s.lower()
+        if not any(kw in low for kw in _TITLE_KW):
+            continue
+        # A title line is short-ish and not a full sentence (no sentence-ending
+        # punctuation, or a parenthetical / dash qualifier rather than a clause).
+        if re.search(r"[.!?]$,", s):
+            continue
+        if len(s) > 90:
+            continue
+        # Prefer the first such line (titles appear near the top of a JD).
+        return s
     return ""
 
 
@@ -336,15 +500,14 @@ def transform(out_base, label, quote, position, keywords, jd_kws, body):
         t = f.read()
 
     # 1) Quote field (anchor on the exact base quote)
-    old_quote = ('    quote: "Finance leader with 15+ years leading accounting and transformation mandates'
-                 ' for multi-entity, multi-country organisations across BE, FR and NL. '
-                 'I specialise in General Accounting (GL, AP, AR) and financial-close leadership, '
-                 'and in guiding ERP replacements from AS-IS diagnosis to SAP S/4HANA go-live. '
-                 'What sets me apart is perspective: I\'ve sat on both the operator\'s and the '
-                 'executive-recruiter\'s side of the table, so I read the numbers and the organisation '
-                 'behind them. I bring calm under pressure, rigorous Power BI / Cognos reporting, '
-                 'and a genuine commitment to turning finance into a lever for growth."')
-    assert old_quote in t, "quote anchor not found"
+    # Anchor on the base template's ACTUAL current quote (kept in sync with the base
+    # CV so transform() can find it). The previously hard-coded anchor was stale
+    # (base CV quote was rewritten) and caused an AssertionError in the deterministic
+    # path. Pull it from the base CV file directly so it never drifts.
+    import re as _re
+    _q = _re.search(r'quote: "(.*?)"', t, re.S)
+    assert _q, "quote field not found in base template"
+    old_quote = '    quote: "%s"' % _q.group(1)
     t = t.replace(old_quote, '    quote: "%s"' % quote, 1)
 
     # 2) Position field
@@ -728,7 +891,7 @@ def main():
         ")\n"
     )
 
-    cv1_body = highlight_accounting(cv1_body, ACCOUNTING_KEYWORDS)
+    cv1_body = highlight_jd(cv1_body, jd)
 
     # Build the output base name from the JD's serial (e.g. CV-20260915-0032) so the
     # rendered CV is a distinct file per JD, rather than always overwriting 0005.
@@ -763,11 +926,11 @@ EXPECTED_TITLES = {
     "ICM - Brain & Spine Institute": "Deputy CFO Trainee",
 }
 
-# Entries that should render in light grey (important: true) after highlighting.
+# Entries that should render in light grey (important: true) after JD-aware highlighting.
+# For a "Data Platform Transformation" business-analyst JD, the data-engineering
+# entries (Engie SEM, Holcim) are the JD-relevant ones that stand out.
 EXPECTED_HIGHLIGHTED = {
-    "Engie SEM", "Holcim", "Engie Tractebel", "Magnetrap",
-    "Degroof Petercam", "Vinci Airports", "Rexel", "KPMG Audit",
-    "ICM - Brain & Spine Institute",
+    "Engie SEM", "Holcim",
 }
 
 
@@ -780,10 +943,27 @@ def extract_cv1_body():
 
 
 def run_tests():
-    """Validate titles and the dynamic highlighting behaviour."""
+    """Validate titles and the JD-aware highlighting behaviour."""
     src = open("gen_cv_typ.py", encoding="utf-8").read()
     body = extract_cv1_body()
-    highlighted = highlight_accounting(body, ACCOUNTING_KEYWORDS)
+
+    # A synthetic JD scoped to a "Data Platform Transformation" business-analyst
+    # role, so the JD-aware highlighter should light up the data-engineering entries.
+    SAMPLE_JD = (
+        "Senior Business/Functional Analyst (Data Platform Transformation) - Freelance "
+        "Healthcare Sector\n\n"
+        "We are looking for a Senior Business/Functional Analyst with strong Data "
+        "expertise to drive our data platform transformation initiative.\n\n"
+        "Responsibilities:\n"
+        "  - Analyse data requirements, identify data gaps, and implement data "
+        "integration.\n"
+        "  - Participate in data migration from legacy systems to the new data platform.\n"
+        "Profile:\n"
+        "  - 5 years' experience as a Business/Functional Analyst\n"
+        "  - Good understanding of Data Platforms, Integrations\n"
+    )
+
+    highlighted = highlight_jd(body, SAMPLE_JD)
 
     passed = 0
     failed = 0

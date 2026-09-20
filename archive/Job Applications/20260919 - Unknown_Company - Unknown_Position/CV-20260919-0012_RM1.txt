@@ -1,0 +1,33 @@
+Dear Jerémie,
+
+Thank you for passing this along. I've reviewed the mandate end to end, and I can genuinely say this Chief Growth & Transformation Officer / Lead BI & Analytics role sits exactly at the intersection of my career — and it's currently my top priority.
+
+Since you're likely to be in conversation with the client soon, here's a compact fit cheat-sheet so you can sell me with confidence:
+
+**1. BI & Analytics Strategy / Data Governance**
+- Defined and rolled out reporting standards across Power BI, QlikSense, Cognos and Hyperion (Rexel 2014–16; Holcim 2024–25).
+- Established KPIs, business definitions and governance practices — including ensuring data reliability and liaising with auditors on rebate matters (Holcim, 2024–25).
+
+**2. Data Architecture, Modelling & Analytics Delivery**
+- Designed data models and visualizations for BI efforts, translating business needs into technical reporting (Shurgard, 2022–23).
+- Built Power BI reporting from SAP HANA data, and shipped PowerQuery ETL workflows ingesting 1,500+ bookings per close with zero manual intervention (Engie Tractebel 2023; Engie SEM 2026).
+- Comfortable at both strategic and hands-on levels — built a budget model tool from scratch under a tight 2-week deadline (Engie SEM, 2026).
+
+**3. Business Transformation & Stakeholder Partnership**
+- Acted as the core Business Analyst bridging IT architecture and strategic business operations across SAP S/4HANA migration (Engie SEM, 2026; Holcim 2024–25).
+- Led a self-service BI / RPA business model plus change management structures to drive adoption (Tobania, 2020).
+
+**4. Non-Profit & EU Funding Domain Awareness**
+- Founded Soap collect, a non-profit sourcing reconditioned soap for disadvantaged communities (2019–present).
+- Certified FP7 Grant Agreements for the EU Research program at KPMG (2011–14) — direct exposure to EU Commission-funded programmes.
+
+**PROFILE SUMMARY**
+Profile: Executive Finance Professional (15+ years)
+Education: ESCP Business School (Auditing & Consulting) + Université Paris Nanterre (Management Science & Financial Control)
+Positioning: Finance-meets-Data Transformation executive, owning BI/Analytics strategy and data governance
+Availability: Immediate, hybrid-friendly (Brussels), full-time freelance (12+ months)
+
+My updated CV is attached. Have a good evening, and I look forward to our confidential conversation soon.
+
+Best regards,
+Ernest SONG

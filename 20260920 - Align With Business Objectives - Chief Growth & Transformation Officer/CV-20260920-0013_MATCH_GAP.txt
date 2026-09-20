@@ -1,0 +1,114 @@
+MATCH & GAP ANALYSIS
+================================================================================
+Candidate: Ernest Song
+Target role: Senior Business/Functional Analyst (Data Platform Transformation) - Freelance, Healthcare Sector, Brussels
+Serial: CV-20260920-0013
+Prepared by: Tech Recruiting / Executive Resume Strategy
+Confidential — for application use only
+
+--------------------------------------------------------------------------------
+DIRECT MATCHES
+--------------------------------------------------------------------------------
+- JOB TITLE / ROLE: JD asks for a "Senior Business/Functional Analyst." The candidate's
+  current mandate title is "Senior Business/Functional Analyst (Data Platform Transformation)
+  (Freelancer)" at Engie SEM (Jan 2026 – Present). Direct title and function match.
+
+- DATA EXPERTISE: JD requires "strong Data expertise." Candidate lists Data & Analytics
+  competencies — SQL, R, MS Power BI, QlikSense, Business Object, Cognos, VBA, and advanced
+  Excel / Power Query. Direct BI/data toolset present.
+
+- DATA MIGRATION / NEW PLATFORM: JD requires "Participate in data migration efforts, seeing
+  transition from legacy systems to the new data platform." Candidate shows this directly:
+  "Managed the SAP HANA ERP data migration, restructuring data and preserving system integrity"
+  (Holcim) and "Led the financial controlling pilot phase for the SAP S/4HANA migration ...
+  acting as the core Business Analyst bridging IT architecture and strategic business operations"
+  (Engie SEM).
+
+- FUNCTIONAL ANALYSIS / INTERNAL CUSTOMERS: JD requires "oversee the core business analysis,
+  whilst having conversations with internal customers and collect the functional needs of the
+  application." Candidate's headline role conducts requirement-gathering conversations with
+  internal customers to capture/document functional needs — a functional-analysis function.
+
+- DATA INTEGRATIONS / ETL: JD mentions "data mappings, and data integrations." Candidate has
+  "deploying advanced PowerQuery ETL workflows" and "Reconciled complex financial data
+  structures between middle-office databases (IVDB) and SAP S/4HANA" — direct ETL / integration
+  evidence.
+
+- FUNCTIONAL SPECIFICATIONS / DOCUMENTATION: JD requires "Develop functional specifications and
+  documentation for data transformations, data mappings, and data integrations." Candidate
+  produces data models, mappings (WBS code restructuring), ETL workflows, and change-management
+  documentation.
+
+- LANGUAGE: JD states LANGUAGES: English. Candidate lists English as "Proficient."
+
+- LOCATION: JD is Brussels (2 days/week, flexible onsite). Candidate is based in B-1000 Brussels.
+  Location match.
+
+- EXPERIENCE DURATION: JD requires "5 years' experience as a Business/Functional Analyst."
+  Candidate holds multiple Business Analyst / data-lead freelance mandates and 15+ years across
+  multi-entity, multi-country organisations. Tenure is well above the 5-year bar (subject to
+  confirming how much is strictly "Business/Functional Analyst" vs. finance-control work).
+
+--------------------------------------------------------------------------------
+TRANSFERABLE (fulfirms implicit JD requirements)
+--------------------------------------------------------------------------------
+- ROOT CAUSE / TROUBLESHOOTING: JD requires "Troubleshoot data-related issues, identify root
+  causes, and implement solutions." Candidate shows reconciliation and gap-analysis work:
+  "Reconciled complex financial data structures between middle-office databases (IVDB) and SAP
+  S/4HANA," "Conducted gap analysis of business requirements and existing procedures to identify
+  areas for improvement" (Degroof Petercam), and rebuilt unreliable legacy frameworks.
+
+- M&A / TRANSFORMATION CONTEXT: JD notes the client is "under acquisition and need to build and
+  maintain scalable data infrastructure." Candidate has direct exposure: "Supported post-M&A
+  integration and group controlling, leveraging data insights to restructure workflows" (Holcim)
+  and competency "M&A: Due Diligence & Post-Acquisition Integration." Maps onto the
+  transformation/acquisition environment.
+
+- BUSINESS INTELLIGENCE COLLABORATION: JD requires working "closely with a series of Business
+  Intelligence and Functional Analyst profiles." Candidate repeatedly delivers BI artefacts
+  ("design Power BI reporting," "Designed the data model and visualization for the Investment
+  department's Business Intelligence efforts") and works with Jira/Confluence (Agile).
+
+- DELIVERY / PROJECT MANAGEMENT: JD requires "ensure the timely delivery." Candidate demonstrates
+  delivery discipline: "Designed, built, and deployed a robust, automated budget modeling tool
+  from scratch within a critical 2-week timeline," and rolled out Qlik Sense with 8 executive
+  dashboards cutting reporting cycles by 50%.
+
+--------------------------------------------------------------------------------
+CRITICAL GAPS
+--------------------------------------------------------------------------------
+- ROLE FOCUS MISMATCH: The JD is a DATA PLATFORM / FUNCTIONAL ANALYST role. The candidate's 15+
+  year career is predominantly FP&A / Group Controller / financial auditing. The "Business /
+  Functional Analyst" title appears only in recent freelance mandates; earlier and much of the
+  history is finance-control/audit. Need to confirm ≥5 years is actually as a
+  Business/Functional Analyst (the JD metric) versus finance-control work.
+
+- ENTERPRISE DATA PLATFORM / INFRASTRUCTURE: JD wants "good understanding of Data Platforms,
+  Integrations etc." Candidate shows BI tools, SQL/R, and Power Query ETL, but no explicit
+  evidence of enterprise data-platform engineering (data warehouses/lakehouses, cloud data
+  platforms, pipeline/orchestration architecture, data governance). This is the core of the
+  mandate and should be validated with the candidate.
+
+- HEALTHCARE SECTOR: JD states "Experience within the Healthcare sector is also preferred."
+  Candidate's only healthcare exposure is incidental as an auditor (listed end-clients such as
+  DomusVie) — no healthcare business/functional analysis experience. Noted gap.
+
+- FORMAL DATA MAPPING / SPEC DOCUMENTS: JD explicitly requires "data mappings" and "functional
+  specifications and documentation." Candidate's artifacts are finance-reporting focused; no
+  explicit evidence of structured data-mapping sheets or functional-spec documentation as standard
+  deliverables. Should be probed.
+
+- DATA INTEGRATION SCALE / ARCHITECTURE: JD's "data integrations" imply enterprise integration.
+  Candidate evidence is Power Query ETL and reconciliation between specific systems (IVDB/SAP),
+  which is narrower than broad enterprise integration architecture. Gap to confirm.
+
+--------------------------------------------------------------------------------
+NET ASSESSMENT (strategist view)
+================================================================================
+The candidate is a strong DATA/BI + BUSINESS ANALYST with clear, direct evidence on the two core
+JD demands — data migration to a new platform (SAP S/4HANA) and functional business analysis — and
+matches location, language, tenure, and toolset. The primary risks are (1) the role is
+data-platform/functional rather than finance-centric, and (2) the preferred Healthcare sector
+experience is absent. Recommend advancing to the 1-stage interview, with prepared probing
+questions on enterprise data-platform depth, formal data-mapping/spec artifacts, and any
+healthcare-domain exposure.

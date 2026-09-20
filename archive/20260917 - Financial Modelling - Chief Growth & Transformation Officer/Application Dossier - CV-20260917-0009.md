@@ -3,18 +3,20 @@
 **Serial:** CV-20260917-0009
 **Candidate:** Ernest SONG
 **Stated position on CV:** Senior FP&A / Group Controller freelance
-**Target role (from JD):** Senior FP&A / Group Controller freelance (corporate mandate for a high-growth international group)
-**JD source:** Pasted job description (FP&A / Group Controller, corporate, multi-year plan + investor support)
+**JD title (source):** Senior FP&A / Group Controller freelance (corporate mandate for a high-growth international group)
+**JD source:** Pasted job description (Michèle)
 **Prepared by:** Executive Recruitment Strategist
 **Date:** 2026-09-17
 
 > **Factual basis.** Every claim below is drawn from the candidate's base CV (`source/SONG Ernest - CV v1.typ`) and the JD as supplied. No experience, metric, company, date or location is invented. Each point is traceable to a named role in the CV.
 
+> **Note on metadata.** The session manifest lists "Target Role: Chief Growth & Transformation Officer", but the JD text describes a *Senior FP&A / Group Controller freelance (corporate)* mandate. This dossier is built to the **actual JD title** used in the CV (`Senior FP&A / Group Controller freelance`).
+
 ---
 
 ## 1. ROLE SUMMARY (factual read of the JD)
 
-The JD describes a **contract/freelance Senior FP&A / Group Controller** mandate for a **high-growth international group** that has grown through **several acquisitions** and is now in a strategic phase. Details:
+The JD describes a **contract/freelance Senior FP&A / Group Controller** mandate for a **high-growth international group** that has grown through **several acquisitions** and is now in a strategic phase.
 
 - **Start:** ASAP · **Duration:** minimum 6 months, with extension · **Regime:** full-time (4 days/week possible for the right profile).
 - **Mandate:** support the CFO and Corporate Controlling in building the **Medium-Term Plan 2026–2030** and progressively embedding it into **Lucanet**.
@@ -27,25 +29,25 @@ The JD describes a **contract/freelance Senior FP&A / Group Controller** mandate
 ## 2. STRONGEST MATCHING ANGLES
 
 ### Direct matches (real evidence satisfies JD requirements)
-- **Business planning / MTP 2026–2030:** Magnetrap (interim CFO — cash-flow projections, business plans, long-term financial models) + Vinci Airports (multi-year concession budgeting/forecasting, 50+ locations).
-- **Financial modelling / cash-flow / working capital:** Engie Tractebel (project cash-flow reporting, per-project cash exposure, financing-need assessment, credit/impairment testing, SAP HANA data models, Power BI reporting) + Engie SEM (from-scratch budget-modelling tool, PowerQuery ETL close of 1,500+ bookings/close, zero human intervention).
-- **Consolidation & reporting (bilan):** Rexel consolidated IFRS reporting (APAC/LATAM/Canada) + SAP BPC/Cognos integration; KPMG audit of financial statements under BE-GAAP/IFRS/SOX.
+- **Business planning / MTP 2026–2030:** Magnetrap (interim CFO — cash-flow projections, business plans, long-term financial goals) + Vinci Airports (multi-year concession budgeting/forecasting, 50+ locations, €12B valuation context).
+- **Financial modelling / cash-flow / working capital:** Engie Tractebel (project cash-flow reporting, per-project cash exposure, financing-need assessment, credit/impairment testing, SAP HANA data models, Power BI reporting) + Engie SEM (from-scratch automated budget-modelling tool in a 2-week window; PowerQuery ETL close of 1,500+ bookings/close, zero human intervention).
+- **Consolidation & reporting (bilan):** Rexel consolidated IFRS reporting (LATAM/APAC/Canada, €3B-turnover scope) + SAP BPC/Cognos integration; KPMG audit of financial statements under BE-GAAP/IFRS/SOX.
 - **Investor / bank / stakeholder support:** Magnetrap investor results reporting; financial models maintained for banking stakeholders.
-- **M&A / due diligence / post-acquisition integration:** Shurgard self-storage acquisitions (restructuring, divestitures); Holcim post-M&A workflow restructuring integrating acquired operations.
+- **M&A / due diligence / post-acquisition integration:** Shurgard self-storage acquisitions (€10M–€80M, restructuring, divestitures); Holcim post-M&A workflow restructuring integrating acquired operations.
 - **Autonomous, cross-region analysis:** freelance career delivered end-to-end across BE, FR, NL, PT, LATAM, APAC; IVDB↔SAP reconciliation + WBS restructuring.
 - **Languages:** French native (desired) + English proficient (indispensable) — both JD language requirements satisfied. ✓
 
 ### Transferable (fulfills implicit JD requirements)
-- **CAPEX reasoning:** Vinci concession valuation + Engie Tractebel capex underwriting for investor engagements.
+- **CAPEX reasoning:** Vinci concession valuation + Engie Tractebel underwrote capex for investor engagements.
 - **Movement schedules / reconciliation:** IVDB↔SAP reconciliation + WBS-code restructuring support balance-sheet movement analysis.
 - **Tooling onboarding:** SAP BPC, Cognos, Business Object, Hyperion stack → fast track to Lucanet (explicitly nice-to-have, not indispensable per the JD).
 - **Education foundation:** ESCPS Auditing & Consulting (#1 FT 2026) + Master's in Management Science & Financial Control.
 
 ### Recommended talking points (interview framing)
 1. **Lead with the JD pillars** — multi-year business planning, consolidation/bilan, cash-flow/working-capital/CAPEX modelling, and M&A/investor support — mapping each to a named CV role.
-2. **Quantify the real proof points:** €3M debt/equity fundraising (Magnetrap); 1,500+ bookings/close zero-intervention (Engie SEM); valuation at 4x acquisition cost (Vinci Airports); 50+ airport locations.
+2. **Quantify the real proof points:** €3M debt/equity fundraising (Magnetrap); 1,500+ bookings/close zero-intervention (Engie SEM); rebate modelling via matrix & automated SAP (Holcim); valuation at 4x acquisition cost across 50+ airport locations (Vinci Airports).
 3. **Own the Lucanet gap proactively** — consolidation/reporting stack accelerates onboarding; French native + English proficient remove language risk.
-4. **Position as an autonomous senior FP&A/Group Controller**, not a broad "finance leader" — the JD wants a focused corporate mandating profile.
+4. **Position as an autonomous senior FP&A/Group Controller** — the JD wants a focused corporate mandating profile.
 
 ---
 

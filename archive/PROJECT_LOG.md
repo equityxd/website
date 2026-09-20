@@ -306,3 +306,67 @@ JD (~3.5 KB) + manifest (~6 KB) ≈ 30 KB exceeded the model's usable context.
 - Regenerated `custom_cv/CV-20260917-0009_CV0009.typ`; verified the grid, keywords and
   competencies field are all JD-adapted with no generic tool noise. Base `#grid` deliberately
   keeps its original content so `transform()` can still match + override it at generation time.
+
+
+---
+
+**2026-09-23 — Streamlined CV-generation pipeline: end-to-end fix**
+
+Fixed the failure the user hit at **Step 2/5 ("Tailored CV (.typ)")** — the pipeline
+was dying before producing any CV. Root causes and fixes, all in `generation/engine.py`:
+
+- **Naming bug (the reported symptom):** the deterministic step looked for `gen_typtyp.py`,
+  which never existed; the real file is `gen_cv_typ.py`. Corrected the functional reference
+  (and cosmetic log/docstring references) so the CV scaffolding is generated.
+- **`_run_cv_llm` / `_cv_llm_prompt` contract mismatch:** the LLM prompt builder called
+  `.get(...)` on `compact_content`, but `_compact_facts()` returns a *string*, so every LLM
+  call raised `'str' object has no attribute 'get'`. Reworked both signatures to accept a
+  `target_role` string (derived from the manifest `^- Target Role` line, like `run_generation`)
+  and use it directly. The caller now passes `target_role` through.
+- **`_parse_cv_llm_output` header leak:** each section slice started *at* the header line, so
+  the payload wrongly embedded the label (e.g. position became `"POSITION NAME:\n..."`).
+  Rewrote the parser to slice *after* the header line, so only clean content is returned.
+- **`#entry(#entry(` corruption:** the LLM output sometimes echoed stray Typst `#entry(`
+  prefixes / leftover header labels into the title and bullets. Added defensive sanitisation
+  (strip `#entry(` and `POSITION NAME:` / `BULLETS:` labels, collapse whitespace) in the
+  position and bullets application. Also fixed the highlight rejoin, which *doubled* `#entry(`
+  (the `re.split` delimiter was prepended on top of an already-delimited block).
+- Verified end-to-end with `MyCV/test_det_cv.py` across multiple runs (LLM output is
+  non-deterministic) — `CV1.typ` now compiles to a valid PDF with only single `#entry(`
+  records, no `.pyc` masking.
+
+Net: the hybrid CV generation (deterministic scaffolding + 5 LLM-tailored parts) now works
+from `run.bat` through PDF.
+
+---
+
+## 2026-09-20 — JD-aware highlighting corrected (engine.py backstop)
+
+Fixed the stale generated CV for application **CV-20260920-0013** so that *exactly* the
+JD-relevant entries {**Engie SEM**, **Holcim**} render light-grey (`important: true`) and
+all others stay normal — matching `EXPECTED_HIGHLIGHTED` in `gen_cv_typ.py`.
+
+Root causes in `generation/engine.py` `_jd_aware_highlight`:
+
+- **`seen`-before-`_add` no-op bug:** the standalone-signal loop called `seen.add(base)`
+  *before* `_add(base)`, so `_add`'s `term.lower() not in seen` guard rejected every
+  standalone domain word (`platform`, `migration`). Result: single signal words never
+  reached `terms`, so `migration`/`platform` were truncated by the `[:14]` cap and NO
+  entry was highlighted. Fixed by calling `_add(base)` first, then updating `seen`.
+- **Single-signal ordering:** added `strong` (real signal words) prepended before the
+  multi-word phrases so they survive the `terms[:14]` cap (like `gen_cv_typ.py`).
+- **Missing-flag highlighting:** base-template entries use the `#let entry(...)` default and
+  carry NO `important:` flag, so the backstop could not grey them. `_highlight_block`
+  now *adds* `important: true` (relevant) / `important: false` (irrelevant) before the
+  closing `)` when no flag is present, and flips existing flags otherwise.
+
+Also corrected the term extraction (lowercased bigrams like "data platform" / "data
+migration" are now captured, not rejected by the old TitleCase rule) and re-ran the
+`_jd_aware_highlight` backstop on the generated `.typ`, then recompiled the PDF.
+
+Verified: `python gen_cv_typ.py --test` → **24 passed, 0 failed**; the regenerated
+`CV-20260920-0013_CV1.typ` shows Engie SEM + HolCIM grey, all others normal; PDF
+(`%PDF-1.7`) compiles cleanly.
+
+Note: `C:/MyDev/MyCV/PROJECT_LOG.md` does not exist; the log lives at
+`C:/MyDev/MyCV/archive/PROJECT_LOG.md`.

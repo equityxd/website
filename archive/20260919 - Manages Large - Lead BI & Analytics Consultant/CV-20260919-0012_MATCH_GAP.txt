@@ -1,0 +1,102 @@
+================================================================================
+MATCH & GAP ANALYSIS
+================================================================================
+Serial Number : CV-20260919-0012
+Candidate     : Ernest SONG
+Company       : Manages Large
+Position      : Lead BI & Analytics Consultant
+Source        : https://www.linkedin.com/pulse/lead-bi-analytics-consultant-brussels-hybrid-freelance-jeremie-meba-gsqme/
+Prepared by   : Principal tech recruiter / executive resume strategist
+
+METHODOLOGY
+Comparative breakdown of the candidate's BASE CV (source/SONG Ernest - CV v1.typ)
+against the JD, using ONLY factual, verifiable experience. No invented metrics,
+no exaggeration. Three buckets: Direct Matches, Transferable, Critical Gaps.
+
+================================================================================
+DIRECT MATCHES  (skills/tools/experience stated in the JD, present in the CV)
+================================================================================
+- Business Intelligence / Analytics: MS Power BI, QlikSense, Business Objects,
+  Cognos, Hyperion — directly named in JD ("modern BI ecosystems",
+  "Power BI/enterprise reporting environments").
+- Data Modelling: "Designed the data model and visualization for the Investment
+  department's Business Intelligence efforts" (Shurgard); supports the JD's
+  "Conceptual, Logical and Physical Data Modelling" requirement.
+- ETL / data pipelines: "deploying advanced PowerQuery ETL workflows to safely
+  ingest batches of 1,500+ bookings per close" (Engie SEM) — maps to
+  "databases, pipelines and reporting ecosystems".
+- Data governance & data quality: interim-CFO internal control system
+  (ICM), "optimized governance, internal control, and data quality"
+  (Degroof Petercam), data reliability + auditor liaison (Holcim) — maps to
+  "data quality and data governance issues impacting reporting".
+- KPIs / metrics / business definitions: FP&A, budgeting, forecasting, P&L,
+  cash-flow, CAPEX reporting — maps to "define meaningful KPIs, metrics and
+  business definitions".
+- Translating business processes into reporting models: repeated across
+  Engie SEM (WWS restructuring), Holcim, Rexel — maps to
+  "translating complex business processes into data and reporting models".
+- Multi-domain / multi-stakeholder / multi-country reporting: BE, FR, NL and
+  Asia-Pacific/Latin America/Canadian subsidiaries — maps to
+  "multiple business domains, stakeholders and reporting requirements" and
+  "large-scale or international organisations".
+- Leadership / guidance: led financial controlling pilot, led audit teams,
+  managed business development — maps to
+  "Provide guidance and leadership to BI, analytics and data professionals".
+- Strategic + hands-on: "Comfortable operating at both strategic and hands-on
+  levels" — demonstrable across consulting engagements.
+- English communication: works autonomously in English and French — maps to
+  "Excellent communication skills in English".
+- Programme / funding / non-profit environment (strong advantage):
+  * KPMG: "Certified FP7 Grant Agreements for the EU Research program" — direct
+    European Commission / EU-funded programme exposure.
+  * Founder of non-profit "Soap collect" — direct non-profit operating
+    experience.
+  * Fundraising experience (€3M debt/equity raises, Magnetrap).
+
+================================================================================
+TRANSFERABLE  (related experience that fulfills implicit JD requirements)
+================================================================================
+- SAP HANA migration experience (Engie SEM, Holcim) — foundational to
+  "data warehouses, analytical platforms and modern cloud data platforms" and
+  "legacy enterprise systems".
+- Group Controlling & consolidation (IFRS / BE-GAAP) — transfers to
+  "establish a common data model across multiple funding programmes".
+- Business Object / Cognos / Hyperion enterprise reporting — transfers to
+  "enterprise reporting environments".
+- Data-quality / audit background (SOX testing, KPMG audit) — transfers to
+  "auditable" reporting and "data quality frameworks".
+- RPA / Power Automate / Jira / Confluence — transfers to analytics
+  automation and delivery/discipline practices.
+- Financial modelling + investor support — transfers to complex
+  stakeholder reporting and decision analytics.
+- Non-profit + EU grants + fundraising — transfers to
+  "international programme/funding management systems" and the
+  "European public sector, non-profit, grants, funding" sweet spot.
+
+================================================================================
+CRITICAL GAPS  (required / nice-to-have skills NOT demonstrated in the CV)
+================================================================================
+- Microsoft Fabric — NOT mentioned. (Listed as advantageous in JD.)
+- Data Lakehouse architectures — NOT mentioned. (Listed as advantageous.)
+- Oracle / MySQL — NOT mentioned. (Listed as advantageous.)
+- No explicit title/track as a dedicated "Data Architect" or formal
+  "Data Governance" function — governance experience is finance-internal rather
+  than a standalone data-governance role.
+- No explicit data-warehouse administration or dimensional-modeling (Star/
+  Snowflake) certification stated — conceptual/logical/physical modelling
+  experience is present but not certified/formalised.
+- No stated experience with a dedicated "international funding/funding
+  management system" platform beyond FP7 grant certification.
+- Data-platform / database engineering (pipelines at scale, orchestration) is
+  implied via PowerQuery ETL but not stated as managed data-engineering.
+
+INTERPRETATION
+The candidate is a strong BI/analytics + data-modelling + governance fit on the
+"translate business processes into reliable reporting" axis and holds a rare
+combination of EU-funded (FP7) grant certification plus non-profit operating
+experience — directly aligned with a European non-profit / international
+programme client. The genuine gaps are platform-specific (Microsoft Fabric,
+Data Lakehouse, Oracle/MySQL) and the absence of a formal data-architect title.
+These are closable via his hands-on Power BI / SAP HANA / ETL track record and his
+consulting ramp-up model.
+================================================================================

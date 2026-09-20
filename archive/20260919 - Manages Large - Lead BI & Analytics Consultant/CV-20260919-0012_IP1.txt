@@ -1,0 +1,136 @@
+================================================================================
+INTERVIEW PREP — STAR Q&A OUTLINES
+================================================================================
+Serial Number : CV-20260919-0012
+Candidate     : Ernest SONG
+Position      : Lead BI & Analytics Consultant
+Source        : https://www.linkedin.com/pulse/lead-bi-analytics-consultant-brussels-hybrid-freelance-jeremie-meba-gsqme/
+================================================================================
+GUIDANCE
+The below STAR outlines are drawn STRICTLY from the candidate's real CV
+experiences — no invented scenarios. Use as talking-point scaffolding. Keep
+answers factual; quantify only with figures already on the CV (e.g., 1,500+
+bookings per close, 50+ locations, 4x acquisition-cost valuation, €3M raises).
+
+================================================================================
+Q1. "Describe an occasion you translated a complex business process into a
+    scalable reporting / analytics solution."  (JD: translate requirements into
+    scalable reporting & analytical solutions)
+================================================================================
+SITUATION: Engie SEM — SAP S/4HANA migration pilot across French subsidiaries;
+  a resource gap left budgeting reliant on an unreliable legacy framework.
+TASK: Restore operational continuity and establish consistent, reliable
+  reporting while acting as the core Business Analyst bridging IT architecture
+  and business operations.
+ACTION: Built an automated budgeting tool from scratch within a 2-week window;
+  deployed PowerQuery ETL workflows to ingest 1,500+ bookings per close with
+  zero manual intervention; reconciled data between IVDB middle-office
+  databases and SAP S/4HANA; simplified WWS project codes to strengthen
+  portfolio monitoring.
+RESULT: Restored continuity during the resource gap; established ETL/pipeline
+  standards and consistent, auditable reporting; repositioned the role at the
+  BI/business-nexus the JD describes.
+ANGLE: Emphasise "from scratch" build, ETL at scale, and bridging architecture
+  with business — the heart of the consultant role.
+
+================================================================================
+Q2. "Tell me about establishing data modelling, standards or governance."
+    (JD: Conceptual/Logical/Physical data modelling; establish BI/data standards)
+================================================================================
+SITUATION: Across Shurgard, Holcim and Degroof Petercam, reporting was
+  inconsistent and data quality/governance were ad hoc.
+TASK: Introduce a common data model and consistent, auditable reporting
+  standards across multiple stakeholders and domains.
+ACTION:
+  - Shurgard: designed the data model and visualisation for the Investment BI
+    effort — transitioning conceptual/logical models into physical reporting.
+  - Holcim: established common data models + enterprise reporting standards for
+    post-M&A group controlling; resolved data-quality/governance issues with
+    auditors.
+  - Degroof Petercam: established data governance & data-quality standards to
+    optimise the finance close; led regulatory-reporting sourcing under BPM.
+RESULT: More consistent, reliable and auditable reporting; governance and
+  internal-control improvements embedded into close processes.
+ANGLE: Position the combination of design (conceptual/logical/physical) plus
+  governance as direct evidence of the JD's modelling + standards requirement.
+
+================================================================================
+Q3. "How do you define KPIs, metrics and business definitions?"
+    (JD: Ability to define meaningful KPIs, metrics and business definitions)
+================================================================================
+SITUATION: Engie Tractebel cash-flow / financing need analysis; Magnetrap
+  performance monitoring.
+TASK: Turn demanding financial business processes into defined, meaningful
+  metrics and business definitions for stakeholder decisions.
+ACTION: Defined cash-flow reporting requirements and Power BI reporting;
+  documented metrics and data relationships from SAP HANA data; established
+  cash-flow projections, business plans and performance KPIs for Magnetrap.
+RESULT: Documented, repeatable metrics and business definitions feeding
+  consistent stakeholder reporting and long-term financial modelling.
+ANGLE: Show the discipline of "define → document → align" — a consultant
+  hallmark.
+
+================================================================================
+Q4. "Describe a time you bridged business stakeholders, data governance,
+    architecture and delivery teams."  (JD: bridge the gap between stakeholders,
+    data governance, architecture and technical delivery)
+================================================================================
+SITUATION: Multi-team transformations (Engie SEM, Holcim, Tobania) with
+  business, IT architecture and delivery teams misaligned.
+ACTION:
+  - Engie SEM: acted as the core Business Analyst bridging IT architecture and
+    business operations during SAP migration.
+  - Tobania: delivered tailored reports to enable data-driven decisions and
+    established change-management structures for adoption of RPA/self-service BI.
+  - Holcim/SMC: liaised with auditors on data quality / rebate matters.
+RESULT: Aligned stakeholders, drove adoption, and made reporting auditable.
+ANGLE: Highlight dual fluency — comfortable at strategic and hands-on levels,
+  presenting to both technical and non-technical audiences.
+
+================================================================================
+Q5. "Do you have experience in the European non-profit / grants / funding /
+    international programme environment?"  (JD: particularly valuable; strong
+    advantage)
+================================================================================
+SITUATION: KPMG audit cover and non-profit operating experience.
+TASK: Support compliant, auditable reporting for EU-funded and non-profit
+  contexts.
+ACTION:
+  - KPMG: Certified FP7 Grant Agreements for the EU Research program — direct
+    European Commission / EU-funded programme exposure; auditable reporting
+    under SOX for PPP contracts.
+  - Soap collect: founded and operate a non-profit supplying hygiene products
+    to disadvantaged communities; Magnetrap fundraising (€3M debt/equity).
+RESULT: Demonstrated grant-certification discipline and operating intuition for
+  non-profit / funding stakeholders — a differentiator versus typical BI
+  candidates.
+ANGLE: Frame as the "rare programme-and-funding lens" that de-risks onboarding
+  for a non-profit / international-programme client.
+
+================================================================================
+Q6. "How do you handle a platform you haven't used extensively, e.g. Microsoft
+    Fabric or a Data Lakehouse?"  (JD nice-to-have gaps: Fabric, Lakehouse,
+    Oracle/MySQL)
+================================================================================
+SITUATION: Rapidly adopted tooling in time-constrained engagements.
+TASK: Reach production speed on newer data-platform stacks.
+ACTION: Leverage established, transferable foundations — hands-on Power BI,
+  SAP HANA and PowerQuery ETL — to map concepts quickly; apply the same
+  conceptual/logical/physical modelling discipline to new architectures.
+RESULT: Fast ramp-up; consistent reporting regardless of underlying platform.
+ANGLE: Honest, proactive framing — treat platform specifics as a short
+  onboarding delta, not a capability gap, while the underlying BI/analytics,
+  modelling and governance expertise is fully transferable.
+
+================================================================================
+BONUS: Positioning close (any question)
+================================================================================
+- 15+ years translating business processes into reliable, scalable reporting.
+- Real data-modelling + governance + enterprise-reporting (Power BI, QlikSense,
+  Cognos, Hyperion, SAP HANA) track record.
+- Rare combination: EU-funded (FP7) grant certification + non-profit
+  operating + fundraising — directly aligned with a non-profit / international
+  programme client.
+- Comfortable at both strategic and hands-on levels; strong stakeholder
+  bridging between business, governance, architecture and delivery.
+================================================================================

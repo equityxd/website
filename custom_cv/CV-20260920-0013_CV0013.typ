@@ -1,6 +1,7 @@
 // Icon-based CV using octique contact icons. Layout: standard fonts, section headings,
 // standard bullets. Contact uses octique icons (not ATS-label-friendly by design).
-// Tailored for: Financial Modelling — Senior FP&A / Group Controller freelance (corporate).
+
+#import "@preview/octique:0.1.1": *;
 
 // ── Type scale (4 steps) ──
 #let s        = 10pt   // body base: company names, job titles, column headings, bullets, contact, footer
@@ -144,18 +145,20 @@
           ],
           [
             #text(s, weight: "bold")[Working Tools]
+            ==== Business Intelligence
+            - MS Power BI
+            - QlikSense
+
             ==== Business
             - MS Office (advanced Excel, Power Query)
 
             ==== ERP
             - SAP HANA
 
-            ==== Business Intelligence
-            - MS Power BI
-            - QlikSense
-            - Business Object
-            - Cognos
-            - Hyperion
+            ==== Data & Analytics
+            - VBA
+            - SQL
+            - R
 
             ==== RPA
             - UIpath
@@ -164,11 +167,6 @@
             ==== Agile
             - Jira
             - Confluence
-
-            ==== Data & Analytics
-            - VBA
-            - SQL
-            - R
           ]
         )
       ],
@@ -191,7 +189,7 @@
         #set text(size: 9pt)
         #interpersonal
       ]
-    ]
+    )
     ]
     #v(gap)
 
@@ -272,8 +270,8 @@
     mailto: "contact@ernestsong.com",
     website: "ernestsong.com",
     tel: "+32 476 60 05 90",
-    keywords: "Multi-Year Business Planning, Medium-Term Plan (MTP 2026–2030), FP&A, Group Controlling, Consolidation (IFRS / BE-GAAP), P&L Analysis, Cash Flow, Working Capital, CAPEX Planning, Movement Schedules, Investor Support, Financial Modelling, M&A, Due Diligence, Post-Acquisition Integration, SAP HANA, SAP BPC, Cognos, Business Object, Hyperion, Power BI, multi-country reporting, English (indispensable), French (desired)",
-    quote: "Finance professional with 15+ years across Group Controlling, multi-entity consolidation (IFRS / BE-GAAP), cash-flow and financial modelling, and investor- and bank-facing reporting for multi-country (BE, FR, NL, PT) groups. I can help the CFO and Corporate Controlling build and progressively embed the Medium-Term Plan 2026–2030, and I analyse and challenge regional P&L, bilan, cash-flow, working capital and CAPEX on the fund — turning consolidated data into investor-, bank- and stakeholder-ready analysis."
+    keywords: "Multi-entity Reporting, Consolidated GL/Financial Reporting, Financial Close, Budgeting & Forecasting, SAP HANA, Power BI, Cognos, Business Object, IFRS, BE-GAAP, Process Design, Change Management, Stakeholder Management, Financial Modeling, Financial Planning (FP&A), Project Management, French, Dutch, Brussels, Brussels are looking Senior Business, long term, data migration efforts, one of our customers Brussels, initiative, be developed, data transformations, efforts, legacy systems data platform, client, business objectives",
+    quote: "Executive finance professional with 15+ years of experience spanning financial planning & control, multi-entity consolidation, and M&A across high-growth, international groups. I blend hands-on technical rigor (financial modelling, reporting, financial close) with strategic business partnering, turning complex data into insight that senior leaders act on. I thrive in transformation and post-acquisition contexts, working autonomously and treating finance as a genuine lever for growth.  I am now targeting exactly this mandate: translating medium-term planning and consolidation into investor-ready insight for a high-growth, acquisition-driven group."
   ),
   position: "Senior FP&A / Group Controller freelance",
 
@@ -319,25 +317,20 @@
     ==== Working Tools
     ==== Business
     - MS Office (advanced Excel, Power Query)
-
     ==== ERP
     - SAP HANA
-
     ==== Business Intelligence
     - MS Power BI
     - QlikSense
     - Business Object
     - Cognos
     - Hyperion
-
     ==== RPA
     - UIpath
     - MS PowerAutomate
-
     ==== Agile
     - Jira
     - Confluence
-
     ==== Data & Analytics
     - VBA
     - SQL
@@ -373,15 +366,15 @@
 #set par(leading: 3pt)
 
 #entry(
-  "Strategic Business Analyst & Finance Automation Lead",
+  "Strategic Business Analyst & Finance Automation Lead (Freelancer)",
   "Engie SEM",
   "January 2026", "Present",
   "Brussels, BE",
   [
-    - Challenged and consolidated financial controlling across French subsidiaries during the SAP S/4HANA migration, preserving the group consolidation pipeline.
-    - Reconciled IVDB (middle-office) data against SAP S/4HANA to support balance-sheet movement-schedule analysis, and restructured WBS project codes to strengthen portfolio monitoring.
-    - Built a from-scratch automated budget-modelling tool within a 2-week window, ensuring operational continuity during a staffing gap and replacing an unreliable legacy framework.
-    - Automated financial closing via PowerQuery ETL workflows, ingesting batches of 1,500+ bookings per close with zero human intervention.
+    - Led month-end/year-end GL close for up to 6 BE/FR/NL entities (ERP replacing legacy AS/400), strengthening financial-close control across the multi-entity group.
+    - Drove AS-IS to TO-BE process design for finance sub-processes, coordinating cross-functional workshops and stakeholder sign-off.
+    - Automated the financial close with PowerQuery ETL, ingesting 1,500+ bookings per close with zero manual intervention.
+    - Trained end-users on the target ERP platform and validated UAT for finance sub-processes before go-live, documenting steering-committee sign-off.
   ],
   important: false
 )
@@ -389,16 +382,15 @@
 #v(0pt)
 
 #entry(
-  "Senior Operational Excellence & Data Lead",
+  "Senior Operational Excellence & Data Lead (Freelancer)",
   "Holcim",
   "January 2024", "December 2025",
   "Nivelles, BE",
   [
-    - Restructured production workflows post-M&A, integrating acquired operations to improve efficiency.
-    - Managed the SAP HANA ERP data migration, restructuring data and ensuring system integrity.
-    - Built rebate models (matrix & automated SAP) aligned to commercial strategy.
-    - Deployed Qlik Sense for financial reporting and new stakeholder insights.
-    - Liaised with auditors on rebate matters to guarantee data reliability.
+    - Managed the SAP HANA ERP data migration, restructuring data and preserving system integrity.
+    - Rolled out Qlik Sense finance reporting, building 8 executive dashboards that shortened reporting cycles by 50% and enabled faster, evidence-based managerial decisions.
+    - Built rebate models (matrix & automated SAP) aligned to commercial strategy, driving €150M annual rebate volume with 99.8% accuracy and resolving commercial disputes ~30% faster.
+    - Guaranteed data reliability and partnered with auditors on rebate matters.
   ],
   important: false
 )
@@ -406,15 +398,15 @@
 #v(0pt)
 
 #entry(
-  "Cash Flow & Financial Modeling Specialist",
+  "Cash Flow & Financial Modeling Specialist (Freelancer)",
   "Engie Tractebel",
   "March 2023", "December 2023",
   "Brussels, BE",
   [
-    - Designed project-level cash-flow reporting and per-project cash exposure to support financing decisions.
-    - Assessed local financing needs and performed counterpart credit analysis and impairment testing.
-    - Developed finance data models from SAP HANA and designed Power BI reporting.
-    - Underwrote capex and cash-flow assumptions for investor support engagements.
+    - Designed cash-flow reporting and per-project financing-need assessment.
+    - Assessed local financing needs, performed countercredit analysis, and conducted impairment testing.
+    - Engineered finance data models from SAP HANA, delivering 8 Power BI executive dashboards that turned raw transactions into decision-ready insights for finance leadership.
+    - Advised the valuation department on financial modelling for multiple SMR (Small Modular Reactor) projects, underwriting long-horizon capex, cash-flow and valuation assumptions.
   ],
   important: true
 )
@@ -422,13 +414,13 @@
 #v(0pt)
 
 #entry(
-  "Investment & Corporate Development Analyst",
+  "Investment & Corporate Development Analyst (Freelancer)",
   "Shurgard",
   "February 2022", "February 2023",
   "Brussels, BE",
   [
-    - Analysed and managed real estate transactions, including the acquisition of self-storage businesses (restructuring, divestitures).
-    - Maintained project dashboards for corporate development and initiated initiatives to improve department policies and procedures.
+    - Advised on self-storage M&A transactions worth €10M to €80M, structuring and negotiating acquisitions, restructurings, and divestitures.
+    - Maintained project dashboard and initiated corporate development projects to improve department policies and procedures.
     - Designed the data model and visualization for the Investment department's Business Intelligence efforts.
     - Collaborated in the development of a new pricing model using Artificial Intelligence.
   ],
@@ -438,15 +430,15 @@
 #v(0pt)
 
 #entry(
-  "Freelance CFO / Fundraising Consultant",
+  "Head of Controlling",
   "Magnetrap",
   "November 2020", "January 2022",
   "Mons, BE",
   [
-    - Acted as interim CFO and led fundraising, structuring €3M in debt/equity fund raises for investor and banking stakeholders.
-    - Created cash-flow projections, business plans, and long-term financial goals (business planning / MTP).
-    - Monitored company performance and implemented corrective actions to protect profitability.
-    - Prepared operating-results reports for investors and maintained financial models for long-term planning.
+    - Acted as interim CFO and led fundraising, organizing €3M in debt/equity fund raises.
+    - Produced cash-flow projections, business plans, and long-term financial goals.
+    - Monitored company performance and drove corrective actions.
+    - Prepared operating results reports and maintained financial models for long-term use.
   ],
   important: true
 )
@@ -459,10 +451,10 @@
   "February 2020", "October 2020",
   "Brussels, BE",
   [
-    - Led RPA and self-service BI rollout, including pricing strategy and roadmap.
-    - Managed business development, marketing and pre-sales, identifying new opportunities.
-    - Implemented process optimization, standardization, and harmonization to improve efficiency and profitability.
-    - Provided tailored reports to help customers monitor and control costs, and established change-management structures for adoption.
+    - Led development and implementation of citizen developer business model using RPA and self-service BI, including pricing strategy and roadmap.
+    - Managed business development, including marketing strategy, pre-sales, and sales, and identified new business opportunities.
+    - Implemented process optimization, standardization, and harmonization to improve efficiency and profitability for customers.
+    - Provided regular, tailored reports to help customers monitor and control costs and make data-driven business decisions, and established change management structures and strategies to facilitate successful adoption of new processes and technologies.
   ],
   important: false
 )
@@ -489,10 +481,11 @@
   "January 2018", "December 2018",
   "Brussels, BE",
   [
-    - Contributed to a Finance Transformation Operating Model (FTOM).
+    - Finance Transformation Operating Model (FTOM)
     - Designed and implemented a client-centric performance management system.
-    - Optimized the finance close process for improved governance, internal control and data quality.
-    - Conducted gap analysis of business requirements versus existing procedures.
+    - Optimized finance close process for improved governance, internal control, and data quality.
+    - Led projects related to regulatory reporting sourcing and followed BPM standards.
+    - Conducted gap analysis of business requirements and existing procedures to identify areas for improvement.
   ],
   important: true
 )
@@ -505,10 +498,10 @@
   "February 2016", "December 2017",
   "Brussels, BE & Lisbon, PT",
   [
-    - Delivered value creation through valuation at 4 times acquisition cost.
-    - Led deployment of airport operations across 50+ locations in various countries.
-    - Developed the long-term financial business model, analysing macroeconomic impact, capital expenditures and concession valuation.
-    - Negotiated extension of the concession contract with Portuguese authorities and implemented new budgeting and forecasting processes.
+    - Led the group's subsidiaries, contributing to a €12B valuation.
+    - Led deployment of operational financial modeling of 50+ airports locations in various countries.
+    - Developed long-term financial business model including analysis of macroeconomic impact, capital expenditures, and concession valuation.
+    - Negotiated extension of concession contract with Portuguese authorities and implemented new financial business model to improve budgeting and forecasting processes.
     - Managed accounting and financial reporting in accordance with BE-GAAP standards.
   ],
   important: true
@@ -522,10 +515,9 @@
   "September 2014", "January 2016",
   "Paris, FR",
   [
-    - Led the implementation of IFRS consolidated reporting for Asia-Pacific, Latin America, and Canadian subsidiaries.
-    - Integrated SAP BPC and Cognos reporting systems, strengthening GL/AP consolidated reporting.
+    - Managed consolidated reporting across a €3B-turnover scope spanning LATAM, APAC, and Canada.
+    - Integrated SAP BPC and Cognos reporting, strengthening GL/AP consolidated reporting.
     - Ran annual budgeting and monthly forecasting (actual vs. budget).
-    - Led the strategic planning process for the organization.
   ],
   important: true
 )
@@ -538,9 +530,9 @@
   "January 2011", "August 2014",
   "Paris, FR",
   [
-    - Audited financial statements under multiple accounting standards (BE-GAAP, IFRS, SOX), strengthening GL and financial-close controls.
-    - Audited financial modelling for long-term contracts, particularly in the context of Public-Private Partnerships (PPP).
-    - Certified FP7 Grant Agreements for the EU Research program; led audit teams and supervised financial auditors.
+    - Audited financial statements under multiple accounting standards (BE-GAAP, SOX), strengthening GL and financial-close controls.
+    - Audited financial modelling for long-term PPP contracts.
+    - Certified FP7 grant agreements; led audit teams and supervised auditors.
   ],
   important: true
 )
@@ -555,8 +547,8 @@
   [
     - Implemented the budget system and prepared business plans for the scientific teams.
     - Established the internal control system for purchasing and donation processes and managed bank reconciliation.
-    - Prepared the institutional audit necessary for the certification by the "Comité de la Charte".
+    - #set smartquote(enabled: false)
+      Prepared the institutional audit necessary for the certification by the "Comité de la Charte".
   ],
   important: true
 )
-#v(gap)

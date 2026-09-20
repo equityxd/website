@@ -1,186 +1,151 @@
 MATCH & GAP ANALYSIS
-================================================================================
-Candidate: Ernest Song
-Target position: Senior FP&A / Group Controller (freelance, corporate level)
+Senior FP&A / Group Controller (freelance) — International Group
+Candidate: Ernest SONG
+
 Prepared by: Principal Tech Recruiter / Executive Resume Strategist
-Basis: Candidate's real CV content vs. published Job Description
+Method: Factual comparison only. JD requirements cited as evidence; candidate
+content cross-referenced against the CV as provided. No metrics, companies,
+or figures have been invented beyond what appears in the source materials.
 
-================================================================================
-DIRECT MATCHES (skills / tools / experience that directly match the JD)
-================================================================================
+======================================================================
+1. DIRECT MATCHES
+======================================================================
+The candidate's stated profile and competencies map directly onto the core
+requirements of the mandate.
 
-1. FP&A / Group Controlling / Corporate Finance profile
-   - JD requirement: "avez une expérience en Group Controlling, Corporate Finance ou FP&A"
-   - Evidence in CV: Competencies explicitly list "Group Controlling", "Planning &
-     Forecasting", and "P&L Analysis & Forecasting". Role title "Chief Growth &
-     Transformation Officer" and finance leadership mandates confirm a finance
-     corporate-level profile.
+a) Role title / profile
+- JD: "Senior FP&A / Group Controller freelance" for "Corporate Controlling" /
+  "Corporate Finance".
+- CV quote: "Senior FP&A / Group Controller finance professional ... Strong in
+  group controlling ...".
+- Match: role title and scope align directly.
 
-2. Medium-Term Plan / Multi-Year Business Planning
-   - JD requirement: "l'accent sera notamment mis sur le développement du plan
-     financier pluriannuel" / "Medium-Term Plan 2026-2030"
-   - Evidence in CV: Core competency "Medium-Term Plan (Multi-Year Business
-     Planning)". Vinci Airports experience: "Developed long-term financial business
-     model including ... budgeting and forecasting processes."
+b) Business planning / Medium-Term Plan
+- JD: "développement du plan financier pluriannuel", "élaboration du
+  Medium-Term Plan 2026-2030".
+- CV competency: "Medium-Term Plan (Multi-Year Business Planning)".
+- Match: direct, explicit.
 
-3. Consolidation & Financial Reporting (IFRS / BE-GAAP)
-   - JD requirement: "avez une parfaite maîtrise du bilan, du reporting et de la
-     consolidation"
-   - Evidence in CV: "Consolidation & Financial Reporting (IFRS / BE-GAAP)" and
-     Rexel "Led the implementation of IFRS financial reporting for Asia-Pacific,
-     Latin America, and Canadian subsidiaries" + "Spearheaded the restructuring
-     process and integration of SAP BPC and Cognos reporting systems."
+c) Financial modelling & investor support
+- JD: "financial modelling", "demandes d'investisseurs".
+- CV competency: "Investor Support & Financial Modelling"; Engie Tractebel:
+  "Develop financial modelling from SAP HANA data".
+- Match: direct.
 
-4. Cash Flow, Working Capital, CAPEX
-   - JD requirement: analyse of "le cash-flow", "le working capital", "le CAPEX"
-   - Evidence in CV: "Cash Flow Management", "Working Capital Management",
-     "CAPEX Planning". Direct role "Cash Flow & Financial Modeling Specialist
-     (Freelancer) @ Engie Tractebel": "Design cashflow reporting and cash exposure
-     per project. Assessment of financing needs ... credit analysis ... impairment
-     testing."
+d) Consolidation & financial reporting
+- JD: "maîtrisez parfaitement ... le reporting et de la consolidation".
+- CV competency: "Consolidation & Financial Reporting (IFRS / BE-GAAP)";
+  role "Reporting Consolidation Manager" at Rexel (led IFRS reporting across
+  subsidiaries).
+- Match: direct, with hands-on consolidation track record.
 
-5. Financial Modelling / Investor Support
-   - JD requirement: "financial modelling", "demandes d'investisseurs"
-   - Evidence in CV: "Investor Support & Financial Modelling". Magnetrap: "managed
-     financial models for long-term use", "created cash flow projections, business
-     plans". Vinci Airports: "long-term financial business model including ...
-     capital expenditures."
+e) P&L / cash-flow / working capital / CAPEX coverage
+- JD lists: "le P&L", "le bilan", "le cash-flow", "le working capital",
+  "les CAPEX".
+- CV competency: "P&L Analysis & Forecasting", "Cash Flow Management",
+  "Working Capital Management", "CAPEX Planning".
+- Match: direct across four of the five JD line items.
 
-6. M&A / Due Diligence / Post-Acquisition Integration
-   - JD requirement: "projets M&A, due diligence et post-acquisition integration"
-   - Evidence in CV: "M&A: Due Diligence & Post-Acquisition Integration". Holcim:
-     "restructure production workflows post-M&A", "SAP HANA migration", "Ensured
-     data reliability and liaised with auditors on rebate matters."
+f) M&A, due diligence, post-acquisition integration
+- JD: "projets M&A, due diligence et post-acquisition integration peut également
+  faire partie de la mission".
+- CV competency: "M&A: Due Diligence & Post-Acquisition Integration";
+  Holcim: "post-M&A integration and group controlling"; KPMG: " audits ...
+  SOX".
+- Match: direct.
 
-7. Accounting / audit / financial-close leadership (atout)
-   - JD "Un plus si ... une expérience en audit, M&A, due diligence ou investor
-     reporting"
-   - Evidence in CV: "Financial Auditor Supervisor @ KPMG Audit" (2011-2014),
-     "Conducted audits of financial statements ... SOX requirements"; ESCSP
-     Specialized Master's in "Auditing and Consulting."
+g) Language
+- JD: "anglais indispensable, français fortement apprécié".
+- CV: "Native: French", "Proficient: English".
+- Match: satisfies both mandatory English and desirable French.
 
-8. Reporting tools / BI / ERP
-   - JD: consolidation/reporting tooling, "nice-to-have"
-   - Evidence in CV: SAP HANA, MS Power BI, QlikSense, Business Object, Cognos,
-     Hyperion, MS Office (advanced Excel, Power Query).
+h) Communication with management / stakeholders
+- JD: "communez aisivement avec le management et les autres stakeholders".
+- CV quote: "working autonomously with management and international stakeholders
+  in English and French".
+- Match: direct.
 
-9. Language: English essential / French desirable
-   - JD requirement: "anglais indispensable, français fortement apprécié"
-   - Evidence in CV: "Proficient: English"; "Native: French." Directly satisfies
-     both the essential English and the strongly-desired French.
+======================================================================
+2. TRANSFERABLE (related experience fulfilling implicit JD requirements)
+======================================================================
+The JD asks for autonomous, challenging analysis of international regions and
+strategic finance judgement. The CV supports this indirectly:
 
-10. Freelance / mission fit
-    - JD: freelance, minimum 6 months, strategic corporate mission.
-    - Evidence in CV: Current and recent roles are structured as (Freelancer)
-      engagements; availability "dès que possible" is consistent with a freelance
-      contractor moving between mandates.
+- Multi-entity / multi-country exposure: CV quote "across multi-entity,
+  multi-country organisations (BE, FR, NL)"; Rexel role covered Asia-Pacific,
+  Latin America and Canadian subsidiaries; Vinci Airports across various
+  countries. This transfers to the JD's "collaborez étroitement avec plusieurs
+  régions internationales".
+- Autonomous, challenge-the-facts stance: CV quote "analysing and challenging
+  P&L, cash-flow, working capital and CAPEX"; " capable de réaliser des analyses
+  de manière autonome et de challenger les différentes régions sur le fond".
+- Financial closing / reporting automation: Engie SEM "Streamlined and
+  automated financial closing processes"; Holcim "financial reporting and
+  insights" (Qliksense). Supports JD reporting demands.
+- Working capital / financing judgement: Engie Tractebel "Assessment of
+  financing needs ... credit analysis ... impairment testing"; Magnetrap
+  "cash flow projections, business plans". Supports cash-flow / working-capital
+  requirement.
+- Investment / acquisition analysis: Shurgard "acquisition of self-storage
+  businesses", "Investment department's Business Intelligence", pricing model —
+  supports strategic finance / investment request handling.
 
-================================================================================
-TRANSFERABLE (related experience fulfilling implicit JD requirements)
-================================================================================
+Note on transferability caveat: several entries are "Freelancer" engagements
+focused on automation/BI/data and short assignments; the depth of *standalone*
+FP&A group-controller responsibility is asserted in the profile/quote but is
+not always evidenced per-role beyond the highlighted competencies.
 
-1. Autonomy & challenging regions on the substance
-   - JD requirement: "capable de réaliser des analyses de manière autonome et de
-     challenger les différentes régions sur le fond"
-   - Evidence: Long track record of autonomous freelance mandates spanning multiple
-     countries (BE, FR, NL, PT, international subsidiaries). "Led ... reporting",
-     "Spearheaded ... integration", "Led the strategic planning process" (Rexel),
-     "Negotiated extension of concession contract with Portuguese authorities."
+======================================================================
+3. CRITICAL GAPS
+======================================================================
+Gaps are items where the JD requirement is not clearly or directly supported by
+the provided CV. Listed as evidence-based observations, not invented facts.
 
-2. Balance sheet (bilan) understanding
-   - JD requirement: "maîtrise parfaite du bilan"
-   - Evidence: Operator side of the table ("I read the numbers and the organisation"),
-     general accounting depth (GL, AP, AR), financial-close leadership, and interim
-     CFO experience with balance-sheet-level budgeting and internal controls
-     (ICM Brain & Spine: "Established the internal control system ... managed bank
-     reconciliation").
+a) Confirmation of balance-sheet (bilan) mastery
+- JD: "maîtrisez parfaitement le bilan" (balance sheet) and analysis of
+  "le bilan".
+- CV: competencies list P&L, cash-flow, working capital, CAPEX, consolidation,
+  but "bilan" / balance-sheet specific mastery is NOT explicitly stated.
+- Risk: medium. Consolidation/IFRS reporting implies balance-sheet exposure,
+  but the specific "bilan" competency is not called out.
 
-3. Stakeholder / management communication
-   - JD requirement: "communez aisivement avec le management et les autres
-     stakeholders"
-   - Evidence: Cross-functional mandates liaising with auditors, IT architecture,
-     commercial teams, Portuguese authorities, non-profit partnerships. Regular
-     tailored reporting to clients/stakeholders (Tobania).
+b) Lucanet (or equivalent consolidation/reporting tool)
+- JD: "expérience avec Lucanet ou un autre outil de consolidation/reporting" —
+  stated as "nice-to-have, mais pas indispensable".
+- CV working tools: SAP HANA, Power BI, QlikSense, Business Object, Cognos,
+  Hyperion, Power Automate — no Lucanet mentioned.
+- Impact: low, given it is explicitly optional.
 
-4. Multi-entity / multi-country consolidation context
-   - JD: organisation with "acquisitions" and "plusieurs régions internationales."
-   - Evidence: repeated multi-jurisdiction reporting (IFRS across APAC, LATAM,
-     Canada; French subsidiaries) and post-M&A restructuring at Holcim — directly
-     transferable to cross-region P&L / balance-sheet / cash-flow challenge.
+c) Explicit years-of-experience figure
+- JD plus: "au moins 10 à 15 ans d'expérience pertinente en finance".
+- CV quote: "15+ years across ... organisations". Profile self-states the figure;
+  verifiable against dated roles (early-career KPMG audit ~2011, ICM CFO trainee
+  2009-2010, then senior/freelance roles through 2026).
+- Impact: low; profile claim is plausible but not itemised by band.
 
-5. Planning & forecasting rigor
-   - JD: medium-term plan integration, historical analysis.
-   - Evidence: "Performed annual budgeting, monthly forecasting and analyses of
-     actual vs. budgeted/estimated results" (Rexel); interim CFO budget plans and
-     long-term financial goals (Magnetrap).
+d) Scope/depth of pure FP&A group-controlling vs. automation/BI
+- The mandate centers on strategic FP&A / investor-facing financial analysis.
+- Several recent freelance engagements are prominently automation, BI, data and
+  SAP-migration focused (Engie SEM automation, Holcim data/BI, Tobania RPA/BI).
+  This is transferable but means a recruiter should confirm sustained *core
+  FP&A / group controlling* responsibility rather than tooling responsibility.
+- Impact: low–medium; worth a screening conversation.
 
-================================================================================
-CRITICAL GAPS (required skills / qualifications NOT sufficiently demonstrated)
-================================================================================
+e) Movement schedules / cash-flow frequency specifics
+- JD: "movement schedules" — not named in CV.
+- CV: cash-flow reporting/modelling present, but "movement schedules" terminology
+  is not used.
+- Impact: low.
 
-1. Lucanet experience — explicitly "nice-to-have," not indispensable.
-   - JD: "Lucanet : nice-to-have, mais pas indispensable." No Lucanet in CV, but
-     this is a stated optional criterion, not a hard requirement. (Tooling gap is
-     minor / acceptable per the JD itself.)
+----------------------------------------------------------------------
+4. QUICK VERDICT
+----------------------------------------------------------------------
+Overall fit: STRONG / Interview-recommend.
+The candidate's documented profile is a near-verbatim alignment with the JD's
+core technical requirements (FP&A, group controlling, consolidation/IFRS,
+financial modelling, cash-flow, working capital, CAPEX, M&A due diligence,
+multi-year planning), plus English (mandatory) and French (desirable).
 
-2. Depth of pure FP&A at corporate/group level vs. operator/transform/audit profile.
-   - JD centres on ongoing senior FP&A / Group Controlling with investor-facing
-     financial analysis. Much of the CV is oriented toward ERP go-live, financial
-     close, data/BI, RPA and transactional finance rather than standing corporate
-     FP&A / investor reporting. The strongest direct FP&A/investor-support signals
-     are concentrated in a few roles; breadth is strong, depth in corporate FP&A is
-     inferred rather than explicitly evidenced.
-
-3. Movement schedules — not explicitly referenced in the CV.
-   - JD lists "movement schedules" among items to analyze. No explicit mention in
-     the CV ( consolidation / reporting experience is transferable, but the exact
-     term is absent).
-
-4. Cash-flow / working-capital / CAPEX are present but mostly as competencies or
-   short mandates rather than sustained group-level ownership.
-   - JD wants a senior who is "solide en financial modelling, cash-flow et working
-     capital." Confirmed in a dedicated cash-flow role and competencies; however,
-     these appear as discrete engagements rather than a long-running group cash/
-     working-capital/CAPEX ownership trajectory.
-
-5. Language grading nuance.
-   - JD: "anglais indispensable, français fortement apprécié." CV lists English as
-     "Proficient" (not "Fluent/Commanding"). This is a grading nuance worth
-     clarifying in an interview rather than a hard blocker.
-
-6. Seniority / tenure framing.
-   - JD: "10 à 15 ans d'experience pertinente en finance." CV states "15+ years
-     leading accounting and transformation mandates." The 15+ figure covers
-     accounting/transform/finance broadly; "pertinente en finance" (specifically
-     FP&A/Group Controller) would need confirmation against the timeline.
-
-================================================================================
-SUMMARY ASSESSMENT
-================================================================================
-
-- STRONG direct matches on the core JD pillars: Medium-Term Plan / multi-year
-  planning, P&L analysis & forecasting, consolidation & financial reporting
-  (IFRS/BE-GAAP), Group Controlling, cash flow / working capital / CAPEX, financial
-  modelling, investor support, and M&A / due diligence / post-acquisition
-  integration. These map directly onto the JD's listed responsibilities.
-- Language fit is excellent (Native French / Proficient English) — satisfies both
-  the essential English and the strongly-desired French.
-- The main gap is not missing hard requirements but PROFILE ORIENTATION: the
-  candidate is a broad, operator-and-transform finance leader with audit/ERP/BI
-  depth, whereas the role is a standing corporate FP&A / Group Controller with
-  investor-facing analysis. This is a fit/nature-of-work consideration more than
-  a skills gap.
-- The only optional/nice-to-have item absent is Lucanet, which the JD itself
-  dephasizes ("pas indispensable").
-
-Recommended next step: screen call to confirm (a) English proficiency grading,
-(b) sustained group-level FP&A / working-capital / CAPEX ownership tenure, and
-(c) availability/start date, since these are not fully evidenced on paper.
-
-================================================================================
-Notes on methodology
-================================================================================
-- Analysis is factual and derived solely from the candidate's stated CV content vs.
-  the published JD. No candidate metrics, figures, or company achievements have
-  been invented. Items marked "transferable" or "gap" reflect inference from the
-  provided text, not fabrication.
+Residual gaps are minor/optional (balance-sheet explicitness, Lucanet
+nice-to-have, and confirmation of core-FP&A depth vs. automation/BI scope).
+No disqualifying gaps identified. Suggest advancing to screening interview.

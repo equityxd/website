@@ -1,0 +1,187 @@
+================================================================================
+MATCH & GAP ANALYSIS
+================================================================================
+CANDIDATE:   Ernest Song
+TARGET ROLE: Senior FP&A / Group Controller (freelance / mission corporatif)
+SOURCE JD:   Senior FP&A/Group Controller freelance (Michèle)
+DATE:        2026-09-18
+
+NOTE ON METHOD:
+This analysis is factual only. Every claim is tied to evidence drawn from the
+candidate's CV (as provided) or from the JD text. No companies, figures, or
+metrics have been invented. Items marked "asserted in CV / inferred" are flagged
+as such rather than stated as verified fact.
+
+--------------------------------------------------------------------------------
+POSITIONING SUMMARY
+--------------------------------------------------------------------------------
+The mandate is a senior corporate finance assignment covering five core pillars:
+(1) business planning / Medium-Term Plan, (2) financial modelling, (3)
+consolidation & reporting, (4) investor support, and (5) M&A / due diligence /
+post-acquisition integration. The candidate's CV is deliberately structured
+around these exact pillars, so the fit is structurally strong on paper. The main
+residual risks are around depth/autonomy of FP&A analysis, explicit multi-country
+regional exposure, the "bilan" (balance-sheet) analytical challenge, and the
+Lucanet nice-to-have.
+
+================================================================================
+DIRECT MATCHES
+================================================================================
+The candidate explicitly claims or demonstrates each JD-required pillar:
+
+- "business planning" / "Medium-Term Plan 2026-2030"
+  JD: "l'éaboration du Medium-Term Plan 2026-2030"
+  CV: Core competency "Medium-Term Plan (Multi-Year Business Planning)";
+      Rexel entry: "Led the strategic planning process."
+
+- "financial modelling"
+  JD: "sujet de financial modelling"
+  CV: Core competency "Investor Support & Financial Modelling"; dedicated role
+      "Cash Flow & Financial Modeling Specialist (Engie Tractebel)".
+
+- "consolidation"
+  JD: "consolidation ... maîtrise ... du reporting et de la consolidation"
+  CV: Core competency "Consolidation & Financial Reporting (IFRS / BE-GAAP)"
+      and "Group Controlling"; role "Reporting Consolidation Manager (Rexel)".
+
+- "investor support"
+  JD: "investor support"
+  CV: Core competency "Investor Support & Financial Modelling".
+
+- "P&L"
+  JD: analyse/challenge de "le P&L"
+  CV: Core competency "P&L Analysis & Forecasting".
+
+- "cash-flow"
+  JD: "solide en ... cash-flow"
+  CV: Core competency "Cash Flow Management"; Engie Tractebel: "Design cashflow
+      reporting and cash exposure per project".
+
+- "working capital"
+  JD: "working capital"
+  CV: Core competency "Working Capital Management".
+
+- "CAPEX"
+  JD: analyse/challenge de "les CAPEX"
+  CV: Core competency "CAPEX Planning".
+
+- "Group Controlling / Corporate Finance / FP&A"
+  JD: "expérience en Group Controlling, Corporate Finance ou FP&A"
+  CV: Core competency "Group Controlling"; CFO/fundraising mandate at Magnetrap.
+
+- "M&A, due diligence, investor reporting"
+  JD: "projets M&A, due diligence et post-acquisition integration ... atout"
+  CV: Core competency "M&A: Due Diligence & Post-Acquisition Integration";
+      Holcim (post-M&A workflow restructuring), KPMG Audit (financial-statement
+      auditing), Engie Tractebel financing/credit/impairment testing.
+
+- language / communication
+  JD: "communez aisément avec le management"; "anglais indispensable, français
+      fortement apprécié"
+  CV: "Proficient: English"; native French; quote references "communicat[ion]
+      with stakeholders/management" and cross-functional IT<->business bridging.
+
+- experience length
+  JD: "10 à 15 ans d'expérience pertinente en finance"
+  CV: "15+ years leading accounting and transformation mandates."
+
+================================================================================
+TRANSFERABLE (related experience fulfilling implicit JD requirements)
+================================================================================
+These items are not verbatim in the JD but plausibly satisfy implicit needs:
+
+- "challenge ... les différentes régions sur le fond"
+  The CV shows a career moving from audit (KPMG) -> consolidation/reporting
+  (Rexel) -> group financial controlling (Holcim, Engie) -> interim CFO,
+  which builds the independent-challenge skill the JD seeks, though regional/
+  multi-geography exposure is not enumerated explicitly.
+
+- "analysez et challengez ... le bilan"
+  JD lists the balance sheet ("bilan") among items to analyze/challenge.
+  Candidate balance-sheet exposure is INDIRECT: ICM Deputy CFO Trainee
+  ("bank reconciliation"), Vinci Airports ("accounting and financial reporting
+  in accordance with BE-GAAP"), KPMG financial-statement auditing. This is
+  operational/accounting depth rather than explicit balance-sheet analytical
+  challenge; treat as transferable, not a direct match.
+
+- "demandes d'investisseurs" / investor reporting
+  Magnetrap (interim CFO / fundraising, €3M debt/equity raised — asserted in
+  CV), Vinci Airports concession valuation, Shurgard corporate development.
+  These support investor-support readiness but do not list formal investor
+  reporting/roadroom deliverables.
+
+- "problématiques financières stratégiques"
+  Supported by financial-modelling, valuation ("valuation at 4 times acquisition
+  cost", Vinci Airports) and strategic-planning work.
+
+- ERP / BI reporting as a proxy for consolidation/reporting tooling
+  JD values consolidation/reporting tool experience. Candidate lists SAP HANA,
+  Cognos, Business Object, Hyperion, QlikSense, Power BI — strong reporting/
+  BI foundation, though not Lucanet specifically.
+
+================================================================================
+CRITICAL GAPS
+================================================================================
+The following are not evidenced in the CV and represent the main hiring risks:
+
+1. Lucanet
+   JD: "Lucanet : nice-to-have, mais pas indispensable." Candidate has no Lucanet
+   mention; tooling is SAP/Cognos/Power BI. Given it is explicitly optional, this
+   is a minor, non-blocking gap.
+
+2. Explicit multi-region / international "challenging regions" experience
+   JD: "collaborez étroitement avec plusieurs régions internationales ...
+       challengez ... les différentes régions." Candidate's engagements are
+   project/mandate-based (freelance) and country-specific (BE/FR/NL/PT), not
+   structured as ongoing multi-regional FP&A coverage. Transferable, not proven.
+
+3. Autonomy + challenge skill "de manière autonome"
+   JD: "capable de réaliser des analyses de manière autonome et de challenger le
+       différentes régions sur le fond." Candidate is freelance/mandate-based, so
+   autonomy is implied, but no explicit evidence of standing FP&A analyst
+   autonomy or peer/challenging a finance team in a corporate consolidator
+   setting. Inferred.
+
+4. Balance-sheet ("bilan") analytical depth
+   JD explicitly lists "le bilan" as a core analytical workstream. The CV
+   provides accounting/reporting breadth but no stated balance-sheet
+   analytical/challenge deliverable (e.g., movement schedules, BS roll-forwards).
+   Movement schedules ("les movement schedules") are not mentioned. Gap.
+
+5. Senior FP&A / consolidated-group FP&A tenure (depth vs. breadth)
+   JD targets a "senior FP&A / Group Controller" with sustained corporate
+   consolidator experience. The CV reads more as a sequence of transformation,
+   audit, and advisory mandates than a long-standing in-group FP&A/controlling
+   role. Positioning is "Chief Growth & Transformation Officer," which is broader
+   than pure FP&A/Group Controlling. Positioning gap.
+
+6. French language as a "plus"
+   JD: "français fortement apprécié." Candidate is a native French speaker, so
+   this is a strength, not a gap. (Listed for completeness.)
+
+--------------------------------------------------------------------------------
+NET READ
+--------------------------------------------------------------------------------
+Structural fit is strong: every named JD pillar (MTP, financial modelling,
+consolidation, cash-flow, working capital, CAPEX, investor support, M&A/due
+diligence) is present on the CV, and experience length (15+ years) and language
+(French native, English proficient) meet the stated thresholds. The residual gaps
+are primarily about DEPTH and CONTEXT of FP&A/group-consolidation experience and
+the balance-sheet workstream, plus the optional Lucanet tool. Lucanet is
+explicitly non-critical, so it should not block a shortlist decision.
+
+================================================================================
+RECOMMENDED VALIDATION QUESTIONS (for screening interview)
+================================================================================
+- Can you walk through a balance-sheet ("bilan") review you ran, including movement
+  schedules and how you challenged regional finance teams on the numbers?
+- Describe a time you autonomously owned an FP&A/consolidation workstream end to
+  end and challenged a region "sur le fond."
+- Which consolidation/reporting tools have you used day-to-day, and how quickly
+  would you ramp on Lucanet?
+- Which of your past mandates involved standing Group Controlling / multi-entity
+  consolidation versus one-off transformation/advisory projects?
+
+================================================================================
+END OF ANALYSIS
+================================================================================

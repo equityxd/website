@@ -1,0 +1,85 @@
+CV GENERATION TASK — Serial CV-20260920-0013
+============================================
+
+CONTEXT
+You are acting as a principal tech recruiter and executive resume strategist.
+The candidate is applying for a specific position. Align his updated CV with the
+target Job Description to maximize his match rate while STRICTLY adhering to
+100% TRUTHFULNESS and factual accuracy.
+Never invent experience, fake metrics, or exaggerate his background.
+
+SESSION METADATA
+- Serial Number : CV-20260920-0013
+- Company       : Align With Business Objectives
+- Position      : N/A
+- Recruiter     : N/A
+- Source Type   : Job Description (text)
+- Source        : (pasted text)
+- Target Role   : Chief Growth & Transformation Officer
+
+INPUT: The Job Description is appended below this block. Use ONLY the facts
+present in the candidate's base CV (source/SONG Ernest - CV v1.typ) plus the JD.
+
+==== JOB DESCRIPTION ====
+Please find attached an interesting position for one of our customers in Brussels. Let me know if you wish to apply!
+
+Senior Business/Functional Analyst (Data Platform Transformation) - Freelance – Healthcare Sector
+A leading healthcare client of ours in Brussels are looking for a Senior Business/Functional Analyst with strong Data expertise to join for a long term, freelance mission.
+With the client, you will play a critical role in driving their data platform transformation initiative, working closely with a series of Business Intelligence and Functional Analyst profiles to ensure the timely delivery.
+They are currently under acquisition and need to build and maintain scalable data infrastructure to reach their next stage of development.
+Responsibilities
+
+    Oversee the core business analysis, whilst having conversations with internal customers and collect the functional needs of the application to be developed.
+    Analyse data requirements, identify data gaps, and recommend data solutions that align with business objectives.
+    Develop functional specifications and documentation for data transformations, data mappings, and data integrations.
+    Participate in data migration efforts, seeing transition from legacy systems to the new data platform.
+    Troubleshoot data-related issues, identify root causes, and implement solutions.
+
+Profile
+
+    5 years' experience as a Business/Functional Analyst
+    Good understanding of Data Platforms, Integrations etc.
+    Experience within the Healthcare sector is also preferred
+
+Additional Details
+START DATE: ASAP
+DURATION: 12 Months
+CONTRACT: Freelance
+LOCATION: Brussels (2 days per week)
+ONSITE POLICY: Flexible
+HOURS PER WEEK: 40
+LANGAUGES: English
+INTERVIEW PROCESS: 1 Stage
+==== END JOB DESCRIPTION ====
+
+ALL deliverables below must be written as a SINGLE set into the one per-application
+folder for this job (named "YYYYMMDD - Company - Position"). Write ONE of each:
+
+1) MATCH & GAP ANALYSIS  ->  filename "CV-20260920-0013_MATCH_GAP.txt"
+   Create a simple comparative breakdown:
+     - Direct Matches : skills/tools/experience that directly match the JD.
+     - Transferable   : related experience that fulfills implicit JD requirements.
+     - Critical Gaps  : required skills/qualifications missing from the CV.
+
+2) 1 CUSTOM CV         ->  filename "CV-20260920-0013_CV1.typ"
+   Rewrite bullet points using exact JD keyword phrasing, ONLY where real
+   experience supports it. Restructure the summary into a high-impact
+   "Value Proposition" answering the JD's primary business pain point.
+   Every bullet = Action Verb + Context/Tech + Metric or Outcome, without
+   inflating the real role. Produce EXACTLY ONE tailored CV (not several versions).
+   Keep the visual formatting of SONG Ernest - CV v1 (only change the content).
+   Position-name preservation: keep each professional-experience job title VERBATIM;
+   the ONLY change allowed is stripping a trailing "(freelance)" tag. Otherwise
+   the title must remain identical.
+
+3) 1 COVER LETTER       ->  filename "CV-20260920-0013_CL1.txt"
+   Draft ONE concise, high-converting cover letter (under 250 words) that bridges
+   the candidate's background to the JD's top 3 requirements. Include an honest,
+   proactive statement on how his unique perspective covers any minor skill gaps,
+   without apologizing for them.
+
+4) 1 INTERVIEW PREP     ->  filename "CV-20260920-0013_IP1.txt"
+   Provide ONE interview-prep document that groups STAR-based (Situation, Task,
+   Action, Result) Q&A outlines based strictly on the candidate's real CV experiences.
+
+OUTPUT: Confirm each file was written and list the file paths.

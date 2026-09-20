@@ -1,0 +1,49 @@
+Ernest SONG
+Rue Montagne de l'Oratoire 28/76, B-1000 Brussels
++32 476 60 05 90 | contact@ernestsong.com | ernestsong.com
+
+2026-09-19
+
+Vivid Resourcing
+jeremie.meba@vividresourcing.com
+
+Lead BI & Analytics Consultant — European Non-Profit / International Programmes
+
+Dear Jeremie,
+
+With 15+ years translating complex business processes into reliable, scalable
+reporting and data foundations across multi-entity, multi-country
+organisations (BE, FR, NL), I am pleased to apply for the Lead BI & Analytics
+Consultant mandate. My background sits precisely at the intersection of
+Business Intelligence, Data Architecture, Data Governance and business
+transformation that this role requires.
+
+Three areas where I immediately contribute:
+
+1. BI & Analytics Strategy + Business Process Translation — I define KPIs,
+  metrics and business definitions and turn demanding operational requirements
+  into scalable reporting. At Engie SEM I deployed PowerQuery ETL pipelines
+  (1,500+ bookings per close) and rebuilt an unreliable budgeting framework
+  into a consistent, auditable solution within a two-week window.
+
+2. Data Modelling, Common Data Model & Governance — I design conceptual,
+  logical and physical data models, establish reporting standards and resolve
+  data-quality issues (Holcim, Shurgard, Degroof Petercam), ensuring reporting
+  is consistent, reliable and auditable.
+
+3. Multi-stakeholder / International Programme Reporting — I hold direct
+  European Commission exposure (FP7 Grant certification at KPMG), founded a
+  non-profit (Soap collect) and raised €3M in capital — a rare
+  programme-and-founding lens for multi-funding-stakeholder reporting.
+
+Regarding platform specifics: my hands-on Power BI and SAP HANA/ETL track
+record lets me reach production speed on Microsoft Fabric, Data Lakehouse
+architectures and Oracle/MySQL quickly, while my grant, non-profit and
+fundraising experience covers the domain knowledge that is hardest to teach.
+I ramp up fast and bring the business-technology bridging that such
+transformations depend on.
+
+I would welcome a confidential conversation.
+
+Kind regards,
+Ernest SONG
