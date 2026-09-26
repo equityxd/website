@@ -1,0 +1,17 @@
+.exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.exp-tag {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background: rgba(0, 0, 0, 0.05);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+}

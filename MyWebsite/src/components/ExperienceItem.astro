@@ -1,0 +1,101 @@
+---
+interface Props {
+  title: string;
+  company: string;
+  sector?: string;
+  description?: string;
+  dateStart: string | number;
+  dateEnd?: string | number;
+  location: string;
+  details: string[];
+  highlight?: boolean;        // admin-updatable "featured" flag
+  tags?: string[];
+  tools?: string[];
+  languages?: string[];
+}
+
+const { title, company, sector, description, dateStart, dateEnd = "Present", location, details, highlight = false, tags = [], tools = [], languages = [] } = Astro.props;
+
+// First tag is the position "type"; the rest are skills.
+const typeTag = tags.length > 0 ? tags[0] : null;
+const skillTags = tags.length > 1 ? tags.slice(1) : [];
+
+// Minimal, monochrome tag coloring — accent only where it earns its place.
+const tagColor = (t: string) => {
+  const l = t.toLowerCase();
+  if (l === 'freelance') return '#e0e7ff';
+  if (l === 'internal') return '#dbeafe';
+  if (l === 'entrepreneurship') return '#fce7f3';
+  return '#f4f4f5';
+};
+---
+
+<div class={`exp-card ${highlight ? 'featured' : ''}`}>
+  <div class="exp-head">
+    <div>
+      <h3 class="editable-text" data-field="title">
+        {highlight && <span class="featured-star" title="Featured role">★</span>}
+        {title}
+      </h3>
+      <div class="exp-company editable-text" data-field="company">{company}</div>
+    </div>
+    <div class="exp-meta">
+      <div class="editable-text" data-field="dateStart">{dateStart}</div>
+      <div class="editable-text" data-field="location">{location}</div>
+    </div>
+  </div>
+
+  {description && <div class="exp-desc editable-text" data-field="description">{description}</div>}
+
+  <div class="exp-tags">
+    {typeTag !== null && (
+      <span class="tag" style={`background:${tagColor(typeTag)}`}>{typeTag}</span>
+    )}
+    {skillTags.map((tag) => (
+      <span class="tag editable-tag" data-type="skill" style={`background:${tagColor(tag)}`}>{tag}</span>
+    ))}
+    {tools.map((tool) => (
+      <span class="tag tool editable-tag" data-type="tool" style="background:#f4f4f5;color:#475569;">{tool}</span>
+    ))}
+  </div>
+
+  <ul class="exp-details">
+    {details.map((item) => (
+      <li class="editable-detail">{item}</li>
+    ))}
+  </ul>
+
+  <!-- Admin: featured flag toggle -->
+  <div class="admin-row hidden">
+    <label>
+      <input type="checkbox" class="flag-toggle" data-field="highlight" ${(highlight && 'checked') || ''}>
+      <span>Featured</span>
+    </label>
+  </div>
+</div>
+
+<style>
+  .exp-card { padding: 22px 24px; }
+  .featured { border-color: rgba(245, 158, 11, 0.45); }
+  .featured-star { color: #f59e0b; margin-right: 6px; font-size: 1rem; }
+  .exp-head { gap: 16px; }
+  .exp-meta { text-align: right; display: flex; flex-direction: column; }
+  .exp-tags { gap: 6px; }
+  .exp-details li { padding-left: 16px; }
+
+  /* Admin controls */
+  .admin-row {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+  .admin-row input { width: 16px; height: 16px; accent-color: var(--accent); }
+
+  /* Hide admin row unless in admin mode */
+  body:not(.admin-mode) .admin-row { display: none !important; }
+</style>

@@ -1,0 +1,287 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Admin Panel | Ernest Song" description="Portfolio Administration">
+  <main class="admin-container">
+    <header class="admin-header">
+      <h1>Admin Dashboard</h1>
+      <div class="actions">
+        <a href="/" class="btn-secondary" target="_blank">View Site</a>
+        <button id="saveBtn" class="btn-primary">Save Changes</button>
+      </div>
+    </header>
+
+    <div id="app" class="admin-app">
+      <div class="loading-state">Loading portfolio data...</div>
+    </div>
+  </main>
+
+  <script>
+    // Simple state management
+    let data = null;
+    let activeTab = 'experience';
+
+    const app = document.getElementById('app');
+    const saveBtn = document.getElementById('saveBtn');
+
+    // Fetch Data
+    async function loadData() {
+      try {
+        const res = await fetch('/api/portfolio');
+        data = await res.json();
+        render();
+      } catch (e) {
+        app.innerHTML = `<div class="error">Error loading data: ${e.message}</div>`;
+      }
+    }
+
+    // Save Data
+    async function saveData() {
+      if (!data) return;
+      saveBtn.textContent = 'Saving...';
+      try {
+        const res = await fetch('/api/portfolio', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (res.ok) {
+           alert('Saved successfully!');
+        } else {
+           alert('Error saving data');
+        }
+      } catch (e) {
+        alert('Error saving data');
+      } finally {
+        saveBtn.textContent = 'Save Changes';
+      }
+    }
+
+    // Render Logic
+    function render() {
+      if (!data) return;
+
+      app.innerHTML = `
+        <div class="admin-grid">
+           <nav class="sidebar">
+              <button class="${activeTab === 'profile' ? 'active' : ''}" onclick="switchTab('profile')">Profile & Vision</button>
+              <button class="${activeTab === 'experience' ? 'active' : ''}" onclick="switchTab('experience')">Experience</button>
+              <button class="${activeTab === 'skills' ? 'active' : ''}" onclick="switchTab('skills')">Skills & Categories</button>
+           </nav>
+           <div class="content-area">
+              ${renderContent()}
+           </div>
+        </div>
+      `;
+    }
+
+    // Content Router
+    function renderContent() {
+      if (activeTab === 'profile') return renderProfile();
+      if (activeTab === 'experience') return renderExperience();
+      if (activeTab === 'skills') return renderSkills();
+    }
+
+    // --- Renderers (Basic V0) ---
+    
+    function renderProfile() {
+      return `
+        <div class="card">
+          <h2>Profile & Vision</h2>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" value="${data.profile.name}" onchange="updateProfile('name', this.value)">
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" value="${data.profile.title}" onchange="updateProfile('title', this.value)">
+          </div>
+          <div class="form-group">
+            <label>Professional Vision</label>
+            <textarea rows="4" onchange="updateProfile('vision', this.value)">${data.profile.vision}</textarea>
+            <button class="ai-btn" onclick="alert('AI Integration coming soon!')">✨ Ask AI to improve</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderExperience() {
+      return `
+        <div class="card">
+          <div class="flex-between">
+            <h2>Experience</h2>
+            <button class="btn-small" onclick="addExperience()">+ Add Role</button>
+          </div>
+          <div class="list">
+            ${data.experience.map((job, index) => `
+              <div class="list-item">
+                <div class="item-header">
+                   <strong>${job.company}</strong> - ${job.title}
+                   <button class="btn-danger" onclick="deleteExperience(${index})">Delete</button>
+                </div>
+                <div class="form-grid">
+                   <label>Company: <input value="${job.company}" onchange="updateExp(${index}, 'company', this.value)"></label>
+                   <label>Title: <input value="${job.title}" onchange="updateExp(${index}, 'title', this.value)"></label>
+                   <label>Start: <input value="${job.dateStart}" onchange="updateExp(${index}, 'dateStart', this.value)"></label>
+                   <label>End: <input value="${job.dateEnd}" onchange="updateExp(${index}, 'dateEnd', this.value)"></label>
+                </div>
+                <details>
+                  <summary>Details & Tags</summary>
+                  <div class="form-group">
+                     <label>Description</label>
+                     <textarea rows="2" onchange="updateExp(${index}, 'description', this.value)">${job.description}</textarea>
+                  </div>
+                  <div class="form-group">
+                     <label>Tags (comma separated)</label>
+                     <input value="${job.tags?.join(', ')}" onchange="updateExpTags(${index}, 'tags', this.value)">
+                  </div>
+                  <div class="form-group">
+                     <label><input type="checkbox" ${job.highlight ? 'checked' : ''} onchange="updateExp(${index}, 'highlight', this.checked)"> Featured (flagged role)</label>
+                  </div>
+                </details>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderSkills() {
+       return `<div class="card"><h2>Skills Management (Coming Soon)</h2><p>Here you will be able to drag-and-drop skills and edit categories.</p></div>`;
+    }
+
+    // --- Actions ---
+
+    window.switchTab = (tab) => {
+      activeTab = tab;
+      render();
+    };
+
+    window.updateProfile = (key, val) => {
+      data.profile[key] = val;
+    };
+
+    window.updateExp = (index, key, val) => {
+      data.experience[index][key] = val;
+    };
+
+    window.updateExpTags = (index, key, val) => {
+      data.experience[index][key] = val.split(',').map(s => s.trim()).filter(s => s);
+    };
+    
+    window.addExperience = () => {
+        data.experience.unshift({
+            id: 'new-' + Date.now(),
+            company: "New Company",
+            title: "New Role",
+            dateStart: "Jan 2024",
+            dateEnd: "Present",
+            tags: [],
+            details: []
+        });
+        render();
+        alert('New role added! Soft skills regeneration logic to be triggered.');
+    }
+    
+    window.deleteExperience = (index) => {
+        if(confirm('Delete this role?')) {
+            data.experience.splice(index, 1);
+            render();
+        }
+    }
+
+    // Init
+    loadData();
+    saveBtn.onclick = saveData;
+
+  </script>
+
+  <style>
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #1e293b;
+      font-family: system-ui, sans-serif;
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 1rem;
+    }
+    .admin-grid {
+       display: grid;
+       grid-template-columns: 250px 1fr;
+       gap: 2rem;
+    }
+    .sidebar {
+       display: flex;
+       flex-direction: column;
+       gap: 0.5rem;
+    }
+    .sidebar button {
+       padding: 1rem;
+       text-align: left;
+       background: #f8fafc;
+       border: none;
+       border-radius: 0.5rem;
+       cursor: pointer;
+       font-weight: 500;
+    }
+    .sidebar button.active {
+       background: #3b82f6;
+       color: white;
+    }
+    .card {
+       background: white;
+       padding: 2rem;
+       border-radius: 1rem;
+       box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
+    .form-group input, .form-group textarea {
+       width: 100%;
+       padding: 0.5rem;
+       border: 1px solid #cbd5e1;
+       border-radius: 0.25rem;
+    }
+    .btn-primary {
+       background: #10b981;
+       color: white;
+       padding: 0.75rem 1.5rem;
+       border-radius: 0.5rem;
+       font-weight: bold;
+       cursor: pointer;
+       border: none;
+    }
+    .btn-danger {
+        background: #ef4444;
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+    }
+    .list-item {
+        border: 1px solid #e2e8f0;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+    }
+    .item-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+  </style>
+</Layout>
