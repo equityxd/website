@@ -153,6 +153,26 @@ WORKBOOK = BASE_DIR / "application_monitoring" / "Application_Tracker.xlsx"
 
 BASE_CV = BASE_DIR / "source" / "SONG Ernest - CV v1.typ"
 
+
+# The master data model is the single source of truth. The Astro site reads
+# ``profile.json`` directly; the CV engine reads the .typ generated from it (below).
+# When the generated file exists we prefer it over the hardcoded v1.typ, so website
+# updates flow into both the portfolio and generated CVs. Otherwise we fall back.
+def _base_cv_text():
+    """Return the canonical base CV text, generated from the master data model.
+
+    Reads ``MyWebsite/src/data/profile.typ`` (produced by ``typst_builder.py`` from
+    ``profile.json``). Falls back to the original ``v1.typ`` when the generated file
+    is missing, so CV generation keeps working during early development.
+    """
+    generated = BASE_DIR / "MyWebsite" / "src" / "data" / "profile.typ"
+    if generated.exists():
+        try:
+            return generated.read_text(encoding="utf-8")
+        except OSError as exc:
+            _debug(f"could not read generated .typ {generated.name}: {exc}")
+    return BASE_CV.read_text(encoding="utf-8") if BASE_CV.exists() else ""
+
 JOB_DIR = BASE_DIR / "job_descriptions"
 
 # One folder per job application, named "YYYYMMDD - Company - Position".
@@ -2000,7 +2020,7 @@ def _generate_cv_deterministic(serial, jd_path, lcmm_folder, app_folder, on_prog
 
     try:
 
-        base_cv = BASE_CV.read_text(encoding="utf-8") if BASE_CV.exists() else ""
+        base_cv = _base_cv_text()
 
         compact_content = _compact_facts(base_cv)
 
@@ -2162,7 +2182,7 @@ def run_generation(jd_path, on_progress=None, company="", position=""):
 
     jd_text = Path(jd_path).read_text(encoding="utf-8")
 
-    base_cv = BASE_CV.read_text(encoding="utf-8") if BASE_CV.exists() else ""
+    base_cv = _base_cv_text()
 
     cv_ctx = _cv_content(base_cv)
 
