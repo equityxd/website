@@ -1,0 +1,283 @@
+{
+  "meta": {
+    "lastUpdated": "2025-09",
+    "sources": [
+      "source/SONG Ernest - CV v1.typ",
+      "source/SONG Ernest - CV es.typ",
+      "https://www.linkedin.com/in/ernestsong/"
+    ],
+    "note": "Single source of truth. Consumed by the Astro portfolio site and the MyCV CV-for-JD engine."
+  },
+  "profile": {
+    "name": "Ernest SONG",
+    "role": "Chief Growth & Transformation Officer",
+    "tagline": "CFO-As-A-Service · Finance Transformation",
+    "address": "Rue Montagne de l'Oratoire 28/76, B-1000 Brussels",
+    "city": "Brussels, BE",
+    "mailto": "contact@ernestsong.com",
+    "website": "ernestsong.com",
+    "tel": "+32 476 60 05 90",
+    "quote": "15+ years across multi-entity, multi-country organisations (BE, FR, NL). I turn complex finance into clear, growth-driven decisions — from multi-year Medium-Term Plans to M&A due diligence and post-acquisition integration.",
+    "keywords": [
+      "FP&A", "P&L", "Financial Modelling", "Consolidation", "Group Controlling",
+      "Cash Flow Management", "CAPEX Planning", "M&A", "Finance Transformation",
+      "RPA", "Business Intelligence", "Change Management", "Strategic Planning"
+    ]
+  },
+  "outcomes": [
+    { "value": "15+ yrs", "label": "Finance & transformation leadership" },
+    { "value": "4x", "label": "Acquisition-value creation at Vinci Airports" },
+    { "value": "50+", "label": "Locations deployed across countries" },
+    { "value": "€3M", "label": "Raised as interim CFO" }
+  ],
+  "experience": [
+    {
+      "id": "engie",
+      "title": "Strategic Business Analyst & Finance Automation Lead",
+      "subtitle": "Freelancer",
+      "company": "Engie SEM",
+      "location": "Brussels, BE",
+      "dateStart": "January 2026",
+      "dateEnd": null,
+      "present": true,
+      "highlight": false,
+      "details": [
+        "Led the financial controlling pilot phase for the SAP S/4HANA migration across French subsidiaries, bridging IT architecture and strategic business operations.",
+        "Designed, built and deployed an automated budget-modeling tool from scratch within a 2-week timeline, ensuring operational continuity during a resource gap.",
+        "Streamlined financial closing for commodity trading with PowerQuery ETL workflows, safely ingesting 1,500+ bookings per close with zero human intervention.",
+        "Reconciled financial data between middle-office databases (IVDB) and SAP S/4HANA while restructuring WWS project codes to optimize portfolio monitoring."
+      ]
+    },
+    {
+      "id": "holcim",
+      "title": "Senior Operational Excellence & Data Lead",
+      "subtitle": "Freelancer",
+      "company": "Holcim",
+      "location": "Nivelles, BE",
+      "dateStart": "January 2024",
+      "dateEnd": "December 2025",
+      "highlight": false,
+      "details": [
+        "Supported post-M&A integration and group controlling, leveraging data insights to restructure workflows and enhance efficiency.",
+        "Managed SAP HANA migration, restructuring data and ensuring system integrity.",
+        "Developed rebate models (matrix & automated SAP), aligning with commercial strategy.",
+        "Implemented Qliksense with new data for financial reporting and insights.",
+        "Ensured data reliability and liaised with auditors on rebate matters."
+      ]
+    },
+    {
+      "id": "engietractebel",
+      "title": "Cash Flow & Financial Modeling Specialist",
+      "subtitle": "Freelancer",
+      "company": "Engie Tractebel",
+      "location": "Brussels, BE",
+      "dateStart": "March 2023",
+      "dateEnd": "December 2023",
+      "highlight": false,
+      "details": [
+        "Designed cash-flow reporting and cash-exposure modeling per project.",
+        "Assessed financing needs in the local entity, with credit analysis of specific counterparts and impairment testing.",
+        "Developed financial modeling from SAP HANA data and designed Power BI reporting."
+      ]
+    },
+    {
+      "id": "shurgard",
+      "title": "Investment & Corporate Development Analyst",
+      "subtitle": "Freelancer",
+      "company": "Shurgard",
+      "location": "Brussels, BE",
+      "dateStart": "February 2022",
+      "dateEnd": "February 2023",
+      "highlight": false,
+      "details": [
+        "Analyzed and managed real-estate projects, including construction, redevelopment and acquisition of self-storage businesses.",
+        "Maintained a project dashboard and initiated corporate-development projects to improve department policies.",
+        "Designed the data model and visualization for the Investment department's Business Intelligence efforts.",
+        "Collaborated on a new pricing model using Artificial Intelligence."
+      ]
+    },
+    {
+      "id": "magnetrap",
+      "title": "Freelance CFO / Fundraising Consultant",
+      "subtitle": "Freelancer",
+      "company": "Magnetrap",
+      "location": "Mons, BE",
+      "dateStart": "November 2020",
+      "dateEnd": "January 2022",
+      "highlight": false,
+      "details": [
+        "Acted as interim CFO and led fundraising, organizing €3M in debt/equity fund raises.",
+        "Created cash-flow projections, business plans and long-term financial goals.",
+        "Monitored company performance and implemented corrective actions as needed.",
+        "Prepared operating-results reports and managed financial models for long-term use."
+      ]
+    },
+    {
+      "id": "tobania",
+      "title": "Director Business Process Automation",
+      "subtitle": "",
+      "company": "Tobania",
+      "location": "Brussels, BE",
+      "dateStart": "February 2020",
+      "dateEnd": "October 2020",
+      "highlight": false,
+      "details": [
+        "Led development and implementation of a citizen-developer business model using RPA and self-service BI, including pricing strategy and roadmap.",
+        "Managed business development including marketing strategy, pre-sales and sales, and identified new opportunities.",
+        "Implemented process optimization, standardization and harmonization to improve efficiency and profitability.",
+        "Provided tailored reports to help customers monitor costs and established change-management structures for adoption."
+      ]
+    },
+    {
+      "id": "soapcollect",
+      "title": "Founder",
+      "subtitle": "",
+      "company": "Soap collect",
+      "location": "Phnom Penh, KH",
+      "dateStart": "January 2019",
+      "dateEnd": null,
+      "present": true,
+      "highlight": false,
+      "details": [
+        "Established a non-profit providing hygiene products to disadvantaged communities.",
+        "Formed partnerships with luxury hotel chains to source used soap for reconditioning."
+      ]
+    },
+    {
+      "id": "degroof",
+      "title": "Performance Management Project Leader",
+      "subtitle": "",
+      "company": "Degroof Petercam",
+      "location": "Brussels, BE",
+      "dateStart": "January 2018",
+      "dateEnd": "December 2018",
+      "highlight": false,
+      "details": [
+        "Finance Transformation Operating Model (FTOM).",
+        "Designed and implemented a client-centric performance-management system.",
+        "Optimized the finance-close process for improved governance, internal control and data quality.",
+        "Led projects related to regulatory-reporting sourcing and followed BPM standards.",
+        "Conducted gap analysis of business requirements against existing procedures."
+      ]
+    },
+    {
+      "id": "vinci",
+      "title": "Managing Director & Head of Project Financial Modeling",
+      "subtitle": "Cursus Grand Talent",
+      "company": "Vinci Airports",
+      "location": "Brussels, BE & Lisbon, PT",
+      "dateStart": "February 2016",
+      "dateEnd": "December 2017",
+      "highlight": true,
+      "details": [
+        "Value creation: valuation at 4 times acquisition cost.",
+        "Led deployment of airport operations at 50+ locations in various countries.",
+        "Developed a long-term financial business model including macroeconomic impact, capital expenditures and concession valuation.",
+        "Negotiated extension of the concession contract with Portuguese authorities and implemented a new financial model to improve budgeting and forecasting.",
+        "Managed accounting and financial reporting in accordance with BE-GAAP standards."
+      ]
+    },
+    {
+      "id": "rexel",
+      "title": "Reporting Consolidation Manager",
+      "subtitle": "",
+      "company": "Rexel",
+      "location": "Paris, FR",
+      "dateStart": "September 2014",
+      "dateEnd": "January 2016",
+      "highlight": false,
+      "details": [
+        "Led the implementation of IFRS financial reporting for Asia-Pacific, Latin America and Canadian subsidiaries.",
+        "Spearheaded the restructuring and integration of SAP BPC and Cognos reporting systems.",
+        "Performed annual budgeting, monthly forecasting and analyses of actual vs. budgeted results.",
+        "Led the strategic-planning process for the organization."
+      ]
+    },
+    {
+      "id": "kpmg",
+      "title": "Financial Auditor Supervisor",
+      "subtitle": "",
+      "company": "KPMG Audit",
+      "location": "Paris, FR",
+      "dateStart": "January 2011",
+      "dateEnd": "August 2014",
+      "highlight": false,
+      "details": [
+        "Conducted audits using various accounting standards, including testing key processes in accordance with SOX requirements.",
+        "Experienced in auditing financial modeling for long-term contracts, especially Public-Private Partnerships (PPP).",
+        "Certified FP7 Grant Agreements for the EU Research program and led audit teams.",
+        "Developed partnerships and identified new markets to support business growth.",
+        "Key clients span Construction (Vinci, Eiffage, Colas), Real estate (Nexity), Water distribution (Veolia), Parcels distribution (Geopost), Security (Brink's) and Healthcare (DomusVie)."
+      ]
+    },
+    {
+      "id": "icm",
+      "title": "Deputy CFO Trainee",
+      "subtitle": "",
+      "company": "ICM – Brain & Spine Institute",
+      "location": "Paris, FR",
+      "dateStart": "November 2009",
+      "dateEnd": "August 2010",
+      "highlight": false,
+      "details": [
+        "Implemented the budget system and prepared business plans for the scientific teams.",
+        "Established the internal-control system for purchasing and donation processes and managed bank reconciliation.",
+        "Prepared the institutional audit necessary for certification by the Comité de la Charte."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "org": "ESCP Business School",
+      "rank": "#1 FT 2026",
+      "dateStart": 2010,
+      "dateEnd": 2011,
+      "location": "Paris, FR",
+      "degree": "Specialized Master's degree",
+      "field": "Auditing and Consulting"
+    },
+    {
+      "org": "Université Paris Nanterre",
+      "rank": null,
+      "dateStart": 2005,
+      "dateEnd": 2010,
+      "location": "Paris, FR",
+      "degree": "Master's degree",
+      "field": "Management Science and Financial Control"
+    }
+  ],
+  "competencies": [
+    { "group": "Planning & Forecasting", "items": [
+      "Medium-Term Plan (Multi-Year Business Planning)",
+      "P&L Analysis & Forecasting"
+    ]},
+    { "group": "Reporting & Consolidation", "items": [
+      "Consolidation & Financial Reporting (IFRS / BE-GAAP)",
+      "Group Controlling"
+    ]},
+    { "group": "Cash & CAPEX", "items": [
+      "Cash Flow Management",
+      "Working Capital Management",
+      "CAPEX Planning"
+    ]},
+    { "group": "M&A", "items": [
+      "Investor Support & Financial Modelling",
+      "M&A: Due Diligence & Post-Acquisition Integration"
+    ]}
+  ],
+  "tools": {
+    "Business": ["MS Office (advanced Excel, Power Query)"],
+    "ERP": ["SAP HANA"],
+    "Business Intelligence": ["MS Power BI", "QlikSense", "Business Object", "Cognos", "Hyperion"],
+    "RPA": ["UIpath", "MS PowerAutomate"],
+    "Agile": ["Jira", "Confluence"],
+    "Data & Analytics": ["VBA", "SQL", "R"]
+  },
+  "languages": [
+    { "level": "Native", "items": ["French", "Khmer", "Teochew"] },
+    { "level": "Proficient", "items": ["English"] },
+    { "level": "Basics", "items": ["Dutch (A2)", "Spanish", "Mandarin"] }
+  ],
+  "interests": ["Sustainable development", "Powerlifting", "Mountain biking", "Tennis"],
+  "interpersonal": ["Fast-learner", "Problem solver", "Diplomacy", "Driven", "Autonomous", "Teamplayer"]
+}

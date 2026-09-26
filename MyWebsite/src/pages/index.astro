@@ -1,409 +1,147 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ExperienceItem from '../components/ExperienceItem.astro';
+import profile from '../data/profile.json' assert { type: 'json' };
 
-import portfolioData from '../data/portfolio.json';
+const { profile: p, experience, outcomes, competencies, tools, education, languages } = profile;
 
-const { profile, experience, education, languages: languageDetails } = portfolioData;
-
-const parseDate = (d: string) => {
-  if (!d || d === 'Present') return new Date();
-  const [m, y] = String(d).split(' ');
-  const dt = new Date(`${m} 1, ${y}`);
-  return isNaN(dt.getTime()) ? new Date() : dt;
-};
-const yearsBetween = (a: Date, b: Date) =>
-  (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth());
-
-// Aggregations (derived for the stats block)
-const totalYears = Math.floor(
-  (Date.now() - Math.min(...experience.map(e => parseDate(e.dateStart).getTime()))) / 8.64e7 / 365.25
-);
-
-const financeYears = experience
-  .filter(j => !j.company.toLowerCase().includes('soap collect'))
-  .reduce((s, j) => s + Math.max(0, yearsBetween(parseDate(j.dateStart), parseDate(j.dateEnd) || new Date())), 0);
-
-const countries = new Set(experience.map(j => (j.location || '').split(', ')[1]).filter(Boolean)).size || 6;
-const mnaYears = experience.filter(j => (j.tags || []).join(' ').toLowerCase().includes('merger') || j.title.toLowerCase().includes('investment') || j.title.toLowerCase().includes('corp')).reduce((s, j) => s + Math.max(0, yearsBetween(parseDate(j.dateStart), parseDate(j.dateEnd) || new Date())), 0);
-const mnaYearsRounded = Math.round(mnaYears);
-
-// Education (single ESCP #4 headline + master)
-const flagship = education.find(e => e.school.includes('ESCP')) || education[0];
-const otherEdu = education.filter(e => !e.school.includes('ESCP'));
+const toolEntries = Object.entries(tools).map(([category, items]) => ({ category, items }));
 ---
-
-<Layout title="Ernest Song | Finance Transformation & Executive Leadership" description="Portfolio of Ernest Song — CFO-As-A-Service, finance transformation, M&A.">
+<Layout title={`${p.name} | ${p.tagline}`} description={p.quote}>
   <main>
     <!-- ============ HERO ============ -->
-    <section class="section hero">
+    <section id="home" class="section hero">
       <div class="reveal">
-        <p class="eyebrow">CFO-As-A-Service · Finance Transformation</p>
-        <h1>{profile.name}</h1>
-        <p class="hero-subtitle">{profile.title}</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Get in touch</a>
-          <a class="btn btn-ghost" href="#experience">See experience</a>
+        <p class="eyebrow">{p.tagline}</p>
+        <h1>{p.name}</h1>
+        <p class="hero-subtitle">{p.role}</p>
+        <p class="hero-quote">{p.quote}</p>
+        <div class="hero-contact">
+          <a href={`mailto:${p.mailto}`} class="hero-link">{p.mailto}</a>
+          <span class="hero-dot">·</span>
+          <a href={`tel:${p.tel}`} class="hero-link">{p.tel}</a>
+          <span class="hero-dot">·</span>
+          <a href={`https://${p.website}`} class="hero-link" target="_blank" rel="noopener">{p.website}</a>
         </div>
       </div>
     </section>
 
     <!-- ============ OUTCOMES ============ -->
-    <section class="section" id="outcomes">
-      <div class="reveal">
+    <section id="outcomes" class="section outcomes">
+      <div class="section-head">
         <p class="section-label">At a glance</p>
         <h2 class="section-title">Numbers that back the narrative.</h2>
-        <p class="section-lead">Fifteen years turning finance into a strategic asset — across borders, budgets, and transformations.</p>
       </div>
-      <div class="grid reveal">
-        <div class="card col-3">
-          <div class="stat"><span class="stat-num">{totalYears}+</span><span class="stat-label">years of experience</span></div>
-        </div>
-        <div class="card col-3">
-          <div class="stat"><span class="stat-num">{countries}</span><span class="stat-label">cross-country</span></div>
-        </div>
-        <div class="card col-3">
-          <div class="stat"><span class="stat-num">{mnaYearsRounded}+</span><span class="stat-label">years M&amp;A / investment</span></div>
-        </div>
-        <div class="card col-3">
-          <div class="stat"><span class="stat-num">#4</span><span class="stat-label">ESCP · FT-ranked</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ EXPERIENCE ============ -->
-    <section class="section" id="experience">
-      <div class="reveal">
-        <p class="section-label">Experience</p>
-        <h2 class="section-title">Where the impact landed.</h2>
-        <p class="section-lead">Each role is a chapter in one thesis: finance, executed with strategy and data.</p>
-      </div>
-
-      <div class="timeline reveal">
-        <div class="timeline-line"></div>
-        {experience.map(job => (
-          <div class={`entry ${job.highlight ? 'featured' : ''}`}>
-            <div class="entry-dot"></div>
-            <ExperienceItem
-              title={job.title}
-              company={job.company}
-              dateStart={job.dateStart}
-              dateEnd={job.dateEnd}
-              location={job.location}
-              details={job.details}
-              highlight={job.highlight}
-              tags={job.tags}
-              tools={job.tools}
-              description={job.description}
-            />
+      <div class="outcomes">
+        {outcomes.map((stat) => (
+          <div class="stat" key={stat.label}>
+            <span class="stat-num">{stat.value}</span>
+            <span class="stat-label">{stat.label}</span>
           </div>
         ))}
       </div>
     </section>
 
-    <!-- ============ CAPABILITIES ============ -->
-    <section class="section" id="capabilities">
-      <div class="reveal">
-        <p class="section-label">Capabilities</p>
-        <h2 class="section-title">Three disciplines, one view.</h2>
-        <p class="section-lead">Planning, reporting, and transformation — aligned so numbers lead to decisions.</p>
+    <!-- ============ EXPERIENCE ============ -->
+    <section id="experience" class="section experience">
+      <div class="section-head">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-sub">Where the impact has been, and where it's headed.</p>
       </div>
-      <div class="grid reveal">
-        <div class="card col-2">
-          <h3 class="card-title">Planning &amp; Forecasting</h3>
-          <p class="card-lead">Budgets, models, and long-term financial goals built to steer, not just record.</p>
-        </div>
-        <div class="card col-2">
-          <h3 class="card-title">Reporting &amp; Consolidation</h3>
-          <p class="card-lead">IFRS, SOX, and cross-border reporting turned into a strategic asset.</p>
-        </div>
-        <div class="card col-2">
-          <h3 class="card-title">Transformation</h3>
-          <p class="card-lead">SAP HANA, BI, and automation deployed to make teams faster and clearer.</p>
-        </div>
+      <div class="timeline">
+        {experience.map((exp) => (
+          <ExperienceItem
+            key={exp.id}
+            title={exp.title}
+            company={exp.company}
+            location={exp.location}
+            dateStart={exp.dateStart}
+            dateEnd={exp.dateEnd}
+            details={exp.details}
+            highlight={exp.highlight}
+          />
+        ))}
       </div>
     </section>
 
-    <!-- ============ CORNERSTONE ============ -->
-    <section class="section" id="cornerstone">
-      <div class="reveal card">
-        <p class="section-label">Cornerstone</p>
-        <h2 class="section-title">ESCP Business School — #4, Europe.</h2>
-        <p class="card-lead">A master's in Auditing &amp; Consulting, alongside a Master's in Financial Control. Education that underpins everything.</p>
-        <div class="grid" style="margin-top:26px;">
-          {otherEdu.map(edu => (
-            <div class="card col-3">
-              <div class="card-title">{edu.school}</div>
-              <p class="card-lead">{edu.degree} · {edu.year}</p>
+    <!-- ============ CAPABILITIES ============ -->
+    <section id="capabilities" class="section capabilities">
+      <div class="section-head">
+        <h2 class="section-title">Capabilities</h2>
+        <p class="section-sub">Financial control, from close to strategy.</p>
+      </div>
+      <div class="capability-grid">
+        {competencies.map((comp) => (
+          <div class="capability-card" key={comp.group}>
+            <p class="capability-group">{comp.group}</p>
+            {comp.items.map((item) => (
+              <p class="capability-item">· {item}</p>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div class="section-head mt">
+        <h3 class="section-title-sm">Working Tools</h3>
+      </div>
+      <div class="tools-grid">
+        {toolEntries.map((tool) => (
+          <div class="tool-cat" key={tool.category}>
+            <p class="tool-cat-title">{tool.category}</p>
+            {tool.items.map((item) => (
+              <span class="tool-tag">{item}</span>
+            ))}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section id="education" class="section education">
+      <div class="section-head">
+        <h2 class="section-title">Education</h2>
+      </div>
+      <div class="education-list">
+        {education.map((edu) => (
+          <div class="edu-row" key={edu.org}>
+            <div class="edu-main">
+              <p class="edu-org">{edu.org}</p>
+              <p class="edu-field">{edu.degree} · {edu.field}</p>
             </div>
-          ))}
-        </div>
+            <div class="edu-meta">
+              <p class="edu-date">{edu.dateStart} – {edu.dateEnd}</p>
+              {edu.rank ? <p class="edu-rank">{edu.rank}</p> : null}
+              <p class="edu-loc">{edu.location}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ============ LANGUAGES ============ -->
+    <section id="languages" class="section languages">
+      <div class="section-head">
+        <h2 class="section-title">Languages</h2>
+      </div>
+      <div class="language-list">
+        {languages.map((lang) => (
+          <div class="lang-row" key={lang.level}>
+            <span class="lang-level">{lang.level}</span>
+            {lang.items.map((item) => (
+              <span class="lang-item">{item}</span>
+            ))}
+          </div>
+        ))}
       </div>
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="section" id="contact">
-      <div class="reveal card" style="text-align:center; padding:56px 32px;">
-        <h2 class="section-title">Have a critical mission?</h2>
-        <p class="section-lead" style="margin-left:auto;margin-right:auto;max-width:560px;">
-          Advisory, transformation, or a next strategic mandate. Let's talk.
-        </p>
-        <div class="hero-actions" style="justify-content:center;">
-          <a class="btn btn-primary" href={`mailto:${profile.contact.email}`}>Send an email</a>
-          <a class="btn btn-ghost" href={`https://${profile.contact.website}`}>Visit website</a>
-        </div>
-        <p style="margin-top:22px;font-size:0.9rem;color:var(--text-secondary);">{profile.contact.location}</p>
+    <section id="contact" class="section contact">
+      <div class="section-head">
+        <h2 class="section-title">Let's build something.</h2>
+        <p class="section-sub">Open to CFO, FP&amp;A and finance-trans engagements — remotely or on-site.</p>
       </div>
+      <a href={`mailto:${p.mailto}`} class="cta-button">Get in touch</a>
+      <p class="contact-note">Brussels, BE · Available for remote &amp; relokation</p>
     </section>
-
-    <!-- ============ FOOTER ============ -->
-    <footer class="site-footer">
-      <div class="footer-row">
-        <span class="footer-tagline">Ernest Song — CFO-As-A-Service</span>
-        <div class="footer-links">
-          <a href="#outcomes">Outcomes</a>
-          <a href="#experience">Experience</a>
-          <a href="#capabilities">Capabilities</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
-    </footer>
   </main>
 </Layout>
-
-<!-- ================= ADMIN TOOLBAR (Apple-style) ================= -->
-<div id="admin-toolbar" class="admin-toolbar hidden">
-  <div class="admin-head">
-    <span class="label">Admin</span>
-    <label class="switch">
-      Edit
-      <input type="checkbox" id="editToggle">
-    </label>
-  </div>
-  <button id="saveBtn" class="btn-save" style="display:none;">Save all changes</button>
-  <button id="logoutBtn" class="btn-cancel">Lock</button>
-</div>
-
-<button id="lockTrigger" class="hidden" title="Admin login">🔒</button>
-
-<style>
-  /* Admin edit highlight */
-  body.admin-mode .editable-text { outline: 1px dashed rgba(29,78,216,0.55); border-radius: 5px; }
-  body.admin-mode .editable-detail { outline: 1px dashed rgba(29,78,216,0.55); border-radius: 5px; }
-</style>
-
-<script define:vars={{ initialData: portfolioData }}>
-  let isEditMode = false;
-  let currentData = initialData;
-  const SECRET_PASS = 'admin123';
-  const toolbar = document.getElementById('admin-toolbar');
-  const editToggle = document.getElementById('editToggle');
-  const saveBtn = document.getElementById('saveBtn');
-  const lockTrigger = document.getElementById('lockTrigger');
-  const logoutBtn = document.getElementById('logoutBtn');
-
-  function toast(msg) {
-    const existing = document.querySelector('.toast');
-    if (existing) existing.remove();
-    const t = document.createElement('div');
-    t.className = 'toast';
-    t.textContent = msg;
-    document.body.appendChild(t);
-    requestAnimationFrame(() => t.classList.add('show'));
-    setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 400); }, 2200);
-  }
-
-  // Login flow
-  lockTrigger.addEventListener('click', () => {
-    const pw = prompt('Admin password');
-    if (pw === SECRET_PASS) {
-      isEditMode = true;
-      editToggle.checked = true;
-      document.body.classList.add('admin-mode');
-      saveBtn.style.display = '';
-      toolbar.classList.remove('hidden');
-      lockTrigger.classList.add('hidden');
-      toast('Admin unlocked');
-      applyEditMode();
-    } else if (pw !== null) {
-      toast('Wrong password');
-    }
-  });
-
-  function applyEditMode() {
-    document.querySelectorAll('.editable-text, .editable-detail').forEach(el => {
-      el.contentEditable = String(isEditMode);
-    });
-    saveBtn.style.display = isEditMode ? '' : 'none';
-    // Toggle featured flags
-    document.querySelectorAll('.flag-toggle').forEach(cb => { cb.disabled = !isEditMode; });
-  }
-
-  editToggle.addEventListener('change', () => {
-    isEditMode = editToggle.checked;
-    applyEditMode();
-  });
-
-  // Save: reconstruct experience from live DOM
-  saveBtn.addEventListener('click', async () => {
-    const cards = document.querySelectorAll('.exp-card');
-    const rebuilt = [];
-    cards.forEach(card => {
-      const getField = (sel) => {
-        const el = card.querySelector(sel);
-        return el ? el.innerText.trim() : '';
-      };
-      const details: string[] = [];
-      card.querySelectorAll('.editable-detail').forEach(d => {
-        if (d.innerText.trim()) details.push(d.innerText.trim());
-      });
-      const tags: string[] = [];
-      const tools: string[] = [];
-      card.querySelectorAll('.editable-tag').forEach(t => {
-        const txt = (t.childNodes[0]?.nodeValue || '').trim();
-        if (!txt) return;
-        const type = t.dataset.type;
-        if (type === 'tool') tools.push(txt); else tags.push(txt);
-      });
-      const flagged = card.querySelector('.flag-toggle')?.checked ?? false;
-      rebuilt.push({
-        company: getField('.editable-text[data-field="company"]'),
-        title: getField('.editable-text[data-field="title"]'),
-        description: getField('.editable-text[data-field="description"]'),
-        dateStart: getField('.editable-text[data-field="dateStart"]'),
-        dateEnd: getField('.editable-text[data-field="dateEnd"]'),
-        location: getField('.editable-text[data-field="location"]'),
-        details,
-        tags,
-        tools,
-        highlight: flagged
-      });
-    });
-
-    // Profile fields (hero headline + subtitle)
-    const heroH1 = document.querySelector('.hero h1');
-    const heroSub = document.querySelector('.hero-subtitle');
-    if (heroH1) currentData.profile.name = heroH1.innerText.trim();
-    if (heroSub) currentData.profile.title = heroSub.innerText.trim();
-    currentData.experience = rebuilt;
-
-    try {
-      const res = await fetch('/api/portfolio', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(currentData)
-      });
-      if (res.ok) { toast('Changes saved'); window.location.reload(); }
-      else toast('Save failed');
-    } catch (e) {
-      toast('Save error');
-    }
-  });
-
-  logoutBtn.addEventListener('click', () => {
-    isEditMode = false;
-    editToggle.checked = false;
-    document.body.classList.remove('admin-mode');
-    toolbar.classList.add('hidden');
-    toast('Locked');
-  });
-
-  // Init
-  applyEditMode();
-
-  // Scroll reveal
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
-
-<style>
-  /* nav */
-  .site-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1080px; margin: 0 auto; backdrop-filter: saturate(180%) blur(20px); background: rgba(255,255,255,0.72); border-bottom: 1px solid transparent; transition: border-color .3s; }
-  .site-nav.scrolled { border-bottom-color: var(--border); }
-  .nav-brand { font-weight: 600; font-size: 1.05rem; }
-  .nav-cta { font-size: 0.9rem; font-weight: 500; padding: 8px 18px; border-radius: 999px; background: var(--text); color: var(--bg); transition: opacity .2s; }
-  .nav-cta:hover { opacity: 0.82; }
-
-  /* hero */
-  .hero { min-height: 74vh; display: flex; flex-direction: column; justify-content: center; padding: 80px 0 64px; }
-  .eyebrow { font-size: 0.95rem; font-weight: 500; color: var(--accent); letter-spacing: 0.02em; margin-bottom: 16px; }
-  .hero h1 { font-size: clamp(2.6rem, 7vw, 5rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
-  .hero-subtitle { margin-top: 18px; font-size: clamp(1.15rem, 2.4vw, 1.7rem); color: var(--text-secondary); font-weight: 500; max-width: 760px; }
-  .hero-actions { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; font-size: 1rem; font-weight: 500; padding: 13px 26px; border-radius: 999px; border: none; cursor: pointer; transition: opacity .2s, transform .2s; }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-ghost { background: var(--bg-soft); color: var(--text); }
-  .btn:hover { opacity: 0.9; }
-  .btn:active { transform: scale(0.98); }
-
-  /* sections */
-  .section { padding: 96px 0; }
-  .section-label { font-size: 0.85rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; }
-  .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 14px; }
-  .section-lead { font-size: 1.15rem; color: var(--text-secondary); max-width: 640px; margin-bottom: 48px; }
-
-  /* grid + cards */
-  .grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
-  .col-2 { grid-column: span 2; } .col-3 { grid-column: span 3; } .col-6 { grid-column: span 6; }
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow-1); }
-  .card-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 12px; }
-  .card-lead { color: var(--text-secondary); font-size: 1rem; line-height: 1.55; }
-  .stat { display: flex; align-items: baseline; gap: 6px; }
-  .stat-num { font-size: 3.2rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
-  .stat-label { font-size: 0.9rem; color: var(--text-secondary); font-weight: 500; }
-
-  /* timeline */
-  .timeline { position: relative; margin-top: 12px; }
-  .timeline-line { position: absolute; left: 9px; top: 8px; bottom: 8px; width: 1px; background: var(--border-strong); }
-  .entry { position: relative; padding: 0 0 22px 40px; }
-  .entry-dot { position: absolute; left: -9px; top: 15px; width: 17px; height: 17px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent); z-index: 2; }
-  .featured .entry-dot { border-color: #f59e0b; box-shadow: 0 0 0 4px rgba(245,158,11,0.15); }
-
-  .exp-card { padding: 22px 24px; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-1); transition: box-shadow .25s, transform .25s; }
-  .exp-card:hover { box-shadow: var(--shadow-2); transform: translateY(-1px); }
-  .featured { border-color: rgba(245,158,11,0.45); background: linear-gradient(180deg, #fffaf0 0%, #ffffff 40%); }
-  .exp-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
-  .exp-role { font-size: 1.15rem; font-weight: 600; }
-  .exp-meta { text-align: right; font-size: 0.88rem; color: var(--text-secondary); white-space: nowrap; }
-  .exp-company { font-size: 0.98rem; color: var(--accent); font-weight: 500; margin-top: 3px; }
-  .exp-desc { font-size: 0.92rem; color: var(--text-secondary); margin-top: 10px; font-style: italic; opacity: 0.9; }
-  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
-  .tag { font-size: 0.72rem; font-weight: 600; padding: 3px 9px; border-radius: 6px; background: var(--bg-soft); color: var(--text-secondary); }
-  .tag.tool { font-family: var(--font-mono); }
-  .exp-details { list-style: none; margin: 14px 0 0; padding: 0; }
-  .exp-details li { position: relative; padding-left: 18px; margin-bottom: 7px; font-size: 0.92rem; line-height: 1.5; }
-  .exp-details li::before { content: ''; position: absolute; left: 6px; top: 11px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
-  .admin-row { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border); display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-secondary); }
-  .flag-toggle { accent-color: var(--accent); }
-
-  /* footer */
-  .site-footer { padding: 64px 0 48px; border-top: 1px solid var(--border); margin-top: 40px; }
-  .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .footer-tagline { font-size: 0.9rem; color: var(--text-secondary); }
-  .footer-links { display: flex; gap: 20px; font-size: 0.9rem; }
-  .footer-links a:hover { color: var(--accent); }
-
-  /* toast */
-  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--bg-dark); color: var(--text-on-dark); padding: 12px 22px; border-radius: 999px; font-size: 0.9rem; z-index: 10000; opacity: 0; transition: opacity .4s, transform .4s; box-shadow: var(--shadow-2); }
-  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-  /* reveal */
-  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s, transform .6s; }
-  .reveal.in { opacity: 1; transform: translateY(0); }
-
-  /* hidden lock trigger */
-  #lockTrigger { position: fixed; bottom: 8px; right: 8px; opacity: 0; z-index: 9999; border: none; background: transparent; cursor: pointer; }
-
-  @media (max-width: 900px) {
-    .col-2, .col-3, .col-6 { grid-column: span 6; }
-    .grid { gap: 14px; }
-  }
-  @media (max-width: 600px) {
-    .hero { min-height: 66vh; padding: 56px 0 44px; }
-    .section { padding: 64px 0; }
-    .exp-head { flex-direction: column; }
-    .exp-meta { text-align: left; margin-left: 0; margin-top: 6px; }
-  }
-</style>
