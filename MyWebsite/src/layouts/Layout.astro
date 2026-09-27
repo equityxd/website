@@ -20,11 +20,23 @@ const { title, description = "Ernest Song — CFO-As-A-Service | Finance Transfo
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="author" content="Ernest SONG" />
+		<meta name="theme-color" content="#0b0d10" />
+		<meta name="color-scheme" content="light dark" />
+		<meta property="og:type" content="profile" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:locale" content="en_US" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
 		<title>{title}</title>
 	</head>
 	<body>
 		<nav class="site-nav">
 			<a class="nav-brand" href="/">Ernest Song</a>
+			<a class="nav-link" href="#impact">Impact</a>
 			<a class="nav-cta" href="#contact">Get in touch</a>
 		</nav>
 		<slot />

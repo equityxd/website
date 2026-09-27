@@ -19,16 +19,129 @@
     "tel": "+32 476 60 05 90",
     "quote": "15+ years across multi-entity, multi-country organisations (BE, FR, NL). I turn complex finance into clear, growth-driven decisions — from multi-year Medium-Term Plans to M&A due diligence and post-acquisition integration.",
     "keywords": [
-      "FP&A", "P&L", "Financial Modelling", "Consolidation", "Group Controlling",
-      "Cash Flow Management", "CAPEX Planning", "M&A", "Finance Transformation",
-      "RPA", "Business Intelligence", "Change Management", "Strategic Planning"
+      "FP&A",
+      "P&L",
+      "Financial Modelling",
+      "Consolidation",
+      "Group Controlling",
+      "Cash Flow Management",
+      "CAPEX Planning",
+      "M&A",
+      "Finance Transformation",
+      "RPA",
+      "Business Intelligence",
+      "Change Management",
+      "Strategic Planning"
     ]
   },
+  "kpis": [
+    {
+      "value": "15+ Years",
+      "label": "Finance & transformation leadership"
+    },
+    {
+      "value": "4×",
+      "label": "Valuation multiple · Vinci Airports"
+    },
+    {
+      "value": "50+",
+      "label": "Locations deployed across countries"
+    },
+    {
+      "value": "€3M",
+      "label": "Capital raised as interim CFO"
+    },
+    {
+      "value": "1,500+",
+      "label": "Bookings ingested per close (zero-intervention ETL)"
+    },
+    {
+      "value": "12",
+      "label": "Senior roles across BE · FR · NL · PT"
+    }
+  ],
   "outcomes": [
-    { "value": "15+ yrs", "label": "Finance & transformation leadership" },
-    { "value": "4x", "label": "Acquisition-value creation at Vinci Airports" },
-    { "value": "50+", "label": "Locations deployed across countries" },
-    { "value": "€3M", "label": "Raised as interim CFO" }
+    {
+      "value": "15+ yrs",
+      "label": "Finance & transformation leadership"
+    },
+    {
+      "value": "4x",
+      "label": "Acquisition-value creation at Vinci Airports"
+    },
+    {
+      "value": "50+",
+      "label": "Locations deployed across countries"
+    },
+    {
+      "value": "€3M",
+      "label": "Raised as interim CFO"
+    },
+    {
+      "value": "1,500+",
+      "label": "Bookings ingested per close (zero-intervention ETL)"
+    },
+    {
+      "value": "12",
+      "label": "Senior roles across BE, FR, NL, PT"
+    }
+  ],
+  "caseStudies": [
+    {
+      "id": "vinci-airports",
+      "metric": "4× Valuation Multiple",
+      "title": "Concession Valuation & Value Creation",
+      "company": "Vinci Airports",
+      "situation": "Led MD-financial-modeling for an airport-operations rollout across 50+ sites in multiple countries, requiring a consolidated, defensible financial model.",
+      "task": "Build a long-term financial business model capturing macroeconomic impact, capital expenditures and concession valuation.",
+      "action": "Negotiated the concession contract extension with Portuguese authorities and implemented a new budgeting/forecasting framework; delivered BE-GAAP reporting throughout.",
+      "result": "Realised a 4× valuation multiple on acquisition cost; scaled operations to 50+ locations across countries.",
+      "tags": ["Valuation", "Concession Valuation", "Budgeting / Forecasting", "Operations"]
+    },
+    {
+      "id": "engie-sem",
+      "metric": "1,500+ Bookings / Close",
+      "title": "Finance Automation & SAP Migration",
+      "company": "Engie SEM",
+      "situation": "SAP S/4HANA migration across French subsidiaries needed financial-controlling continuity during a resource gap.",
+      "task": "Ensure operational continuity of the commodity-trading close while migrating to a new ERP.",
+      "action": "Built and deployed an automated budget-modeling tool in a 2-week timeline; implemented PowerQuery ETL workflows for the trading close.",
+      "result": "Ingested 1,500+ bookings per close with zero human intervention; restructured WWS project codes to optimise portfolio monitoring.",
+      "tags": ["Financial Controlling", "SAP S/4HANA", "PowerQuery / ETL", "Budget Modeling"]
+    },
+    {
+      "id": "magnetrap",
+      "metric": "€3M Capital Raised",
+      "title": "Interim CFO · Capital Raise",
+      "company": "Magnetrap",
+      "situation": "Company required interim CFO leadership and growth capital to scale operations.",
+      "task": "Arrange debt/equity funding, establish financial control and produce a long-term financial plan.",
+      "action": "Acted as interim CFO, organised €3M in debt/equity fund raises and built cash-flow projections, business plans and long-term goals.",
+      "result": "Closed a €3M capital raise and stabilised operations with running results reporting.",
+      "tags": ["Interim CFO", "Fundraising", "Financial Planning"]
+    },
+    {
+      "id": "holcim",
+      "metric": "Post-M&A Integration",
+      "title": "M&A Integration & Group Reporting",
+      "company": "Holcim",
+      "situation": "Post-M&A integration and group controlling required reliable, consolidated reporting.",
+      "task": "Ensure data reliability, align rebate strategy with commercial goals and migrate to a new ERP.",
+      "action": "Managed the SAP HANA migration; developed rebate models (matrix & automated SAP); implemented Qliksense for financial reporting.",
+      "result": "Delivered integrated group reporting and enabled data-driven workflow restructuring.",
+      "tags": ["M&A Integration", "Group Controlling", "SAP HANA", "Business Intelligence"]
+    },
+    {
+      "id": "kpmg",
+      "metric": "SOX Compliance Assurance",
+      "title": "Audit & PPP / Grant Assurance",
+      "company": "KPMG Audit",
+      "situation": "Audit coverage of Public-Private Partnership contracts and EU Research grant agreements.",
+      "task": "Assure compliance with SOX and certify EU Research grant agreements.",
+      "action": "Conducted audits against multiple accounting standards; certified FP7 Grant Agreements and led audit teams.",
+      "result": "Clean SOX compliance assurance and grant certification for the EU Research programme.",
+      "tags": ["Auditing", "SOX Compliance", "Public-Private Partnerships", "Grant Agreements"]
+    }
   ],
   "experience": [
     {
@@ -36,6 +149,11 @@
       "title": "Strategic Business Analyst & Finance Automation Lead",
       "subtitle": "Freelancer",
       "company": "Engie SEM",
+      "categories": [
+        "Finance Automation",
+        "SAP / ERP Transformation",
+        "Financial Modelling & Cash Flow"
+      ],
       "location": "Brussels, BE",
       "dateStart": "January 2026",
       "dateEnd": null,
@@ -46,6 +164,13 @@
         "Designed, built and deployed an automated budget-modeling tool from scratch within a 2-week timeline, ensuring operational continuity during a resource gap.",
         "Streamlined financial closing for commodity trading with PowerQuery ETL workflows, safely ingesting 1,500+ bookings per close with zero human intervention.",
         "Reconciled financial data between middle-office databases (IVDB) and SAP S/4HANA while restructuring WWS project codes to optimize portfolio monitoring."
+      ],
+      "tags": [
+        "Financial Controlling",
+        "SAP S/4HANA",
+        "Finance Automation",
+        "PowerQuery / ETL",
+        "Budget Modeling"
       ]
     },
     {
@@ -53,6 +178,11 @@
       "title": "Senior Operational Excellence & Data Lead",
       "subtitle": "Freelancer",
       "company": "Holcim",
+      "categories": [
+        "Group Controlling & M&A",
+        "Business Intelligence",
+        "Financial Reporting / IFRS"
+      ],
       "location": "Nivelles, BE",
       "dateStart": "January 2024",
       "dateEnd": "December 2025",
@@ -63,6 +193,13 @@
         "Developed rebate models (matrix & automated SAP), aligning with commercial strategy.",
         "Implemented Qliksense with new data for financial reporting and insights.",
         "Ensured data reliability and liaised with auditors on rebate matters."
+      ],
+      "tags": [
+        "M&A Integration",
+        "Group Controlling",
+        "SAP HANA",
+        "Business Intelligence",
+        "Rebate Modelling"
       ]
     },
     {
@@ -70,6 +207,11 @@
       "title": "Cash Flow & Financial Modeling Specialist",
       "subtitle": "Freelancer",
       "company": "Engie Tractebel",
+      "categories": [
+        "Group Controlling & M&A",
+        "Financial Modelling & Cash Flow",
+        "Business Intelligence"
+      ],
       "location": "Brussels, BE",
       "dateStart": "March 2023",
       "dateEnd": "December 2023",
@@ -78,6 +220,12 @@
         "Designed cash-flow reporting and cash-exposure modeling per project.",
         "Assessed financing needs in the local entity, with credit analysis of specific counterparts and impairment testing.",
         "Developed financial modeling from SAP HANA data and designed Power BI reporting."
+      ],
+      "tags": [
+        "Financial Modelling",
+        "Cash Flow Analysis",
+        "Credit Analysis",
+        "Power BI"
       ]
     },
     {
@@ -85,6 +233,10 @@
       "title": "Investment & Corporate Development Analyst",
       "subtitle": "Freelancer",
       "company": "Shurgard",
+      "categories": [
+        "Real Estate / Corporate Development",
+        "Business Intelligence"
+      ],
       "location": "Brussels, BE",
       "dateStart": "February 2022",
       "dateEnd": "February 2023",
@@ -94,6 +246,12 @@
         "Maintained a project dashboard and initiated corporate-development projects to improve department policies.",
         "Designed the data model and visualization for the Investment department's Business Intelligence efforts.",
         "Collaborated on a new pricing model using Artificial Intelligence."
+      ],
+      "tags": [
+        "Real Estate",
+        "Corporate Development",
+        "Business Intelligence",
+        "AI Pricing"
       ]
     },
     {
@@ -101,6 +259,10 @@
       "title": "Freelance CFO / Fundraising Consultant",
       "subtitle": "Freelancer",
       "company": "Magnetrap",
+      "categories": [
+        "Interim CFO / Fundraising",
+        "Financial Planning & Control"
+      ],
       "location": "Mons, BE",
       "dateStart": "November 2020",
       "dateEnd": "January 2022",
@@ -110,6 +272,11 @@
         "Created cash-flow projections, business plans and long-term financial goals.",
         "Monitored company performance and implemented corrective actions as needed.",
         "Prepared operating-results reports and managed financial models for long-term use."
+      ],
+      "tags": [
+        "Interim CFO",
+        "Fundraising",
+        "Financial Planning"
       ]
     },
     {
@@ -117,6 +284,11 @@
       "title": "Director Business Process Automation",
       "subtitle": "",
       "company": "Tobania",
+      "categories": [
+        "Finance Automation",
+        "Business Intelligence",
+        "Financial Planning & Control"
+      ],
       "location": "Brussels, BE",
       "dateStart": "February 2020",
       "dateEnd": "October 2020",
@@ -126,6 +298,13 @@
         "Managed business development including marketing strategy, pre-sales and sales, and identified new opportunities.",
         "Implemented process optimization, standardization and harmonization to improve efficiency and profitability.",
         "Provided tailored reports to help customers monitor costs and established change-management structures for adoption."
+      ],
+      "tags": [
+        "RPA",
+        "Business Intelligence",
+        "Business Development",
+        "Process Optimization",
+        "Change Management"
       ]
     },
     {
@@ -133,6 +312,9 @@
       "title": "Founder",
       "subtitle": "",
       "company": "Soap collect",
+      "categories": [
+        "Non-profit & Community"
+      ],
       "location": "Phnom Penh, KH",
       "dateStart": "January 2019",
       "dateEnd": null,
@@ -141,6 +323,10 @@
       "details": [
         "Established a non-profit providing hygiene products to disadvantaged communities.",
         "Formed partnerships with luxury hotel chains to source used soap for reconditioning."
+      ],
+      "tags": [
+        "Non-profit",
+        "Business Development"
       ]
     },
     {
@@ -148,6 +334,10 @@
       "title": "Performance Management Project Leader",
       "subtitle": "",
       "company": "Degroof Petercam",
+      "categories": [
+        "Finance Transformation",
+        "Financial Reporting / IFRS"
+      ],
       "location": "Brussels, BE",
       "dateStart": "January 2018",
       "dateEnd": "December 2018",
@@ -158,6 +348,12 @@
         "Optimized the finance-close process for improved governance, internal control and data quality.",
         "Led projects related to regulatory-reporting sourcing and followed BPM standards.",
         "Conducted gap analysis of business requirements against existing procedures."
+      ],
+      "tags": [
+        "Finance Transformation",
+        "Performance Management",
+        "Regulatory Reporting",
+        "Gap Analysis"
       ]
     },
     {
@@ -165,6 +361,10 @@
       "title": "Managing Director & Head of Project Financial Modeling",
       "subtitle": "Cursus Grand Talent",
       "company": "Vinci Airports",
+      "categories": [
+        "Valuation / Operations",
+        "Financial Reporting / IFRS"
+      ],
       "location": "Brussels, BE & Lisbon, PT",
       "dateStart": "February 2016",
       "dateEnd": "December 2017",
@@ -175,6 +375,12 @@
         "Developed a long-term financial business model including macroeconomic impact, capital expenditures and concession valuation.",
         "Negotiated extension of the concession contract with Portuguese authorities and implemented a new financial model to improve budgeting and forecasting.",
         "Managed accounting and financial reporting in accordance with BE-GAAP standards."
+      ],
+      "tags": [
+        "Valuation",
+        "Concession Valuation",
+        "Budgeting / Forecasting",
+        "Operations"
       ]
     },
     {
@@ -182,6 +388,10 @@
       "title": "Reporting Consolidation Manager",
       "subtitle": "",
       "company": "Rexel",
+      "categories": [
+        "SAP / ERP Transformation",
+        "Financial Reporting / IFRS"
+      ],
       "location": "Paris, FR",
       "dateStart": "September 2014",
       "dateEnd": "January 2016",
@@ -191,6 +401,12 @@
         "Spearheaded the restructuring and integration of SAP BPC and Cognos reporting systems.",
         "Performed annual budgeting, monthly forecasting and analyses of actual vs. budgeted results.",
         "Led the strategic-planning process for the organization."
+      ],
+      "tags": [
+        "IFRS Reporting",
+        "SAP BPC",
+        "Budgeting",
+        "Strategic Planning"
       ]
     },
     {
@@ -198,6 +414,10 @@
       "title": "Financial Auditor Supervisor",
       "subtitle": "",
       "company": "KPMG Audit",
+      "categories": [
+        "Auditing & Compliance",
+        "Financial Reporting / IFRS"
+      ],
       "location": "Paris, FR",
       "dateStart": "January 2011",
       "dateEnd": "August 2014",
@@ -208,6 +428,12 @@
         "Certified FP7 Grant Agreements for the EU Research program and led audit teams.",
         "Developed partnerships and identified new markets to support business growth.",
         "Key clients span Construction (Vinci, Eiffage, Colas), Real estate (Nexity), Water distribution (Veolia), Parcels distribution (Geopost), Security (Brink's) and Healthcare (DomusVie)."
+      ],
+      "tags": [
+        "Auditing",
+        "SOX Compliance",
+        "Public-Private Partnerships",
+        "Grant Agreements"
       ]
     },
     {
@@ -215,6 +441,10 @@
       "title": "Deputy CFO Trainee",
       "subtitle": "",
       "company": "ICM – Brain & Spine Institute",
+      "categories": [
+        "Financial Planning & Control",
+        "Auditing & Compliance"
+      ],
       "location": "Paris, FR",
       "dateStart": "November 2009",
       "dateEnd": "August 2010",
@@ -223,6 +453,11 @@
         "Implemented the budget system and prepared business plans for the scientific teams.",
         "Established the internal-control system for purchasing and donation processes and managed bank reconciliation.",
         "Prepared the institutional audit necessary for certification by the Comité de la Charte."
+      ],
+      "tags": [
+        "Financial Planning",
+        "Internal Control",
+        "Bank Reconciliation"
       ]
     }
   ],
@@ -247,37 +482,148 @@
     }
   ],
   "competencies": [
-    { "group": "Planning & Forecasting", "items": [
-      "Medium-Term Plan (Multi-Year Business Planning)",
-      "P&L Analysis & Forecasting"
-    ]},
-    { "group": "Reporting & Consolidation", "items": [
-      "Consolidation & Financial Reporting (IFRS / BE-GAAP)",
-      "Group Controlling"
-    ]},
-    { "group": "Cash & CAPEX", "items": [
-      "Cash Flow Management",
-      "Working Capital Management",
-      "CAPEX Planning"
-    ]},
-    { "group": "M&A", "items": [
-      "Investor Support & Financial Modelling",
-      "M&A: Due Diligence & Post-Acquisition Integration"
-    ]}
+    {
+      "group": "Planning & Forecasting",
+      "items": [
+        "Medium-Term Plan (Multi-Year Business Planning)",
+        "P&L Analysis & Forecasting"
+      ]
+    },
+    {
+      "group": "Reporting & Consolidation",
+      "items": [
+        "Consolidation & Financial Reporting (IFRS / BE-GAAP)",
+        "Group Controlling"
+      ]
+    },
+    {
+      "group": "Cash & CAPEX",
+      "items": [
+        "Cash Flow Management",
+        "Working Capital Management",
+        "CAPEX Planning"
+      ]
+    },
+    {
+      "group": "M&A",
+      "items": [
+        "Investor Support & Financial Modelling",
+        "M&A: Due Diligence & Post-Acquisition Integration"
+      ]
+    }
   ],
   "tools": {
-    "Business": ["MS Office (advanced Excel, Power Query)"],
-    "ERP": ["SAP HANA"],
-    "Business Intelligence": ["MS Power BI", "QlikSense", "Business Object", "Cognos", "Hyperion"],
-    "RPA": ["UIpath", "MS PowerAutomate"],
-    "Agile": ["Jira", "Confluence"],
-    "Data & Analytics": ["VBA", "SQL", "R"]
+    "Business": [
+      "MS Office (advanced Excel, Power Query)"
+    ],
+    "ERP": [
+      "SAP HANA"
+    ],
+    "Business Intelligence": [
+      "MS Power BI",
+      "QlikSense",
+      "Business Object",
+      "Cognos",
+      "Hyperion"
+    ],
+    "RPA": [
+      "UIpath",
+      "MS PowerAutomate"
+    ],
+    "Agile": [
+      "Jira",
+      "Confluence"
+    ],
+    "Data & Analytics": [
+      "VBA",
+      "SQL",
+      "R"
+    ]
   },
   "languages": [
-    { "level": "Native", "items": ["French", "Khmer", "Teochew"] },
-    { "level": "Proficient", "items": ["English"] },
-    { "level": "Basics", "items": ["Dutch (A2)", "Spanish", "Mandarin"] }
+    {
+      "level": "Native",
+      "items": [
+        "French",
+        "Khmer",
+        "Teochew"
+      ]
+    },
+    {
+      "level": "Proficient",
+      "items": [
+        "English"
+      ]
+    },
+    {
+      "level": "Basics",
+      "items": [
+        "Dutch (A2)",
+        "Spanish",
+        "Mandarin"
+      ]
+    }
   ],
-  "interests": ["Sustainable development", "Powerlifting", "Mountain biking", "Tennis"],
-  "interpersonal": ["Fast-learner", "Problem solver", "Diplomacy", "Driven", "Autonomous", "Teamplayer"]
+  "interests": [
+    "Sustainable development",
+    "Powerlifting",
+    "Mountain biking",
+    "Tennis"
+  ],
+  "interpersonal": [
+    "Fast-learner",
+    "Problem solver",
+    "Diplomacy",
+    "Driven",
+    "Autonomous",
+    "Teamplayer"
+  ],
+  "credentials": [
+    {
+      "name": "ESCP Business School",
+      "body": "Specialized Master's · Auditing and Consulting · #1 FT 2026"
+    },
+    {
+      "name": "Université Paris Nanterre",
+      "body": "Master's · Management Science and Financial Control"
+    },
+    {
+      "name": "FP7 Grant Certification",
+      "body": "EU Research grant-agreement certification"
+    }
+  ],
+  "press": [
+    {
+      "title": "CFO-As-A-Service for growth-stage SMEs",
+      "source": "ernestsong.com",
+      "date": "2025"
+    },
+    {
+      "title": "Finance Transformation · From audit to boardroom",
+      "source": "ernestsong.com",
+      "date": "2025"
+    }
+  ],
+  "assets": [
+    {
+      "name": "Three-Statement Model Template",
+      "type": "pdf",
+      "href": "#"
+    },
+    {
+      "name": "LBO Model Draft",
+      "type": "pdf",
+      "href": "#"
+    },
+    {
+      "name": "Cash-Flow Forecasting Workbook",
+      "type": "xlsx",
+      "href": "#"
+    },
+    {
+      "name": "Downloadable Resume (PDF)",
+      "type": "pdf",
+      "href": "/docs/Ernest_SONG_CV.pdf"
+    }
+  ]
 }

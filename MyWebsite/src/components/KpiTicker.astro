@@ -1,0 +1,63 @@
+---
+interface Props {
+  items: { value: string; label: string }[];
+}
+
+const { items } = Astro.props;
+---
+<div class="ticker" role="list" aria-label="Career impact metrics">
+  <div class="ticker-track">
+    {items.concat(items).map((k, i) => (
+      <div class="ticker-item" key={i} role="listitem">
+        <span class="ticker-value">{k.value}</span>
+        <span class="ticker-dot">✦</span>
+        <span class="ticker-label">{k.label}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .ticker {
+    overflow: hidden;
+    width: 100%;
+    background: var(--surface-);
+    border-top: 1px solid var(--surface-);
+    border-bottom: 1px solid var(--surface-);
+    padding: 16px 0;
+    mask-image: linear-gradient(90deg, transparent, #000 12px, #000 calc(100% - 12px), transparent);
+  }
+  .ticker-track {
+    display: flex;
+    gap: 48px;
+    width: max-content;
+    animation: ticker-scroll 28s linear infinite;
+  }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+  }
+  .ticker-value {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--accent-text);
+    letter-spacing: 0.01em;
+  }
+  .ticker-dot { color: var(--accent); font-size: 0.8rem; }
+  .ticker-label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    text-transform: capitalize;
+  }
+  @keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+  }
+</style>

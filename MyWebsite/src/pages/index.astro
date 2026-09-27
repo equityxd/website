@@ -1,16 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ExperienceItem from '../components/ExperienceItem.astro';
+import CaseStudy from '../components/CaseStudy.astro';
+import KpiTicker from '../components/KpiTicker.astro';
 import profile from '../data/profile.json' assert { type: 'json' };
 
-const { profile: p, experience, outcomes, competencies, tools, education, languages } = profile;
+const { profile: p, experience, outcomes, caseStudies, kpis, competencies, tools, education, credentials, press, assets, languages, interests, interpersonal } = profile;
 
 const toolEntries = Object.entries(tools).map(([category, items]) => ({ category, items }));
+
+// Union of all category buckets across experiences (used by the Experience filter bar)
+const categoryOptions = Array.from(
+  new Set(experience.flatMap((e) => (e.categories || []).filter(Boolean)))
+).sort();
+const langRanges = { Native: 100, Proficient: 75, Basics: 35 };
+const langLabels = { Native: 'Native', Proficient: 'Proficient', Basics: 'Basics' };
 ---
 <Layout title={`${p.name} | ${p.tagline}`} description={p.quote}>
   <main>
     <!-- ============ HERO ============ -->
     <section id="home" class="section hero">
+      <div class="hero-bg"></div>
+      <div class="hero-glow"></div>
       <div class="reveal">
         <p class="eyebrow">{p.tagline}</p>
         <h1>{p.name}</h1>
@@ -23,160 +34,372 @@ const toolEntries = Object.entries(tools).map(([category, items]) => ({ category
           <span class="hero-dot">·</span>
           <a href={`https://${p.website}`} class="hero-link" target="_blank" rel="noopener">{p.website}</a>
         </div>
+        <div class="hero-actions">
+          <a href="#experience" class="btn btn-primary">View experience</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
       </div>
     </section>
 
-    <!-- ============ OUTCOMES ============ -->
-    <section id="outcomes" class="section outcomes">
-      <div class="section-head">
-        <p class="section-label">At a glance</p>
-        <h2 class="section-title">Numbers that back the narrative.</h2>
+    <!-- ============ MARQUEE RIBBON ============ -->
+    <div class="ribbon">
+      <div class="marquee">
+        {p.keywords.flatMap((k, i) => [
+          <span>{k}</span>,
+          <span>✦</span>
+        ]).slice(0, 24)}
+        {p.keywords.slice(0, 6).map((k) => <span>{k}</span>).join('')}
       </div>
-      <div class="outcomes">
-        {outcomes.map((stat) => (
-          <div class="stat" key={stat.label}>
-            <span class="stat-num">{stat.value}</span>
-            <span class="stat-label">{stat.label}</span>
-          </div>
-        ))}
+    </div>
+
+    <!-- ============ KPI TICKER ============ -->
+    <KpiTicker items={kpis} />
+
+    <!-- ============ OUTCOMES ============ -->
+    <section id="outcomes" class="section section-dark">
+      <div class="site-shell">
+        <div class="section-head">
+          <p class="section-label">At a glance</p>
+          <h2 class="section-title gradient">Numbers that back the narrative.</h2>
+        </div>
+        <div class="outcomes">
+          {outcomes.map((stat) => (
+            <div class="stat" key={stat.label}>
+              <span class="stat-num" data-target={stat.value.replace(/[a-zA-Z+]/g, '')} data-suffix={stat.value.includes('x') ? 'x' : stat.value.includes('€') ? '€' : stat.value.includes('yrs') ? '+' : ''}>{stat.value}</span>
+              <span class="stat-label">{stat.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
     <!-- ============ EXPERIENCE ============ -->
-    <section id="experience" class="section experience">
-      <div class="section-head">
-        <p class="section-label">Where the impact has been</p>
-        <h2 class="section-title">Experience</h2>
-        <p class="section-sub">From audit to boardroom — finance transformation, country by country.</p>
+    <section id="experience" class="section">
+      <div class="site-shell">
+        <div class="section-head">
+          <p class="section-label">Where the impact has been</p>
+          <h2 class="section-title">Experience</h2>
+          <p class="section-sub">From audit to boardroom — finance transformation, country by country.</p>
+        </div>
+        <div class="filter-bar" role="list">
+          <button type="button" class="filter-pill is-active" data-filter="" role="listitem">All</button>
+          {categoryOptions.map((cat) => (
+            <button type="button" class="filter-pill" data-filter={cat} role="listitem">{cat}</button>
+          ))}
+        </div>
+        <div class="timeline">
+          <span class="timeline-line"></span>
+          {experience.map((exp) => (
+            <ExperienceItem
+              key={exp.id}
+              title={exp.title}
+              subtitle={exp.subtitle}
+              company={exp.company}
+              location={exp.location}
+              dateStart={exp.dateStart}
+              dateEnd={exp.dateEnd}
+              details={exp.details}
+              tags={exp.tags || []}
+              categories={exp.categories || []}
+              hidden={false}
+              highlight={exp.highlight}
+            />
+          ))}
+        </div>
       </div>
-      <div class="timeline">
-        <span class="timeline-line"></span>
-        {experience.map((exp) => (
-          <ExperienceItem
-            key={exp.id}
-            title={exp.title}
-            subtitle={exp.subtitle}
-            company={exp.company}
-            location={exp.location}
-            dateStart={exp.dateStart}
-            dateEnd={exp.dateEnd}
-            details={exp.details}
-            highlight={exp.highlight}
-          />
-        ))}
+    </section>
+
+    <!-- ============ IMPACT / CASE STUDIES ============ -->
+    <section id="impact" class="section section-dark">
+      <div class="site-shell">
+        <div class="section-head">
+          <p class="section-label">Proof of impact</p>
+          <h2 class="section-title gradient">Impact stories</h2>
+          <p class="section-sub">Structured STAR cases with quantified financial outcomes — the numbers behind the roles.</p>
+        </div>
+        <div class="cases">
+          {caseStudies.map((cs) => (
+            <CaseStudy
+              key={cs.title}
+              metric={cs.metric}
+              title={cs.title}
+              company={cs.company}
+              situation={cs.situation}
+              task={cs.task}
+              action={cs.action}
+              result={cs.result}
+              tags={cs.tags || []}
+            />
+          ))}
+        </div>
       </div>
     </section>
 
     <!-- ============ CAPABILITIES ============ -->
-    <section id="capabilities" class="section capabilities">
-      <div class="section-head">
-        <p class="section-label">What I bring</p>
-        <h2 class="section-title">Capabilities</h2>
-        <p class="section-sub">Financial control, from the daily close to the strategy table.</p>
-      </div>
-      <div class="capability-grid">
-        {competencies.map((comp) => (
-          <div class="capability-card" key={comp.group}>
-            <p class="capability-group">{comp.group}</p>
-            {comp.items.map((item) => (
-              <p class="capability-item">· {item}</p>
-            ))}
-          </div>
-        ))}
-      </div>
-      <div class="section-head">
-        <p class="section-label">Working tools</p>
-        <h2 class="section-title">Working Tools</h2>
-      </div>
-      <div class="tools-grid">
-        {toolEntries.map((tool) => (
-          <div class="tool-cat" key={tool.category}>
-            <p class="tool-cat-title">{tool.category}</p>
-            {tool.items.map((item) => (
-              <span class="tool-tag">{item}</span>
-            ))}
-          </div>
-        ))}
+    <section id="capabilities" class="section section-dark">
+      <div class="site-shell">
+        <div class="section-head">
+          <p class="section-label">What I bring</p>
+          <h2 class="section-title gradient">Capabilities</h2>
+          <p class="section-sub">Financial control, from the daily close to the strategy table.</p>
+        </div>
+        <div class="capability-grid">
+          {competencies.map((comp) => (
+            <div class="capability-card capability-dark" key={comp.group}>
+              <p class="capability-group">{comp.group}</p>
+              {comp.items.map((item) => (
+                <p class="capability-item">{item}</p>
+              ))}
+            </div>
+          ))}
+        </div>
+        <div class="section-head" style="margin-top:64px">
+          <p class="section-label">Working tools</p>
+          <h2 class="section-title gradient">Working Tools</h2>
+        </div>
+        <div class="tools-grid">
+          {toolEntries.map((tool) => (
+            <div class="tool-cat exp-dark" key={tool.category}>
+              <p class="tool-cat-title">{tool.category}</p>
+              <div class="tool-tiles">
+                {tool.items.map((item) => (
+                  <div class="tool-tile" key={item} title={item}>
+                    <span class="tool-glyph">{tool.category.charAt(0)}</span>
+                    <span class="tool-name">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
     <!-- ============ EDUCATION ============ -->
-    <section id="education" class="section education">
-      <div class="section-head">
-        <p class="section-label">Foundation</p>
-        <h2 class="section-title">Education</h2>
+    <section id="education" class="section">
+      <div class="site-shell">
+        <div class="section-head">
+          <p class="section-label">Foundation</p>
+          <h2 class="section-title">Education</h2>
+        </div>
+        <div class="education-list">
+          {education.map((edu) => (
+            <div class="edu-row" key={edu.org}>
+              <div class="edu-main">
+                <p class="edu-org">{edu.org}</p>
+                <p class="edu-field">{edu.degree} · {edu.field}</p>
+              </div>
+              <div class="edu-meta">
+                <p class="edu-date">{edu.dateStart} – {edu.dateEnd}</p>
+                {edu.rank ? <p class="edu-rank">{edu.rank}</p> : null}
+                <p class="edu-loc">{edu.location}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-      <div class="education-list">
-        {education.map((edu) => (
-          <div class="edu-row" key={edu.org}>
-            <div class="edu-main">
-              <p class="edu-org">{edu.org}</p>
-              <p class="edu-field">{edu.degree} · {edu.field}</p>
+    </section>
+
+    <!-- ============ CREDENTIALS ============ -->
+    <section id="credentials" class="section">
+      <div class="site-shell">
+        <div class="section-head">
+          <p class="section-label">Credentials</p>
+          <h2 class="section-title">Credentials &amp; Press</h2>
+        </div>
+        <div class="credentials-grid">
+          {credentials.map((c) => (
+            <div class="credential-card" key={c.name}>
+              <p class="credential-name">{c.name}</p>
+              <p class="credential-body">{c.body}</p>
             </div>
-            <div class="edu-meta">
-              <p class="edu-date">{edu.dateStart} – {edu.dateEnd}</p>
-              {edu.rank ? <p class="edu-rank">{edu.rank}</p> : null}
-              <p class="edu-loc">{edu.location}</p>
-            </div>
+          ))}
+        </div>
+        {press && press.length > 0 && (
+          <div class="press-list">
+            {press.map((item) => (
+              <div class="press-row" key={item.title}>
+                <span class="press-title">{item.title}</span>
+                <span class="press-meta">
+                  <span class="press-source">{item.source}</span>
+                  {item.date && <span class="press-date">{item.date}</span>}
+                </span>
+              </div>
+            ))}
           </div>
-        ))}
+        )}
       </div>
     </section>
 
     <!-- ============ LANGUAGES ============ -->
-    <section id="languages" class="section languages">
-      <div class="section-head">
-        <p class="section-label">Communication</p>
-        <h2 class="section-title">Languages</h2>
-      </div>
-      <div class="language-list">
-        {languages.map((lang) => (
-          <div class="lang-row" key={lang.level}>
-            <span class="lang-level">{lang.level}</span>
-            {lang.items.map((item) => (
-              <span class="lang-item">{item}</span>
-            ))}
-            {lang.flags && lang.flags.length > 0 && <span class="lang-flags">{lang.flags.join(' ')}</span>}
-          </div>
-        ))}
+    <section id="languages" class="section section-dark">
+      <div class="section-shell site-shell">
+        <div class="section-head">
+          <p class="section-label">Communication</p>
+          <h2 class="section-title gradient">Languages</h2>
+        </div>
+        <div class="language-list">
+          {languages.map((lang) => (
+            <div class="lang-row" key={lang.level}>
+              <span class="lang-level">{langLabels[lang.level] ?? lang.level}</span>
+              <div class="lang-track"><span class="lang-fill" data-width={langRanges[lang.level] ?? 50}></span></div>
+              {lang.items.map((item) => (
+                <span class="lang-item">{item}</span>
+              ))}
+              {lang.flags && lang.flags.length > 0 && <span class="lang-flags">{lang.flags.join(' ')}</span>}
+            </div>
+          ))}
+        </div>
+        <div class="section-sub" style="margin-top:26px">
+          Interpersonal: {interpersonal.join(' · ')}
+        </p>
       </div>
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section id="contact" class="section contact">
-      <div class="section-head">
-        <p class="section-label">Next steps</p>
-        <h2 class="section-title">Let's build something.</h2>
-        <p class="section-sub">Open to CFO, FP&amp;A and finance-transformation engagements — remotely or on-site.</p>
+    <section id="contact" class="section">
+      <div class="site-shell">
+        <div class="section-head">
+          <p class="section-label">Next steps</p>
+          <h2 class="section-title">Let's build something.</h2>
+          <p class="section-sub">Open to CFO, FP&amp;A and finance-transformation engagements — remotely or on-site.</p>
+        </div>
+        <div class="contact-grid">
+          <a class="contact-cell" href={`mailto:${p.mailto}`}>
+            <span class="cell-label">Email</span>
+            <span class="cell-value">{p.mailto}</span>
+          </a>
+          <a class="contact-cell" href={`tel:${p.tel}`}>
+            <span class="cell-label">Phone</span>
+            <span class="cell-value">{p.tel}</span>
+          </a>
+          <a class="contact-cell" href={`https://${p.website}`} target="_blank" rel="noopener">
+            <span class="cell-label">Website</span>
+            <span class="cell-value">{p.website}</span>
+          </a>
+        </div>
+        <a href={`mailto:${p.mailto}`} class="cta-button">Get in touch</a>
+        <button type="button" class="book-cta" data-book-open>Book a 30-min intro call</button>
+        <p class="contact-note">Brussels, BE · Available for remote &amp; relocation</p>
       </div>
-      <a href={`mailto:${p.mailto}`} class="cta-button">Get in touch</a>
-      <p class="contact-note">Brussels, BE · Available for remote &amp; relokation</p>
     </section>
-  </main>
-</Layout>
 
-<script is:client>
-  // Quiet scroll-reveal, respecting reduced-motion.
-  const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduce) {
-    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
-  } else {
+    <!-- ============ BOOKING MODAL ============ -->
+    <div class="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-title" hidden>
+      <div class="booking-backdrop" data-book-close></div>
+      <div class="booking-panel">
+        <div class="booking-head">
+          <h3 id="booking-title">Book a 30-min intro call</h3>
+          <button type="button" class="booking-close" data-book-close aria-label="Close">✕</button>
+        </div>
+        <p class="booking-sub">Select a time that suits. I'll confirm by email.</p>
+        <div class="booking-frame">
+          <iframe
+            title="Calendy booking calendar"
+            loading="lazy"
+            src={`https://calendy.com/ernestsong/intro-call`}
+            style="min-height: 600px; width: 100%; border: 0;">
+          </iframe>
+        </div>
+        <p class="booking-note">Can't find a slot? <a href={`mailto:${p.mailto}`}>Email me directly</a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <script is:client>
+    // ---- Count-up animation for stats ----
+    const countEls = document.querySelectorAll('.stat-num');
+    const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const animateCount = (el) => {
+      if (prefersReduce) { el.dataset.animated = '1'; return; }
+      const raw = el.dataset.target || '';
+      const suffix = el.dataset.suffix || '';
+      const target = parseFloat(raw);
+      if (isNaN(target)) { el.textContent = (raw || el.textContent) + suffix; el.dataset.animated = '1'; return; }
+      let start = 0;
+      const step = (ts) => {
+        if (!el.dataset.animated) {
+          const progress = Math.min(ts / 900, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(target * eased);
+          el.textContent = current + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+          else { el.dataset.animated = '1'; el.textContent = target + suffix; }
+        }
+      };
+      requestAnimationFrame(step);
+    };
+
+    // ---- Scroll reveal + count triggers ----
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('in');
+          if (entry.target.classList.contains('stat-num')) animateCount(entry.target);
+          if (entry.target.classList.contains('lang-fill')) {
+            entry.target.style.width = entry.target.dataset.width + '%';
+          }
           io.disconnect();
         }
       });
     }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-  }
 
-  // Sticky nav border
-  const nav = document.querySelector('.site-nav');
-  const onScroll = () => {
-    if (nav) nav.classList.toggle('scrolled', window.scrollY > 8);
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-</script>
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    document.querySelectorAll('.stat-num').forEach((el) => io.observe(el));
+    document.querySelectorAll('.lang-fill').forEach((el) => io.observe(el));
+
+    // ---- Sticky nav border ----
+    const nav = document.querySelector('.site-nav');
+    const onScroll = () => { if (nav) nav.classList.toggle('scrolled', window.scrollY > 8); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // ---- Experience category filter ----
+    const pills = document.querySelectorAll('.filter-pill');
+    const cards = Array.from(document.querySelectorAll('.exp-card'));
+    let activeFilter = '';
+
+    const setFilter = (category) => {
+      activeFilter = category;
+      pills.forEach((p) => p.classList.toggle('is-active', p.dataset.filter === activeFilter));
+      cards.forEach((card) => {
+        const match = !activeFilter || card.dataset.filters.split(' | ').includes(activeFilter);
+        if (match) {
+          card.classList.remove('is-hidden');
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(10px)';
+          card.offsetHeight; // force reflow
+          card.style.transition = 'opacity .45s var(--ease), transform .45s var(--ease)';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        } else {
+          card.style.transition = 'opacity .3s var(--ease), transform .3s var(--ease)';
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.98)';
+          setTimeout(() => card.classList.add('is-hidden'), 320);
+        }
+      });
+    };
+
+    pills.forEach((pill) => pill.addEventListener('click', () => setFilter(pill.dataset.filter)));
+
+    // Chips inside each card also filter to cards sharing that skill tag
+    cards.forEach((card) => {
+      card.querySelectorAll('.exp-tag').forEach((tag) =>
+        tag.addEventListener('click', () => setFilter(tag.dataset.filter))
+      );
+    });
+
+    // ---- Booking modal open / close ----
+    const modal = document.querySelector('.booking-modal');
+    const openBtn = document.querySelector('[data-book-open]');
+    if (modal && openBtn) {
+      const close = () => { modal.hidden = true; modal.removeAttribute('aria-active'); };
+      const open = () => { modal.hidden = false; };
+      openBtn.addEventListener('click', open);
+      modal.querySelectorAll('[data-book-close]').forEach((el) => el.addEventListener('click', close));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) close(); });
+    }
+  </script>
+</Layout>
