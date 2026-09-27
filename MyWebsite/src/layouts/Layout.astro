@@ -6,7 +6,7 @@ interface Props {
 	description?: string;
 }
 
-const { title, description = "Senior Operational Excellence & Data Lead Portfolio" } = Astro.props;
+const { title, description = "Ernest Song — CFO-As-A-Service | Finance Transformation" } = Astro.props;
 ---
 
 <!doctype html>
@@ -14,7 +14,7 @@ const { title, description = "Senior Operational Excellence & Data Lead Portfoli
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +28,18 @@ const { title, description = "Senior Operational Excellence & Data Lead Portfoli
 			<a class="nav-cta" href="#contact">Get in touch</a>
 		</nav>
 		<slot />
+		<footer class="site-footer">
+			<div class="site-shell">
+				<div class="footer-row">
+					<p class="footer-tagline">Ernest Song — CFO-As-A-Service</p>
+					<div class="footer-links">
+						<a href={`mailto:${"contact@ernestsong.com"}`}>Email</a>
+						<a href={`https://${"ernestsong.com"}`}>Website</a>
+						<a href="/admin">Admin</a>
+					</div>
+				</div>
+			</div>
+		</footer>
 		<button id="lockTrigger" title="Admin login">🔒</button>
 	</body>
 </html>

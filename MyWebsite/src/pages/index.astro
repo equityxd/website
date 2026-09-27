@@ -45,14 +45,17 @@ const toolEntries = Object.entries(tools).map(([category, items]) => ({ category
     <!-- ============ EXPERIENCE ============ -->
     <section id="experience" class="section experience">
       <div class="section-head">
+        <p class="section-label">Where the impact has been</p>
         <h2 class="section-title">Experience</h2>
-        <p class="section-sub">Where the impact has been, and where it's headed.</p>
+        <p class="section-sub">From audit to boardroom — finance transformation, country by country.</p>
       </div>
       <div class="timeline">
+        <span class="timeline-line"></span>
         {experience.map((exp) => (
           <ExperienceItem
             key={exp.id}
             title={exp.title}
+            subtitle={exp.subtitle}
             company={exp.company}
             location={exp.location}
             dateStart={exp.dateStart}
@@ -67,8 +70,9 @@ const toolEntries = Object.entries(tools).map(([category, items]) => ({ category
     <!-- ============ CAPABILITIES ============ -->
     <section id="capabilities" class="section capabilities">
       <div class="section-head">
+        <p class="section-label">What I bring</p>
         <h2 class="section-title">Capabilities</h2>
-        <p class="section-sub">Financial control, from close to strategy.</p>
+        <p class="section-sub">Financial control, from the daily close to the strategy table.</p>
       </div>
       <div class="capability-grid">
         {competencies.map((comp) => (
@@ -80,8 +84,9 @@ const toolEntries = Object.entries(tools).map(([category, items]) => ({ category
           </div>
         ))}
       </div>
-      <div class="section-head mt">
-        <h3 class="section-title-sm">Working Tools</h3>
+      <div class="section-head">
+        <p class="section-label">Working tools</p>
+        <h2 class="section-title">Working Tools</h2>
       </div>
       <div class="tools-grid">
         {toolEntries.map((tool) => (
@@ -98,6 +103,7 @@ const toolEntries = Object.entries(tools).map(([category, items]) => ({ category
     <!-- ============ EDUCATION ============ -->
     <section id="education" class="section education">
       <div class="section-head">
+        <p class="section-label">Foundation</p>
         <h2 class="section-title">Education</h2>
       </div>
       <div class="education-list">
@@ -120,6 +126,7 @@ const toolEntries = Object.entries(tools).map(([category, items]) => ({ category
     <!-- ============ LANGUAGES ============ -->
     <section id="languages" class="section languages">
       <div class="section-head">
+        <p class="section-label">Communication</p>
         <h2 class="section-title">Languages</h2>
       </div>
       <div class="language-list">
@@ -129,6 +136,7 @@ const toolEntries = Object.entries(tools).map(([category, items]) => ({ category
             {lang.items.map((item) => (
               <span class="lang-item">{item}</span>
             ))}
+            {lang.flags && lang.flags.length > 0 && <span class="lang-flags">{lang.flags.join(' ')}</span>}
           </div>
         ))}
       </div>
@@ -137,11 +145,38 @@ const toolEntries = Object.entries(tools).map(([category, items]) => ({ category
     <!-- ============ CONTACT ============ -->
     <section id="contact" class="section contact">
       <div class="section-head">
+        <p class="section-label">Next steps</p>
         <h2 class="section-title">Let's build something.</h2>
-        <p class="section-sub">Open to CFO, FP&amp;A and finance-trans engagements — remotely or on-site.</p>
+        <p class="section-sub">Open to CFO, FP&amp;A and finance-transformation engagements — remotely or on-site.</p>
       </div>
       <a href={`mailto:${p.mailto}`} class="cta-button">Get in touch</a>
       <p class="contact-note">Brussels, BE · Available for remote &amp; relokation</p>
     </section>
   </main>
 </Layout>
+
+<script is:client>
+  // Quiet scroll-reveal, respecting reduced-motion.
+  const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduce) {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  }
+
+  // Sticky nav border
+  const nav = document.querySelector('.site-nav');
+  const onScroll = () => {
+    if (nav) nav.classList.toggle('scrolled', window.scrollY > 8);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
