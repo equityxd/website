@@ -84,13 +84,9 @@ const langLabels = { Native: 'Native', Proficient: 'Proficient', Basics: 'Basics
         </div>
         <p class="filter-legend">Filter by field — every experience tagged with that category</p>
         <div class="filter-bar" role="list">
-          <button type="button" class="filter-pill is-active" data-filter="" role="listitem">
-            <span class="filter-dot" style="background:#cbd5e1" aria-hidden="true"></span><span>All</span>
-          </button>
+          <button type="button" class="filter-pill is-active" data-filter="" role="listitem"><span>All</span></button>
           {categoryOptions.map((cat) => (
-            <button type="button" class="filter-pill" data-filter={cat} role="listitem">
-              <span class="filter-dot" style={styleString(cat, CAT_COLORS)} aria-hidden="true"></span><span>{cat}</span>
-            </button>
+            <button type="button" class="filter-pill" data-filter={cat} role="listitem" style={styleString(cat, CAT_COLORS)}><span>{cat}</span></button>
           ))}
         </div>
         <div class="timeline">
