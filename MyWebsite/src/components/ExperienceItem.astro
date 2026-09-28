@@ -1,4 +1,6 @@
 ---
+import { styleString } from '../lib/categoryColors';
+
 interface Props {
   title: string;
   subtitle?: string;
@@ -38,10 +40,7 @@ const ROLE_COLORS = {
   "Internal": { bg: "#475569", fg: "#ffffff" },
 };
 
-const chipStyle = (name, palette) => {
-  const c = palette[name];
-  return `background:${c?.bg ?? "#f0f4fb"};color:${c?.fg ?? "#0958b8"}`;
-};
+const chipStyle = (name, palette) => styleString(name, palette);
 ---
 
 <div class={`exp-card ${highlight ? 'featured' : ''}`} data-filters={[...categories, ...tags].join(' | ')} class:list={{ 'is-hidden': hidden }}>
@@ -70,11 +69,17 @@ const chipStyle = (name, palette) => {
     ))}
   </div>
 
-  <ul class="exp-details">
-    {details.map((item) => (
-      <li>{item}</li>
-    ))}
-  </ul>
+  <details class="exp-body">
+    <summary class="exp-toggle" aria-expanded="false">
+      <span class="exp-toggle-glyph">▾</span>
+      <span class="exp-toggle-label">Show tasks</span>
+    </summary>
+    <ul class="exp-details">
+      {details.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </details>
 </div>
 
 <style>
@@ -99,6 +104,33 @@ const chipStyle = (name, palette) => {
   }
   /* Engagement role chip gets a subtle ring to stand out from category chips */
   .exp-cat--role { box-shadow: 0 0 0 1px rgba(11, 111, 224, 0.25); }
+
+  /* Collapse toggle — hide/expand the task list */
+  .exp-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    color: var(--accent-text);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 4px 8px;
+    border-bottom: 1px solid rgba(127, 127, 127, 0.25);
+    width: 100%;
+    text-align: left;
+  }
+  .exp-toggle:hover { color: var(--accent); }
+  .exp-toggle-glyph { transition: transform .3s var(--ease); }
+  .exp-body[open] .exp-toggle-glyph { transform: rotate(180deg); }
+  .exp-details { list-style: none; margin: 0; padding: 0; }
+  .exp-body:not([open]) .exp-details { display: none; }
+
+  /* Tasks hidden until expanded (accordion) */
+  .exp-body { display: block; }
+  .exp-body > .exp-details { display: none; }
+  .exp-body[open] > .exp-details { display: block; }
 
   /* Filtered-out cards */
   .is-hidden { display: none; }

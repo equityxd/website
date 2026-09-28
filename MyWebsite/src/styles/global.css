@@ -461,6 +461,27 @@ a:hover { color: var(--accent); }
     box-shadow: var(--shadow-glow);
   }
 
+  /* Category legend caption */
+  .filter-legend {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin: 0 0 10px;
+    letter-spacing: 0.01em;
+  }
+  /* Color swatch beside each filter label */
+  .filter-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+    flex: 0 0 auto;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+  }
+  .filter-pill span:not(.filter-dot) { white-space: nowrap; }
+
 /* ----------------------------------------------------------------
    Capabilities
    ---------------------------------------------------------------- */

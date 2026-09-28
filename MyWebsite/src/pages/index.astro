@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ExperienceItem from '../components/ExperienceItem.astro';
+import { CAT_COLORS, styleString } from '../lib/categoryColors';
 import CaseStudy from '../components/CaseStudy.astro';
 import KpiTicker from '../components/KpiTicker.astro';
 import profile from '../data/profile.json' assert { type: 'json' };
@@ -81,10 +82,15 @@ const langLabels = { Native: 'Native', Proficient: 'Proficient', Basics: 'Basics
           <h2 class="section-title">Experience</h2>
           <p class="section-sub">From audit to boardroom — finance transformation, country by country.</p>
         </div>
+        <p class="filter-legend">Filter by field — every experience tagged with that category</p>
         <div class="filter-bar" role="list">
-          <button type="button" class="filter-pill is-active" data-filter="" role="listitem">All</button>
+          <button type="button" class="filter-pill is-active" data-filter="" role="listitem">
+            <span class="filter-dot" style="background:#cbd5e1" aria-hidden="true"></span><span>All</span>
+          </button>
           {categoryOptions.map((cat) => (
-            <button type="button" class="filter-pill" data-filter={cat} role="listitem">{cat}</button>
+            <button type="button" class="filter-pill" data-filter={cat} role="listitem">
+              <span class="filter-dot" style={styleString(cat, CAT_COLORS)} aria-hidden="true"></span><span>{cat}</span>
+            </button>
           ))}
         </div>
         <div class="timeline">
