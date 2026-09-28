@@ -7,13 +7,15 @@ interface Props {
   dateEnd?: string | number;
   location: string;
   details: string[];
+  tags?: string[];
+  categories?: string[];
   highlight?: boolean;
 }
 
-const { title, subtitle, company, dateStart, dateEnd = "Present", location, details, highlight = false } = Astro.props;
+const { title, subtitle, company, dateStart, dateEnd = "Present", location, details, tags = [], categories = [], hidden = false, highlight = false } = Astro.props;
 ---
 
-<div class={`exp-card ${highlight ? 'featured' : ''}`}>
+<div class={`exp-card ${highlight ? 'featured' : ''}`} data-filters={[...categories, ...tags].join(' | ')} class:list={{ 'is-hidden': hidden }}>
   <div class="exp-head">
     <div>
       <h3 class="exp-role">{title}</h3>
@@ -30,6 +32,12 @@ const { title, subtitle, company, dateStart, dateEnd = "Present", location, deta
       <li>{item}</li>
     ))}
   </ul>
+
+  <div class="exp-tags">
+    {tags.map((tag) => (
+      <button type="button" class="exp-tag" data-tag={tag} data-filter={tag}>{tag}</button>
+    ))}
+  </div>
 </div>
 
 <style>
@@ -40,4 +48,25 @@ const { title, subtitle, company, dateStart, dateEnd = "Present", location, deta
   .exp-details { list-style: none; margin: 16px 0 0; padding: 0; }
   .exp-details li { padding-left: 18px; position: relative; margin-bottom: 8px; font-size: 0.92rem; color: var(--text); line-height: 1.5; }
   .exp-details li::before { content: ""; position: absolute; left: 6px; top: 11px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+
+  /* Chips */
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 14px; }
+  .exp-tag {
+    cursor: pointer;
+    appearance: none;
+    border: 0;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--accent-text);
+    background: var(--surface);
+    transition: background .2s ease, color .2s ease, border-color .2s ease, transform .1s ease;
+  }
+  .exp-tag:hover { background: var(--accent); color: #fff; }
+  .exp-tag:active { transform: scale(0.96); }
+
+  /* Filtered-out cards */
+  .is-hidden { display: none; }
 </style>

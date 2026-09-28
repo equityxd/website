@@ -18,11 +18,16 @@
   --bg-ink-2: #15171c;
   --text-ink: #f5f5f7;
 
+  /* Surface (cards, tiles, chips, nav, booking panel) + contextual text */
+  --surface: #ffffff;
+  --accent-text: #0958b8;
+  --text-dim: #5f6b7a;
+
   /* Text */
   --text: #1d1d1f;
   --text-2: #424245;
   --text-3: #6e6e6f;
-  --text-4: #a1a1a6;
+  --text-4: #5f6b7a;
   --text-on-ink: #f5f5f7;
   --text-on-ink-dim: #a1a1a6;
 
@@ -154,10 +159,10 @@ a:hover { color: var(--accent); }
   border-radius: 999px;
   color: var(--text-4);
   background: transparent;
-  border: 1px solid var(--surface-);
+  border: 1px solid var(--surface);
   transition: color .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease);
 }
-.nav-link:hover { color: var(--accent-text); border-color: var(--accent); background: var(--surface-); }
+.nav-link:hover { color: var(--accent-text); border-color: var(--accent); background: var(--surface); }
 
 /* ----------------------------------------------------------------
    Layout shell
@@ -529,6 +534,8 @@ a:hover { color: var(--accent); }
   letter-spacing: .09em;
   margin: 0 0 16px;
 }
+/* Tool labels sit on the dark capabilities section; use ink-readable dim */
+.section-dark .tool-cat-title { color: var(--text-on-ink-dim); }
 .tool-tag {
   display: inline-block;
   padding: 6px 13px;
@@ -551,8 +558,8 @@ a:hover { color: var(--accent); }
   gap: 11px;
   padding: 11px 13px;
   border-radius: 12px;
-  background: var(--surface-);
-  border: 1px solid var(--surface-);
+  background: var(--surface);
+  border: 1px solid var(--surface);
   transition: border-color .25s var(--ease), background .25s var(--ease), transform .2s var(--ease);
 }
 .tool-tile:hover { border-color: var(--accent); background: var(--surface); transform: translateY(-2px); }
@@ -664,12 +671,12 @@ a:hover { color: var(--accent); }
   font-weight: 600;
   color: var(--accent-text);
   background: transparent;
-  border: 1.5px solid var(--surface-);
+  border: 1.5px solid var(--surface);
   border-radius: 999px;
   cursor: pointer;
   transition: background .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease), transform .2s var(--ease);
 }
-.book-cta:hover { background: var(--surface-); border-color: var(--accent); color: var(--accent); }
+.book-cta:hover { background: var(--surface); border-color: var(--accent); color: var(--accent); }
 
 /* ---- Impact / case studies ---- */
 .cases { display: grid; gap: 20px; }
@@ -683,7 +690,7 @@ a:hover { color: var(--accent); }
 .credential-card {
   padding: 22px;
   border-radius: 16px;
-  border: 1px solid var(--surface-);
+  border: 1px solid var(--surface);
   background: var(--surface);
   transition: border-color .25s var(--ease), transform .25s var(--ease);
 }
@@ -705,7 +712,7 @@ a:hover { color: var(--accent); }
   gap: 16px;
   padding: 14px 18px;
   border-radius: 12px;
-  border: 1px solid var(--surface-);
+  border: 1px solid var(--surface);
   background: var(--surface);
   transition: border-color .25s var(--ease);
 }
@@ -727,7 +734,7 @@ a:hover { color: var(--accent); }
   padding: 28px;
   border-radius: 20px;
   background: var(--surface);
-  border: 1px solid var(--surface-);
+  border: 1px solid var(--surface);
   box-shadow: 0 40px 120px rgba(0, 0, 0, 0.5);
   animation: panel-in .3s var(--ease) forwards;
 }
@@ -738,7 +745,7 @@ a:hover { color: var(--accent); }
 .booking-close {
   appearance: none;
   border: 0;
-  background: var(--surface-);
+  background: var(--surface);
   color: var(--text-dim);
   width: 34px;
   height: 34px;
