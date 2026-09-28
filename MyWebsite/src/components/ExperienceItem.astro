@@ -14,6 +14,34 @@ interface Props {
 }
 
 const { title, subtitle, company, sector, dateStart, dateEnd = "Present", location, details, tags = [], categories = [], hidden = false, highlight = false } = Astro.props;
+
+// Distinct color per professional category, so you can trace any CAT across experiences.
+const CAT_COLORS = {
+  "Auditing & Compliance": { bg: "#E8EEF7", fg: "#1D4289" },      // blue
+  "Business Intelligence": { bg: "#E0F5F1", fg: "#0E6B63" },       // teal
+  "Finance Automation": { bg: "#ECE9F7", fg: "#4B3FA0" },          // indigo
+  "Finance Transformation": { bg: "#F2ECFA", fg: "#7A308F" },      // purple
+  "Financial Modelling & Cash Flow": { bg: "#EEF3F2", fg: "#3E5755" },  // slate
+  "Financial Planning & Control": { bg: "#E0F4F6", fg: "#0E6A82" },   // cyan
+  "Financial Reporting / IFRS": { bg: "#FDF3DD", fg: "#B45309" },   // amber
+  "Group Controlling & M&A": { bg: "#FDE8EC", fg: "#B3142B" },     // red
+  "Interim CFO / Fundraising": { bg: "#F9E6EF", fg: "#9C1560" },   // pink
+  "Non-profit & Community": { bg: "#E7F6EC", fg: "#167A3C" },      // green
+  "Real Estate / Corporate Development": { bg: "#FDE6D4", fg: "#B8410C" }, // orange
+  "SAP / ERP Transformation": { bg: "#E0F5FA", fg: "#0E6A85" },    // cyan-blue
+  "Valuation / Operations": { bg: "#E8EEF8", fg: "#2741B0" },      // deep blue
+};
+
+// Engagement type (Freelancer / Internal) — solid, standalone.
+const ROLE_COLORS = {
+  "Freelancer": { bg: "#0b6fe0", fg: "#ffffff" },
+  "Internal": { bg: "#475569", fg: "#ffffff" },
+};
+
+const chipStyle = (name, palette) => {
+  const c = palette[name];
+  return `background:${c?.bg ?? "#f0f4fb"};color:${c?.fg ?? "#0958b8"}`;
+};
 ---
 
 <div class={`exp-card ${highlight ? 'featured' : ''}`} data-filters={[...categories, ...tags].join(' | ')} class:list={{ 'is-hidden': hidden }}>
@@ -27,23 +55,26 @@ const { title, subtitle, company, sector, dateStart, dateEnd = "Present", locati
       <div>{location}</div>
     </div>
   </div>
+
+  {/* Category chips: role first, then buckets — all BEFORE the tasks */}
   <div class="exp-cats">
-    {subtitle && <span class="exp-cat exp-cat--role" data-cat={subtitle}>{subtitle}</span>}
+    {subtitle && (
+      <span class="exp-cat exp-cat--role" data-cat={subtitle} style={chipStyle(subtitle, ROLE_COLORS)}>
+        {subtitle}
+      </span>
+    )}
     {categories.map((cat) => (
-      <span class="exp-cat" data-cat={cat}>{cat}</span>
+      <span class="exp-cat" data-cat={cat} style={chipStyle(cat, CAT_COLORS)}>
+        {cat}
+      </span>
     ))}
   </div>
+
   <ul class="exp-details">
     {details.map((item) => (
       <li>{item}</li>
     ))}
   </ul>
-
-  <div class="exp-tags">
-    {tags.map((tag) => (
-      <button type="button" class="exp-tag" data-tag={tag} data-filter={tag}>{tag}</button>
-    ))}
-  </div>
 </div>
 
 <style>
@@ -64,32 +95,10 @@ const { title, subtitle, company, sector, dateStart, dateEnd = "Present", locati
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.01em;
-    color: #0958b8;
-    background: rgba(11, 111, 224, 0.10);
+    white-space: nowrap;
   }
-  /* Engagement role (Freelancer / Internal) — solid, standout */
-  .exp-cat--role {
-    color: #fff;
-    background: #0b6fe0;
-  }
-
-  /* Chips */
-  .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 14px; }
-  .exp-tag {
-    cursor: pointer;
-    appearance: none;
-    border: 0;
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    color: var(--accent-text);
-    background: var(--surface);
-    transition: background .2s ease, color .2s ease, border-color .2s ease, transform .1s ease;
-  }
-  .exp-tag:hover { background: var(--accent); color: #fff; }
-  .exp-tag:active { transform: scale(0.96); }
+  /* Engagement role chip gets a subtle ring to stand out from category chips */
+  .exp-cat--role { box-shadow: 0 0 0 1px rgba(11, 111, 224, 0.25); }
 
   /* Filtered-out cards */
   .is-hidden { display: none; }
