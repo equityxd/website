@@ -188,7 +188,7 @@
         "Led the financial controlling pilot phase for the SAP S/4HANA migration across French subsidiaries, bridging IT architecture and strategic business operations.",
         "Designed, built and deployed an automated budget-modeling tool from scratch within a 2-week timeline, ensuring operational continuity during a resource gap.",
         "Streamlined financial closing for commodity trading with PowerQuery ETL workflows, safely ingesting 1,500+ bookings per close with zero human intervention.",
-        "Reconciled financial data between middle-office databases (IVDB) and SAP S/4HANA while restructuring WWS project codes to optimize portfolio monitoring."
+        "Reconciled financial data between middle-office databases (IVDB) and SAP S/4HANA while restructuring WBS project codes to optimize portfolio monitoring."
       ],
       "tags": [
         "Financial Controlling",
@@ -284,12 +284,12 @@
     },
     {
       "id": "magnetrap",
-      "title": "Freelance CFO / Fundraising Consultant",
-      "subtitle": "Freelancer",
+      "title": "Head of Controlling",
+      "subtitle": "Internal",
       "company": "Magnetrap",
-      "sector": "Non-profit",
+      "sector": "Technology / Consulting",
       "categories": [
-        "Interim CFO / Fundraising",
+        "Group Controlling",
         "Financial Planning & Control"
       ],
       "location": "Mons, BE",
@@ -297,15 +297,15 @@
       "dateEnd": "January 2022",
       "highlight": false,
       "details": [
-        "Acted as interim CFO and led fundraising, organizing €3M in debt/equity fund raises.",
-        "Created cash-flow projections, business plans and long-term financial goals.",
+        "Implemented budgeting, forecasting, and financial control systems.",
+        "Created cash flow projections, business plans, and long-term financial goals.",
         "Monitored company performance and implemented corrective actions as needed.",
-        "Prepared operating-results reports and managed financial models for long-term use."
+        "Prepared operating results reports and managed financial models for long-term use."
       ],
       "tags": [
-        "Interim CFO",
-        "Fundraising",
-        "Financial Planning"
+        "Group Controlling",
+        "Financial Planning",
+        "Budgeting / Forecasting"
       ]
     },
     {

@@ -47,7 +47,10 @@ const chipStyle = (name, palette) => styleString(name, palette);
   <div class="exp-head">
     <div>
       <h3 class="exp-role">{title}</h3>
-      <div class="exp-company">{company}{sector ? ` · ${sector}` : ''}</div>
+      <div class="exp-company">
+        <span class="exp-org">{company}</span>
+        {sector ? <span class="exp-sector"> · {sector}</span> : ''}
+      </div>
     </div>
     <div class="exp-meta">
       <div>{dateStart}{dateEnd ? ` – ${dateEnd}` : ' – Present'}</div>
@@ -117,7 +120,6 @@ const chipStyle = (name, palette) => styleString(name, palette);
     font-size: 0.78rem;
     font-weight: 600;
     padding: 6px 4px 8px;
-    border-bottom: 1px solid rgba(127, 127, 127, 0.25);
     width: 100%;
     text-align: left;
   }
