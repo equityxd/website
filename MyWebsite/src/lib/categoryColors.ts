@@ -17,6 +17,15 @@ export const CAT_COLORS: Record<string, ColorPair> = {
   "Real Estate / Corporate Development": { bg: "#FDE6D4", fg: "#B8410C" }, // orange
   "SAP / ERP Transformation": { bg: "#E0F5FA", fg: "#0E6A85" },    // cyan-blue
   "Valuation / Operations": { bg: "#E8EEF8", fg: "#2741B0" },      // deep blue
+  "Business Analysis": { bg: "#F3EEFF", fg: "#5B59C9" },           // indigo
+  "Project Management": { bg: "#EAF4FF", fg: "#1673B3" },          // blue
+  "Strategy": { bg: "#EAFBE9", fg: "#2B8A3E" },                    // green
+  "Business Development": { bg: "#FFF3D0", fg: "#B76000" },        // amber
+  "Marketing": { bg: "#FDE8EC", fg: "#C0244F" },                   // red
+  "Data Management": { bg: "#E6F3FF", fg: "#0A6CC0" },            // cyan
+  "Gap Analysis": { bg: "#F1F5EE", fg: "#4A7C32" },              // dark green
+  "Artificial Intelligence": { bg: "#EDE7F6", fg: "#6B4FB0" },     // violet
+  "Negotiation": { bg: "#FDECE0", fg: "#C24E0B" },                // orange
 };
 
 export const ROLE_COLORS: Record<string, ColorPair> = {

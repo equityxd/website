@@ -175,9 +175,12 @@
       "company": "Engie SEM",
       "sector": "Energy",
       "categories": [
-        "Finance Automation",
         "SAP / ERP Transformation",
-        "Financial Modelling & Cash Flow"
+        "Financial Reporting / IFRS",
+        "Financial Planning & Control",
+        "Business Analysis",
+        "Finance Automation",
+        "Project Management"
       ],
       "location": "Brussels, BE",
       "dateStart": "January 2026",
@@ -205,9 +208,13 @@
       "company": "Holcim",
       "sector": "Construction Materials",
       "categories": [
-        "Group Controlling & M&A",
-        "Business Intelligence",
-        "Financial Reporting / IFRS"
+        "SAP / ERP Transformation",
+        "Financial Planning & Control",
+        "Business Analysis",
+        "Finance Automation",
+        "Data Management",
+        "Strategy",
+        "Project Management"
       ],
       "location": "Nivelles, BE",
       "dateStart": "January 2024",
@@ -235,7 +242,9 @@
       "company": "Engie Tractebel",
       "sector": "Energy",
       "categories": [
-        "Group Controlling & M&A",
+        "SAP / ERP Transformation",
+        "Financial Reporting / IFRS",
+        "Financial Planning & Control",
         "Financial Modelling & Cash Flow",
         "Business Intelligence"
       ],
@@ -262,8 +271,10 @@
       "company": "Shurgard",
       "sector": "Real Estate",
       "categories": [
-        "Real Estate / Corporate Development",
-        "Business Intelligence"
+        "Group Controlling & M&A",
+        "Business Intelligence",
+        "Artificial Intelligence",
+        "Finance Automation"
       ],
       "location": "Brussels, BE",
       "dateStart": "February 2022",
@@ -289,8 +300,11 @@
       "company": "Magnetrap",
       "sector": "Technology / Consulting",
       "categories": [
-        "Group Controlling",
-        "Financial Planning & Control"
+        "Financial Reporting / IFRS",
+        "Financial Planning & Control",
+        "Financial Modelling & Cash Flow",
+        "Interim CFO / Fundraising",
+        "Business Intelligence"
       ],
       "location": "Mons, BE",
       "dateStart": "November 2020",
@@ -311,13 +325,16 @@
     {
       "id": "tobania",
       "title": "Director Business Process Automation",
-      "subtitle": "",
+      "subtitle": "Internal",
       "company": "Tobania",
       "sector": "Technology / SaaS",
       "categories": [
         "Finance Automation",
         "Business Intelligence",
-        "Financial Planning & Control"
+        "Business Analysis",
+        "Strategy",
+        "Business Development",
+        "Marketing"
       ],
       "location": "Brussels, BE",
       "dateStart": "February 2020",
@@ -340,7 +357,7 @@
     {
       "id": "soapcollect",
       "title": "Founder",
-      "subtitle": "",
+      "subtitle": "Internal",
       "company": "Soap collect",
       "sector": "Non-profit",
       "categories": [
@@ -367,8 +384,10 @@
       "company": "Degroof Petercam",
       "sector": "Construction",
       "categories": [
-        "Finance Transformation",
-        "Financial Reporting / IFRS"
+        "Finance transformation",
+        "Financial Reporting / IFRS",
+        "Project Management",
+        "Gap Analysis"
       ],
       "location": "Brussels, BE",
       "dateStart": "January 2018",
@@ -395,8 +414,12 @@
       "company": "Vinci Airports",
       "sector": "Aviation / Infrastructure",
       "categories": [
-        "Valuation / Operations",
-        "Financial Reporting / IFRS"
+        "Financial Reporting / IFRS",
+        "Financial Modelling & Cash Flow",
+        "Strategy",
+        "Negotiation",
+        "Financial Planning & Control",
+        "Business Intelligence"
       ],
       "location": "Brussels, BE & Lisbon, PT",
       "dateStart": "February 2016",
@@ -419,12 +442,13 @@
     {
       "id": "rexel",
       "title": "Reporting Consolidation Manager",
-      "subtitle": "",
+      "subtitle": "Internal",
       "company": "Rexel",
       "sector": "Electrical Distribution",
       "categories": [
+        "Financial Reporting / IFRS",
         "SAP / ERP Transformation",
-        "Financial Reporting / IFRS"
+        "Financial Planning & Control"
       ],
       "location": "Paris, FR",
       "dateStart": "September 2014",
@@ -446,11 +470,12 @@
     {
       "id": "kpmg",
       "title": "Financial Auditor Supervisor",
-      "subtitle": "",
+      "subtitle": "Internal",
       "company": "KPMG Audit",
       "sector": "Professional Services (Audit)",
       "categories": [
         "Auditing & Compliance",
+        "Financial Modelling & Cash Flow",
         "Financial Reporting / IFRS"
       ],
       "location": "Paris, FR",
@@ -474,7 +499,7 @@
     {
       "id": "icm",
       "title": "Deputy CFO Trainee",
-      "subtitle": "",
+      "subtitle": "Internal",
       "company": "ICM – Brain & Spine Institute",
       "sector": "Healthcare / Non-profit",
       "categories": [
