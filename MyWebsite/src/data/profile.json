@@ -175,12 +175,14 @@
       "company": "Engie SEM",
       "sector": "Energy",
       "categories": [
-        "SAP / ERP Transformation",
-        "Financial Reporting / IFRS",
-        "Financial Planning & Control",
-        "Business Analysis",
-        "Finance Automation",
-        "Project Management"
+        "ERP transformation",
+        "Finance closing",
+        "Budgeting",
+        "Medium/Long term plan",
+        "Accounting",
+        "Business analyst",
+        "Automation",
+        "Project management"
       ],
       "location": "Brussels, BE",
       "dateStart": "January 2026",
@@ -208,13 +210,14 @@
       "company": "Holcim",
       "sector": "Construction Materials",
       "categories": [
-        "SAP / ERP Transformation",
-        "Financial Planning & Control",
-        "Business Analysis",
-        "Finance Automation",
-        "Data Management",
+        "ERP transformation",
+        "Budgeting",
+        "Accounting",
+        "Business analyst",
+        "Finance automation",
+        "Data management",
         "Strategy",
-        "Project Management"
+        "Project management"
       ],
       "location": "Nivelles, BE",
       "dateStart": "January 2024",
@@ -242,10 +245,11 @@
       "company": "Engie Tractebel",
       "sector": "Energy",
       "categories": [
-        "SAP / ERP Transformation",
-        "Financial Reporting / IFRS",
-        "Financial Planning & Control",
-        "Financial Modelling & Cash Flow",
+        "ERP transformation",
+        "Finance closing",
+        "Budgeting",
+        "Financial modelling",
+        "Cash-flow management",
         "Business Intelligence"
       ],
       "location": "Brussels, BE",
@@ -271,10 +275,10 @@
       "company": "Shurgard",
       "sector": "Real Estate",
       "categories": [
-        "Group Controlling & M&A",
+        "M&A",
         "Business Intelligence",
-        "Artificial Intelligence",
-        "Finance Automation"
+        "Artificial intelligence",
+        "Automation"
       ],
       "location": "Brussels, BE",
       "dateStart": "February 2022",
@@ -300,10 +304,13 @@
       "company": "Magnetrap",
       "sector": "Technology / Consulting",
       "categories": [
-        "Financial Reporting / IFRS",
-        "Financial Planning & Control",
-        "Financial Modelling & Cash Flow",
-        "Interim CFO / Fundraising",
+        "Finance closing",
+        "Accounting",
+        "Cash-flow management",
+        "Budgeting",
+        "Medium/Long term plan",
+        "Financial modelling",
+        "Fundraising",
         "Business Intelligence"
       ],
       "location": "Mons, BE",
@@ -329,11 +336,11 @@
       "company": "Tobania",
       "sector": "Technology / SaaS",
       "categories": [
-        "Finance Automation",
+        "Automation",
         "Business Intelligence",
-        "Business Analysis",
+        "Business analyst",
         "Strategy",
-        "Business Development",
+        "Business development",
         "Marketing"
       ],
       "location": "Brussels, BE",
@@ -361,7 +368,7 @@
       "company": "Soap collect",
       "sector": "Non-profit",
       "categories": [
-        "Non-profit & Community"
+        "Non-profit"
       ],
       "location": "Phnom Penh, KH",
       "dateStart": "January 2019",
@@ -384,10 +391,10 @@
       "company": "Degroof Petercam",
       "sector": "Construction",
       "categories": [
-        "Finance Transformation",
-        "Financial Reporting / IFRS",
-        "Project Management",
-        "Gap Analysis"
+        "Finance transformation",
+        "Regulatory reporting",
+        "Project management",
+        "Gap analysis"
       ],
       "location": "Brussels, BE",
       "dateStart": "January 2018",
@@ -410,15 +417,19 @@
     {
       "id": "vinci",
       "title": "Managing Director & Head of Project Financial Modeling",
-      "subtitle": "Cursus Grand Talent",
+      "subtitle": "Internal",
       "company": "Vinci Airports",
       "sector": "Aviation / Infrastructure",
       "categories": [
-        "Financial Reporting / IFRS",
-        "Financial Modelling & Cash Flow",
+        "Cursus Grand Talent",
+        "Finance closing",
+        "Financial modelling",
         "Strategy",
-        "Negotiation",
-        "Financial Planning & Control",
+        "Negociation",
+        "IFRS",
+        "Budgeting",
+        "Medium/Long term plan",
+        "Cash-flow management",
         "Business Intelligence"
       ],
       "location": "Brussels, BE & Lisbon, PT",
@@ -446,9 +457,11 @@
       "company": "Rexel",
       "sector": "Electrical Distribution",
       "categories": [
-        "Financial Reporting / IFRS",
-        "SAP / ERP Transformation",
-        "Financial Planning & Control"
+        "Finance closing",
+        "IFRS",
+        "ERP transformation",
+        "Budgeting",
+        "Medium/Long term plan"
       ],
       "location": "Paris, FR",
       "dateStart": "September 2014",
@@ -474,9 +487,10 @@
       "company": "KPMG Audit",
       "sector": "Professional Services (Audit)",
       "categories": [
-        "Auditing & Compliance",
-        "Financial Modelling & Cash Flow",
-        "Financial Reporting / IFRS"
+        "Auditing",
+        "Advisory",
+        "Financial modelling",
+        "IFRS"
       ],
       "location": "Paris, FR",
       "dateStart": "January 2011",
@@ -503,8 +517,10 @@
       "company": "ICM – Brain & Spine Institute",
       "sector": "Healthcare / Non-profit",
       "categories": [
-        "Financial Planning & Control",
-        "Auditing & Compliance"
+        "Budgeting",
+        "Accounting",
+        "Medium/Long term plan",
+        "Auditing"
       ],
       "location": "Paris, FR",
       "dateStart": "November 2009",
